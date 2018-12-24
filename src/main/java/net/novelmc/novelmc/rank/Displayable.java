@@ -1,5 +1,7 @@
 package net.novelmc.novelmc.rank;
 
+import org.bukkit.ChatColor;
+
 public interface Displayable
 {
 
@@ -7,7 +9,7 @@ public interface Displayable
 
     public String getTag();
 
-    public String getColor();
+    public ChatColor getColor();
 
     public String getLoginMessage();
 }
