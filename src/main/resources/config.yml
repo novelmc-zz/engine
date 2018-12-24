@@ -1,0 +1,48 @@
+#
+# NovelMC's main configuration
+#
+
+# General information
+general:
+  # Name of your server?
+  name: NovelMC
+
+  # MOTD (shown on server list) - Color codes supported [&] and 2 lines motd [||] available
+  motd: NovelMC
+
+  # Website - useful to link to the forum for ban appeals, admin applications etc
+  website: http://novelmc.net/
+
+# SQL information
+sql:
+  username: root
+  password: ''
+  host: 127.0.0.1
+  port: 3306
+  database: novelmc
+
+# TO:DO re-create command blocking system
+# Commands to block - default for all, admins for staff
+commands:
+  default:
+    - '/gamemode'
+    - '/time'
+    - '/ban-ip'
+    - '/pardon-ip'
+    - '/pardon'
+    - '/save-on'
+    - '/save-off'
+    - '/nuke'
+    - '/summon'
+    - '/setblock'
+    - '/fill'
+    - '/tellraw'
+
+  admins:
+    - '/coreprotect'
+    - '/stop'
+    - '/restart'
+    - '/save-all'
+    - '/reload'
+    - '/socialspy'
+    - '/gamerule'
