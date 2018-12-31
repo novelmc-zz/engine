@@ -18,6 +18,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.*;
 
 import java.lang.reflect.Field;
+import net.novelmc.novelmc.architect.ArchitectList;
 
 public class PlayerListener implements Listener
 {
@@ -45,9 +46,9 @@ public class PlayerListener implements Listener
             SQLManager.generateNewPlayer(player);
         }
 
-        if (StaffList.isStaff(player))
+        if (StaffList.isStaff(player) || ArchitectList.isArchitect(player))
         {
-            if (!StaffList.getStaff(player).getIps().contains(player.getAddress().getHostString()))
+            if (!StaffList.getStaff(player).getIps().contains(player.getAddress().getHostString()) || !ArchitectList.getArchitect(player).getIps().contains(player.getAddress().getHostString()))
             {
                 StaffList.getImpostors().add(player.getName());
                 Bukkit.broadcastMessage(ChatColor.RED + player.getName() + " has been flagged as an imposter!");
@@ -86,6 +87,10 @@ public class PlayerListener implements Listener
         if (StaffList.getImpostors().contains(event.getPlayer().getName()))
         {
             StaffList.getImpostors().remove(event.getPlayer().getName());
+        }
+        if (ArchitectList.getImpostors().contains(event.getPlayer().getName()))
+        {
+            ArchitectList.getImpostors().remove(event.getPlayer().getName());
         }
     }
 

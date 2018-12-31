@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import net.novelmc.novelmc.architect.ArchitectList;
 
 public enum Rank implements Displayable
 {
@@ -99,6 +100,11 @@ public enum Rank implements Displayable
         if (NUtil.DEVELOPERS.contains(player.getName()))
         {
             return Title.DEVELOPER;
+        }
+        
+        if (ArchitectList.isArchitect(player))
+        {
+            return Title.ARCHITECT;
         }
 
         Connection c = NovelMC.plugin.sql.getConnection();

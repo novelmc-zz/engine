@@ -46,11 +46,11 @@ public class Command_staff
 
                     if (StaffList.isStaff(player))
                     {
-                        sender.sendMessage(ChatColor.RED + "That player is already a staff!");
+                        sender.sendMessage(ChatColor.RED + "That player is already staff!");
                         return true;
                     }
 
-                    if (StaffList.isImpostor(player))
+                    if (StaffList.isImpostor(player) || StaffList.getStaff(player).getActive())
                     {
                         Bukkit.broadcastMessage(ChatColor.GREEN + sender.getName() + " - Readding " + player.getName() + " to the staff list");
                         StaffList.getImpostors().remove(player.getName());
@@ -86,7 +86,7 @@ public class Command_staff
 
                     if (!StaffList.isStaff(player))
                     {
-                        sender.sendMessage(ChatColor.RED + "That player is not a staff!");
+                        sender.sendMessage(ChatColor.RED + "That player is not staff!");
                         return true;
                     }
 
@@ -106,7 +106,7 @@ public class Command_staff
 
                     if (!StaffList.isStaff(player))
                     {
-                        sender.sendMessage(ChatColor.RED + "That player is not a staff!");
+                        sender.sendMessage(ChatColor.RED + "That player is not staff!");
                         return true;
                     }
 
