@@ -52,7 +52,7 @@ public class Command_ban
 
             Bukkit.broadcastMessage(ChatColor.RED + sender.getName() + " - Banning IP: " + args[0]
                     + (reason != null ? "\n Reason: " + ChatColor.YELLOW + reason : ""));
-            BanManager.addBan(sender, "", args[0], reason, NUtil.stringToDate("1d"), BanType.IP);
+            BanManager.addBan(sender, "", args[0], reason, NUtil.parseDateOffset("1d"), BanType.IP);
             return true;
         }
 

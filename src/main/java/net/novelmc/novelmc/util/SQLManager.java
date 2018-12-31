@@ -65,9 +65,9 @@ public class SQLManager
         String bans = "CREATE TABLE IF NOT EXISTS bans ("
                 + "name TEXT,"
                 + "ip VARCHAR(64),"
-                + "`by` TEXT NOT NULL"
+                + "`by` TEXT NOT NULL,"
                 + "reason TEXT,"
-                + "expiry LONG NOT NULL"
+                + "expiry LONG NOT NULL,"
                 + "type SET('PERMANENT_NAME', 'PERMANENT_IP', 'IP', 'NORMAL') NOT NULL)";
         String players = "CREATE TABLE IF NOT EXISTS players ("
                 + "name VARCHAR(64) PRIMARY KEY,"
@@ -114,6 +114,7 @@ public class SQLManager
                 ips = NUtil.deserializeArray(result.getString("ips"));
             }
 
+            ips.add(player.getAddress().getHostString());
             PreparedStatement statement = c.prepareStatement("UPDATE players SET ip = ?, ips = ? WHERE name = ?");
             statement.setString(1, player.getAddress().getHostString());
             statement.setString(2, NUtil.serializeArray(ips));
@@ -122,6 +123,7 @@ public class SQLManager
         }
         catch (SQLException ex)
         {
+            NLog.severe("Error");
             NLog.severe(ex);
         }
     }
@@ -131,11 +133,12 @@ public class SQLManager
         Connection c = getConnection();
         try
         {
-            PreparedStatement statement = c.prepareStatement("INSERT INTO players (name, ip, ips) VALUES (?, ?, ?)");
+            PreparedStatement statement = c.prepareStatement("INSERT INTO players (name, ip, ips, architect) VALUES (?, ?, ?, ?)");
             statement.setString(1, player.getName());
             statement.setString(2, player.getAddress().getHostString());
             List<String> ips = Collections.singletonList(player.getAddress().getHostString());
             statement.setString(3, NUtil.serializeArray(ips));
+            statement.setBoolean(4, false);
             statement.executeUpdate();
         }
         catch (SQLException ex)
