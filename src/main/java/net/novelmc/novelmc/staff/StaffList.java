@@ -4,12 +4,8 @@ import lombok.Getter;
 import net.novelmc.novelmc.NovelMC;
 import net.novelmc.novelmc.rank.Rank;
 import net.novelmc.novelmc.util.NLog;
-import net.novelmc.novelmc.util.NUtil;
 import org.bukkit.entity.Player;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -21,7 +17,7 @@ public class StaffList
     private static List<Staff> staff;
     @Getter
     private static List<String> impostors;
-    private NovelMC plugin;
+    private static NovelMC plugin;
 
     public StaffList(NovelMC plugin)
     {
@@ -36,23 +32,12 @@ public class StaffList
     public void loadStaff()
     {
         staff.clear();
-        Connection c = plugin.sql.getConnection();
-        try
+
+        for (String key : plugin.staff.getKeys(false))
         {
-            ResultSet result = c.prepareStatement("SELECT * FROM staff").executeQuery();
-            while (result.next())
-            {
-                Staff s = new Staff();
-                s.setName(result.getString("name"));
-                s.setIps(NUtil.deserializeArray(result.getString("ips")));
-                s.setRank(Rank.findRank(result.getString("rank")));
-                s.setActive(result.getBoolean("active"));
-                staff.add(s);
-            }
-        }
-        catch (SQLException ex)
-        {
-            NLog.severe(ex);
+            Staff s = new Staff(key);
+            s.load(plugin.staff.getConfigurationSection(key));
+            staff.add(s);
         }
 
         NLog.info("Successfully loaded " + staff.size() + " staff!");
@@ -93,14 +78,16 @@ public class StaffList
         }
 
         staff.add(s);
-        s.save();
+        s.save(plugin.staff.createSection(s.getConfigKey()));
     }
 
     public static void addStaff(Player player)
     {
-        Staff s = new Staff();
+        Staff s = new Staff(player.getName().toLowerCase());
         s.setName(player.getName());
         s.setIps(Collections.singletonList(player.getAddress().getHostString()));
+        s.setRank(Rank.TRAINEE);
+        s.setActive(true);
         addStaff(s);
     }
 
@@ -112,55 +99,54 @@ public class StaffList
         }
 
         staff.remove(s);
-        s.delete();
+        s.setActive(false);
+        staff.add(s);
+        s.save(plugin.staff.getConfigurationSection(s.getConfigKey()));
     }
 
     public static void updateRank(Player player, Rank rank)
     {
-        if (!isStaff(player))
-        {
-            return;
-        }
-
-        if (rank.isAtLeast(Rank.TRAINEE))
-        {
-            return;
-        }
-
         Staff s = getStaff(player);
+
+        if (s == null)
+        {
+            return;
+        }
+
         staff.remove(s);
         s.setRank(rank);
         staff.add(s);
-        s.update();
-    }
-
-    public static void addIp(Player player, String ip)
-    {
-        if (!isStaff(player))
-        {
-            return;
-        }
-
-        Staff s = getStaff(player);
-        staff.remove(s);
-        List<String> ips = s.getIps();
-        ips.add(ip);
-        staff.add(s);
-        s.update();
+        s.save(plugin.staff.getConfigurationSection(s.getConfigKey()));
     }
 
     public static void updateActive(Player player, boolean active)
     {
-        if (!isStaff(player))
+        Staff s = getStaff(player);
+
+        if (s == null)
         {
             return;
         }
 
-        Staff s = getStaff(player);
         staff.remove(s);
         s.setActive(active);
         staff.add(s);
-        s.update();
+        s.save(plugin.staff.getConfigurationSection(s.getConfigKey()));
+    }
+
+    public static void updateIp(Player player)
+    {
+        Staff s = getStaff(player);
+
+        if (s == null)
+        {
+            return;
+        }
+
+        staff.remove(s);
+        s.getIps().add(player.getAddress().getHostString());
+        staff.add(s);
+        s.save(plugin.staff.getConfigurationSection(s.getConfigKey()));
     }
 
     public static boolean isImpostor(Player player)

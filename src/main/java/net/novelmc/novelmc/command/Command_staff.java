@@ -50,11 +50,16 @@ public class Command_staff
                         return true;
                     }
 
-                    if (StaffList.isImpostor(player) || StaffList.getStaff(player).getActive())
+                    if (StaffList.isImpostor(player))
                     {
-                        Bukkit.broadcastMessage(ChatColor.GREEN + sender.getName() + " - Readding " + player.getName() + " to the staff list");
-                        StaffList.getImpostors().remove(player.getName());
-                        StaffList.addIp(player, player.getAddress().getHostString());
+                        Bukkit.broadcastMessage(ChatColor.GREEN + sender.getName() + " - Re-adding " + player.getName() + " to the staff list");
+
+                        if (StaffList.isImpostor(player))
+                        {
+                            StaffList.getImpostors().remove(player.getName());
+                        }
+
+                        StaffList.updateIp(player);
                         return true;
                     }
 
@@ -67,7 +72,7 @@ public class Command_staff
                 {
                     if (!Rank.getRank(sender).isAtLeast(Rank.ADMIN))
                     {
-                        sender.sendMessage(ChatColor.RED + "You must be at least General Manager to be able to execute this command!");
+                        sender.sendMessage(ChatColor.RED + "You must be at least Admin to be able to execute this command!");
                         return true;
                     }
 
@@ -86,7 +91,7 @@ public class Command_staff
 
                     if (!StaffList.isStaff(player))
                     {
-                        sender.sendMessage(ChatColor.RED + "That player is not staff!");
+                        sender.sendMessage(ChatColor.RED + "That player is not a staff!");
                         return true;
                     }
 

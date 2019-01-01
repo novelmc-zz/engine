@@ -2,12 +2,10 @@ package net.novelmc.novelmc.util;
 
 import lombok.Getter;
 import net.novelmc.novelmc.NovelMC;
-import org.bukkit.entity.Player;
 
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class SQLManager
 {
@@ -57,11 +55,6 @@ public class SQLManager
     private void generateTables() throws SQLException
     {
         Connection c = getConnection();
-        String staff = "CREATE TABLE IF NOT EXISTS staff ("
-                + "name VARCHAR(64) PRIMARY KEY,"
-                + "ips VARCHAR(255) NOT NULL,"
-                + "rank VARCHAR(64) NOT NULL,"
-                + "active BOOLEAN NOT NULL)";
         String bans = "CREATE TABLE IF NOT EXISTS bans ("
                 + "name TEXT,"
                 + "ip VARCHAR(64),"
@@ -69,81 +62,6 @@ public class SQLManager
                 + "reason TEXT,"
                 + "expiry LONG NOT NULL,"
                 + "type SET('PERMANENT_NAME', 'PERMANENT_IP', 'IP', 'NORMAL') NOT NULL)";
-        String players = "CREATE TABLE IF NOT EXISTS players ("
-                + "name VARCHAR(64) PRIMARY KEY,"
-                + "ip VARCHAR(255) NOT NULL," // Most recent ip
-                + "ips VARCHAR(255) NOT NULL,"
-                + "architect BOOLEAN NOT NULL)";
-
-        c.prepareStatement(staff).executeUpdate();
         c.prepareStatement(bans).executeUpdate();
-        c.prepareStatement(players).executeUpdate();
-    }
-
-    public static boolean playerExists(Player player)
-    {
-        Connection c = getConnection();
-        try
-        {
-            PreparedStatement statement = c.prepareStatement("SELECT * FROM players WHERE name = ?");
-            statement.setString(1, player.getName());
-            ResultSet result = statement.executeQuery();
-
-            if (result.next())
-            {
-                return result.getString("name") != null;
-            }
-        }
-        catch (SQLException ex)
-        {
-            NLog.severe(ex);
-        }
-
-        return false;
-    }
-
-    public static void updatePlayer(Player player)
-    {
-        Connection c = getConnection();
-        try
-        {
-            List<String> ips = new ArrayList<>();
-            ResultSet result = c.prepareStatement("SELECT ips FROM players WHERE name = " + player.getName()).executeQuery();
-            if (result.next())
-            {
-                ips = NUtil.deserializeArray(result.getString("ips"));
-            }
-
-            ips.add(player.getAddress().getHostString());
-            PreparedStatement statement = c.prepareStatement("UPDATE players SET ip = ?, ips = ? WHERE name = ?");
-            statement.setString(1, player.getAddress().getHostString());
-            statement.setString(2, NUtil.serializeArray(ips));
-            statement.setString(3, player.getName());
-            statement.executeUpdate();
-        }
-        catch (SQLException ex)
-        {
-            NLog.severe("Error");
-            NLog.severe(ex);
-        }
-    }
-
-    public static void generateNewPlayer(Player player)
-    {
-        Connection c = getConnection();
-        try
-        {
-            PreparedStatement statement = c.prepareStatement("INSERT INTO players (name, ip, ips, architect) VALUES (?, ?, ?, ?)");
-            statement.setString(1, player.getName());
-            statement.setString(2, player.getAddress().getHostString());
-            List<String> ips = Collections.singletonList(player.getAddress().getHostString());
-            statement.setString(3, NUtil.serializeArray(ips));
-            statement.setBoolean(4, false);
-            statement.executeUpdate();
-        }
-        catch (SQLException ex)
-        {
-            NLog.severe(ex);
-        }
     }
 }

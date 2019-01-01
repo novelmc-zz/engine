@@ -7,6 +7,7 @@ import net.novelmc.novelmc.rank.Rank;
 import net.novelmc.novelmc.util.NLog;
 import net.novelmc.novelmc.util.NUtil;
 import org.apache.commons.lang.StringUtils;
+import org.bukkit.configuration.ConfigurationSection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,6 +18,8 @@ public class Staff
 {
 
     @Getter
+    private String configKey;
+    @Getter
     @Setter
     private String name;
     @Getter
@@ -24,66 +27,30 @@ public class Staff
     private List<String> ips;
     @Getter
     @Setter
-    private Rank rank = Rank.TRAINEE;
+    private Rank rank;
     @Getter
     @Setter
-    private boolean active = true;
+    private boolean active;
 
-    public void save()
+    public Staff(String configKey)
     {
-        Connection c = NovelMC.plugin.sql.getConnection();
-        try
-        {
-            PreparedStatement statement = c.prepareStatement("INSERT INTO staff (name, ips, rank, active) VALUES (?, ?, ?, ?)");
-            statement.setString(1, name);
-            statement.setString(2, NUtil.serializeArray(ips));
-            statement.setString(3, rank.name());
-            statement.setBoolean(4, active);
-            statement.executeUpdate();
-        }
-        catch (SQLException ex)
-        {
-            NLog.severe(ex);
-        }
+        this.configKey = configKey;
     }
 
-    public void delete()
+    public void save(ConfigurationSection section)
     {
-        Connection c = NovelMC.plugin.sql.getConnection();
-        try
-        {
-            PreparedStatement statement = c.prepareStatement("DELETE FROM staff WHERE name = ?");
-            statement.setString(1, name);
-            statement.executeUpdate();
-        }
-        catch (SQLException ex)
-        {
-            NLog.severe(ex);
-        }
+        section.set("name", name);
+        section.set("ips", ips);
+        section.set("rank", rank.name());
+        section.set("active", active);
     }
 
-    public void update()
+    public void load(ConfigurationSection section)
     {
-        Connection c = NovelMC.plugin.sql.getConnection();
-        try
-        {
-            PreparedStatement newip = c.prepareStatement("UPDATE staff SET ips = ?  WHERE name = ?");
-            newip.setString(1, NUtil.serializeArray(ips));
-            newip.setString(2, name);
-            PreparedStatement newrank = c.prepareStatement("UPDATE staff SET rank = ? WHERE name = ?");
-            newrank.setString(1, rank.name());
-            newrank.setString(2, name);
-            PreparedStatement newactive = c.prepareStatement("UPDATE staff SET active = ? WHERE name = ?");
-            newactive.setBoolean(1, active);
-            newactive.setString(2, name);
-            newip.executeUpdate();
-            newrank.executeUpdate();
-            newactive.executeUpdate();
-        }
-        catch (SQLException ex)
-        {
-            NLog.severe(ex);
-        }
+        name = section.getString("name", configKey);
+        ips.addAll(section.getStringList("ips"));
+        rank = Rank.findRank(section.getString("rank"));
+        active = section.getBoolean("active", true);
     }
 
     @Override

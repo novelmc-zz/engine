@@ -6,7 +6,6 @@ import net.novelmc.novelmc.banning.BanManager;
 import net.novelmc.novelmc.rank.Rank;
 import net.novelmc.novelmc.staff.StaffList;
 import net.novelmc.novelmc.util.NLog;
-import net.novelmc.novelmc.util.SQLManager;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -18,7 +17,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.*;
 
 import java.lang.reflect.Field;
-import net.novelmc.novelmc.architect.ArchitectList;
 
 public class PlayerListener implements Listener
 {
@@ -37,24 +35,16 @@ public class PlayerListener implements Listener
     {
         final Player player = event.getPlayer();
 
-        if (SQLManager.playerExists(player))
+        if (StaffList.isStaff(player))
         {
-            SQLManager.updatePlayer(player);
-        }
-        else
-        {
-            SQLManager.generateNewPlayer(player);
-        }
-
-        if (StaffList.isStaff(player) || ArchitectList.isArchitect(player))
-        {
-            if (!StaffList.getStaff(player).getIps().contains(player.getAddress().getHostString()) || !ArchitectList.getArchitect(player).getIps().contains(player.getAddress().getHostString()))
+            if (!StaffList.getStaff(player).getIps().contains(player.getAddress().getHostString()))
             {
-                StaffList.getImpostors().add(player.getName());
-                Bukkit.broadcastMessage(ChatColor.RED + player.getName() + " has been flagged as an imposter!");
+                Bukkit.broadcastMessage(ChatColor.RED + player.getName() + " has been flagged as an impostor!");
                 player.getInventory().clear();
                 player.setGameMode(GameMode.SURVIVAL);
-                player.sendMessage(ChatColor.RED + "You have been marked as an imposter, please verify yourself.");
+                player.sendMessage(ChatColor.RED + "You have been marked as an impostor, please verify yourself.");
+                StaffList.getImpostors().add(player.getName());
+
                 return;
             }
 
@@ -87,10 +77,6 @@ public class PlayerListener implements Listener
         if (StaffList.getImpostors().contains(event.getPlayer().getName()))
         {
             StaffList.getImpostors().remove(event.getPlayer().getName());
-        }
-        if (ArchitectList.getImpostors().contains(event.getPlayer().getName()))
-        {
-            ArchitectList.getImpostors().remove(event.getPlayer().getName());
         }
     }
 

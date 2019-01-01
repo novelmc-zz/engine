@@ -12,27 +12,27 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 @CommandParameters(description = "Launchs them up, strikes them down.", usage = "/<command> <player> [-nobl]", source = SourceType.BOTH, rank = Rank.MANAGER)
-public class Command_launch 
+public class Command_launch
 {
-    NovelMC plugin;
+
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {
         if (args.length < 1)
         {
             return false;
         }
-        
+
         Player player = Bukkit.getPlayer(args[0]);
         if (player == null)
         {
             sender.sendMessage(ChatColor.RED + "Cannot find that player!");
             return true;
         }
-        
+
         player.setGameMode(GameMode.SURVIVAL);
-        
+
         player.setVelocity(player.getVelocity().clone().add(new Vector(0, 40, 0)));
-        
+
         new BukkitRunnable()
         {
             @Override
@@ -44,7 +44,7 @@ public class Command_launch
                 }
                 player.getWorld().createExplosion(player.getLocation(), 8F, true);
             }
-        }.runTaskLater(plugin, 2L * 20L);
+        }.runTaskLater(NovelMC.plugin, 2L * 20L);
         return true;
     }
 }

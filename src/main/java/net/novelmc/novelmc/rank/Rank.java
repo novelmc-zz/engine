@@ -1,19 +1,11 @@
 package net.novelmc.novelmc.rank;
 
 import lombok.Getter;
-import net.novelmc.novelmc.NovelMC;
 import net.novelmc.novelmc.staff.StaffList;
-import net.novelmc.novelmc.util.NLog;
 import net.novelmc.novelmc.util.NUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import net.novelmc.novelmc.architect.ArchitectList;
 
 public enum Rank implements Displayable
 {
@@ -100,33 +92,6 @@ public enum Rank implements Displayable
         if (NUtil.DEVELOPERS.contains(player.getName()))
         {
             return Title.DEVELOPER;
-        }
-        
-        if (ArchitectList.isArchitect(player))
-        {
-            return Title.ARCHITECT;
-        }
-
-        Connection c = NovelMC.plugin.sql.getConnection();
-        boolean architect = false;
-        try
-        {
-            PreparedStatement statement = c.prepareStatement("SELECT * FROM players WHERE name = ?");
-            statement.setString(1, player.getName());
-            ResultSet result = statement.executeQuery();
-            if (result.next())
-            {
-                architect = result.getBoolean("architect");
-            }
-        }
-        catch (SQLException ex)
-        {
-            NLog.severe(ex);
-        }
-
-        if (architect)
-        {
-            return Title.ARCHITECT;
         }
 
         return getRank(player);

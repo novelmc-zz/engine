@@ -1,5 +1,6 @@
-package net.novelmc.novelmc;
+package net.novelmc.novelmc.config;
 
+import net.novelmc.novelmc.NovelMC;
 import net.novelmc.novelmc.util.NLog;
 import org.bukkit.configuration.file.YamlConfiguration;
 
