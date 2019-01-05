@@ -1,3 +1,4 @@
+/*
 package net.novelmc.novelmc.banning;
 
 import lombok.Getter;
@@ -115,3 +116,4 @@ public class Ban
         }
     }
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package net.novelmc.novelmc.command;
 
 import net.novelmc.novelmc.banning.BanManager;
@@ -59,3 +60,4 @@ public class Command_permban
     }
 }
 
+*/

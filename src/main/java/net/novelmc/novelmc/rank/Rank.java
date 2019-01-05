@@ -1,6 +1,7 @@
 package net.novelmc.novelmc.rank;
 
 import lombok.Getter;
+import net.novelmc.novelmc.architect.ArchitectList;
 import net.novelmc.novelmc.staff.StaffList;
 import net.novelmc.novelmc.util.NUtil;
 import org.bukkit.ChatColor;
@@ -65,7 +66,7 @@ public enum Rank implements Displayable
 
     public static Rank getRank(Player player)
     {
-        if (StaffList.isImpostor(player))
+        if (StaffList.isImpostor(player) || ArchitectList.isImpostor(player))
         {
             return Rank.IMPOSTOR;
         }
@@ -92,6 +93,10 @@ public enum Rank implements Displayable
         if (NUtil.DEVELOPERS.contains(player.getName()))
         {
             return Title.DEVELOPER;
+        }
+        if (ArchitectList.isArchitect(player))
+        {
+            return Title.ARCHITECT;
         }
 
         return getRank(player);

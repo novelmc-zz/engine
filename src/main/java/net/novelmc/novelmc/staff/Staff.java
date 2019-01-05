@@ -1,5 +1,6 @@
 package net.novelmc.novelmc.staff;
 
+import com.google.common.collect.Lists;
 import lombok.Getter;
 import lombok.Setter;
 import net.novelmc.novelmc.NovelMC;
@@ -12,6 +13,7 @@ import org.bukkit.configuration.ConfigurationSection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Staff
@@ -24,7 +26,7 @@ public class Staff
     private String name;
     @Getter
     @Setter
-    private List<String> ips;
+    private List<String> ips = new ArrayList<String>();
     @Getter
     @Setter
     private Rank rank;
@@ -40,7 +42,7 @@ public class Staff
     public void save(ConfigurationSection section)
     {
         section.set("name", name);
-        section.set("ips", ips);
+        section.set("ips", Lists.newArrayList(ips));
         section.set("rank", rank.name());
         section.set("active", active);
     }

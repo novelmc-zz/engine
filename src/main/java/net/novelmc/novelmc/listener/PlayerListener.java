@@ -1,8 +1,8 @@
 package net.novelmc.novelmc.listener;
 
 import net.novelmc.novelmc.NovelMC;
-import net.novelmc.novelmc.banning.Ban;
-import net.novelmc.novelmc.banning.BanManager;
+// import net.novelmc.novelmc.banning.Ban;
+// import net.novelmc.novelmc.banning.BanManager;
 import net.novelmc.novelmc.rank.Rank;
 import net.novelmc.novelmc.staff.StaffList;
 import net.novelmc.novelmc.util.NLog;
@@ -17,6 +17,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.*;
 
 import java.lang.reflect.Field;
+import net.novelmc.novelmc.architect.ArchitectList;
 
 public class PlayerListener implements Listener
 {
@@ -51,14 +52,32 @@ public class PlayerListener implements Listener
             Bukkit.broadcastMessage(ChatColor.AQUA + player.getName() + " is " + Rank.getDisplay(player).getLoginMessage());
             player.setPlayerListName(StringUtils.substring(Rank.getRank(player).getColor() + player.getName(), 0, 16));
         }
+        
+        if (ArchitectList.isArchitect(player))
+        {
+            if (!ArchitectList.getArchitect(player).getIps().contains(player.getAddress().getHostString()))
+            {
+                Bukkit.broadcastMessage(ChatColor.RED + player.getName() + " has been flagged as an Architect impostor!");
+                player.getInventory().clear();
+                player.setGameMode(GameMode.SURVIVAL);
+                player.sendMessage(ChatColor.RED + "You have been marked as an impostor, please verify yourself.");
+                ArchitectList.getImpostors().add(player.getName());
+
+                return;
+            }
+            
+            Bukkit.broadcastMessage(ChatColor.AQUA + player.getName() + " is " + Rank.getDisplay(player).getLoginMessage());
+            player.setPlayerListName(StringUtils.substring(Rank.getRank(player).getColor() + player.getName(), 0, 16));
+        }
     }
 
     @EventHandler
     public void onPlayerLogin(PlayerLoginEvent event)
     {
+        /*
         final Player player = event.getPlayer();
-        Ban ban = BanManager.getBan(event.getPlayer().getName(), event.getAddress().getHostAddress());
-
+        // Ban ban = BanManager.getBan(event.getPlayer().getName(), event.getAddress().getHostAddress());
+        
         if (ban != null && !ban.isExpired())
         {
             if (StaffList.isStaff(player))
@@ -69,6 +88,7 @@ public class PlayerListener implements Listener
 
             event.disallow(PlayerLoginEvent.Result.KICK_OTHER, ban.getKickMessage());
         }
+        */
     }
 
     @EventHandler
@@ -77,6 +97,10 @@ public class PlayerListener implements Listener
         if (StaffList.getImpostors().contains(event.getPlayer().getName()))
         {
             StaffList.getImpostors().remove(event.getPlayer().getName());
+        }
+        if (ArchitectList.getImpostors().contains(event.getPlayer().getName()))
+        {
+            ArchitectList.getImpostors().remove(event.getPlayer().getName());
         }
     }
 
