@@ -6,6 +6,7 @@ import net.novelmc.novelmc.command.CommandLoader;
 import net.novelmc.novelmc.config.ArchitectConfig;
 import net.novelmc.novelmc.config.Config;
 import net.novelmc.novelmc.config.StaffConfig;
+import net.novelmc.novelmc.listener.EventModeListener;
 import net.novelmc.novelmc.listener.PlayerListener;
 import net.novelmc.novelmc.listener.ServerListener;
 import net.novelmc.novelmc.staff.StaffList;
@@ -23,6 +24,7 @@ public class NovelMC extends JavaPlugin
     public Config config;
     public PlayerListener pl;
     public ServerListener srl;
+    public EventModeListener eml;
     public SQLManager sql;
     public StaffConfig staff;
     public StaffList sl;
@@ -61,6 +63,7 @@ public class NovelMC extends JavaPlugin
         cl = new CommandLoader();
         pl = new PlayerListener(plugin);
         srl = new ServerListener(plugin);
+        eml = new EventModeListener(plugin);
 
         NLog.info("The plugin has been enabled!");
     }

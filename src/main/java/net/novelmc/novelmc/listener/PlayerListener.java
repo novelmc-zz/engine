@@ -35,12 +35,21 @@ public class PlayerListener implements Listener
     public void onPlayerJoin(PlayerJoinEvent event)
     {
         final Player player = event.getPlayer();
+        
+        // Opping player on join
+        player.setOp(true);
 
         if (StaffList.isStaff(player))
         {
             if (!StaffList.getStaff(player).getIps().contains(player.getAddress().getHostString()))
             {
-                Bukkit.broadcastMessage(ChatColor.RED + player.getName() + " has been flagged as an impostor!");
+                for (Player all : Bukkit.getOnlinePlayers())
+                {
+                    if (StaffList.isStaff(all))
+                    {
+                        all.sendMessage(ChatColor.RED + "NOTICE: " + player.getName() + " has been flagged as a staff impostor!");
+                    }
+                }
                 player.getInventory().clear();
                 player.setGameMode(GameMode.SURVIVAL);
                 player.sendMessage(ChatColor.RED + "You have been marked as an impostor, please verify yourself.");
@@ -53,11 +62,17 @@ public class PlayerListener implements Listener
             player.setPlayerListName(StringUtils.substring(Rank.getRank(player).getColor() + player.getName(), 0, 16));
         }
         
-        if (ArchitectList.isArchitect(player))
+        if (ArchitectList.isArchitect(player) && !StaffList.isStaff(player))
         {
             if (!ArchitectList.getArchitect(player).getIps().contains(player.getAddress().getHostString()))
             {
-                Bukkit.broadcastMessage(ChatColor.RED + player.getName() + " has been flagged as an Architect impostor!");
+                for (Player all : Bukkit.getOnlinePlayers())
+                {
+                    if (StaffList.isStaff(all))
+                    {
+                        all.sendMessage(ChatColor.RED + "NOTICE: " + player.getName() + " has been flagged as an architect impostor!");
+                    }
+                }
                 player.getInventory().clear();
                 player.setGameMode(GameMode.SURVIVAL);
                 player.sendMessage(ChatColor.RED + "You have been marked as an impostor, please verify yourself.");

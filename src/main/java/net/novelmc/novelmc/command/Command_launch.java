@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
-@CommandParameters(description = "Launchs them up, strikes them down.", usage = "/<command> <player> [-nobl]", source = SourceType.BOTH, rank = Rank.MANAGER)
+@CommandParameters(description = "Launchs them up, strikes them down", usage = "/<command> <player>", source = SourceType.BOTH, rank = Rank.MANAGER)
 public class Command_launch
 {
 
