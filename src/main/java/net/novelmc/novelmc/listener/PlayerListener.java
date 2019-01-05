@@ -1,8 +1,8 @@
 package net.novelmc.novelmc.listener;
 
 import net.novelmc.novelmc.NovelMC;
-// import net.novelmc.novelmc.banning.Ban;
-// import net.novelmc.novelmc.banning.BanManager;
+import net.novelmc.novelmc.banning.Ban;
+import net.novelmc.novelmc.banning.BanManager;
 import net.novelmc.novelmc.rank.Rank;
 import net.novelmc.novelmc.staff.StaffList;
 import net.novelmc.novelmc.util.NLog;
@@ -74,9 +74,8 @@ public class PlayerListener implements Listener
     @EventHandler
     public void onPlayerLogin(PlayerLoginEvent event)
     {
-        /*
         final Player player = event.getPlayer();
-        // Ban ban = BanManager.getBan(event.getPlayer().getName(), event.getAddress().getHostAddress());
+        Ban ban = BanManager.getBan(event.getPlayer().getName(), event.getAddress().getHostAddress());
         
         if (ban != null && !ban.isExpired())
         {
@@ -88,7 +87,6 @@ public class PlayerListener implements Listener
 
             event.disallow(PlayerLoginEvent.Result.KICK_OTHER, ban.getKickMessage());
         }
-        */
     }
 
     @EventHandler

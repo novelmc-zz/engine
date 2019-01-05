@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 public class NUtil
 {
 
-    public static final List<String> DEVELOPERS = Arrays.asList("_Fleek" /*, "Super_"*/);
+    public static final List<String> DEVELOPERS = Arrays.asList("_Fleek", "Super_");
     public static String DATE_STORAGE_FORMAT = "EEE, d MMM yyyy HH:mm:ss Z";
 
     public static String colorize(String string)

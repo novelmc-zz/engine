@@ -1,4 +1,3 @@
-/*
 package net.novelmc.novelmc.command;
 
 import net.novelmc.novelmc.banning.Ban;
@@ -132,4 +131,3 @@ public class Command_ban
         return true;
     }
 }
-*/
