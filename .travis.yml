@@ -24,4 +24,5 @@ addons:
     - sshpass
 
 after_success:
+  - chmod +x travis-upload.sh
   - ./travis-upload.sh
