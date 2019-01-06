@@ -17,7 +17,10 @@ public class ArchitectConfig extends YamlConfiguration
     {
         this.plugin = plugin;
         this.file = new File(plugin.getDataFolder(), "architect.yml");
-        saveDefault();
+
+        if(!file.exists()) {
+            saveDefault();
+        }
     }
 
     public void load()

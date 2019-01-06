@@ -18,7 +18,10 @@ public class Config extends YamlConfiguration
     {
         this.plugin = plugin;
         this.file = new File(plugin.getDataFolder(), "config.yml");
-        saveDefault();
+
+        if(!file.exists()) {
+            saveDefault();
+        }
     }
 
     public String getServerName()
