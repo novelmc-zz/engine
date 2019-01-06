@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.novelmc</groupId>
-    <artifactId>novelmc</artifactId>
-    <version>1.1</version>
+    <artifactId>novelengine</artifactId>
+    <version>1.2</version>
     <packaging>jar</packaging>
 
     <repositories>
@@ -20,7 +20,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.13.1-R0.1-SNAPSHOT</version>
+            <version>1.13.2-R0.1-SNAPSHOT</version>
             <type>jar</type>
         </dependency>
         <dependency>
@@ -40,10 +40,26 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <outputFile>target/${project.name}.jar</outputFile>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.7.0</version>
                 <configuration>
-                    <outputFileName>NovelMC.jar</outputFileName>
                     <encoding>${project.build.sourceEncoding}</encoding>
                     <source>8</source>
                     <target>8</target>

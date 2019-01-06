@@ -1,4 +1,5 @@
 ## NovelEngine
+[![Build Status](https://travis-ci.org/NovelMC/NovelEngine.svg?branch=master)](https://travis-ci.org/NovelMC/NovelEngine)
 NovelEngine is a plugin by which the NovelMC server gains capacity for operator status, in-game functions, and administrator tools. It is served under Spigot for Minecraft Java Edition.
 
 ## Copyright

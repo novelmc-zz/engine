@@ -1,5 +1,5 @@
 #
-# NovelMC's main configuration
+# NovelEngine's main configuration
 #
 
 # General information
@@ -12,6 +12,9 @@ general:
 
   # Website - useful to link to the forum for ban appeals, admin applications etc
   website: http://novelmc.net/
+
+  # Event mode
+  eventmode: false
 
 # SQL information
 sql:
@@ -38,7 +41,7 @@ commands:
     - '/fill'
     - '/tellraw'
 
-  admins:
+  staff:
     - '/coreprotect'
     - '/stop'
     - '/restart'
