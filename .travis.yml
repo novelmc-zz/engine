@@ -4,7 +4,7 @@ before_deploy:
   - git config --local user.name "Travis CI"
   - git config --local user.email "builds@travis-ci.com"
   - export GIT_TAG=build-$TRAVIS_BRANCH-$(date -u "+%Y-%m-%d-%H-%M-%S")-$TRAVIS_BUILD_NUMBER
-  - git tag $GIT_TAG -a -m "Generated tag from TravisCI build $TRAVIS_BUILD_NUMBER"
+  - git tag $GIT_TAG -a -m "Generated tag from Travis CI build $TRAVIS_BUILD_NUMBER"
   
 deploy:
   provider: releases
