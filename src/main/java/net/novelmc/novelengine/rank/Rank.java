@@ -13,7 +13,7 @@ public enum Rank implements Displayable
 
     IMPOSTOR("an", "Impostor", "IMP", ChatColor.WHITE),
     NON_OP("a", "Non-Op", "", ChatColor.WHITE),
-    OP("a", "Member", "MB", ChatColor.YELLOW),
+    OP("a", "Member", "MEM", ChatColor.YELLOW),
     TRAINEE("a", "Trainee", "TRAINEE", ChatColor.DARK_AQUA),
     MOD("a", "Mod", "MOD", ChatColor.GOLD),
     SENIOR_MOD("a", "Senior Mod", "SRD", ChatColor.GOLD),
