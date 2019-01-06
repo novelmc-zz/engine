@@ -1,6 +1,7 @@
 package net.novelmc.novelengine.rank;
 
 import lombok.Getter;
+import net.novelmc.novelengine.NovelEngine;
 import net.novelmc.novelengine.architect.ArchitectList;
 import net.novelmc.novelengine.staff.StaffList;
 import net.novelmc.novelengine.util.NUtil;
@@ -36,6 +37,8 @@ public enum Rank implements Displayable
         this.color = color;
         this.tag = color + "" + ChatColor.BOLD + tag + ChatColor.RESET + color;
     }
+    
+    private static NovelEngine plugin;
 
     public int getLevel()
     {
@@ -90,6 +93,14 @@ public enum Rank implements Displayable
 
     public static Displayable getDisplay(Player player)
     {
+        if (plugin.config.getLeaders().contains(player.getName()))
+        {
+            return Title.LEADER;
+        }
+        if (plugin.config.getAdvisors().contains(player.getName()))
+        {
+            return Title.ADVISOR;
+        }
         if (NUtil.DEVELOPERS.contains(player.getName()))
         {
             return Title.DEVELOPER;

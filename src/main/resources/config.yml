@@ -15,6 +15,12 @@ general:
 
   # Event mode
   eventmode: false
+  
+  # Who are the advisors?
+  advisors: []
+  
+  # Who are the leaders?
+  leaders: []
 
 # SQL information
 sql:
