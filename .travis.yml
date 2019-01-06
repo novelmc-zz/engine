@@ -1,20 +1,5 @@
 language: java
 
-before_deploy:
-  - git config --local user.name "Travis CI"
-  - git config --local user.email "builds@travis-ci.com"
-  - export GIT_TAG=build-$TRAVIS_BRANCH-$(date -u "+%Y-%m-%d-%H-%M-%S")-$TRAVIS_BUILD_NUMBER
-  - git tag $GIT_TAG -a -m "Generated tag from Travis CI build $TRAVIS_BUILD_NUMBER"
-
-deploy:
-  provider: releases
-  api_key:
-    secure: n47HaXcnIJeGVuxrxTZAy3enq9LvtOtdW9J8CSvEIetn9nxisSOgL3SF509R7hExwoTxZW1rDMyLI0WNyIsnsh9KRZkbt/nXyw6MdCM8mlRZ6g144WGJhL6cl/8RRZzQEaL2w9YrCL54Os0ewxn45OsVDTy9/cB/7lfVBhgKs/YGZUsleVUrV9qoEEheNYxk+IKN627Oy6wV2ZctSUCLps9rhFA5RKLd3ALFRaAH9WIxHB938rKKhVXVlnP+0DvKbbCBu4IwRA2DZm4OrKA86SV/B3+Ympr3PCagWstICfZLeDoLSnlK5wsupJsxGaKvMJzkk9+7AJvsbqMC/fLoeolzwwJCjoPLlk3xibJMKzzCjeEBG4arTlP5BQ/4J+TSjkVeRSQsKc4ezjo4MUl4W+naWGXEDxr6MEiMADCI42MR8lW65NBO92jD7+V4x4NAlxAPvF8xva2rTx6d4y8WvN38h9BUjBMvyeTmW55etOPhrUMpIraA9nK4YEqsdWf72Gyinvqx59H4xoDf0XUAi0NPpqsRttNB+TB8p0z/sGbBBAL9fQFHeKUfSLKrM3XWG47C2lCfNJPTHmDEm8isjbUYOo994ooFZfPfRPLrjLkAZJQKQ1LhBpIocifIVrHpFfBX8DKYXy6DYOD/AaTbYFeCG1xtskL0Rb0nSWiLyBY=
-  file_glob: true
-  file: "target/novelmc-*.jar"
-  skip_cleanup: true
-  draft: true
-
 notifications:
   email: false
 
