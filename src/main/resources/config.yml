@@ -40,12 +40,19 @@ commands:
     - '/setblock'
     - '/fill'
     - '/tellraw'
-
+    - '/execute'
+    - '/packet'
   staff:
     - '/coreprotect'
+    - '/co'
+    - '/cp'
     - '/stop'
     - '/restart'
     - '/save-all'
     - '/reload'
     - '/socialspy'
     - '/gamerule'
+    - '//calc'
+    - '/sudo'
+    - '//fast'
+    
