@@ -1,4 +1,4 @@
-# NovelEngine [![](https://img.shields.io/travis/NovelMC/NovelEngine.svg?style=for-the-badge&logo=travis)](https://travis-ci.org/NovelMC/NovelEngine/)[![](https://img.shields.io/github/issues/NovelMC/NovelEngine.svg?style=for-the-badge&logo=github)]
+# NovelEngine [![](https://img.shields.io/travis/NovelMC/NovelEngine.svg?style=for-the-badge&logo=travis)](https://travis-ci.org/NovelMC/NovelEngine/)![](https://img.shields.io/github/issues/NovelMC/NovelEngine.svg?style=for-the-badge&logo=github)
 ## Info
 NovelEngine is a plugin by which the NovelMC server gains capacity for operator status, in-game functions, and administrator tools. It is served under Spigot for Minecraft Java Edition.
 
