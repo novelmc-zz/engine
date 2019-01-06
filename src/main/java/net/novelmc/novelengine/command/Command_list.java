@@ -42,7 +42,7 @@ public class Command_list
         sb.append(ChatColor.GRAY).append("There are ")
                 .append(ChatColor.DARK_GRAY).append(Bukkit.getOnlinePlayers().size()).append("/").append(Bukkit.getMaxPlayers())
                 .append(ChatColor.GRAY).append(" players online")
-                .append(ChatColor.DARK_GRAY).append(":\n")
+                .append(ChatColor.DARK_GRAY).append(":\n");
 
         for (Player player : Bukkit.getOnlinePlayers())
         {
