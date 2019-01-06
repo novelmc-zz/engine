@@ -6,7 +6,7 @@
 
     <groupId>net.novelmc</groupId>
     <artifactId>novelengine</artifactId>
-    <version>1.2</version>
+    <version>1.2.1</version>
     <packaging>jar</packaging>
 
     <repositories>

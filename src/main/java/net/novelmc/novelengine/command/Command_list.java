@@ -48,56 +48,56 @@ public class Command_list
         {
             if (StaffList.isImpostor(player) || ArchitectList.isImpostor(player))
             {
-                impostors.add(player.getName());
+                impostors.add(ChatColor.GRAY + player.getName());
             }
             else if (Rank.getRank(player).isAtLeast(Rank.MANAGER))
             {
-                managers.add(player.getName());
+                managers.add(ChatColor.GRAY + player.getName());
             }
             else if (NUtil.DEVELOPERS.contains(player.getName()))
             {
-                developers.add(player.getName());
+                developers.add(ChatColor.GRAY + player.getName());
             }
             else if (ArchitectList.isArchitect(player))
             {
-                architects.add(player.getName());
+                architects.add(ChatColor.GRAY + player.getName());
             }
             else if (Rank.getRank(player).isAtLeast(Rank.ADMIN))
             {
-                admins.add(player.getName());
+                admins.add(ChatColor.GRAY + player.getName());
             }
             else if (Rank.getRank(player).isAtLeast(Rank.SENIOR_MOD))
             {
-                senior_mods.add(player.getName());
+                senior_mods.add(ChatColor.GRAY + player.getName());
             }
             else if (Rank.getRank(player).isAtLeast(Rank.MOD))
             {
-                mods.add(player.getName());
+                mods.add(ChatColor.GRAY + player.getName());
             }
             else if (Rank.getRank(player).isAtLeast(Rank.TRAINEE))
             {
-                trainees.add(player.getName());
+                trainees.add(ChatColor.GRAY + player.getName());
             }
             else if (player.isOp())
             {
-                ops.add(player.getName());
+                ops.add(ChatColor.GRAY + player.getName());
             }
             else
             {
-                non_ops.add(player.getName());
+                non_ops.add(ChatColor.GRAY + player.getName());
             }
         }
 
-        sb.append((impostors.isEmpty() ? "" : ChatColor.WHITE + Rank.IMPOSTOR.getTag() + ": " + StringUtils.join(impostors, ", ") + "\n"))
-                .append((non_ops.isEmpty() ? "" : ChatColor.WHITE + Rank.NON_OP.getTag() + ": " + StringUtils.join(non_ops, ", ") + "\n"))
-                .append((ops.isEmpty() ? "" : ChatColor.YELLOW + Rank.OP.getTag() + ": " + StringUtils.join(ops, ", ") + "\n"))
-                .append((trainees.isEmpty() ? "" : ChatColor.DARK_AQUA + Rank.TRAINEE.getTag() + ": " + StringUtils.join(trainees, ", ") + "\n"))
-                .append((mods.isEmpty() ? "" : ChatColor.GOLD + Rank.MOD.getTag() + ": " + StringUtils.join(mods, ", ") + "\n"))
-                .append((senior_mods.isEmpty() ? "" : ChatColor.GOLD + Rank.SENIOR_MOD.getTag() + StringUtils.join(senior_mods, ", ") + "\n"))
-                .append((admins.isEmpty() ? "" : ChatColor.RED + Rank.ADMIN.getTag() + ": " + StringUtils.join(admins, ", ") + "\n"))
-                .append((architects.isEmpty() ? "" : ChatColor.DARK_PURPLE + Title.ARCHITECT.getTag() + ": " + StringUtils.join(architects, ", ") + "\n"))
-                .append((developers.isEmpty() ? "" : ChatColor.BLUE + Title.DEVELOPER.getTag() + ": " + StringUtils.join(developers, ", ") + "\n"))
-                .append((managers.isEmpty() ? "" : ChatColor.BLUE + Rank.MANAGER.getTag() + ": " + StringUtils.join(managers, ", ")));
+        sb.append((impostors.isEmpty() ? "" : Rank.IMPOSTOR.getTag() + ": " + StringUtils.join(impostors, ", ") + "\n"))
+                .append((non_ops.isEmpty() ? "" : Rank.NON_OP.getTag() + ": " + StringUtils.join(non_ops, ", ") + "\n"))
+                .append((ops.isEmpty() ? "" : Rank.OP.getTag() + ": " + StringUtils.join(ops, ", ") + "\n"))
+                .append((trainees.isEmpty() ? "" : Rank.TRAINEE.getTag() + ": " + StringUtils.join(trainees, ", ") + "\n"))
+                .append((mods.isEmpty() ? "" : Rank.MOD.getTag() + ": " + StringUtils.join(mods, ", ") + "\n"))
+                .append((senior_mods.isEmpty() ? "" : Rank.SENIOR_MOD.getTag() + StringUtils.join(senior_mods, ", ") + "\n"))
+                .append((admins.isEmpty() ? "" : Rank.ADMIN.getTag() + ": " + StringUtils.join(admins, ", ") + "\n"))
+                .append((architects.isEmpty() ? "" : Title.ARCHITECT.getTag() + ": " + StringUtils.join(architects, ", ") + "\n"))
+                .append((developers.isEmpty() ? "" : Title.DEVELOPER.getTag() + ": " + StringUtils.join(developers, ", ") + "\n"))
+                .append((managers.isEmpty() ? "" : Rank.MANAGER.getTag() + ": " + StringUtils.join(managers, ", ")));
 
         sender.sendMessage(sb.toString());
         return true;
