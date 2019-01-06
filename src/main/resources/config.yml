@@ -55,4 +55,4 @@ commands:
     - '//calc'
     - '/sudo'
     - '//fast'
-    
+    - '/plugman'    
