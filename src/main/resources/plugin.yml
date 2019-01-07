@@ -1,6 +1,6 @@
 name: NovelEngine
 version: ${project.version}
-authors: [_Fleek]
+authors: [_Fleek, Super_, Mafrans]
 main: net.novelmc.novelengine.NovelEngine
 api-version: 1.13
 description: A plugin for the NovelMC server
