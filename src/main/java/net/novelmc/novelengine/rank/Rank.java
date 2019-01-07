@@ -2,8 +2,8 @@ package net.novelmc.novelengine.rank;
 
 import lombok.Getter;
 import net.novelmc.novelengine.NovelEngine;
-import net.novelmc.novelengine.architect.ArchitectList;
-import net.novelmc.novelengine.staff.StaffList;
+import net.novelmc.novelengine.rank.architect.ArchitectList;
+import net.novelmc.novelengine.rank.staff.StaffList;
 import net.novelmc.novelengine.util.NUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;

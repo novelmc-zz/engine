@@ -1,21 +1,20 @@
 package net.novelmc.novelengine;
 
-import net.novelmc.novelengine.architect.ArchitectList;
+import net.novelmc.novelengine.rank.architect.ArchitectList;
 import net.novelmc.novelengine.banning.BanManager;
-import net.novelmc.novelengine.command.CommandLoader;
+import net.novelmc.novelengine.command.util.CommandLoader;
 import net.novelmc.novelengine.config.ArchitectConfig;
 import net.novelmc.novelengine.config.Config;
 import net.novelmc.novelengine.config.StaffConfig;
 import net.novelmc.novelengine.listener.EventModeListener;
 import net.novelmc.novelengine.listener.PlayerListener;
 import net.novelmc.novelengine.listener.ServerListener;
-import net.novelmc.novelengine.staff.StaffList;
+import net.novelmc.novelengine.rank.staff.StaffList;
 import net.novelmc.novelengine.util.NLog;
 import net.novelmc.novelengine.util.SQLManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class NovelEngine extends JavaPlugin
-{
+public class NovelEngine extends JavaPlugin {
 
     public static NovelEngine plugin;
     public ArchitectConfig ac;
@@ -33,7 +32,7 @@ public class NovelEngine extends JavaPlugin
     @Override
     public void onLoad()
     {
-        this.plugin = this;
+        plugin = this;
         config = new Config(plugin);
         staff = new StaffConfig(plugin);
         ac = new ArchitectConfig(plugin);
@@ -42,7 +41,7 @@ public class NovelEngine extends JavaPlugin
     @Override
     public void onEnable()
     {
-        this.plugin = this;
+        plugin = this;
 
         config.load();
         staff.load();
@@ -60,7 +59,7 @@ public class NovelEngine extends JavaPlugin
         sl = new StaffList(plugin);
         al = new ArchitectList(plugin);
         bm = new BanManager(plugin);
-        cl = new CommandLoader();
+        cl = new CommandLoader("", "Command");
         pl = new PlayerListener(plugin);
         srl = new ServerListener(plugin);
         eml = new EventModeListener(plugin);
@@ -72,7 +71,7 @@ public class NovelEngine extends JavaPlugin
     @Override
     public void onDisable()
     {
-        this.plugin = null;
+        plugin = null;
 
         config.save();
         staff.save();

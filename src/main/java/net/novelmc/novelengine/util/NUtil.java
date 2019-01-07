@@ -1,12 +1,15 @@
 package net.novelmc.novelengine.util;
 
 import net.novelmc.novelengine.rank.Rank;
-import net.novelmc.novelengine.staff.StaffList;
+import net.novelmc.novelengine.rank.staff.StaffList;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.reflections.Reflections;
 
+import java.lang.reflect.Field;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -15,7 +18,6 @@ import java.util.regex.Pattern;
 
 public class NUtil
 {
-
     public static final List<String> DEVELOPERS = Arrays.asList("_Fleek", "Super_", "untuned", "irix", "Mafrans");
     public static String DATE_STORAGE_FORMAT = "EEE, d MMM yyyy HH:mm:ss Z";
 
@@ -189,4 +191,32 @@ public class NUtil
         return c.getTime();
     }
     // Credits: End
+
+
+    private static CommandMap cachedCommandMap = null;
+    public static CommandMap getCommandMap()
+    {
+        if(cachedCommandMap == null) {
+            try
+            {
+                final Field f = Bukkit.getServer().getClass().getDeclaredField("commandMap");
+                f.setAccessible(true);
+                cachedCommandMap = (CommandMap) f.get(Bukkit.getServer());
+            }
+            catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException ex)
+            {
+                NLog.severe(ex);
+            }
+        }
+
+        return cachedCommandMap;
+    }
+
+    private static Reflections cachedReflections = null;
+    public static Reflections getReflections() {
+        if(cachedReflections == null) {
+            cachedReflections = new Reflections();
+        }
+        return cachedReflections;
+    }
 }

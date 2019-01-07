@@ -1,7 +1,7 @@
 package net.novelmc.novelengine.listener;
 
 import net.novelmc.novelengine.NovelEngine;
-import net.novelmc.novelengine.staff.StaffList;
+import net.novelmc.novelengine.rank.staff.StaffList;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
