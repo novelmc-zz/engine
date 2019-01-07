@@ -2,6 +2,7 @@ package net.novelmc.novelengine.listener;
 
 import net.novelmc.novelengine.NovelEngine;
 import net.novelmc.novelengine.util.NUtil;
+import net.novelmc.novelengine.util.NovelBase;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
@@ -9,7 +10,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.server.ServerListPingEvent;
 
-public class ServerListener implements Listener
+public class ServerListener extends NovelBase implements Listener
 {
 
     public ServerListener(NovelEngine plugin)
@@ -33,7 +34,7 @@ public class ServerListener implements Listener
         }
 
         String motd = NUtil.colorize(NovelEngine.plugin.config.getMOTD());
-        motd = motd.replace("||", "\n");
+        motd = motd.replace("||", NEW_LINE);
         event.setMotd(motd);
     }
 }

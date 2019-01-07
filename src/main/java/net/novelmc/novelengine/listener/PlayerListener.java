@@ -46,7 +46,7 @@ public class PlayerListener implements Listener
                 {
                     if (StaffList.isStaff(all))
                     {
-                        all.sendMessage(ChatColor.RED + "NOTICE: " + player.getName() + " has been flagged as a staffConfig impostor!");
+                        all.sendMessage(ChatColor.RED + "NOTICE: " + player.getName() + " has been flagged as a staff impostor!");
                     }
                 }
                 player.getInventory().clear();

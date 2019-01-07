@@ -56,7 +56,7 @@ public class LegacyCommandLoader
                                         Arrays.asList(params.aliases().split(", ")),
                                         params.source(),
                                         params.rank(),
-                                        commandClass);
+                                        (Class<CommandBase>) commandClass);
                                 command.register();
                             }
                             else

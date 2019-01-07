@@ -44,13 +44,13 @@ public class Command_staff extends CommandBase
 
                     if (StaffList.isStaff(player))
                     {
-                        sender.sendMessage(ChatColor.DARK_GRAY + "That player is already staffConfig!");
+                        sender.sendMessage(ChatColor.DARK_GRAY + "That player is already staff!");
                         return true;
                     }
 
                     if (StaffList.isImpostor(player))
                     {
-                        NUtil.playerAction(sender, "Re-adding " + player.getName() + " to the staffConfig list", true);
+                        NUtil.playerAction(sender, "Re-adding " + player.getName() + " to the staff list", true);
 
                         if (StaffList.isImpostor(player))
                         {
@@ -61,7 +61,7 @@ public class Command_staff extends CommandBase
                         return true;
                     }
 
-                    NUtil.playerAction(sender, "Adding " + player.getName() + " to the staffConfig list", true);
+                    NUtil.playerAction(sender, "Adding " + player.getName() + " to the staff list", true);
                     StaffList.addStaff(player);
                     return true;
                 }
@@ -83,11 +83,11 @@ public class Command_staff extends CommandBase
 
                     if (!StaffList.isStaff(player))
                     {
-                        sender.sendMessage(ChatColor.DARK_GRAY + "That player is not a staffConfig!");
+                        sender.sendMessage(ChatColor.DARK_GRAY + "That player is not a staff!");
                         return true;
                     }
 
-                    NUtil.playerAction(sender, "Removing " + player.getName() + " from the staffConfig list", true);
+                    NUtil.playerAction(sender, "Removing " + player.getName() + " from the staff list", true);
                     StaffList.removeStaff(StaffList.getStaff(player));
                     return true;
                 }
@@ -103,7 +103,7 @@ public class Command_staff extends CommandBase
 
                     if (!StaffList.isStaff(player))
                     {
-                        sender.sendMessage(ChatColor.DARK_GRAY + "That player is not staffConfig!");
+                        sender.sendMessage(ChatColor.DARK_GRAY + "That player is not staff!");
                         return true;
                     }
 
@@ -130,7 +130,7 @@ public class Command_staff extends CommandBase
 
                     if (!StaffList.isStaff(player))
                     {
-                        sender.sendMessage(ChatColor.DARK_GRAY + "That player is not a staffConfig!");
+                        sender.sendMessage(ChatColor.DARK_GRAY + "That player is not a staff!");
                         return true;
                     }
 

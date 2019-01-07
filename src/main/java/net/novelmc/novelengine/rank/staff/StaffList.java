@@ -40,7 +40,7 @@ public class StaffList
             staff.add(s);
         }
 
-        NLog.info("Successfully loaded " + staff.size() + " staffConfig!");
+        NLog.info("Successfully loaded " + staff.size() + " staff!");
     }
 
     public static boolean isStaff(Staff s)

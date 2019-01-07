@@ -52,7 +52,7 @@ public class Command_ban extends CommandBase
             }
 
             NUtil.playerAction(sender, "Banning IP: " + args[0]
-                    + (reason != null ? "\n Reason: " + ChatColor.YELLOW + reason + "\n" : ""), true);
+                    + (reason != null ? NEW_LINE + " Reason: " + ChatColor.YELLOW + reason + NEW_LINE : ""), true);
             BanManager.addBan(sender, "", args[0], reason, NUtil.parseDateOffset("1d"), BanType.IP);
             return true;
         }
@@ -81,12 +81,9 @@ public class Command_ban extends CommandBase
             }
 
             NUtil.playerAction(sender, " - Banning " + player.getName()
-                    + (reason != null ? "\n Reason: " + ChatColor.YELLOW + reason + "\n" : ""), true);
+                    + (reason != null ? NEW_LINE + " Reason: " + ChatColor.YELLOW + reason + NEW_LINE : ""), true);
 
-            BanManager.getBansByType(BanType.IP).stream().filter((ban) -> (ban.getIp().equals(p.getAddress().getHostString()))).forEachOrdered((ban) ->
-            {
-                BanManager.removeBan(ban);
-            });
+            BanManager.getBansByType(BanType.IP).stream().filter((ban) -> (ban.getIp().equals(p.getAddress().getHostString()))).forEachOrdered(BanManager::removeBan);
 
             BanManager.addBan(sender, p, reason, NUtil.stringToDate("1d"), BanType.NORMAL);
             p.kickPlayer(ChatColor.RED + "You have been banned!");

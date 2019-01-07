@@ -5,6 +5,7 @@ import lombok.Setter;
 import net.novelmc.novelengine.NovelEngine;
 import net.novelmc.novelengine.util.NLog;
 import net.novelmc.novelengine.util.NUtil;
+import net.novelmc.novelengine.util.NovelBase;
 import org.bukkit.ChatColor;
 
 import java.sql.Connection;
@@ -12,7 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Date;
 
-public class Ban
+public class Ban extends NovelBase
 {
 
     @Getter
@@ -39,32 +40,31 @@ public class Ban
         if (type == BanType.PERMANENT_IP)
         {
             return ChatColor.RED
-                    + "Your IP address is currently permanently banned from this server.\n"
-                    + "Reason: " + ChatColor.YELLOW + (reason != null ? reason : "Reason not specified") + "\n"
+                    + "Your IP address is currently permanently banned from this server." + NEW_LINE
+                    + "Reason: " + ChatColor.YELLOW + (reason != null ? reason : "Reason not specified") + NEW_LINE
                     + ChatColor.RED + "Banned by: " + ChatColor.YELLOW + by;
         }
         if (type == BanType.PERMANENT_NAME)
         {
             return ChatColor.RED
-                    + "Your name is currently permanently banned from this server.\n"
-                    + "Reason: " + ChatColor.YELLOW + (reason != null ? reason : "Reason not specified") + "\n"
+                    + "Your name is currently permanently banned from this server." + NEW_LINE
+                    + "Reason: " + ChatColor.YELLOW + (reason != null ? reason : "Reason not specified") + NEW_LINE
                     + ChatColor.RED + "Banned by: " + ChatColor.YELLOW + by;
         }
         if (type == BanType.IP)
         {
             return ChatColor.RED
-                    + "Your IP address is currently banned from this server.\n"
-                    + "Reason: " + ChatColor.YELLOW + (reason != null ? reason : "Reason not specified") + "\n"
-                    + ChatColor.RED + "Banned by: " + ChatColor.YELLOW + by + "\n"
+                    + "Your IP address is currently banned from this server." + NEW_LINE
+                    + "Reason: " + ChatColor.YELLOW + (reason != null ? reason : "Reason not specified") + NEW_LINE
                     + ChatColor.RED + "Your ban will expire on "
                     + ChatColor.YELLOW + NUtil.dateToString(expiry);
         }
 
         // Normal ban
         return ChatColor.RED
-                + "You're currently banned from this server.\n"
-                + "Reason: " + ChatColor.YELLOW + (reason != null ? reason : "Reason not specified") + "\n"
-                + ChatColor.RED + "Banned by: " + ChatColor.YELLOW + by + "\n"
+                + "You're currently banned from this server." + NEW_LINE
+                + "Reason: " + ChatColor.YELLOW + (reason != null ? reason : "Reason not specified") + NEW_LINE
+                + ChatColor.RED + "Banned by: " + ChatColor.YELLOW + by + NEW_LINE
                 + ChatColor.RED + "Your ban will expire on "
                 + ChatColor.YELLOW + NUtil.dateToString(expiry);
     }

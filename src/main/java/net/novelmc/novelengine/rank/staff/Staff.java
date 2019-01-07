@@ -5,13 +5,14 @@ import lombok.Getter;
 import lombok.Setter;
 import net.novelmc.novelengine.rank.Rank;
 import net.novelmc.novelengine.util.NUtil;
+import net.novelmc.novelengine.util.NovelBase;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.configuration.ConfigurationSection;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Staff
+public class Staff extends NovelBase
 {
 
     @Getter
@@ -54,9 +55,9 @@ public class Staff
     public String toString()
     {
         StringBuilder sb = new StringBuilder();
-        sb.append(name).append(":").append("\n")
-                .append(" - IPs: ").append(StringUtils.join(ips, ", ")).append("\n")
-                .append(" - Rank: ").append(rank.name()).append("\n")
+        sb.append(name).append(":").append(NEW_LINE)
+                .append(" - IPs: ").append(StringUtils.join(ips, ", ")).append(NEW_LINE)
+                .append(" - Rank: ").append(rank.name()).append(NEW_LINE)
                 .append(" - Active: ").append(active);
         return sb.toString();
     }

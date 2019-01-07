@@ -3,13 +3,14 @@ package net.novelmc.novelengine.rank.architect;
 import com.google.common.collect.Lists;
 import lombok.Getter;
 import lombok.Setter;
+import net.novelmc.novelengine.util.NovelBase;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.configuration.ConfigurationSection;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Architect
+public class Architect extends NovelBase
 {
 
     @Getter
@@ -42,8 +43,8 @@ public class Architect
     public String toString()
     {
         StringBuilder sb = new StringBuilder();
-        sb.append(name).append(":\n")
-                .append(" - IPs: ").append(StringUtils.join(ips, ", ")).append("\n");
+        sb.append(name).append(":").append(NEW_LINE)
+                .append(" - IPs: ").append(StringUtils.join(ips, ", ")).append(NEW_LINE);
         return sb.toString();
     }
 }

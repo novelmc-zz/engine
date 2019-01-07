@@ -66,32 +66,32 @@ public class Config extends YamlConfiguration
 
     public List<String> getStaffCommands()
     {
-        return super.getStringList("commands.staffConfig");
+        return super.getStringList("commands.staff");
     }
 
     public String getSQLUsername()
     {
-        return super.getString("sqlManager.username");
+        return super.getString("sql.username");
     }
 
     public String getSQLPassword()
     {
-        return super.getString("sqlManager.password");
+        return super.getString("sql.password");
     }
 
     public String getSQLHost()
     {
-        return super.getString("sqlManager.host");
+        return super.getString("sql.host");
     }
 
     public int getSQLPort()
     {
-        return super.getInt("sqlManager.port");
+        return super.getInt("sql.port");
     }
 
     public String getSQLDatabase()
     {
-        return super.getString("sqlManager.database");
+        return super.getString("sql.database");
     }
 
     public void load()

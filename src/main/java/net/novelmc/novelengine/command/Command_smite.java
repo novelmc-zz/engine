@@ -38,14 +38,14 @@ public class Command_smite extends CommandBase
         }
 
         NUtil.playerAction(sender, "Smiting " + player.getName()
-                + (reason != null ? "\n Reason: " + ChatColor.YELLOW + reason + "\n" : ""), true);
+                + (reason != null ? NEW_LINE + " Reason: " + ChatColor.YELLOW + reason + NEW_LINE : ""), true);
         player.setGameMode(GameMode.SURVIVAL);
         player.setOp(false);
         player.getInventory().clear();
         player.getWorld().strikeLightningEffect(player.getLocation());
         player.setHealth(0);
         player.sendMessage(ChatColor.DARK_GRAY + "You have been smitten by " + sender.getName()
-                + (reason != null ? "\nReason: " + ChatColor.GRAY + reason : ""));
+                + (reason != null ? NEW_LINE + "Reason: " + ChatColor.GRAY + reason : ""));
         return true;
     }
 }
