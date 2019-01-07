@@ -2,6 +2,7 @@ package net.novelmc.novelengine.command;
 
 import net.novelmc.novelengine.banning.BanManager;
 import net.novelmc.novelengine.banning.BanType;
+import net.novelmc.novelengine.command.util.CommandBase;
 import net.novelmc.novelengine.command.util.CommandParameters;
 import net.novelmc.novelengine.command.util.SourceType;
 import net.novelmc.novelengine.rank.Rank;
@@ -14,9 +15,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @CommandParameters(description = "Permanently ban a username or IP", usage = "/<command> <username | ip> [reason]", source = SourceType.BOTH, rank = Rank.MANAGER)
-public class PermBanCommand
+public class Command_permban extends CommandBase
 {
-
+    @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {
         if (args.length < 1)

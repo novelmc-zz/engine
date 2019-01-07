@@ -11,16 +11,14 @@ import java.util.List;
 public class BlankCommand extends NCommand
 {
 
-    Class clazz;
-    Object object;
+    private CommandBase commandObject;
 
-    public BlankCommand(String commandName, String usage, String description, List<String> aliases, SourceType source, Rank rank, Class clazz) throws NoSuchMethodException
+    public BlankCommand(String commandName, String usage, String description, List<String> aliases, SourceType source, Rank rank, Class<CommandBase> clazz) throws NoSuchMethodException
     {
         super(commandName, usage, description, aliases, source, rank);
-        this.clazz = clazz;
         try
         {
-            this.object = clazz.getConstructor().newInstance();
+            this.commandObject = clazz.getConstructor().newInstance();
         }
         catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex)
         {
@@ -29,16 +27,14 @@ public class BlankCommand extends NCommand
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args)
     {
-        try
-        {
-            return (boolean) clazz.getMethod("onCommand", CommandSender.class, Command.class, String.class, String[].class).invoke(object, sender, cmd, string, args);
-        }
-        catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex)
-        {
-            NLog.severe(ex);
-        }
-        return false;
+        return commandObject.onCommand(sender, command, label, args);
+    }
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args)
+    {
+        return commandObject.onTabComplete(sender, command, label, args);
     }
 }

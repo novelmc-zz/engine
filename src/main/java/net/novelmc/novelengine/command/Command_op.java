@@ -1,5 +1,6 @@
 package net.novelmc.novelengine.command;
 
+import net.novelmc.novelengine.command.util.CommandBase;
 import net.novelmc.novelengine.command.util.CommandParameters;
 import net.novelmc.novelengine.command.util.SourceType;
 import net.novelmc.novelengine.rank.Rank;
@@ -10,10 +11,10 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@CommandParameters(description = "Deops a player", usage = "/<command> <player>", source = SourceType.BOTH, rank = Rank.TRAINEE)
-public class DeopCommand
+@CommandParameters(description = "Ops a player", usage = "/<command> <player>", source = SourceType.BOTH, rank = Rank.OP)
+public class Command_op extends CommandBase
 {
-
+    @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {
         if (args.length != 1)
@@ -24,12 +25,12 @@ public class DeopCommand
         Player player = Bukkit.getPlayer(args[0]);
         if (player == null)
         {
-            sender.sendMessage(ChatColor.DARK_GRAY + "Cannot find that player!");
+            sender.sendMessage(ChatColor.RED + "Cannot find that player!");
             return true;
         }
 
-        NUtil.playerAction(sender, "Deopping " + player.getName(), false);
-        player.setOp(false);
+        NUtil.playerAction(sender, "Opping " + player.getName(), false);
+        player.setOp(true);
         return true;
     }
 }

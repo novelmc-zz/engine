@@ -1,5 +1,6 @@
 package net.novelmc.novelengine.command;
 
+import net.novelmc.novelengine.command.util.CommandBase;
 import net.novelmc.novelengine.command.util.CommandParameters;
 import net.novelmc.novelengine.command.util.SourceType;
 import net.novelmc.novelengine.rank.Rank;
@@ -10,12 +11,12 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 @CommandParameters(description = "Broadcast your message", usage = "/<command> <message>", source = SourceType.BOTH, rank = Rank.TRAINEE)
-public class SayCommand
+public class Command_say extends CommandBase
 {
-
+    @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {
-        if (args.length < 0)
+        if (args.length == 0)
         {
             return false;
         }

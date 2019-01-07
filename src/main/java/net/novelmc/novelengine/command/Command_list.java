@@ -1,5 +1,6 @@
 package net.novelmc.novelengine.command;
 
+import net.novelmc.novelengine.command.util.CommandBase;
 import net.novelmc.novelengine.rank.architect.ArchitectList;
 import net.novelmc.novelengine.command.util.CommandParameters;
 import net.novelmc.novelengine.command.util.SourceType;
@@ -18,9 +19,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @CommandParameters(description = "A list of online players", source = SourceType.BOTH, rank = Rank.IMPOSTOR)
-public class ListCommand
+public class Command_list extends CommandBase
 {
-
+    @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {
         if (args.length > 0)
@@ -28,16 +29,16 @@ public class ListCommand
             return false;
         }
 
-        java.util.List<String> impostors = new ArrayList<>();
-        java.util.List<String> non_ops = new ArrayList<>();
-        java.util.List<String> ops = new ArrayList<>();
-        java.util.List<String> trainees = new ArrayList<>();
-        java.util.List<String> mods = new ArrayList<>();
-        java.util.List<String> senior_mods = new ArrayList<>();
-        java.util.List<String> admins = new ArrayList<>();
-        java.util.List<String> architects = new ArrayList<>();
-        java.util.List<String> developers = new ArrayList<>();
-        java.util.List<String> managers = new ArrayList<>();
+        List<String> impostors = new ArrayList<>();
+        List<String> non_ops = new ArrayList<>();
+        List<String> ops = new ArrayList<>();
+        List<String> trainees = new ArrayList<>();
+        List<String> mods = new ArrayList<>();
+        List<String> senior_mods = new ArrayList<>();
+        List<String> admins = new ArrayList<>();
+        List<String> architects = new ArrayList<>();
+        List<String> developers = new ArrayList<>();
+        List<String> managers = new ArrayList<>();
 
         StringBuilder sb = new StringBuilder();
 

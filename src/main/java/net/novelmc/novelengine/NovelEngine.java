@@ -59,7 +59,7 @@ public class NovelEngine extends JavaPlugin {
         staffList = new StaffList(plugin);
         architectList = new ArchitectList(plugin);
         banManager = new BanManager(plugin);
-        commandLoader = new CommandLoader("", "Command");
+        commandLoader = new CommandLoader("Command_");
         playerListener = new PlayerListener(plugin);
         serverListener = new ServerListener(plugin);
         eventModeListener = new EventModeListener(plugin);

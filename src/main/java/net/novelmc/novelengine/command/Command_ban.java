@@ -2,6 +2,7 @@ package net.novelmc.novelengine.command;
 
 import net.novelmc.novelengine.banning.BanManager;
 import net.novelmc.novelengine.banning.BanType;
+import net.novelmc.novelengine.command.util.CommandBase;
 import net.novelmc.novelengine.command.util.CommandParameters;
 import net.novelmc.novelengine.command.util.SourceType;
 import net.novelmc.novelengine.rank.Rank;
@@ -18,9 +19,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @CommandParameters(description = "Bans a bad player or IP", usage = "/<command> <player | ip> [reason]", source = SourceType.BOTH, rank = Rank.TRAINEE)
-public class BanCommand
+public class Command_ban extends CommandBase
 {
-
+    @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {
         if (args.length < 1)
