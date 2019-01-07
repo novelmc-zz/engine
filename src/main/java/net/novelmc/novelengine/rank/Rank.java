@@ -37,7 +37,7 @@ public enum Rank implements Displayable
         this.color = color;
         this.tag = color + "" + ChatColor.BOLD + tag + ChatColor.RESET + color;
     }
-    
+
     private static NovelEngine plugin;
 
     public int getLevel()
@@ -93,18 +93,21 @@ public enum Rank implements Displayable
 
     public static Displayable getDisplay(Player player)
     {
-        if (plugin.config.getLeaders().contains(player.getName()))
-        {
-            return Title.LEADER;
-        }
-        if (plugin.config.getAdvisors().contains(player.getName()))
+        if (StaffList.getStaff(player).isAdvisor())
         {
             return Title.ADVISOR;
         }
+
+        if (StaffList.getStaff(player).isLeader())
+        {
+            return Title.LEADER;
+        }
+
         if (NUtil.DEVELOPERS.contains(player.getName()))
         {
             return Title.DEVELOPER;
         }
+
         if (ArchitectList.isArchitect(player))
         {
             return Title.ARCHITECT;

@@ -86,8 +86,6 @@ public class StaffList
         Staff s = new Staff(player.getName().toLowerCase());
         s.setName(player.getName());
         s.setIps(Collections.singletonList(player.getAddress().getHostString()));
-        s.setRank(Rank.TRAINEE);
-        s.setActive(true);
         addStaff(s);
     }
 

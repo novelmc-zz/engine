@@ -8,19 +8,13 @@ general:
   name: NovelMC
 
   # MOTD (shown on server list) - Color codes supported [&] and 2 lines motd [||] available
-  motd: NovelMC
+  motd: '&3Novel&9MC||1.13.2'
 
   # Website - useful to link to the forum for ban appeals, admin applications etc
   website: http://novelmc.net/
 
   # Event mode
   eventmode: false
-  
-  # Who are the advisors?
-  advisors: []
-  
-  # Who are the leaders?
-  leaders: []
 
 # SQL information
 sql:
@@ -30,7 +24,7 @@ sql:
   port: 3306
   database: novelmc
 
-# TO:DO re-create command blocking system
+# TODO re-create command blocking system
 # Commands to block - default for all, admins for staff
 commands:
   default:

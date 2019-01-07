@@ -28,7 +28,7 @@ public class Command_rank
 
         if (!(sender instanceof Player))
         {
-            sender.sendMessage(ChatColor.DARK_GRAY + "Users from console cannot execute this command!");
+            sender.sendMessage(ChatColor.DARK_GRAY + "Users from console can only execute this command to check player's rank!");
             return true;
         }
 
@@ -38,14 +38,9 @@ public class Command_rank
 
     public String message(Player player)
     {
-        Rank rank = Rank.getRank(player);
         Displayable display = Rank.getDisplay(player);
         StringBuilder sb = new StringBuilder()
-                .append(ChatColor.GRAY + player.getName() + " is " + rank.getLoginMessage());
-        if (rank != display)
-        {
-            sb.append(ChatColor.GRAY + " (" + display.getColor() + display.getName() + ChatColor.GRAY + ")");
-        }
+                .append(ChatColor.GRAY + player.getName() + " is " + display.getLoginMessage());
         return sb.toString();
     }
 }
