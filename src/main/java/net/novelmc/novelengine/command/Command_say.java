@@ -13,6 +13,7 @@ import org.bukkit.command.CommandSender;
 @CommandParameters(description = "Broadcast your message", usage = "/<command> <message>", source = SourceType.BOTH, rank = Rank.TRAINEE)
 public class Command_say extends CommandBase
 {
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {

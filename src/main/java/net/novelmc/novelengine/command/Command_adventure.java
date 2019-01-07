@@ -13,6 +13,7 @@ import org.bukkit.entity.Player;
 @CommandParameters(description = "Set your gamemode to adventure", aliases = "gma", source = SourceType.IN_GAME, rank = Rank.OP)
 public class Command_adventure extends CommandBase
 {
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {

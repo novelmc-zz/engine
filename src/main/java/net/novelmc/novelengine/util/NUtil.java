@@ -18,6 +18,7 @@ import java.util.regex.Pattern;
 
 public class NUtil
 {
+
     public static final List<String> DEVELOPERS = Arrays.asList("_Fleek", "Super_", "untuned", "irix", "Mafrans");
     public static String DATE_STORAGE_FORMAT = "EEE, d MMM yyyy HH:mm:ss Z";
 
@@ -194,9 +195,11 @@ public class NUtil
 
 
     private static CommandMap cachedCommandMap = null;
+
     public static CommandMap getCommandMap()
     {
-        if(cachedCommandMap == null) {
+        if (cachedCommandMap == null)
+        {
             try
             {
                 final Field f = Bukkit.getServer().getClass().getDeclaredField("commandMap");
@@ -213,8 +216,11 @@ public class NUtil
     }
 
     private static Reflections cachedReflections = null;
-    public static Reflections getReflections() {
-        if(cachedReflections == null) {
+
+    public static Reflections getReflections()
+    {
+        if (cachedReflections == null)
+        {
             cachedReflections = new Reflections();
         }
         return cachedReflections;

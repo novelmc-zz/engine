@@ -1,10 +1,10 @@
 package net.novelmc.novelengine.command;
 
 import net.novelmc.novelengine.command.util.CommandBase;
-import net.novelmc.novelengine.rank.architect.ArchitectList;
 import net.novelmc.novelengine.command.util.CommandParameters;
 import net.novelmc.novelengine.command.util.SourceType;
 import net.novelmc.novelengine.rank.Rank;
+import net.novelmc.novelengine.rank.architect.ArchitectList;
 import net.novelmc.novelengine.util.NUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -15,6 +15,7 @@ import org.bukkit.entity.Player;
 @CommandParameters(description = "Manage an architect", usage = "/<command> <add <player> | remove <player> | info <player>", source = SourceType.BOTH, rank = Rank.TRAINEE)
 public class Command_architect extends CommandBase
 {
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {

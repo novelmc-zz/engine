@@ -16,6 +16,7 @@ import org.bukkit.entity.Player;
 @CommandParameters(description = "Smites a bad player", usage = "/<command> <player> [reason]", source = SourceType.BOTH, rank = Rank.TRAINEE)
 public class Command_smite extends CommandBase
 {
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {

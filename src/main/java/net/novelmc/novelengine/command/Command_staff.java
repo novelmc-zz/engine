@@ -15,6 +15,7 @@ import org.bukkit.entity.Player;
 @CommandParameters(description = "Manage an admin", usage = "/<command> <add <player> | remove <player> | setrank <player> <rank> | info <player>", source = SourceType.BOTH, rank = Rank.TRAINEE)
 public class Command_staff extends CommandBase
 {
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {

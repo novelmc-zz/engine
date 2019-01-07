@@ -9,7 +9,9 @@ import org.reflections.Reflections;
 import java.util.Arrays;
 import java.util.Set;
 
-public class CommandLoader {
+public class CommandLoader
+{
+
     private CommandMap commandMap = NUtil.getCommandMap();
     private Reflections reflections = NUtil.getReflections();
     private String prefix;
@@ -37,23 +39,25 @@ public class CommandLoader {
     {
         Set<Class<? extends CommandBase>> annotated = reflections.getSubTypesOf(CommandBase.class);
 
-        for(Class<? extends CommandBase> clazz : annotated)
+        for (Class<? extends CommandBase> clazz : annotated)
         {
-            if(clazz.getSimpleName().startsWith(prefix) && clazz.getSimpleName().endsWith(suffix))
+            if (clazz.getSimpleName().startsWith(prefix) && clazz.getSimpleName().endsWith(suffix))
             {
                 NCommand command;
                 String commandName = clazz.getSimpleName().substring(prefix.length(), clazz.getSimpleName().length() - suffix.length()).toLowerCase();
 
-                try {
+                try
+                {
                     command = new BlankCommand(commandName,
                             (String) CommandParameters.class.getMethod("description").getDefaultValue(),
                             (String) CommandParameters.class.getMethod("usage").getDefaultValue(),
-                            Arrays.asList(((String)CommandParameters.class.getMethod("aliases").getDefaultValue()).split(", ")),
+                            Arrays.asList(((String) CommandParameters.class.getMethod("aliases").getDefaultValue()).split(", ")),
                             (SourceType) CommandParameters.class.getMethod("source").getDefaultValue(),
                             (Rank) CommandParameters.class.getMethod("rank").getDefaultValue(),
                             (Class<CommandBase>) clazz);
 
-                    if (clazz.getAnnotationsByType(CommandParameters.class).length > 0) {
+                    if (clazz.getAnnotationsByType(CommandParameters.class).length > 0)
+                    {
                         CommandParameters params = clazz.getAnnotation(CommandParameters.class);
 
                         command = new BlankCommand(commandName,

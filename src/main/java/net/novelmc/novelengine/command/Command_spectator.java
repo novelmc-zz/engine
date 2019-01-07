@@ -13,6 +13,7 @@ import org.bukkit.entity.Player;
 @CommandParameters(description = "Set your gamemode to spectator", aliases = "gmsp", source = SourceType.IN_GAME, rank = Rank.OP)
 public class Command_spectator extends CommandBase
 {
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {

@@ -14,6 +14,7 @@ import org.bukkit.entity.Player;
 @CommandParameters(description = "Ops a player", usage = "/<command> <player>", source = SourceType.BOTH, rank = Rank.OP)
 public class Command_op extends CommandBase
 {
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {

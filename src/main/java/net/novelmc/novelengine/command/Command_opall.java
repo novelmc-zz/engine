@@ -12,6 +12,7 @@ import org.bukkit.command.CommandSender;
 @CommandParameters(description = "Ops everyone on the server", source = SourceType.BOTH, rank = Rank.TRAINEE)
 public class Command_opall extends CommandBase
 {
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {

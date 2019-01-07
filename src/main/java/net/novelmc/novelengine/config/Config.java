@@ -19,7 +19,8 @@ public class Config extends YamlConfiguration
         this.plugin = plugin;
         this.file = new File(plugin.getDataFolder(), "config.yml");
 
-        if(!file.exists()) {
+        if (!file.exists())
+        {
             saveDefault();
         }
     }

@@ -1,10 +1,10 @@
 package net.novelmc.novelengine.listener;
 
 import net.novelmc.novelengine.NovelEngine;
-import net.novelmc.novelengine.rank.architect.ArchitectList;
 import net.novelmc.novelengine.banning.Ban;
 import net.novelmc.novelengine.banning.BanManager;
 import net.novelmc.novelengine.rank.Rank;
+import net.novelmc.novelengine.rank.architect.ArchitectList;
 import net.novelmc.novelengine.rank.staff.StaffList;
 import net.novelmc.novelengine.util.NLog;
 import org.apache.commons.lang.StringUtils;

@@ -17,6 +17,7 @@ import java.util.regex.Pattern;
 @CommandParameters(description = "Remove a permban", usage = "/<command> <username | ip>", source = SourceType.BOTH, rank = Rank.MANAGER)
 public class Command_unpermban extends CommandBase
 {
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {

@@ -6,11 +6,11 @@ notifications:
 addons:
   apt:
     packages:
-    - sshpass
+      - sshpass
 
 after_success:
-- chmod +x travis-upload.sh
-- "./travis-upload.sh"
+  - chmod +x travis-upload.sh
+  - "./travis-upload.sh"
 
 deploy:
   provider: releases

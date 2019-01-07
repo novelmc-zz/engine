@@ -11,6 +11,7 @@ import org.bukkit.command.CommandSender;
 @CommandParameters(description = "Op yourself.", source = SourceType.IN_GAME, rank = Rank.OP)
 public class Command_opme extends CommandBase
 {
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {

@@ -8,7 +8,7 @@ public enum Title implements Displayable
 
     ARCHITECT("an", "Architect", "ARCHITECT", ChatColor.DARK_GREEN),
     DEVELOPER("a", "Developer", "DEV", ChatColor.DARK_PURPLE),
-    ADVISOR("an", "Advisor", "ADVISOR", ChatColor.DARK_RED), 
+    ADVISOR("an", "Advisor", "ADVISOR", ChatColor.DARK_RED),
     LEADER("a", "Leader", "LEADER", ChatColor.DARK_RED);
 
     private final String determiner;
@@ -24,7 +24,7 @@ public enum Title implements Displayable
         this.determiner = determiner;
         this.name = name;
         this.color = color;
-        this.tag = color + "" + ChatColor.BOLD +  tag + ChatColor.RESET + color;
+        this.tag = color + "" + ChatColor.BOLD + tag + ChatColor.RESET + color;
     }
 
     public String getLoginMessage()

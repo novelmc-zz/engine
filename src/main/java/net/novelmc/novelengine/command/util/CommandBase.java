@@ -8,14 +8,18 @@ import org.bukkit.command.TabCompleter;
 
 import java.util.List;
 
-public abstract class CommandBase extends NovelBase implements CommandExecutor, TabCompleter {
+public abstract class CommandBase extends NovelBase implements CommandExecutor, TabCompleter
+{
+
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
+    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings)
+    {
         return false;
     }
 
     @Override
-    public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
+    public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings)
+    {
         return null;
     }
 }

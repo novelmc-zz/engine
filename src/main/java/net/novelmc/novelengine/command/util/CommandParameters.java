@@ -8,6 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface CommandParameters
 {
+
     String description() default "";
 
     String usage() default "/<command>";

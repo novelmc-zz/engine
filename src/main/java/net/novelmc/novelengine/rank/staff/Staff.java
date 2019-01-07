@@ -4,7 +4,6 @@ import com.google.common.collect.Lists;
 import lombok.Getter;
 import lombok.Setter;
 import net.novelmc.novelengine.rank.Rank;
-import net.novelmc.novelengine.util.NUtil;
 import net.novelmc.novelengine.util.NovelBase;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.configuration.ConfigurationSection;
