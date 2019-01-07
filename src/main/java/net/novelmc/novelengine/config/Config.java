@@ -48,16 +48,6 @@ public class Config extends YamlConfiguration
     {
         super.set("general.eventmode", enable);
     }
-    
-    public List<String> getAdvisors()
-    {
-        return super.getStringList("general.advisors");
-    }
-    
-    public List<String> getLeaders()
-    {
-        return super.getStringList("general.leaders");
-    }
 
     public List<String> getDefaultCommands()
     {

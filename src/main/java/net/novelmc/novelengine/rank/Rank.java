@@ -12,15 +12,15 @@ import org.bukkit.entity.Player;
 public enum Rank implements Displayable
 {
 
-    IMPOSTOR("an", "Impostor", "IMP", ChatColor.WHITE),
+    IMPOSTOR("an", "Impostor", "IMPOSTOR", ChatColor.WHITE),
     NON_OP("a", "Non-Op", "", ChatColor.WHITE),
-    OP("a", "Member", "MBR", ChatColor.WHITE),
-    TRAINEE("a", "Trainee", "TRN", ChatColor.DARK_AQUA),
+    OP("a", "Member", "MEMBER", ChatColor.WHITE),
+    TRAINEE("a", "Trainee", "TRAINEE", ChatColor.DARK_AQUA),
     MOD("a", "Mod", "MOD", ChatColor.GOLD),
-    SENIOR_MOD("a", "Senior Mod", "SMD", ChatColor.GOLD),
-    ADMIN("an", "Admin", "ADN", ChatColor.RED),
-    MANAGER("a", "Manager", "MGR", ChatColor.BLUE),
-    CONSOLE("the", "Console", "CSL", ChatColor.DARK_RED);
+    SENIOR_MOD("a", "Senior Mod", "SRMOD", ChatColor.GOLD),
+    ADMIN("an", "Admin", "ADMIN", ChatColor.RED),
+    MANAGER("a", "Manager", "MANAGER", ChatColor.BLUE),
+    CONSOLE("the", "Console", "CONSOLE", ChatColor.DARK_RED);
 
     private final String determiner;
     @Getter
@@ -37,7 +37,7 @@ public enum Rank implements Displayable
         this.color = color;
         this.tag = color + "" + ChatColor.BOLD + tag + ChatColor.RESET + color;
     }
-    
+
     private static NovelEngine plugin;
 
     public int getLevel()
@@ -93,18 +93,21 @@ public enum Rank implements Displayable
 
     public static Displayable getDisplay(Player player)
     {
-        if (plugin.config.getLeaders().contains(player.getName()))
-        {
-            return Title.LEADER;
-        }
-        if (plugin.config.getAdvisors().contains(player.getName()))
+        if (StaffList.getStaff(player).isAdvisor())
         {
             return Title.ADVISOR;
         }
+
+        if (StaffList.getStaff(player).isLeader())
+        {
+            return Title.LEADER;
+        }
+
         if (NUtil.DEVELOPERS.contains(player.getName()))
         {
             return Title.DEVELOPER;
         }
+
         if (ArchitectList.isArchitect(player))
         {
             return Title.ARCHITECT;

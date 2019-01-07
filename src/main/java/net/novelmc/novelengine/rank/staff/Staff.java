@@ -22,13 +22,20 @@ public class Staff extends NovelBase
     private String name;
     @Getter
     @Setter
-    private List<String> ips = new ArrayList<String>();
+    private List<String> ips = new ArrayList<>();
     @Getter
     @Setter
-    private Rank rank;
+    private Rank rank = Rank.TRAINEE;
     @Getter
     @Setter
     private boolean active;
+    @Getter
+    @Setter
+    private boolean advisor = false;
+    @Getter
+    @Setter
+    private boolean leader = false;
+
 
     public Staff(String configKey)
     {
@@ -41,6 +48,8 @@ public class Staff extends NovelBase
         section.set("ips", Lists.newArrayList(ips));
         section.set("rank", rank.name());
         section.set("active", active);
+        section.set("advisor", advisor);
+        section.set("leader", leader);
     }
 
     public void load(ConfigurationSection section)
@@ -49,6 +58,8 @@ public class Staff extends NovelBase
         ips.addAll(section.getStringList("ips"));
         rank = Rank.findRank(section.getString("rank"));
         active = section.getBoolean("active", true);
+        advisor = section.getBoolean("advisor", false);
+        leader = section.getBoolean("leader", false);
     }
 
     @Override
