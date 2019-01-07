@@ -33,14 +33,14 @@ public class StaffList
     {
         staff.clear();
 
-        for (String key : plugin.staff.getKeys(false))
+        for (String key : plugin.staffConfig.getKeys(false))
         {
             Staff s = new Staff(key);
-            s.load(plugin.staff.getConfigurationSection(key));
+            s.load(plugin.staffConfig.getConfigurationSection(key));
             staff.add(s);
         }
 
-        NLog.info("Successfully loaded " + staff.size() + " staff!");
+        NLog.info("Successfully loaded " + staff.size() + " staffConfig!");
     }
 
     public static boolean isStaff(Staff s)
@@ -78,7 +78,7 @@ public class StaffList
         }
 
         staff.add(s);
-        s.save(plugin.staff.createSection(s.getConfigKey()));
+        s.save(plugin.staffConfig.createSection(s.getConfigKey()));
     }
 
     public static void addStaff(Player player)
@@ -101,7 +101,7 @@ public class StaffList
         staff.remove(s);
         s.setActive(false);
         staff.add(s);
-        s.save(plugin.staff.getConfigurationSection(s.getConfigKey()));
+        s.save(plugin.staffConfig.getConfigurationSection(s.getConfigKey()));
     }
 
     public static void updateRank(Player player, Rank rank)
@@ -116,7 +116,7 @@ public class StaffList
         staff.remove(s);
         s.setRank(rank);
         staff.add(s);
-        s.save(plugin.staff.getConfigurationSection(s.getConfigKey()));
+        s.save(plugin.staffConfig.getConfigurationSection(s.getConfigKey()));
     }
 
     public static void updateActive(Player player, boolean active)
@@ -131,7 +131,7 @@ public class StaffList
         staff.remove(s);
         s.setActive(active);
         staff.add(s);
-        s.save(plugin.staff.getConfigurationSection(s.getConfigKey()));
+        s.save(plugin.staffConfig.getConfigurationSection(s.getConfigKey()));
     }
 
     public static void updateIp(Player player)
@@ -146,7 +146,7 @@ public class StaffList
         staff.remove(s);
         s.getIps().add(player.getAddress().getHostString());
         staff.add(s);
-        s.save(plugin.staff.getConfigurationSection(s.getConfigKey()));
+        s.save(plugin.staffConfig.getConfigurationSection(s.getConfigKey()));
     }
 
     public static boolean isImpostor(Player player)

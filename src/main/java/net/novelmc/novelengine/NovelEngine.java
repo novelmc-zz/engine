@@ -17,25 +17,25 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class NovelEngine extends JavaPlugin {
 
     public static NovelEngine plugin;
-    public ArchitectConfig ac;
-    public BanManager bm;
-    public CommandLoader cl;
+    public ArchitectConfig architectConfig;
+    public BanManager banManager;
+    public CommandLoader commandLoader;
     public Config config;
-    public EventModeListener eml;
-    public PlayerListener pl;
-    public ServerListener srl;
-    public SQLManager sql;
-    public StaffConfig staff;
-    public StaffList sl;
-    public ArchitectList al;
+    public EventModeListener eventModeListener;
+    public PlayerListener playerListener;
+    public ServerListener serverListener;
+    public SQLManager sqlManager;
+    public StaffConfig staffConfig;
+    public StaffList staffList;
+    public ArchitectList architectList;
 
     @Override
     public void onLoad()
     {
         plugin = this;
         config = new Config(plugin);
-        staff = new StaffConfig(plugin);
-        ac = new ArchitectConfig(plugin);
+        staffConfig = new StaffConfig(plugin);
+        architectConfig = new ArchitectConfig(plugin);
     }
 
     @Override
@@ -44,25 +44,25 @@ public class NovelEngine extends JavaPlugin {
         plugin = this;
 
         config.load();
-        staff.load();
-        ac.load();
+        staffConfig.load();
+        architectConfig.load();
 
-        sql = new SQLManager(plugin);
+        sqlManager = new SQLManager(plugin);
 
-        if (!sql.init())
+        if (!sqlManager.init())
         {
             NLog.severe("Unable to connect to MySQL database! Shutting down...");
             this.getServer().getPluginManager().disablePlugin(this);
             return;
         }
 
-        sl = new StaffList(plugin);
-        al = new ArchitectList(plugin);
-        bm = new BanManager(plugin);
-        cl = new CommandLoader("", "Command");
-        pl = new PlayerListener(plugin);
-        srl = new ServerListener(plugin);
-        eml = new EventModeListener(plugin);
+        staffList = new StaffList(plugin);
+        architectList = new ArchitectList(plugin);
+        banManager = new BanManager(plugin);
+        commandLoader = new CommandLoader("", "Command");
+        playerListener = new PlayerListener(plugin);
+        serverListener = new ServerListener(plugin);
+        eventModeListener = new EventModeListener(plugin);
 
 
         NLog.info("The plugin has been enabled!");
@@ -74,8 +74,8 @@ public class NovelEngine extends JavaPlugin {
         plugin = null;
 
         config.save();
-        staff.save();
-        ac.save();
+        staffConfig.save();
+        architectConfig.save();
 
         NLog.info("The plugin has been disabled!");
     }

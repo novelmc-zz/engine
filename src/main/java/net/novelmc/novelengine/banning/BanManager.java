@@ -33,7 +33,7 @@ public class BanManager
     public void loadBans()
     {
         bans.clear();
-        Connection c = plugin.sql.getConnection();
+        Connection c = plugin.sqlManager.getConnection();
 
         try
         {

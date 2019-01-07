@@ -32,10 +32,10 @@ public class ArchitectList
     {
         architects.clear();
 
-        for (String key : plugin.ac.getKeys(false))
+        for (String key : plugin.architectConfig.getKeys(false))
         {
             Architect a = new Architect(key);
-            a.load(plugin.ac.getConfigurationSection(key));
+            a.load(plugin.architectConfig.getConfigurationSection(key));
             architects.add(a);
         }
 
@@ -77,7 +77,7 @@ public class ArchitectList
         }
 
         architects.add(a);
-        a.save(plugin.ac.createSection(a.getConfigKey()));
+        a.save(plugin.architectConfig.createSection(a.getConfigKey()));
     }
 
     public static void addArchitect(Player player)
@@ -96,7 +96,7 @@ public class ArchitectList
         }
 
         architects.remove(a);
-        a.save(plugin.ac.getConfigurationSection(a.getConfigKey()));
+        a.save(plugin.architectConfig.getConfigurationSection(a.getConfigKey()));
     }
 
     public static void updateIp(Player player)
@@ -111,7 +111,7 @@ public class ArchitectList
         architects.remove(a);
         a.getIps().add(player.getAddress().getHostString());
         architects.add(a);
-        a.save(plugin.ac.getConfigurationSection(a.getConfigKey()));
+        a.save(plugin.architectConfig.getConfigurationSection(a.getConfigKey()));
     }
 
     public static boolean isImpostor(Player player)

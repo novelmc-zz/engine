@@ -43,13 +43,13 @@ public class StaffCommand
 
                     if (StaffList.isStaff(player))
                     {
-                        sender.sendMessage(ChatColor.DARK_GRAY + "That player is already staff!");
+                        sender.sendMessage(ChatColor.DARK_GRAY + "That player is already staffConfig!");
                         return true;
                     }
 
                     if (StaffList.isImpostor(player))
                     {
-                        NUtil.playerAction(sender, "Re-adding " + player.getName() + " to the staff list", true);
+                        NUtil.playerAction(sender, "Re-adding " + player.getName() + " to the staffConfig list", true);
 
                         if (StaffList.isImpostor(player))
                         {
@@ -60,7 +60,7 @@ public class StaffCommand
                         return true;
                     }
 
-                    NUtil.playerAction(sender, "Adding " + player.getName() + " to the staff list", true);
+                    NUtil.playerAction(sender, "Adding " + player.getName() + " to the staffConfig list", true);
                     StaffList.addStaff(player);
                     return true;
                 }
@@ -82,11 +82,11 @@ public class StaffCommand
 
                     if (!StaffList.isStaff(player))
                     {
-                        sender.sendMessage(ChatColor.DARK_GRAY + "That player is not a staff!");
+                        sender.sendMessage(ChatColor.DARK_GRAY + "That player is not a staffConfig!");
                         return true;
                     }
 
-                    NUtil.playerAction(sender, "Removing " + player.getName() + " from the staff list", true);
+                    NUtil.playerAction(sender, "Removing " + player.getName() + " from the staffConfig list", true);
                     StaffList.removeStaff(StaffList.getStaff(player));
                     return true;
                 }
@@ -102,7 +102,7 @@ public class StaffCommand
 
                     if (!StaffList.isStaff(player))
                     {
-                        sender.sendMessage(ChatColor.DARK_GRAY + "That player is not staff!");
+                        sender.sendMessage(ChatColor.DARK_GRAY + "That player is not staffConfig!");
                         return true;
                     }
 
@@ -129,7 +129,7 @@ public class StaffCommand
 
                     if (!StaffList.isStaff(player))
                     {
-                        sender.sendMessage(ChatColor.DARK_GRAY + "That player is not a staff!");
+                        sender.sendMessage(ChatColor.DARK_GRAY + "That player is not a staffConfig!");
                         return true;
                     }
 
