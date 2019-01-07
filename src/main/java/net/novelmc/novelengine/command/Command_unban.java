@@ -18,6 +18,7 @@ import java.util.regex.Pattern;
 @CommandParameters(description = "Unbans a player or an IP", usage = "/<command> <username | ip>", source = SourceType.BOTH, rank = Rank.TRAINEE)
 public class Command_unban extends CommandBase
 {
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {

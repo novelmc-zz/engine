@@ -17,6 +17,7 @@ import org.bukkit.util.Vector;
 @CommandParameters(description = "Launchs them up, strikes them down", usage = "/<command> <player>", source = SourceType.BOTH, rank = Rank.MANAGER)
 public class Command_launch extends CommandBase
 {
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {

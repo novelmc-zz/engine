@@ -1,11 +1,11 @@
 package net.novelmc.novelengine.command;
 
 import net.novelmc.novelengine.command.util.CommandBase;
-import net.novelmc.novelengine.rank.architect.ArchitectList;
 import net.novelmc.novelengine.command.util.CommandParameters;
 import net.novelmc.novelengine.command.util.SourceType;
 import net.novelmc.novelengine.rank.Rank;
 import net.novelmc.novelengine.rank.Title;
+import net.novelmc.novelengine.rank.architect.ArchitectList;
 import net.novelmc.novelengine.rank.staff.StaffList;
 import net.novelmc.novelengine.util.NUtil;
 import org.apache.commons.lang.StringUtils;
@@ -21,6 +21,7 @@ import java.util.List;
 @CommandParameters(description = "A list of online players", source = SourceType.BOTH, rank = Rank.IMPOSTOR)
 public class Command_list extends CommandBase
 {
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {

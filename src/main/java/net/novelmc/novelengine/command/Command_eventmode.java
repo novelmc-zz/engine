@@ -14,6 +14,7 @@ import org.bukkit.command.CommandSender;
 @CommandParameters(description = "Toggles event mode", usage = "/<command> [on | off]", aliases = "emode, em", source = SourceType.BOTH, rank = Rank.MANAGER)
 public class Command_eventmode extends CommandBase
 {
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {
