@@ -1,17 +1,26 @@
 language: java
 
+# always test things that aren't pushes (like PRs)
+# never test tags or pushes to non-master branches (wait for PR)
+# https://github.com/travis-ci/travis-ci/issues/2200#issuecomment-441395545)
+if: type != push OR (tag IS blank AND branch = master)
+
+# stop sending me emails
 notifications:
   email: false
 
+# required for sftp password through command line
 addons:
   apt:
     packages:
     - sshpass
 
+# upload to novelmc server
 after_success:
 - chmod +x travis-upload.sh
 - "./travis-upload.sh"
 
+# deploy on tagged commits as a draft build
 deploy:
   provider: releases
   api_key:
