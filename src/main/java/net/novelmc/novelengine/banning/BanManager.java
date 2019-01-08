@@ -4,9 +4,12 @@ import lombok.Getter;
 import net.novelmc.novelengine.NovelEngine;
 import net.novelmc.novelengine.util.NLog;
 import net.novelmc.novelengine.util.NUtil;
+import net.novelmc.novelengine.util.NovelBase;
+import net.novelmc.novelengine.util.SQLManager;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerLoginEvent;
+import org.json.JSONObject;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -15,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class BanManager
+public class BanManager extends NovelBase
 {
 
     @Getter
@@ -24,7 +27,7 @@ public class BanManager
 
     public BanManager(NovelEngine plugin)
     {
-        this.plugin = plugin;
+        BanManager.plugin = plugin;
         bans = new ArrayList<>();
         bans.clear();
         loadBans();
@@ -33,28 +36,47 @@ public class BanManager
     public void loadBans()
     {
         bans.clear();
-        Connection c = plugin.sqlManager.getConnection();
 
-        try
+        if(config.isSQLEnabled())
         {
-            ResultSet result = c.prepareStatement("SELECT * FROM bans").executeQuery();
-            while (result.next())
+            Connection c = SQLManager.getConnection();
+
+            try
+            {
+                ResultSet result = c.prepareStatement("SELECT * FROM bans").executeQuery();
+                while (result.next()) {
+                    Ban ban = new Ban();
+                    ban.setName(result.getString("name"));
+                    ban.setIp(result.getString("ip"));
+                    ban.setBy(result.getString("by"));
+                    ban.setReason(result.getString("reason"));
+                    ban.setExpiry(NUtil.getUnixDate(result.getLong("expiry")));
+                    BanType type = BanType.valueOf(result.getString("type"));
+                    ban.setType(type);
+                    bans.add(ban);
+                }
+            } catch (SQLException ex)
+            {
+                NLog.severe(ex);
+                return;
+            }
+        }
+        else
+            {
+            JSONObject banJson = plugin.sqlManager.getDatabase().getJSONObject("bans");
+            for(String key : banJson.keySet())
             {
                 Ban ban = new Ban();
-                ban.setName(result.getString("name"));
-                ban.setIp(result.getString("ip"));
-                ban.setBy(result.getString("by"));
-                ban.setReason(result.getString("reason"));
-                ban.setExpiry(NUtil.getUnixDate(result.getLong("expiry")));
-                BanType type = BanType.valueOf(result.getString("type"));
+                JSONObject obj = banJson.getJSONObject(key);
+                ban.setName(obj.getString("name"));
+                ban.setIp(obj.getString("ip"));
+                ban.setBy(obj.getString("by"));
+                ban.setReason(obj.getString("reason"));
+                ban.setExpiry(NUtil.getUnixDate(obj.getLong("expiry")));
+                BanType type = BanType.valueOf(obj.getString("type"));
                 ban.setType(type);
                 bans.add(ban);
             }
-        }
-        catch (SQLException ex)
-        {
-            NLog.severe(ex);
-            return;
         }
 
         removeExpiredBans();

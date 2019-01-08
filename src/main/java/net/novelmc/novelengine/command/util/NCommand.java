@@ -52,10 +52,10 @@ public abstract class NCommand implements CommandExecutor, TabCompleter
             cmd.setAliases(aliases);
         }
 
-        if (!getCommandMap().register("", cmd))
+        if (!getCommandMap().register("NovelEngine", cmd))
         {
             unregisterBukkitCommand(Bukkit.getPluginCommand(cmd.getName()));
-            getCommandMap().register("", cmd);
+            getCommandMap().register("NovelEngine", cmd);
         }
 
         cmd.setExecutor(this);

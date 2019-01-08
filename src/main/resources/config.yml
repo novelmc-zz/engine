@@ -18,6 +18,7 @@ general:
 
 # SQL information
 sql:
+  enabled: true
   username: root
   password: ''
   host: 127.0.0.1
@@ -25,8 +26,9 @@ sql:
   database: novelmc
 
 # TODO re-create command blocking system
+# TODO permissions
 # Commands to block - default for all, admins for staff
-commands:
+permissionblocker:
   default:
     - '/gamemode'
     - '/time'

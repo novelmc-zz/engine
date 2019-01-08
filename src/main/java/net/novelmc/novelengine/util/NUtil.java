@@ -214,15 +214,4 @@ public class NUtil
 
         return cachedCommandMap;
     }
-
-    private static Reflections cachedReflections = null;
-
-    public static Reflections getReflections()
-    {
-        if (cachedReflections == null)
-        {
-            cachedReflections = new Reflections();
-        }
-        return cachedReflections;
-    }
 }

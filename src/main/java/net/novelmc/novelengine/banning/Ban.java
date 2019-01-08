@@ -6,8 +6,12 @@ import net.novelmc.novelengine.NovelEngine;
 import net.novelmc.novelengine.util.NLog;
 import net.novelmc.novelengine.util.NUtil;
 import net.novelmc.novelengine.util.NovelBase;
+import net.novelmc.novelengine.util.SQLManager;
 import org.bukkit.ChatColor;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -81,37 +85,63 @@ public class Ban extends NovelBase
 
     public void save()
     {
-        Connection c = NovelEngine.plugin.sqlManager.getConnection();
-        try
+        if(config.isSQLEnabled())
         {
-            PreparedStatement statement = c.prepareStatement("INSERT INTO bans (name, ip, `by`, reason, expiry, type) VALUES (?, ?, ?, ?, ?, ?)");
-            statement.setString(1, name);
-            statement.setString(2, ip);
-            statement.setString(3, by);
-            statement.setString(4, reason);
-            statement.setLong(5, NUtil.getUnixTime(expiry));
-            statement.setString(6, type.toString());
-            statement.executeUpdate();
+            Connection c = SQLManager.getConnection();
+            try {
+                PreparedStatement statement = c.prepareStatement("INSERT INTO bans (name, ip, `by`, reason, expiry, type) VALUES (?, ?, ?, ?, ?, ?)");
+                statement.setString(1, name);
+                statement.setString(2, ip);
+                statement.setString(3, by);
+                statement.setString(4, reason);
+                statement.setLong(5, NUtil.getUnixTime(expiry));
+                statement.setString(6, type.toString());
+                statement.executeUpdate();
+            } catch (SQLException ex) {
+                NLog.severe(ex);
+            }
         }
-        catch (SQLException ex)
-        {
-            NLog.severe(ex);
+        else
+            {
+            JSONObject database = plugin.sqlManager.getDatabase();
+            JSONObject bans = database.getJSONObject("bans");
+
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("name", name);
+            jsonObject.put("ip", ip);
+            jsonObject.put("by", by);
+            jsonObject.put("reason", reason);
+            jsonObject.put("expiry", expiry);
+            jsonObject.put("type", type);
+
+            bans.put(name, jsonObject);
+            database.put("bans", bans);
+            plugin.sqlManager.saveDatabase(database);
         }
     }
 
     public void delete()
     {
-        Connection c = NovelEngine.plugin.sqlManager.getConnection();
-        try
+        if(config.isSQLEnabled())
         {
-            PreparedStatement statement = c.prepareStatement("DELETE FROM bans WHERE name = ? OR ip = ?");
-            statement.setString(1, name);
-            statement.setString(2, ip);
-            statement.executeUpdate();
+            Connection c = SQLManager.getConnection();
+            try {
+                PreparedStatement statement = c.prepareStatement("DELETE FROM bans WHERE name = ? OR ip = ?");
+                statement.setString(1, name);
+                statement.setString(2, ip);
+                statement.executeUpdate();
+            } catch (SQLException ex) {
+                NLog.severe(ex);
+            }
         }
-        catch (SQLException ex)
-        {
-            NLog.severe(ex);
+        else
+            {
+            JSONObject database = plugin.sqlManager.getDatabase();
+            JSONObject bans = database.getJSONObject("bans");
+            bans.remove(name);
+            database.put("bans", bans);
+
+            plugin.sqlManager.saveDatabase(database);
         }
     }
 }

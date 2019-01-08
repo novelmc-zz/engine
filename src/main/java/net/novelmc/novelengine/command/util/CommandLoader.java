@@ -13,7 +13,7 @@ public class CommandLoader
 {
 
     private CommandMap commandMap = NUtil.getCommandMap();
-    private Reflections reflections = NUtil.getReflections();
+    private Reflections reflections = getReflections("net.novelmc.novelengine.command");
     private String prefix;
     private String suffix;
 
@@ -78,5 +78,15 @@ public class CommandLoader
                 }
             }
         }
+    }
+
+    private static Reflections cachedReflections = null;
+    private static Reflections getReflections(String pack)
+    {
+        if (cachedReflections == null)
+        {
+            cachedReflections = new Reflections(pack);
+        }
+        return cachedReflections;
     }
 }

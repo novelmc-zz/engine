@@ -12,7 +12,10 @@ import net.novelmc.novelengine.rank.architect.ArchitectList;
 import net.novelmc.novelengine.rank.staff.StaffList;
 import net.novelmc.novelengine.util.NLog;
 import net.novelmc.novelengine.util.SQLManager;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.Arrays;
 
 public class NovelEngine extends JavaPlugin
 {
@@ -64,6 +67,8 @@ public class NovelEngine extends JavaPlugin
         playerListener = new PlayerListener(plugin);
         serverListener = new ServerListener(plugin);
         eventModeListener = new EventModeListener(plugin);
+
+        commandLoader.registerCommands();
 
 
         NLog.info("The plugin has been enabled!");
