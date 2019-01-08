@@ -1,5 +1,7 @@
 language: java
 
+if: branch = master
+
 notifications:
   email: false
 
