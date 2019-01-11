@@ -18,8 +18,8 @@ public enum Rank implements Displayable
     TRAINEE("a", "Trainee", "TRAINEE", ChatColor.DARK_AQUA),
     MOD("a", "Mod", "MOD", ChatColor.GOLD),
     SENIOR_MOD("a", "Senior Mod", "SRMOD", ChatColor.GOLD),
-    ADMIN("an", "Admin", "ADMIN", ChatColor.RED),
-    MANAGER("a", "Manager", "MANAGER", ChatColor.BLUE),
+    ADMIN("an", "Admin", "ADMIN", ChatColor.BLUE),
+    MANAGER("a", "Manager", "MANAGER", ChatColor.RED),
     CONSOLE("the", "Console", "CONSOLE", ChatColor.DARK_RED);
 
     private final String determiner;
@@ -93,14 +93,9 @@ public enum Rank implements Displayable
 
     public static Displayable getDisplay(Player player)
     {
-        if (StaffList.getStaff(player).isAdvisor())
+        if (StaffList.getStaff(player).isDirector())
         {
             return Title.ADVISOR;
-        }
-
-        if (StaffList.getStaff(player).isLeader())
-        {
-            return Title.LEADER;
         }
 
         if (NUtil.DEVELOPERS.contains(player.getName()))
