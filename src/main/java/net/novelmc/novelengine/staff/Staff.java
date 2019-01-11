@@ -33,6 +33,9 @@ public class Staff
     @Getter
     @Setter
     private boolean leader = false;
+    @Getter
+    @Setter
+    private boolean director = false;
 
 
     public Staff(String configKey)
@@ -65,7 +68,8 @@ public class Staff
         sb.append(name).append(":\n")
                 .append(" - IPs: ").append(StringUtils.join(ips, ", ")).append("\n")
                 .append(" - Rank: ").append(rank.name()).append("\n")
-                .append(" - Active: ").append(active);
+                .append(" - Active: ").append(active).append("\n")
+                .append(" - Director: ").append(director);
         return sb.toString();
     }
 }
