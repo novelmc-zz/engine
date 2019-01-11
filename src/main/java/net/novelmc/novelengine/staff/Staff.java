@@ -46,8 +46,7 @@ public class Staff
         section.set("ips", Lists.newArrayList(ips));
         section.set("rank", rank.name());
         section.set("active", active);
-        section.set("advisor", advisor);
-        section.set("leader", leader);
+        section.set("director", director);
     }
 
     public void load(ConfigurationSection section)
@@ -56,8 +55,7 @@ public class Staff
         ips.addAll(section.getStringList("ips"));
         rank = Rank.findRank(section.getString("rank"));
         active = section.getBoolean("active", true);
-        advisor = section.getBoolean("advisor", false);
-        leader = section.getBoolean("leader", false);
+        director = section.getBoolean("director", false);
     }
 
     @Override
