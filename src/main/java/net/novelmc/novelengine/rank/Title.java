@@ -8,7 +8,7 @@ public enum Title implements Displayable
 
     ARCHITECT("an", "Architect", "ARCHITECT", ChatColor.GREEN),
     DEVELOPER("a", "Developer", "DEV", ChatColor.DARK_PURPLE),
-    DIRECTOR("a", "Director", "DIRECTOR", ChatColor.RED),
+    DIRECTOR("a", "Director", "DIRECTOR", ChatColor.RED);
 
     private final String determiner;
     @Getter
