@@ -8,5 +8,5 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
 !
   echo "Artifact upload status: "$?
 else
-  echo "Skipping artifact upload for pull request build."
+  echo "Skipping artifact upload on pull request"
 fi
