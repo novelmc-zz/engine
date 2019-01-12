@@ -8,8 +8,8 @@ public abstract class NovelBase
 {
 
     // So apparently Minecraft doesn't use the default OS line separator, will do more research on this later -Mafrans
-    public String NEW_LINE = /* System.getProperty("line.separator"); */ "\n";
+    public static String NEW_LINE = "\n"; // System.getProperty("line.separator");
 
-    public NovelEngine plugin = NovelEngine.plugin;
-    public Config config = plugin.config;
+    public static NovelEngine plugin = NovelEngine.plugin;
+    public static Config config = plugin.config;
 }

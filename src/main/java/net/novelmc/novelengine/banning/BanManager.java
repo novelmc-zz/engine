@@ -23,11 +23,9 @@ public class BanManager extends NovelBase
 
     @Getter
     private static List<Ban> bans;
-    private static NovelEngine plugin;
 
-    public BanManager(NovelEngine plugin)
+    public BanManager()
     {
-        BanManager.plugin = plugin;
         bans = new ArrayList<>();
         bans.clear();
         loadBans();
@@ -45,15 +43,12 @@ public class BanManager extends NovelBase
             {
                 ResultSet result = c.prepareStatement("SELECT * FROM bans").executeQuery();
                 while (result.next()) {
-                    Ban ban = new Ban();
-                    ban.setName(result.getString("name"));
-                    ban.setIp(result.getString("ip"));
-                    ban.setBy(result.getString("by"));
-                    ban.setReason(result.getString("reason"));
-                    ban.setExpiry(NUtil.getUnixDate(result.getLong("expiry")));
-                    BanType type = BanType.valueOf(result.getString("type"));
-                    ban.setType(type);
-                    bans.add(ban);
+                    addBan(result.getString("name"),
+                            result.getString("ip"),
+                            result.getString("by"),
+                            result.getString("reason"),
+                            new Date(result.getLong("expiry")),
+                            BanType.valueOf(result.getString("type")));
                 }
             } catch (SQLException ex)
             {
@@ -66,16 +61,14 @@ public class BanManager extends NovelBase
             JSONObject banJson = plugin.sqlManager.getDatabase().getJSONObject("bans");
             for(String key : banJson.keySet())
             {
-                Ban ban = new Ban();
                 JSONObject obj = banJson.getJSONObject(key);
-                ban.setName(obj.getString("name"));
-                ban.setIp(obj.getString("ip"));
-                ban.setBy(obj.getString("by"));
-                ban.setReason(obj.getString("reason"));
-                ban.setExpiry(NUtil.getUnixDate(obj.getLong("expiry")));
-                BanType type = BanType.valueOf(obj.getString("type"));
-                ban.setType(type);
-                bans.add(ban);
+
+                addBan(obj.getString("name"),
+                        obj.getString("ip"),
+                        obj.getString("by"),
+                        obj.getString("reason"),
+                        new Date(obj.getLong("expiry")),
+                        BanType.valueOf(obj.getString("type")));
             }
         }
 
@@ -83,9 +76,19 @@ public class BanManager extends NovelBase
         NLog.info("Successfully loaded " + bans.size() + " bans!");
     }
 
-    public static void removeExpiredBans()
-    {
-        bans.stream().filter((ban) -> (ban.isExpired())).forEach(bans::remove);
+    public static void addBan(String name, String ip, String by, String reason, Date expiry, BanType type) {
+        Ban ban = new Ban();
+        ban.setName(name);
+        ban.setIp(ip);
+        ban.setBy(by);
+        ban.setReason(reason);
+        ban.setExpiry(expiry);
+        ban.setType(type);
+
+        if (!isBanned(ban))
+        {
+            bans.add(ban);
+        }
     }
 
     public static void addBan(Ban ban)
@@ -99,38 +102,9 @@ public class BanManager extends NovelBase
         ban.save();
     }
 
-    public static void addBan(CommandSender sender, Player player, String reason, Date date, BanType type)
+    public static void removeExpiredBans()
     {
-        if (isBanned(player))
-        {
-            return;
-        }
-
-        Ban ban = new Ban();
-        ban.setName(player.getName());
-        ban.setIp(player.getAddress().getHostString());
-        ban.setBy(sender.getName());
-        ban.setReason(reason);
-        ban.setExpiry(date);
-        ban.setType(type);
-        addBan(ban);
-    }
-
-    public static void addBan(CommandSender sender, String name, String ip, String reason, Date date, BanType type)
-    {
-        if (getBan(name) != null)
-        {
-            return;
-        }
-
-        Ban ban = new Ban();
-        ban.setName(name);
-        ban.setIp(ip);
-        ban.setBy(sender.getName());
-        ban.setReason(reason);
-        ban.setExpiry(date);
-        ban.setType(type);
-        addBan(ban);
+        bans.stream().filter(Ban::isExpired).forEach(bans::remove);
     }
 
     public static void removeBan(Ban ban)

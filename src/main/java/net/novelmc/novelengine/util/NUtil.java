@@ -1,5 +1,6 @@
 package net.novelmc.novelengine.util;
 
+import net.novelmc.novelengine.rank.Displayable;
 import net.novelmc.novelengine.rank.Rank;
 import net.novelmc.novelengine.rank.staff.StaffList;
 import org.bukkit.Bukkit;
@@ -20,27 +21,52 @@ public class NUtil
 {
 
     public static final List<String> DEVELOPERS = Arrays.asList("_Fleek", "Super_", "untuned", "irix", "Mafrans");
-    public static String DATE_STORAGE_FORMAT = "EEE, d MMM yyyy HH:mm:ss Z";
+    public static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z", Locale.ENGLISH);
+
+    public enum MessageType
+    {
+        ALL,
+        STAFF_ONLY
+    }
+
+    public static void globalMessage(String message, MessageType messageType)
+    {
+        switch (messageType)
+        {
+            case ALL:
+                for(Player player : Bukkit.getOnlinePlayers())
+                {
+                    player.sendMessage(message);
+                }
+                break;
+
+            case STAFF_ONLY:
+                for(Player player : Bukkit.getOnlinePlayers())
+                {
+                    if(StaffList.isStaff(player))
+                    {
+                        player.sendMessage(message);
+                    }
+                }
+                break;
+        }
+    }
+
+    public static void globalMessage(String message)
+    {
+        globalMessage(message, MessageType.ALL);
+    }
 
     public static void playerAction(CommandSender sender, String action, boolean staffOnly)
     {
+        Displayable display = Rank.getDisplay(sender);
         if (staffOnly)
         {
-            for (Player player : Bukkit.getOnlinePlayers())
-            {
-                if (StaffList.isStaff(player))
-                {
-                    player.sendMessage(colorize("&8<-> &4&lSTAFF&r&8: &7" + action
-                            + " &8(" + Rank.getDisplay(sender).getColor() + Rank.getDisplay(sender).getTag()
-                            + " &7" + sender.getName() + "&8)&7"));
-                }
-            }
+            globalMessage(colorize(String.format("&8<-> &4&lSTAFF&r&8: &7%s &8(%s%s &7%s&8)&7", action, display.getColor(), display.getTag(), sender.getName())), MessageType.STAFF_ONLY);
         }
         else
         {
-            Bukkit.broadcastMessage(colorize("&8<-> &a&lSERVER&r&8: &7" + action
-                    + " &8(" + Rank.getDisplay(sender).getColor() + Rank.getDisplay(sender).getTag()
-                    + " &7" + sender.getName() + "&8)&7"));
+            globalMessage(colorize(String.format("&8<-> &a&lSERVER&r&8: &7%s &8(%s%s &7%s&8)&7", action, display.getColor(), display.getTag(), sender.getName())));
         }
     }
 
@@ -50,43 +76,6 @@ public class NUtil
     }
 
     // Credits: Start (TotalFreedom (Can't be bothered writing these))
-    public static String dateToString(Date date)
-    {
-        return new SimpleDateFormat(DATE_STORAGE_FORMAT, Locale.ENGLISH).format(date);
-    }
-
-    public static Date stringToDate(String date_str)
-    {
-        try
-        {
-            return new SimpleDateFormat(DATE_STORAGE_FORMAT, Locale.ENGLISH).parse(date_str);
-        }
-        catch (ParseException ex)
-        {
-            return new Date(0L);
-        }
-    }
-
-    public static Date getUnixDate(long unix)
-    {
-        return new Date(unix * 1000);
-    }
-
-    public static long getUnixTime()
-    {
-        return System.currentTimeMillis() / 1000L;
-    }
-
-    public static long getUnixTime(Date date)
-    {
-        if (date == null)
-        {
-            return 0;
-        }
-
-        return date.getTime() / 1000L;
-    }
-
     public static Date parseDateOffset(String time)
     {
         Pattern timePattern = Pattern.compile(

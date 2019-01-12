@@ -4,28 +4,27 @@ import lombok.Getter;
 import net.novelmc.novelengine.NovelEngine;
 import net.novelmc.novelengine.rank.Rank;
 import net.novelmc.novelengine.util.NLog;
+import net.novelmc.novelengine.util.NovelBase;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class StaffList
+public class StaffList extends NovelBase
 {
 
     @Getter
     private static List<Staff> staff;
     @Getter
     private static List<String> impostors;
-    private static NovelEngine plugin;
 
-    public StaffList(NovelEngine plugin)
+    public StaffList()
     {
         staff = new ArrayList<>();
         staff.clear();
         impostors = new ArrayList<>();
         impostors.clear();
-        this.plugin = plugin;
         loadStaff();
     }
 

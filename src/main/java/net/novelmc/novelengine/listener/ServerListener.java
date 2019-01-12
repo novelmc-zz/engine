@@ -13,7 +13,7 @@ import org.bukkit.event.server.ServerListPingEvent;
 public class ServerListener extends NovelBase implements Listener
 {
 
-    public ServerListener(NovelEngine plugin)
+    public ServerListener()
     {
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }

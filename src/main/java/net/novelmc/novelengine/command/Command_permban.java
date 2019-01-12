@@ -45,7 +45,7 @@ public class Command_permban extends CommandBase
                 return true;
             }
 
-            BanManager.addBan(sender, "", args[0], reason, null, BanType.PERMANENT_IP);
+            BanManager.addBan("", args[0], sender.getName(), reason, null, BanType.PERMANENT_IP);
             sender.sendMessage(ChatColor.GRAY + "Added permanent ban for IP " + args[0]);
             return true;
         }
@@ -57,7 +57,7 @@ public class Command_permban extends CommandBase
             return true;
         }
 
-        BanManager.addBan(sender, args[0], null, reason, null, BanType.PERMANENT_NAME);
+        BanManager.addBan(args[0], null, sender.getName(), reason, null, BanType.PERMANENT_NAME);
         sender.sendMessage(ChatColor.GRAY + "Added permanent ban for name " + args[0]);
         return true;
     }

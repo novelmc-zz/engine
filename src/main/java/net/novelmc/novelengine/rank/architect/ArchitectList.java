@@ -3,28 +3,27 @@ package net.novelmc.novelengine.rank.architect;
 import lombok.Getter;
 import net.novelmc.novelengine.NovelEngine;
 import net.novelmc.novelengine.util.NLog;
+import net.novelmc.novelengine.util.NovelBase;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ArchitectList
+public class ArchitectList extends NovelBase
 {
 
     @Getter
     private static List<Architect> architects;
     @Getter
     private static List<String> impostors;
-    private static NovelEngine plugin;
 
-    public ArchitectList(NovelEngine plugin)
+    public ArchitectList()
     {
         architects = new ArrayList<>();
         architects.clear();
         impostors = new ArrayList<>();
         impostors.clear();
-        this.plugin = plugin;
         loadArchitects();
     }
 

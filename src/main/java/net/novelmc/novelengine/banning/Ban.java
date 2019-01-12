@@ -2,16 +2,13 @@ package net.novelmc.novelengine.banning;
 
 import lombok.Getter;
 import lombok.Setter;
-import net.novelmc.novelengine.NovelEngine;
 import net.novelmc.novelengine.util.NLog;
 import net.novelmc.novelengine.util.NUtil;
 import net.novelmc.novelengine.util.NovelBase;
 import net.novelmc.novelengine.util.SQLManager;
 import org.bukkit.ChatColor;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -61,7 +58,7 @@ public class Ban extends NovelBase
                     + "Your IP address is currently banned from this server." + NEW_LINE
                     + "Reason: " + ChatColor.YELLOW + (reason != null ? reason : "Reason not specified") + NEW_LINE
                     + ChatColor.RED + "Your ban will expire on "
-                    + ChatColor.YELLOW + NUtil.dateToString(expiry);
+                    + ChatColor.YELLOW + NUtil.DATE_FORMAT.format(expiry);
         }
 
         // Normal ban
@@ -70,7 +67,7 @@ public class Ban extends NovelBase
                 + "Reason: " + ChatColor.YELLOW + (reason != null ? reason : "Reason not specified") + NEW_LINE
                 + ChatColor.RED + "Banned by: " + ChatColor.YELLOW + by + NEW_LINE
                 + ChatColor.RED + "Your ban will expire on "
-                + ChatColor.YELLOW + NUtil.dateToString(expiry);
+                + ChatColor.YELLOW + NUtil.DATE_FORMAT.format(expiry);
     }
 
     public boolean isExpired()
@@ -94,7 +91,7 @@ public class Ban extends NovelBase
                 statement.setString(2, ip);
                 statement.setString(3, by);
                 statement.setString(4, reason);
-                statement.setLong(5, NUtil.getUnixTime(expiry));
+                statement.setLong(5, expiry.getTime());
                 statement.setString(6, type.toString());
                 statement.executeUpdate();
             } catch (SQLException ex) {

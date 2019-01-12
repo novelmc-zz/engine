@@ -2,6 +2,7 @@ package net.novelmc.novelengine.listener;
 
 import net.novelmc.novelengine.NovelEngine;
 import net.novelmc.novelengine.rank.staff.StaffList;
+import net.novelmc.novelengine.util.NovelBase;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
@@ -10,14 +11,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
 
-public class EventModeListener implements Listener
+public class EventModeListener extends NovelBase implements Listener
 {
 
-    private static NovelEngine plugin;
-
-    public EventModeListener(NovelEngine plugin)
+    public EventModeListener()
     {
-        this.plugin = plugin;
         Bukkit.getServer().getPluginManager().registerEvents(this, plugin);
     }
 

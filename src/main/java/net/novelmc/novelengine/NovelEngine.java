@@ -11,6 +11,7 @@ import net.novelmc.novelengine.listener.ServerListener;
 import net.novelmc.novelengine.rank.architect.ArchitectList;
 import net.novelmc.novelengine.rank.staff.StaffList;
 import net.novelmc.novelengine.util.NLog;
+import net.novelmc.novelengine.util.PlayerDatabase;
 import net.novelmc.novelengine.util.SQLManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -27,6 +28,7 @@ public class NovelEngine extends JavaPlugin
     public Config config;
     public EventModeListener eventModeListener;
     public PlayerListener playerListener;
+    public PlayerDatabase playerDatabase;
     public ServerListener serverListener;
     public SQLManager sqlManager;
     public StaffConfig staffConfig;
@@ -60,13 +62,14 @@ public class NovelEngine extends JavaPlugin
             return;
         }
 
-        staffList = new StaffList(plugin);
-        architectList = new ArchitectList(plugin);
-        banManager = new BanManager(plugin);
+        staffList = new StaffList();
+        architectList = new ArchitectList();
+        banManager = new BanManager();
         commandLoader = new CommandLoader("Command_");
-        playerListener = new PlayerListener(plugin);
-        serverListener = new ServerListener(plugin);
-        eventModeListener = new EventModeListener(plugin);
+        playerListener = new PlayerListener();
+        playerDatabase = new PlayerDatabase();
+        serverListener = new ServerListener();
+        eventModeListener = new EventModeListener();
 
         commandLoader.registerCommands();
 

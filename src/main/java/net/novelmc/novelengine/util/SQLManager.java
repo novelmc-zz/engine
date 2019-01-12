@@ -22,7 +22,7 @@ public class SQLManager
     private static Connection connection;
     private NovelEngine plugin;
     private File file;
-    private final String defaultJson = "{\"bans\":{}}";
+    private final String defaultJson = "{\"bans\":{}, \"players\":{}}";
 
     public SQLManager(NovelEngine plugin)
     {
@@ -78,6 +78,11 @@ public class SQLManager
                 + "expiry LONG NOT NULL,"
                 + "type SET('PERMANENT_NAME', 'PERMANENT_IP', 'IP', 'NORMAL') NOT NULL)";
         c.prepareStatement(bans).executeUpdate();
+
+        String players = "CREATE TABLE IF NOT EXISTS players ("
+                + "name TEXT,"
+                + "ip VARCHAR(64))";
+        c.prepareStatement(players).executeUpdate();
     }
 
     private boolean generateJson(File file)

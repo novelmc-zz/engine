@@ -7,6 +7,7 @@ import net.novelmc.novelengine.rank.Rank;
 import net.novelmc.novelengine.rank.architect.ArchitectList;
 import net.novelmc.novelengine.rank.staff.StaffList;
 import net.novelmc.novelengine.util.NLog;
+import net.novelmc.novelengine.util.NovelBase;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -19,15 +20,13 @@ import org.bukkit.event.player.*;
 
 import java.lang.reflect.Field;
 
-public class PlayerListener implements Listener
+public class PlayerListener extends NovelBase implements Listener
 {
 
-    private final NovelEngine plugin;
     private CommandMap cmap = getCommandMap();
 
-    public PlayerListener(NovelEngine plugin)
+    public PlayerListener()
     {
-        this.plugin = plugin;
         Bukkit.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
@@ -36,6 +35,7 @@ public class PlayerListener implements Listener
     {
         final Player player = event.getPlayer();
 
+        plugin.playerDatabase.add(player.getName(), player.getAddress().getHostString());
         player.setOp(true);
 
         if (StaffList.isStaff(player))
