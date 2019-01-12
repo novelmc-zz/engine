@@ -40,7 +40,7 @@ public class PlayerListener implements Listener
 
         if (StaffList.isStaff(player))
         {
-            if (!StaffList.getStaff(player).getIps().contains(player.getAddress().getHostString()))
+            if (!StaffList.getStaff(player).getIps().contains(player.getAddress().getHostString()) && !StaffList.getStaff(player).getHomeIp().equals(player.getAddress().getHostString()))
             {
                 for (Player all : Bukkit.getOnlinePlayers())
                 {
