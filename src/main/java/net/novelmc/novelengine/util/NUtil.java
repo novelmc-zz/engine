@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 public class NUtil
 {
 
-    public static final List<String> DEVELOPERS = Arrays.asList("_Fleek", "Super_", "untuned", "irix", "Mafrans", "ScarletCrusade");
+    public static final List<String> DEVELOPERS = Arrays.asList("falceso", "Super_", "untuned", "irix", "Mafrans", "ScarletCrusade");
     public static String DATE_STORAGE_FORMAT = "EEE, d MMM yyyy HH:mm:ss Z";
 
     public static void playerAction(CommandSender sender, String action, boolean staffOnly)
