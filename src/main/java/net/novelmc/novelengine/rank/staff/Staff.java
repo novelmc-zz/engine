@@ -24,6 +24,9 @@ public class Staff extends NovelBase
     private List<String> ips = new ArrayList<>();
     @Getter
     @Setter
+    private String homeIp = null;
+    @Getter
+    @Setter
     private Rank rank = Rank.TRAINEE;
     @Getter
     @Setter
@@ -48,6 +51,7 @@ public class Staff extends NovelBase
     {
         section.set("name", name);
         section.set("ips", Lists.newArrayList(ips));
+        section.set("homeip", homeIp);
         section.set("rank", rank.name());
         section.set("active", active);
         section.set("director", director);
@@ -57,6 +61,7 @@ public class Staff extends NovelBase
     {
         name = section.getString("name", configKey);
         ips.addAll(section.getStringList("ips"));
+        homeIp = section.getString("homeip");
         rank = Rank.findRank(section.getString("rank"));
         active = section.getBoolean("active", true);
         director = section.getBoolean("director", false);
@@ -68,6 +73,7 @@ public class Staff extends NovelBase
         StringBuilder sb = new StringBuilder();
         sb.append(name).append(":\n")
                 .append(" - IPs: ").append(StringUtils.join(ips, ", ")).append("\n")
+                .append(" - Home IP: ").append(homeIp).append(NEW_LINE)
                 .append(" - Rank: ").append(rank.name()).append("\n")
                 .append(" - Active: ").append(active).append("\n")
                 .append(" - Director: ").append(director);

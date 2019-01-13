@@ -8,8 +8,9 @@ general:
   name: NovelMC
 
   # MOTD (shown on server list) - Color codes supported [&] and 2 lines motd [||] available
-  motd: '&3Novel&9MC||1.13.2'
-
+  motd:
+    - "&3Novel&9MC"
+    - "&a1.13.2"
   # Website - useful to link to the forum for ban appeals, admin applications etc
   website: http://novelmc.net/
 
