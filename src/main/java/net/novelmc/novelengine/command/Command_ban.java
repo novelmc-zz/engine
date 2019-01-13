@@ -38,7 +38,7 @@ public class Command_ban extends CommandBase
         {
             if (BanManager.isIPBanned(args[0]))
             {
-                sender.sendMessage(ChatColor.DARK_GRAY + "That IP is already banned!");
+                sender.sendMessage(ChatColor.GRAY + "That IP address is currently banned.");
                 return true;
             }
 
@@ -48,7 +48,7 @@ public class Command_ban extends CommandBase
             }
             else
             {
-                sender.sendMessage(ChatColor.DARK_GRAY + "You must specify a reason!");
+                sender.sendMessage(ChatColor.GRAY + "A reason must be specified.");
                 return true;
             }
 
@@ -71,7 +71,7 @@ public class Command_ban extends CommandBase
 
             if (player.isBanned())
             {
-                sender.sendMessage(ChatColor.DARK_GRAY + "That player is already banned!");
+                sender.sendMessage(ChatColor.GRAY + "That player has already been banned.");
                 return true;
             }
 

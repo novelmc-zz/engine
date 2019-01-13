@@ -19,8 +19,7 @@ public class Command_creative extends CommandBase
     {
         Player player = (Player) sender;
         player.setGameMode(GameMode.CREATIVE);
-        sender.sendMessage(ChatColor.GRAY + "Your gamemode have been set to creative!");
+        sender.sendMessage(ChatColor.GRAY + "Your gamemode has been set to creative.");
         return true;
     }
 }
-

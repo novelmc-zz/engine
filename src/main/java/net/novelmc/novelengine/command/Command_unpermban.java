@@ -41,7 +41,7 @@ public class Command_unpermban extends CommandBase
                 }
             }
 
-            sender.sendMessage(ChatColor.RED + "That IP is not permanently banned!");
+            sender.sendMessage(ChatColor.GRAY + "That IP-address has not been permanently banned.");
             return true;
         }
 
@@ -54,7 +54,7 @@ public class Command_unpermban extends CommandBase
                 return true;
             }
         }
-        sender.sendMessage(ChatColor.RED + "That name is not permanently banned!");
+        sender.sendMessage(ChatColor.GRAY + "That name has not been permanently banned!");
         return true;
     }
 }

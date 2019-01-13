@@ -32,7 +32,7 @@ public class Command_rank extends CommandBase
 
         if (!(sender instanceof Player))
         {
-            sender.sendMessage(ChatColor.DARK_GRAY + "Users from console can only execute this command to check players' ranks!");
+            sender.sendMessage(ChatColor.GRAY + "Users from console may only execute this command.");
             return true;
         }
 

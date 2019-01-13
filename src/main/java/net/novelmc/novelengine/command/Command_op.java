@@ -26,7 +26,7 @@ public class Command_op extends CommandBase
         Player player = Bukkit.getPlayer(args[0]);
         if (player == null)
         {
-            sender.sendMessage(ChatColor.RED + "Cannot find that player!");
+            sender.sendMessage(ChatColor.GRAY + "That player could not be found.");
             return true;
         }
 

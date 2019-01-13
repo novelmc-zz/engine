@@ -19,7 +19,7 @@ public class Command_spectator extends CommandBase
     {
         Player player = (Player) sender;
         player.setGameMode(GameMode.SPECTATOR);
-        sender.sendMessage(ChatColor.GRAY + "Your gamemode have been set to spectator!");
+        sender.sendMessage(ChatColor.GRAY + "Your gamemode has been set to spectator.");
         return true;
     }
 }

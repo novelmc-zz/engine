@@ -24,9 +24,6 @@ public class Staff extends NovelBase
     private List<String> ips = new ArrayList<>();
     @Getter
     @Setter
-    private String homeIp = null;
-    @Getter
-    @Setter
     private Rank rank = Rank.TRAINEE;
     @Getter
     @Setter
@@ -37,6 +34,9 @@ public class Staff extends NovelBase
     @Getter
     @Setter
     private boolean leader = false;
+    @Getter
+    @Setter
+    private boolean director = false;
 
 
     public Staff(String configKey)
@@ -48,33 +48,29 @@ public class Staff extends NovelBase
     {
         section.set("name", name);
         section.set("ips", Lists.newArrayList(ips));
-        section.set("homeip", homeIp);
         section.set("rank", rank.name());
         section.set("active", active);
-        section.set("advisor", advisor);
-        section.set("leader", leader);
+        section.set("director", director);
     }
 
     public void load(ConfigurationSection section)
     {
         name = section.getString("name", configKey);
         ips.addAll(section.getStringList("ips"));
-        homeIp = section.getString("homeip");
         rank = Rank.findRank(section.getString("rank"));
         active = section.getBoolean("active", true);
-        advisor = section.getBoolean("advisor", false);
-        leader = section.getBoolean("leader", false);
+        director = section.getBoolean("director", false);
     }
 
     @Override
     public String toString()
     {
         StringBuilder sb = new StringBuilder();
-        sb.append(name).append(":").append(NEW_LINE)
-                .append(" - IPs: ").append(StringUtils.join(ips, ", ")).append(NEW_LINE)
-                .append(" - Home IP: ").append(homeIp).append(NEW_LINE)
-                .append(" - Rank: ").append(rank.name()).append(NEW_LINE)
-                .append(" - Active: ").append(active);
+        sb.append(name).append(":\n")
+                .append(" - IPs: ").append(StringUtils.join(ips, ", ")).append("\n")
+                .append(" - Rank: ").append(rank.name()).append("\n")
+                .append(" - Active: ").append(active).append("\n")
+                .append(" - Director: ").append(director);
         return sb.toString();
     }
 }
