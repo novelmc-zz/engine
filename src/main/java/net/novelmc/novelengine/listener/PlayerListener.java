@@ -1,12 +1,12 @@
 package net.novelmc.novelengine.listener;
 
-import net.novelmc.novelengine.NovelEngine;
 import net.novelmc.novelengine.banning.Ban;
 import net.novelmc.novelengine.banning.BanManager;
 import net.novelmc.novelengine.rank.Rank;
 import net.novelmc.novelengine.rank.architect.ArchitectList;
 import net.novelmc.novelengine.rank.staff.StaffList;
 import net.novelmc.novelengine.util.NLog;
+import net.novelmc.novelengine.util.NUtil;
 import net.novelmc.novelengine.util.NovelBase;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
@@ -117,8 +117,11 @@ public class PlayerListener extends NovelBase implements Listener
     }
 
     @EventHandler
-    public void onPlayerChat(AsyncPlayerChatEvent event)
-    {
+    public void onPlayerChat(AsyncPlayerChatEvent event) {
+
+        if (StaffList.isStaff(event.getPlayer()) && event.getMessage().startsWith(">")) {
+            NUtil.globalMessage(NUtil.colorize("&b»&6»&a» &7" + event.getPlayer() + Rank.getDisplay(event.getPlayer()).getTag() + "&8» ") + ChatColor.WHITE + event.getMessage(), NUtil.MessageType.STAFF_ONLY);
+        }
         event.setFormat(Rank.getDisplay(event.getPlayer()).getTag() + " " + ChatColor.GRAY + event.getPlayer().getDisplayName() + ChatColor.DARK_GRAY + ": " + ChatColor.WHITE + event.getMessage());
     }
 
