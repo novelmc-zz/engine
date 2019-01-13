@@ -19,9 +19,9 @@ public class Command_say
             return false;
         }
 
-        Bukkit.broadcastMessage(NUtil.colorize("&8<-> &3&lINFO &r&8("
-                + Rank.getDisplay(sender).getColor() + Rank.getDisplay(sender).getTag()
-                + " &7" + sender.getName() + "&8)&7: &f")
+        Bukkit.broadcastMessage(NUtil.colorize("&8<-> &3&lINFO"
+                + " &7" + sender.getName()
+                + Rank.getDisplay(sender).getColor() + Rank.getDisplay(sender).getTag() + "&8» &f")
                 + StringUtils.join(args, " ", 0, args.length));
         return true;
     }
