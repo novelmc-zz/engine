@@ -12,14 +12,14 @@ import org.bukkit.entity.Player;
 public enum Rank implements Displayable
 {
 
-    IMPOSTOR("an", "Impostor", "IMPOSTOR", ChatColor.WHITE),
+    IMPOSTOR("an", "Impostor", "IMP", ChatColor.WHITE),
     NON_OP("a", "Non-Op", "", ChatColor.WHITE),
-    OP("a", "Member", "MEMBER", ChatColor.WHITE),
-    TRAINEE("a", "Trainee", "TRAINEE", ChatColor.DARK_AQUA),
+    OP("a", "Member", "MBR", ChatColor.WHITE),
+    TRAINEE("a", "Trainee", "TRN", ChatColor.DARK_AQUA),
     MOD("a", "Mod", "MOD", ChatColor.GOLD),
-    SENIOR_MOD("a", "Senior Mod", "SRMOD", ChatColor.GOLD),
-    ADMIN("an", "Admin", "ADMIN", ChatColor.BLUE),
-    MANAGER("a", "Manager", "MANAGER", ChatColor.RED),
+    SENIOR_MOD("a", "Senior Mod", "SRM", ChatColor.GOLD),
+    ADMIN("an", "Admin", "ADM", ChatColor.BLUE),
+    MANAGER("a", "Manager", "SRA", ChatColor.BLUE),
     CONSOLE("the", "Console", "CONSOLE", ChatColor.DARK_RED);
 
     private final String determiner;
