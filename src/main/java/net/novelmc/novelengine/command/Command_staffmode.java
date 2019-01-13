@@ -17,7 +17,7 @@ public class Command_staffmode extends CommandBase {
     NovelEngine plugin = NovelEngine.getPlugin(NovelEngine.class);
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
     {
-        boolean staffmode = plugin.config.isSQLEnabled();
+        boolean staffmode = plugin.config.isStaffModeEnabled();
         if (Rank.getDisplay(sender).getTag().equalsIgnoreCase(Title.DEVELOPER.getTag()) || Rank.getRank(sender).isAtLeast(Rank.MANAGER))
         {
             if (args.length > 1){
@@ -27,11 +27,13 @@ public class Command_staffmode extends CommandBase {
             }
             if (args.length == 0){
                 if (staffmode){
-                    plugin.getConfig().set("general.staffmode", false);
+                    plugin.config.set("general.staffmode", false);
+                    plugin.config.save();
                     NUtil.playerAction(sender, "Turning off staffmode", false);
                     return true;
-                } else {
-                    plugin.getConfig().set("general.staffmode", true);
+                } else if (!staffmode){
+                    plugin.config.set("general.staffmode", true);
+                    plugin.config.save();
                     NUtil.playerAction(sender, "Turning on staffmode", false);
                     return true;
                 }
@@ -42,7 +44,8 @@ public class Command_staffmode extends CommandBase {
                     sender.sendMessage(ChatColor.RED + "StaffMode is already enabled.");
                     return true;
                 }
-                plugin.getConfig().set("general.staffmode", true);
+                plugin.config.set("general.staffmode", true);
+                plugin.config.save();
                 NUtil.playerAction(sender, "Turning on staffmode", false);
                 return true;
             }
@@ -52,7 +55,8 @@ public class Command_staffmode extends CommandBase {
                     sender.sendMessage(ChatColor.RED + "StaffMode is already disabled.");
                     return true;
                 }
-                plugin.getConfig().set("general.staffmode", false);
+                plugin.config.set("general.staffmode", false);
+                plugin.config.save();
                 NUtil.playerAction(sender, "Turning off staffmode", false);
                 return true;
             }

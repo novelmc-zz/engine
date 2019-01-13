@@ -54,7 +54,9 @@ public class NovelEngine extends JavaPlugin
         config.load();
         staffConfig.load();
         architectConfig.load();
-
+        config.save();
+        staffConfig.save();
+        architectConfig.save();
         sqlManager = new SQLManager(plugin);
 
         if (!sqlManager.init())
@@ -79,9 +81,7 @@ public class NovelEngine extends JavaPlugin
 
 
         NLog.info("The plugin has been enabled!");
-        config.save();
-        staffConfig.save();
-        architectConfig.save();
+
     }
 
     @Override
