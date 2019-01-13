@@ -68,12 +68,12 @@ public class NovelEngine extends JavaPlugin
 
         staffList = new StaffList();
         architectList = new ArchitectList();
-        banManager = new BanManager();
+        banManager = new BanManager(this);
         commandLoader = new CommandLoader("Command_");
         playerListener = new PlayerListener();
         playerDatabase = new PlayerDatabase();
-        serverListener = new ServerListener();
-        eventModeListener = new EventModeListener();
+        serverListener = new ServerListener(this);
+        eventModeListener = new EventModeListener(this);
         pteroManager = new PteroManager();
         pteroManager.connect(getConfig().getString("pterodactyl.apikey"));
 
