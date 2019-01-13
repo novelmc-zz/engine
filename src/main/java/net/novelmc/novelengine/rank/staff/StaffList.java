@@ -95,10 +95,13 @@ public class StaffList extends NovelBase
             return;
         }
 
+        s.setName(null);
+        s.setIps(null);;
         staff.remove(s);
-        s.setActive(false);
-        staff.add(s);
         s.save(plugin.staffConfig.getConfigurationSection(s.getConfigKey()));
+        plugin.staffConfig.set(s.getName(), null);
+        plugin.staffConfig.save();
+
     }
 
     public static void updateRank(Player player, Rank rank)

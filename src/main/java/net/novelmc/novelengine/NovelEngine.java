@@ -73,21 +73,21 @@ public class NovelEngine extends JavaPlugin
         serverListener = new ServerListener();
         eventModeListener = new EventModeListener();
         pteroManager = new PteroManager();
+        pteroManager.connect(getConfig().getString("pterodactyl.apikey"));
 
         commandLoader.registerCommands();
 
 
         NLog.info("The plugin has been enabled!");
+        config.save();
+        staffConfig.save();
+        architectConfig.save();
     }
 
     @Override
     public void onDisable()
     {
-        plugin = null;
 
-        config.save();
-        staffConfig.save();
-        architectConfig.save();
 
         NLog.info("The plugin has been disabled!");
     }

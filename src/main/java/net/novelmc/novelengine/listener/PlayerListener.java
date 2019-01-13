@@ -128,7 +128,11 @@ public class PlayerListener extends NovelBase implements Listener
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event)
     {
-        event.setFormat(Rank.getDisplay(event.getPlayer()).getTag() + " " + ChatColor.GRAY + event.getPlayer().getDisplayName() + ChatColor.DARK_GRAY + ": " + ChatColor.WHITE + event.getMessage());
+        if (StaffList.isStaff(event.getPlayer())){
+            event.setFormat(ChatColor.GRAY + event.getPlayer().getName() + " " + Rank.getDisplay(event.getPlayer()).getTag() + ChatColor.RESET + ChatColor.DARK_GRAY + " » " + ChatColor.WHITE + event.getMessage());
+            return;
+        }
+        event.setFormat(ChatColor.GRAY + event.getPlayer().getName() + ChatColor.RESET + ChatColor.DARK_GRAY + " » " + ChatColor.WHITE + event.getMessage());
     }
 
     @EventHandler

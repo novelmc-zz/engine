@@ -3,6 +3,7 @@ package net.novelmc.novelengine.rank;
 import lombok.Getter;
 import net.novelmc.novelengine.NovelEngine;
 import net.novelmc.novelengine.rank.architect.ArchitectList;
+import net.novelmc.novelengine.rank.staff.Staff;
 import net.novelmc.novelengine.rank.staff.StaffList;
 import net.novelmc.novelengine.util.NUtil;
 import org.bukkit.ChatColor;
@@ -93,14 +94,12 @@ public enum Rank implements Displayable
 
     public static Displayable getDisplay(Player player)
     {
-        if (StaffList.getStaff(player).isAdvisor())
-        {
-            return Title.ADVISOR;
-        }
-
-        if (StaffList.getStaff(player).isLeader())
-        {
-            return Title.LEADER;
+        if (StaffList.isStaff(player)){
+            if (StaffList.getStaff(player).isAdvisor()){
+                return Title.ADVISOR;
+            } else if (StaffList.getStaff(player).isLeader()){
+                return Title.LEADER;
+            }
         }
 
         if (NUtil.DEVELOPERS.contains(player.getName()))
