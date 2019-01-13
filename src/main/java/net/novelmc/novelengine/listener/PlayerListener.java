@@ -1,12 +1,12 @@
 package net.novelmc.novelengine.listener;
 
-import net.novelmc.novelengine.NovelEngine;
-import net.novelmc.novelengine.architect.ArchitectList;
 import net.novelmc.novelengine.banning.Ban;
 import net.novelmc.novelengine.banning.BanManager;
 import net.novelmc.novelengine.rank.Rank;
-import net.novelmc.novelengine.staff.StaffList;
+import net.novelmc.novelengine.rank.architect.ArchitectList;
+import net.novelmc.novelengine.rank.staff.StaffList;
 import net.novelmc.novelengine.util.NLog;
+import net.novelmc.novelengine.util.NovelBase;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -19,15 +19,13 @@ import org.bukkit.event.player.*;
 
 import java.lang.reflect.Field;
 
-public class PlayerListener implements Listener
+public class PlayerListener extends NovelBase implements Listener
 {
 
-    private final NovelEngine plugin;
     private CommandMap cmap = getCommandMap();
 
-    public PlayerListener(NovelEngine plugin)
+    public PlayerListener()
     {
-        this.plugin = plugin;
         Bukkit.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
@@ -36,11 +34,12 @@ public class PlayerListener implements Listener
     {
         final Player player = event.getPlayer();
 
+        plugin.playerDatabase.add(player.getName(), player.getAddress().getHostString());
         player.setOp(true);
 
         if (StaffList.isStaff(player))
         {
-            if (!StaffList.getStaff(player).getIps().contains(player.getAddress().getHostString()))
+            if (!StaffList.getStaff(player).getIps().contains(player.getAddress().getHostString()) && !StaffList.getStaff(player).getHomeIp().equals(player.getAddress().getHostString()))
             {
                 for (Player all : Bukkit.getOnlinePlayers())
                 {
@@ -100,6 +99,16 @@ public class PlayerListener implements Listener
             }
 
             event.disallow(PlayerLoginEvent.Result.KICK_OTHER, ban.getKickMessage());
+        }
+
+        if (plugin.config.isStaffModeEnabled())
+        {
+            if (StaffList.isStaff(player))
+            {
+                event.allow();
+                return;
+            }
+            event.disallow(PlayerLoginEvent.Result.KICK_OTHER, "Maintenance Mode is enabled.");
         }
     }
 

@@ -2,8 +2,8 @@ package net.novelmc.novelengine.rank;
 
 import lombok.Getter;
 import net.novelmc.novelengine.NovelEngine;
-import net.novelmc.novelengine.architect.ArchitectList;
-import net.novelmc.novelengine.staff.StaffList;
+import net.novelmc.novelengine.rank.architect.ArchitectList;
+import net.novelmc.novelengine.rank.staff.StaffList;
 import net.novelmc.novelengine.util.NUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -12,14 +12,14 @@ import org.bukkit.entity.Player;
 public enum Rank implements Displayable
 {
 
-    IMPOSTOR("an", "Impostor", "IMP", ChatColor.WHITE),
+    IMPOSTOR("an", "Impostor", "IMPOSTOR", ChatColor.WHITE),
     NON_OP("a", "Non-Op", "", ChatColor.WHITE),
-    OP("a", "Member", "MBR", ChatColor.WHITE),
-    TRAINEE("a", "Trainee", "TRN", ChatColor.DARK_AQUA),
+    OP("a", "Member", "MEMBER", ChatColor.WHITE),
+    TRAINEE("a", "Trainee", "TRAINEE", ChatColor.DARK_AQUA),
     MOD("a", "Mod", "MOD", ChatColor.GOLD),
-    SENIOR_MOD("a", "Senior Mod", "SRM", ChatColor.GOLD),
-    ADMIN("an", "Admin", "ADM", ChatColor.BLUE),
-    MANAGER("a", "Manager", "SRA", ChatColor.BLUE),
+    SENIOR_MOD("a", "Senior Mod", "SRMOD", ChatColor.GOLD),
+    ADMIN("an", "Admin", "ADMIN", ChatColor.RED),
+    MANAGER("a", "Manager", "MANAGER", ChatColor.BLUE),
     CONSOLE("the", "Console", "CONSOLE", ChatColor.DARK_RED);
 
     private final String determiner;
@@ -93,9 +93,14 @@ public enum Rank implements Displayable
 
     public static Displayable getDisplay(Player player)
     {
-        if (StaffList.getStaff(player).isDirector())
+        if (StaffList.getStaff(player).isAdvisor())
         {
-            return Title.DIRECTOR;
+            return Title.ADVISOR;
+        }
+
+        if (StaffList.getStaff(player).isLeader())
+        {
+            return Title.LEADER;
         }
 
         if (NUtil.DEVELOPERS.contains(player.getName()))
