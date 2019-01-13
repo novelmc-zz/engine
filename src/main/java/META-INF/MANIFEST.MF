@@ -1,0 +1,40 @@
+Manifest-Version: 1.0
+Bundle-Description: Reflections - a Java runtime metadata analysis
+Bundle-License: http://www.wtfpl.net/, http://www.opensource.org/licen
+ ses/bsd-license.html
+Bundle-SymbolicName: org.reflections
+Archiver-Version: Plexus Archiver
+Built-By: ron
+Bnd-LastModified: 1490358733199
+Bundle-ManifestVersion: 2
+Import-Package: com.google.common.base;version="[20.0,21)",com.google.
+ common.collect;version="[20.0,21)",com.google.common.io;version="[20.
+ 0,21)",com.google.common.util.concurrent;version="[20.0,21)",com.goog
+ le.gson;resolution:=optional,javassist;version="[3.21,4)",javassist.b
+ ytecode;version="[3.21,4)",javassist.bytecode.annotation;version="[3.
+ 21,4)",javassist.expr;version="[3.21,4)",javax.annotation;version="[3
+ .0,4)",javax.servlet;resolution:=optional,org.dom4j;resolution:=optio
+ nal,org.dom4j.io;resolution:=optional,org.reflections,org.reflections
+ .adapters,org.reflections.scanners,org.reflections.serializers,org.re
+ flections.util,org.reflections.vfs,org.slf4j;version="[1.7,2)";resolu
+ tion:=optional
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+Tool: Bnd-3.2.0.201605172007
+Export-Package: org.reflections;uses:="com.google.common.base,com.goog
+ le.common.collect,javax.annotation,org.reflections.adapters,org.refle
+ ctions.scanners,org.reflections.serializers,org.slf4j";version="0.9.1
+ 1",org.reflections.adapters;uses:="javassist.bytecode,javax.annotatio
+ n,org.reflections.vfs";version="0.9.11",org.reflections.scanners;uses
+ :="com.google.common.base,com.google.common.collect,javax.annotation,
+ org.reflections,org.reflections.adapters,org.reflections.vfs";version
+ ="0.9.11",org.reflections.serializers;uses:="org.reflections";version
+ ="0.9.11",org.reflections.util;uses:="com.google.common.base,javax.an
+ notation,javax.servlet,org.reflections,org.reflections.adapters,org.r
+ eflections.scanners,org.reflections.serializers,org.slf4j";version="0
+ .9.11",org.reflections.vfs;uses:="com.google.common.base,javax.annota
+ tion";version="0.9.11"
+Bundle-Name: Reflections
+Bundle-Version: 0.9.11
+Created-By: Apache Maven Bundle Plugin
+Build-Jdk: 1.8.0_101
+
