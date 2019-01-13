@@ -118,10 +118,11 @@ public class PlayerListener extends NovelBase implements Listener
 
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
-
+//Trying to recover some of the deleted stuff
         if (StaffList.isStaff(event.getPlayer()) && event.getMessage().startsWith(">")) {
             NUtil.globalMessage(NUtil.colorize("&b»&6»&a» &7" + event.getPlayer() + Rank.getDisplay(event.getPlayer()).getTag() + "&8» ") + ChatColor.WHITE + event.getMessage(), NUtil.MessageType.STAFF_ONLY);
         }
+
         event.setFormat(Rank.getDisplay(event.getPlayer()).getTag() + " " + ChatColor.GRAY + event.getPlayer().getDisplayName() + ChatColor.DARK_GRAY + ": " + ChatColor.WHITE + event.getMessage());
     }
 
