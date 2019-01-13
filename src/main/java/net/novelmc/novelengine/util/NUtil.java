@@ -62,11 +62,11 @@ public class NUtil
         Displayable display = Rank.getDisplay(sender);
         if (staffOnly)
         {
-            globalMessage(colorize(String.format("&8<-> &4&lSTAFF&r&8: &7%s &8(%s%s &7%s&8)&7", action, display.getColor(), display.getTag(), sender.getName())), MessageType.STAFF_ONLY);
+            globalMessage(colorize(String.format("&8<-> &4&lSTAFF&r&8: &7%s &8(%s%s &7%s&8)&7", action, display.getColor(), sender.getName(), display.getTag())), MessageType.STAFF_ONLY);
         }
         else
         {
-            globalMessage(colorize(String.format("&8<-> &a&lSERVER&r&8: &7%s &8(%s%s &7%s&8)&7", action, display.getColor(), display.getTag(), sender.getName())));
+            globalMessage(colorize(String.format("&8<-> &a&lSERVER&r&8: &7%s &8(%s%s &7%s&8)&7", action, display.getColor(), sender.getName(), display.getTag())));
         }
     }
 
