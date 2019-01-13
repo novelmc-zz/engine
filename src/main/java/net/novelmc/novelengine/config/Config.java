@@ -30,9 +30,9 @@ public class Config extends YamlConfiguration
         return super.getString("general.name");
     }
 
-    public String getMOTD()
+    public List<String> getMOTD()
     {
-        return super.getString("general.motd");
+        return super.getStringList("general.motd");
     }
 
     public String getWebsite()
