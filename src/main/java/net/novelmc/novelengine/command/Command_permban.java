@@ -37,7 +37,7 @@ public class Command_permban
             // check if the ip is banned
             if (BanManager.isIPPermBanned(args[0]))
             {
-                sender.sendMessage(ChatColor.DARK_GRAY + "That IP is already permanently banned!");
+                sender.sendMessage(ChatColor.GRAY + "That IP-address has already been permanently banned!");
                 return true;
             }
 
@@ -49,7 +49,7 @@ public class Command_permban
         // ban name
         if (BanManager.isNamePermBanned(args[0]))
         {
-            sender.sendMessage(ChatColor.DARK_GRAY + "That name is already permanently banned!");
+            sender.sendMessage(ChatColor.GRAY + "That username has already been permanently banned.");
             return true;
         }
 

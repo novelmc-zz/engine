@@ -15,7 +15,7 @@ public class Command_survival
     {
         Player player = (Player) sender;
         player.setGameMode(GameMode.SURVIVAL);
-        sender.sendMessage(ChatColor.GOLD + "Your gamemode have been set to survival!");
+        sender.sendMessage(ChatColor.GRAY + "Your gamemode has been set to survival.");
         return true;
     }
 }

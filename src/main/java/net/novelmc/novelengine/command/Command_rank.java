@@ -19,7 +19,7 @@ public class Command_rank
             Player player = Bukkit.getPlayer(args[0]);
             if (player == null)
             {
-                sender.sendMessage(ChatColor.DARK_GRAY + "Cannot find that player!");
+                sender.sendMessage(ChatColor.GRAY + "That player could not be found.");
                 return true;
             }
             sender.sendMessage(message(player));
@@ -28,7 +28,7 @@ public class Command_rank
 
         if (!(sender instanceof Player))
         {
-            sender.sendMessage(ChatColor.DARK_GRAY + "Users from console can only execute this command to check player's rank!");
+            sender.sendMessage(ChatColor.GRAY + "Users from console may only execute this command.");
             return true;
         }
 

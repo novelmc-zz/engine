@@ -22,7 +22,7 @@ public class Command_deop
         Player player = Bukkit.getPlayer(args[0]);
         if (player == null)
         {
-            sender.sendMessage(ChatColor.DARK_GRAY + "Cannot find that player!");
+            sender.sendMessage(ChatColor.GRAY + "That player could not be found.");
             return true;
         }
 

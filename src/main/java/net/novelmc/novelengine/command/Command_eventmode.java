@@ -20,7 +20,7 @@ public class Command_eventmode
             {
                 if (NovelEngine.plugin.config.isEventModeEnabled())
                 {
-                    sender.sendMessage(ChatColor.DARK_GRAY + "Event mode is already on!");
+                    sender.sendMessage(ChatColor.GRAY + "Event mode has already been enabled.");
                     return true;
                 }
 
@@ -32,7 +32,7 @@ public class Command_eventmode
             {
                 if (!NovelEngine.plugin.config.isEventModeEnabled())
                 {
-                    sender.sendMessage(ChatColor.DARK_GRAY + "Event mode isn't on!");
+                    sender.sendMessage(ChatColor.GRAY + "Event mode has not been enabled.");
                     return true;
                 }
 

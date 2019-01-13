@@ -28,20 +28,20 @@ public class Command_staff
                 {
                     if (!Rank.getRank(sender).isAtLeast(Rank.MANAGER))
                     {
-                        sender.sendMessage(ChatColor.DARK_GRAY + "You must be at least Manager to be able to execute this command!");
+                        sender.sendMessage(ChatColor.GRAY + "You must be a Manager to be able to execute this command.");
                         return true;
                     }
 
                     Player player = Bukkit.getPlayer(args[1]);
                     if (player == null)
                     {
-                        sender.sendMessage(ChatColor.DARK_GRAY + "Cannot find that player.");
+                        sender.sendMessage(ChatColor.GRAY + "That player could not be found.");
                         return true;
                     }
 
                     if (StaffList.isStaff(player))
                     {
-                        sender.sendMessage(ChatColor.DARK_GRAY + "That player is already staff!");
+                        sender.sendMessage(ChatColor.GRAY + "That player is already staff.");
                         return true;
                     }
 
@@ -67,20 +67,20 @@ public class Command_staff
                 {
                     if (!Rank.getRank(sender).isAtLeast(Rank.MANAGER))
                     {
-                        sender.sendMessage(ChatColor.DARK_GRAY + "You must be at least Manager to be able to execute this command!");
+                        sender.sendMessage(ChatColor.GRAY + "You must be a Manager to execute this command!");
                         return true;
                     }
 
                     Player player = Bukkit.getPlayer(args[1]);
                     if (player == null)
                     {
-                        sender.sendMessage(ChatColor.DARK_GRAY + "Cannot find that player.");
+                        sender.sendMessage(ChatColor.GRAY + "That player could not be found.");
                         return true;
                     }
 
                     if (!StaffList.isStaff(player))
                     {
-                        sender.sendMessage(ChatColor.DARK_GRAY + "That player is not a staff!");
+                        sender.sendMessage(ChatColor.GRAY + "That player is not a staff member.");
                         return true;
                     }
 
@@ -94,13 +94,13 @@ public class Command_staff
                     Player player = Bukkit.getPlayer(args[1]);
                     if (player == null)
                     {
-                        sender.sendMessage(ChatColor.DARK_GRAY + "Cannot find that player.");
+                        sender.sendMessage(ChatColor.GRAY + "That player could not be found.");
                         return true;
                     }
 
                     if (!StaffList.isStaff(player))
                     {
-                        sender.sendMessage(ChatColor.DARK_GRAY + "That player is not staff!");
+                        sender.sendMessage(ChatColor.GRAY + "That player is not staff member.");
                         return true;
                     }
 
@@ -114,33 +114,33 @@ public class Command_staff
                 {
                     if (!Rank.getRank(sender).isAtLeast(Rank.MANAGER))
                     {
-                        sender.sendMessage(ChatColor.DARK_GRAY + "You must be at least Manager to execute this command!");
+                        sender.sendMessage(ChatColor.GRAY + "You must be a Manager to to execute this command.");
                         return true;
                     }
 
                     Player player = Bukkit.getPlayer(args[1]);
                     if (player == null)
                     {
-                        sender.sendMessage(ChatColor.DARK_GRAY + "Cannot find that player!");
+                        sender.sendMessage(ChatColor.GRAY + "That player could not be found.");
                         return true;
                     }
 
                     if (!StaffList.isStaff(player))
                     {
-                        sender.sendMessage(ChatColor.DARK_GRAY + "That player is not a staff!");
+                        sender.sendMessage(ChatColor.GRAY + "That player is not a staff member.");
                         return true;
                     }
 
                     Rank rank = Rank.findRank(args[2]);
                     if (rank == null)
                     {
-                        sender.sendMessage(ChatColor.DARK_GRAY + "Invalid rank!");
+                        sender.sendMessage(ChatColor.GRAY + "The provided rank is invalid.");
                         return true;
                     }
 
                     if (!rank.isAtLeast(Rank.TRAINEE))
                     {
-                        sender.sendMessage(ChatColor.DARK_GRAY + "The rank must be at least Trainee!");
+                        sender.sendMessage(ChatColor.GRAY + "The rank provided must be Trainee or higher.");
                         return true;
                     }
 

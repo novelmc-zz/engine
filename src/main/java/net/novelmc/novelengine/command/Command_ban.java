@@ -34,7 +34,7 @@ public class Command_ban
         {
             if (BanManager.isIPBanned(args[0]))
             {
-                sender.sendMessage(ChatColor.DARK_GRAY + "That IP is already banned!");
+                sender.sendMessage(ChatColor.GRAY + "That IP address is currently banned.");
                 return true;
             }
 
@@ -44,7 +44,7 @@ public class Command_ban
             }
             else
             {
-                sender.sendMessage(ChatColor.DARK_GRAY + "You must specify a reason!");
+                sender.sendMessage(ChatColor.GRAY + "A reason must be specified.");
                 return true;
             }
 
@@ -63,7 +63,7 @@ public class Command_ban
 
             if (BanManager.isBanned(p))
             {
-                sender.sendMessage(ChatColor.DARK_GRAY + "That player is already banned!");
+                sender.sendMessage(ChatColor.GRAY + "That player has already been banned.");
                 return true;
             }
 
@@ -73,7 +73,7 @@ public class Command_ban
             }
             else
             {
-                sender.sendMessage(ChatColor.DARK_GRAY + "You must specify a reason!");
+                sender.sendMessage(ChatColor.GRAY + "A reason must be specified.");
                 return true;
             }
 
@@ -86,7 +86,7 @@ public class Command_ban
             });
 
             BanManager.addBan(sender, p, reason, NUtil.stringToDate("1d"), BanType.NORMAL);
-            p.kickPlayer(ChatColor.RED + "You have been banned!");
+            p.kickPlayer(ChatColor.RED + "You have been punished.");
             return true;
         }
 

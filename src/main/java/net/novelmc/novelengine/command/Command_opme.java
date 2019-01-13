@@ -12,7 +12,7 @@ public class Command_opme
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {
         sender.setOp(true);
-        sender.sendMessage(ChatColor.GRAY + "Opped.");
+        sender.sendMessage(ChatColor.GRAY + "You have been opped.");
         return true;
     }
 }

@@ -49,7 +49,7 @@ public class Command_unban
 
         Pattern patt = Pattern.compile("^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$");
         Matcher m = patt.matcher(args[0]);
-        sender.sendMessage(m.matches() ? ChatColor.DARK_GRAY + "IP is not banned." : ChatColor.DARK_GRAY + "Player is not banned.");
+        sender.sendMessage(m.matches() ? ChatColor.GRAY + "IP is not banned." : ChatColor.GRAY + "Player is not banned.");
         return true;
     }
 }
