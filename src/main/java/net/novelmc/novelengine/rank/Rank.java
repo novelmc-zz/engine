@@ -20,7 +20,7 @@ public enum Rank implements Displayable
     SENIOR_MOD("a", "Senior Mod", "SRM", ChatColor.GOLD),
     ADMIN("an", "Admin", "ADM", ChatColor.BLUE),
     MANAGER("a", "Manager", "SRA", ChatColor.BLUE),
-    CONSOLE("the", "Console", "CONSOLE", ChatColor.DARK_RED);
+    CONSOLE("the", "Console", "CSL", ChatColor.DARK_RED);
 
     private final String determiner;
     @Getter
