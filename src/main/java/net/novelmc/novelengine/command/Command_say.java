@@ -23,8 +23,8 @@ public class Command_say extends CommandBase
         }
 
         Bukkit.broadcastMessage(NUtil.colorize("&8<-> &3&lINFO"
-                + " &7" + sender.getName()
-                + Rank.getDisplay(sender).getColor() + Rank.getDisplay(sender).getTag() + "&8» &f")
+                + " &7" + sender.getName() + " "
+                + Rank.getDisplay(sender).getColor() + Rank.getDisplay(sender).getTag() + " &8» &f")
                 + StringUtils.join(args, " ", 0, args.length));
         return true;
     }
