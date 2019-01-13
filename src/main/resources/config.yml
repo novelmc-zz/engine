@@ -16,6 +16,9 @@ general:
   # Event mode
   eventmode: false
 
+  # Staff mode
+  staffmode: true
+
 # SQL information
 sql:
   username: root

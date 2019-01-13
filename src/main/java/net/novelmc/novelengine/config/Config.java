@@ -37,13 +37,22 @@ public class Config extends YamlConfiguration
     }
 
     public boolean isEventModeEnabled()
-    {
-        return super.getBoolean("general.eventmode");
-    }
+{
+    return super.getBoolean("general.eventmode");
+}
 
     public void setEventModeEnabled(boolean enable)
     {
         super.set("general.eventmode", enable);
+    }
+    public boolean isStaffModeEnabled()
+    {
+        return super.getBoolean("general.staffmode");
+    }
+
+    public void setStaffModeEnabled(boolean enable)
+    {
+        super.set("general.staffmode", enable);
     }
 
     public List<String> getDefaultCommands()
