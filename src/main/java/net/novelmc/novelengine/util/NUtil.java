@@ -8,10 +8,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.reflections.Reflections;
 
 import java.lang.reflect.Field;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -20,7 +18,7 @@ import java.util.regex.Pattern;
 public class NUtil
 {
 
-    public static final List<String> DEVELOPERS = Arrays.asList("_Fleek", "Super_", "irix", "Mafrans");
+    public static final List<String> DEVELOPERS = Arrays.asList("falceso", "Super_", "irix", "Mafrans", "taahanis");
     public static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z", Locale.ENGLISH);
 
     public enum MessageType

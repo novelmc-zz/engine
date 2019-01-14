@@ -12,7 +12,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @CommandParameters(description = "Configure your admin profile", usage = "/<command> [sethomeip | clearhomeip]", source = SourceType.IN_GAME, rank = Rank.TRAINEE)
-public class Command_mystaff extends CommandBase
+public class Command_profile extends CommandBase
 {
     private static NovelEngine plugin;
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
