@@ -121,6 +121,7 @@ public class PlayerListener extends NovelBase implements Listener
 
         if (StaffList.isStaff(event.getPlayer()) && event.getMessage().startsWith(">")) {
             NUtil.globalMessage(NUtil.colorize("&b»&6»&a» &7" + Rank.getDisplay(event.getPlayer()).getTag() + " &7" + event.getPlayer().getName() + " &8» ") + ChatColor.WHITE + event.getMessage().substring(1), NUtil.MessageType.STAFF_ONLY);
+            Bukkit.getConsoleSender().sendMessage(NUtil.colorize("&b»&6»&a» &7" + Rank.getDisplay(event.getPlayer()).getTag() + " &7" + event.getPlayer().getName() + " &8» ") + ChatColor.WHITE + event.getMessage().substring(1));
             event.setCancelled(true);
         } else {
             event.setFormat(Rank.getDisplay(event.getPlayer()).getTag() + " " + ChatColor.GRAY + event.getPlayer().getDisplayName() + ChatColor.DARK_GRAY + ": " + ChatColor.WHITE + event.getMessage());
