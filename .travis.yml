@@ -25,7 +25,7 @@ deploy:
   provider: releases
   api_key:
     secure: ewyMi6oevEBymehqGkiKEIyEoRjyCQdi0c2q22U7iKLZSIsz9D/V1/KCJGz21l+XjkjVkodhAFGAdhxM3RPh47gebYAf24Mc86gOjJlq9/lG7hwty+6IFDKuKaMwwyg0ahLv5InElOudTrrJtUzbCK42BnRgMlBEU8RLGwjM1tCmgP6FfEq0U2e/DJq+LQODis1P6aaQ5NihPUBt4tllwb7oVs/4iZ4SFQg8M0JumSmj+PqWFsIjDdDeBH/bQzVb9W3upkzL2Q1cDIrZYC9ovI1AwDcbdlRKFyL6p7AWQTcpCfixVZzNyD5sMMuvfHpPwQsZkGUsOQdON1VkOiPlhWYJooQq2R/dH00e9e3sgSzKmJmPpAOO0EDxTervlu9DZIyk9tMb7XEzcB/Fdabfn9Psn/fk02M83m2duidLHms3/bL01+uGiaovT3sJyXjAlveZm58/N8UxTWQQuQI2UZiCpfeUsrGU5cXXt7jQmr5BRjtFL2yA6Gm9LZSFWOvBHfy2MZ2wd9YuNpyK33FLxgg8bEtuRVzNM2BX1E42UQ2zxFtiVXc1rXebHMvIqz0OjlGVVuRXY+2zX/Tp/WanDh2MDaLI2VGM5GzJwcDuoHTwPbcb+TX4e+xm58P6UkkU48FjNAAvm6A50APgJVcU0qMYbeuxHKoi6NyzgY+V8ps=
-  file: target/novelengine-*.jar
+  file: target/novelengine.jar
   skip_cleanup: true
   draft: true
   on:
