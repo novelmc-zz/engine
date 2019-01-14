@@ -11,7 +11,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-@CommandParameters(description = "Talk with out Staff privately.", usage = "/<command> <message>", aliases = "sc", source = SourceType.BOTH, rank = Rank.TRAINEE)
+@CommandParameters(description = "Talk with staff members privately.", usage = "/<command> <message>", aliases = "sc", source = SourceType.BOTH, rank = Rank.TRAINEE)
 public class Command_staffchat extends CommandBase {
 
     @Override
