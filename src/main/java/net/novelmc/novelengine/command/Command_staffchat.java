@@ -20,8 +20,8 @@ public class Command_staffchat extends CommandBase {
             return false;
         }
 
-        NUtil.globalMessage(NUtil.colorize("&b»&6»&a» &7" + Rank.getDisplay(sender).getTag() + " &7" + sender.getName() + " &8» ") + ChatColor.WHITE + StringUtils.join(args, " ", 0, args.length), NUtil.MessageType.STAFF_ONLY);
-        Bukkit.getConsoleSender().sendMessage(NUtil.colorize("&b»&6»&a» &7" + Rank.getDisplay(sender).getTag() + " &7" + sender.getName() + " &8» ") + ChatColor.WHITE + StringUtils.join(args, " ", 0, args.length));
+        NUtil.globalMessage(NUtil.colorize("&b»&6»&a» &7" + Rank.getDisplay(sender).getTag() + " &7" + sender.getName() + "&8: ") + ChatColor.WHITE + StringUtils.join(args, " ", 0, args.length), NUtil.MessageType.STAFF_ONLY);
+        Bukkit.getConsoleSender().sendMessage(NUtil.colorize("&b»&6»&a» &7" + Rank.getDisplay(sender).getTag() + " &7" + sender.getName() + "&8: ") + ChatColor.WHITE + StringUtils.join(args, " ", 0, args.length));
         return true;
     }
 }
