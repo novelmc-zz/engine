@@ -2,10 +2,18 @@ package net.novelmc.novelengine.util;
 
 import lombok.Getter;
 import net.novelmc.novelengine.NovelEngine;
+import org.apache.commons.io.FileUtils;
+import org.bukkit.Bukkit;
+import org.json.JSONObject;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
 public class SQLManager
 {
@@ -13,6 +21,8 @@ public class SQLManager
     @Getter
     private static Connection connection;
     private NovelEngine plugin;
+    private File file;
+    private final String defaultJson = "{\"bans\":{}, \"players\":{}}";
 
     public SQLManager(NovelEngine plugin)
     {
@@ -21,6 +31,11 @@ public class SQLManager
 
     public boolean init()
     {
+        if(!plugin.config.isSQLEnabled())
+        {
+            return generateJson(new File(plugin.getDataFolder(), "database.yml"));
+        }
+
         String host = plugin.config.getSQLHost();
         int port = plugin.config.getSQLPort();
         String username = plugin.config.getSQLUsername();
@@ -63,5 +78,74 @@ public class SQLManager
                 + "expiry LONG NOT NULL,"
                 + "type SET('PERMANENT_NAME', 'PERMANENT_IP', 'IP', 'NORMAL') NOT NULL)";
         c.prepareStatement(bans).executeUpdate();
+
+        String players = "CREATE TABLE IF NOT EXISTS players ("
+                + "name TEXT,"
+                + "ip VARCHAR(64))";
+        c.prepareStatement(players).executeUpdate();
+    }
+
+    private boolean generateJson(File file)
+    {
+        this.file = file;
+        if(!file.exists())
+        {
+            try
+            {
+                if (!file.getParentFile().exists())
+                {
+                    file.getParentFile().mkdirs();
+                }
+                file.createNewFile();
+            }
+            catch (IOException ignored) {}
+        }
+
+        try
+        {
+            String string = new String(Files.readAllBytes(file.toPath()));
+            if(!(string.startsWith("{") && string.endsWith("}")))
+            {
+                FileUtils.writeStringToFile(file, defaultJson, StandardCharsets.UTF_8);
+            }
+            return true;
+        }
+        catch (IOException e)
+        {
+            return false;
+        }
+    }
+
+    public JSONObject getDatabase()
+    {
+        try
+        {
+            String string = new String(Files.readAllBytes(file.toPath()));
+            return new JSONObject(string);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        return new JSONObject(defaultJson);
+    }
+
+    public boolean saveDatabase(JSONObject database)
+    {
+        try
+        {
+            FileUtils.writeStringToFile(file, database.toString(), StandardCharsets.UTF_8);
+            return true;
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public String getDefaultJson()
+    {
+        return defaultJson;
     }
 }

@@ -95,10 +95,8 @@ public enum Rank implements Displayable
     public static Displayable getDisplay(Player player)
     {
         if (StaffList.isStaff(player)){
-            if (StaffList.getStaff(player).isAdvisor()){
-                return Title.ADVISOR;
-            } else if (StaffList.getStaff(player).isLeader()){
-                return Title.LEADER;
+             if (StaffList.getStaff(player).isDirector()){
+                return Title.DIRECTOR;//fuck this
             }
         }
 

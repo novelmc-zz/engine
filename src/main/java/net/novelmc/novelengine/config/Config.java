@@ -65,6 +65,8 @@ public class Config extends YamlConfiguration
         return super.getStringList("commands.staff");
     }
 
+    public boolean isSQLEnabled() { return super.getBoolean("sql.enabled"); }
+
     public String getSQLUsername()
     {
         return super.getString("sql.username");

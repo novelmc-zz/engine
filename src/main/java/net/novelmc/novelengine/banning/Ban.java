@@ -81,7 +81,7 @@ public class Ban
 
     public void save()
     {
-        Connection c = NovelEngine.plugin.sql.getConnection();
+        Connection c = NovelEngine.plugin.sqlManager.getConnection();
         try
         {
             PreparedStatement statement = c.prepareStatement("INSERT INTO bans (name, ip, `by`, reason, expiry, type) VALUES (?, ?, ?, ?, ?, ?)");
@@ -101,7 +101,7 @@ public class Ban
 
     public void delete()
     {
-        Connection c = NovelEngine.plugin.sql.getConnection();
+        Connection c = NovelEngine.plugin.sqlManager.getConnection();
         try
         {
             PreparedStatement statement = c.prepareStatement("DELETE FROM bans WHERE name = ? OR ip = ?");

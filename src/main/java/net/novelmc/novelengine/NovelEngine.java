@@ -10,6 +10,7 @@ import net.novelmc.novelengine.listener.PlayerListener;
 import net.novelmc.novelengine.listener.ServerListener;
 import net.novelmc.novelengine.ptero.PteroManager;
 import net.novelmc.novelengine.rank.architect.ArchitectList;
+import net.novelmc.novelengine.rank.staff.Staff;
 import net.novelmc.novelengine.rank.staff.StaffList;
 import net.novelmc.novelengine.util.NLog;
 import net.novelmc.novelengine.util.PlayerDatabase;
@@ -34,6 +35,7 @@ public class NovelEngine extends JavaPlugin
     public SQLManager sqlManager;
     public StaffConfig staffConfig;
     public StaffList staffList;
+    public Staff staff;
     public ArchitectList architectList;
     public PteroManager pteroManager;
 
@@ -54,9 +56,7 @@ public class NovelEngine extends JavaPlugin
         config.load();
         staffConfig.load();
         architectConfig.load();
-        config.save();
-        staffConfig.save();
-        architectConfig.save();
+
         sqlManager = new SQLManager(plugin);
 
         if (!sqlManager.init())
@@ -81,7 +81,9 @@ public class NovelEngine extends JavaPlugin
 
 
         NLog.info("The plugin has been enabled!");
-
+        config.save();
+        staffConfig.save();
+        architectConfig.save();
     }
 
     @Override

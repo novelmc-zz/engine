@@ -1,7 +1,6 @@
 package net.novelmc.novelengine.rank.staff;
 
 import lombok.Getter;
-import net.novelmc.novelengine.NovelEngine;
 import net.novelmc.novelengine.rank.Rank;
 import net.novelmc.novelengine.util.NLog;
 import net.novelmc.novelengine.util.NovelBase;
@@ -95,13 +94,10 @@ public class StaffList extends NovelBase
             return;
         }
 
-        s.setName(null);
-        s.setIps(null);;
         staff.remove(s);
+        s.setActive(false);
+        staff.add(s);
         s.save(plugin.staffConfig.getConfigurationSection(s.getConfigKey()));
-        plugin.staffConfig.set(s.getName(), null);
-        plugin.staffConfig.save();
-
     }
 
     public static void updateRank(Player player, Rank rank)
@@ -153,31 +149,31 @@ public class StaffList extends NovelBase
     {
         return impostors.contains(player.getName());
     }
-    
+
     public static void updateHomeIp(Player player)
     {
         Staff s = getStaff(player);
-        
+
         if (s == null)
         {
             return;
         }
-        
+
         staff.remove(s);
         s.setHomeIp(player.getAddress().getHostString());
         staff.add(s);
         s.save(plugin.staffConfig.getConfigurationSection(s.getConfigKey()));
     }
-    
+
     public static void clearHomeIp(Player player)
     {
         Staff s = getStaff(player);
-        
+
         if (s == null)
         {
             return;
         }
-        
+
         staff.remove(s);
         s.setHomeIp(null);
         staff.add(s);

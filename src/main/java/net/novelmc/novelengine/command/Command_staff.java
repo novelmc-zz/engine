@@ -1,7 +1,7 @@
 package net.novelmc.novelengine.command;
 
 import net.novelmc.novelengine.rank.Rank;
-import net.novelmc.novelengine.staff.StaffList;
+import net.novelmc.novelengine.rank.staff.StaffList;
 import net.novelmc.novelengine.util.NUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

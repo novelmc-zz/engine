@@ -35,6 +35,7 @@ public class PteroManager {
         api = new PteroAdminAPI(plugin.getConfig().getString("pterodactyl.link"), apikey);
         List<Server> servers = api.getServersController().getServers(serverName);
         server = api.getServersController().getServer(servers.get(0).getShortId());
+        NLog.info("Connected to Pterodactyl");
     }
 
     public PteroAdminAPI getApi() {

@@ -17,10 +17,18 @@ general:
   eventmode: false
 
   # Staff mode
-  staffmode: true
+  staffmode: false
+
+
+# Pteordactyl
+pterodactyl:
+  apikey: ''
+  link: ''
+  serverName: 'NovelDEV'
 
 # SQL information
 sql:
+  enabled: true
   username: root
   password: ''
   host: 127.0.0.1

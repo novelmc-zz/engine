@@ -33,11 +33,17 @@ public class BanManager
     public void loadBans()
     {
         bans.clear();
-        Connection c = plugin.sql.getConnection();
+        Connection c = plugin.sqlManager.getConnection();
 
         try
         {
-            ResultSet result = c.prepareStatement("SELECT * FROM bans").executeQuery();
+         ResultSet rs = c.prepareStatement("CREATE TABLE IF NOT EXISTS bans").executeQuery();
+         rs.next();
+
+            ResultSet result = c.
+                    prepareStatement
+                            ("SELECT * FROM bans").
+                    executeQuery();
             while (result.next())
             {
                 Ban ban = new Ban();

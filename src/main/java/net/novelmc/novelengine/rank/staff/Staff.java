@@ -36,7 +36,7 @@ public class Staff extends NovelBase
     private boolean advisor = false;
     @Getter
     @Setter
-    private boolean leader = false;
+    private boolean director = false;
 
 
     public Staff(String configKey)
@@ -51,8 +51,7 @@ public class Staff extends NovelBase
         section.set("homeip", homeIp);
         section.set("rank", rank.name());
         section.set("active", active);
-        section.set("advisor", advisor);
-        section.set("leader", leader);
+        section.set("director", director);
     }
 
     public void load(ConfigurationSection section)
@@ -62,19 +61,19 @@ public class Staff extends NovelBase
         homeIp = section.getString("homeip");
         rank = Rank.findRank(section.getString("rank"));
         active = section.getBoolean("active", true);
-        advisor = section.getBoolean("advisor", false);
-        leader = section.getBoolean("leader", false);
+        director = section.getBoolean("director", false);
     }
 
     @Override
     public String toString()
     {
         StringBuilder sb = new StringBuilder();
-        sb.append(name).append(":").append(NEW_LINE)
-                .append(" - IPs: ").append(StringUtils.join(ips, ", ")).append(NEW_LINE)
+        sb.append(name).append(":\n")
+                .append(" - IPs: ").append(StringUtils.join(ips, ", ")).append("\n")
                 .append(" - Home IP: ").append(homeIp).append(NEW_LINE)
-                .append(" - Rank: ").append(rank.name()).append(NEW_LINE)
-                .append(" - Active: ").append(active);
+                .append(" - Rank: ").append(rank.name()).append("\n")
+                .append(" - Active: ").append(active).append("\n")
+                .append(" - Director: ").append(director);
         return sb.toString();
     }
 }
