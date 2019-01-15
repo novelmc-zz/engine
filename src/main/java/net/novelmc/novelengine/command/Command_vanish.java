@@ -14,9 +14,9 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 
-@CommandParameters(description = "Vanish/unvanish from existence! Well, hopefully.", aliases = "gma", source = SourceType.IN_GAME, rank = Rank.OP)
+@CommandParameters(description = "Vanish/unvanish from existence! Well, hopefully.", source = SourceType.IN_GAME, rank = Rank.TRAINEE)
 public class Command_vanish extends CommandBase {
-
+    //Credit: Base Template provided by TFPatches
     public static ArrayList<Player> VANISHED = new ArrayList<>();
 
     @Override
