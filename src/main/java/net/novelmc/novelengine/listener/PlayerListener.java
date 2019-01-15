@@ -2,6 +2,7 @@ package net.novelmc.novelengine.listener;
 
 import net.novelmc.novelengine.banning.Ban;
 import net.novelmc.novelengine.banning.BanManager;
+import net.novelmc.novelengine.command.Command_vanish;
 import net.novelmc.novelengine.rank.Rank;
 import net.novelmc.novelengine.rank.architect.ArchitectList;
 import net.novelmc.novelengine.rank.staff.StaffList;
@@ -83,6 +84,11 @@ public class PlayerListener extends NovelBase implements Listener
             Bukkit.broadcastMessage(ChatColor.AQUA + player.getName() + " is " + Rank.getDisplay(player).getLoginMessage());
             player.setPlayerListName(StringUtils.substring(Rank.getRank(player).getColor() + player.getName(), 0, 16));
         }
+        for (Player p : Command_vanish.VANISHED) {
+            if (!StaffList.isStaff(player)) {
+                player.hidePlayer(plugin, p);
+            }
+        }
     }
 
     @EventHandler
@@ -113,6 +119,9 @@ public class PlayerListener extends NovelBase implements Listener
         if (ArchitectList.getImpostors().contains(event.getPlayer().getName()))
         {
             ArchitectList.getImpostors().remove(event.getPlayer().getName());
+        }
+        if (Command_vanish.VANISHED.contains(event.getPlayer().getName())) {
+            event.setQuitMessage(null);
         }
     }
 
