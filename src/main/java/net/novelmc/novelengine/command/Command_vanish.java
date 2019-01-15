@@ -4,7 +4,7 @@ import net.novelmc.novelengine.command.util.CommandBase;
 import net.novelmc.novelengine.command.util.CommandParameters;
 import net.novelmc.novelengine.command.util.SourceType;
 import net.novelmc.novelengine.rank.Rank;
-import net.novelmc.novelengine.util.NPlayer;
+import net.novelmc.novelengine.rank.staff.StaffList;
 import net.novelmc.novelengine.util.NUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 @CommandParameters(description = "Vanish/unvanish from existence! Well, hopefully.", source = SourceType.IN_GAME, rank = Rank.TRAINEE)
 public class Command_vanish extends CommandBase {
+
     //Credit: Base Template provided by TFPatches
     public static ArrayList<Player> VANISHED = new ArrayList<>();
 
@@ -30,7 +31,7 @@ public class Command_vanish extends CommandBase {
             }
         }
 
-        Player player = (NPlayer) sender;
+        Player player = (Player) sender;
 
         if (VANISHED.contains(player)) {
             for (Player online : Bukkit.getOnlinePlayers()) {
@@ -45,7 +46,7 @@ public class Command_vanish extends CommandBase {
         } else {
 
             for (Player online : Bukkit.getOnlinePlayers()) {
-                if (!((NPlayer) player).isStaff())
+                if (!StaffList.isStaff(online))
                     online.hidePlayer(plugin, player);
             }
             if (!silent) {
