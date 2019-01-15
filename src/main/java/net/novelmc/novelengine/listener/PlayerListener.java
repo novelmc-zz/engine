@@ -120,8 +120,9 @@ public class PlayerListener extends NovelBase implements Listener
         {
             ArchitectList.getImpostors().remove(event.getPlayer().getName());
         }
-        if (Command_vanish.VANISHED.contains(event.getPlayer().getName())) {
+        if (Command_vanish.VANISHED.contains(event.getPlayer())) {
             event.setQuitMessage(null);
+            NUtil.globalMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8: " + event.getPlayer().getDisplayName() + " has silently logged out."), NUtil.MessageType.STAFF_ONLY);
         }
     }
 
