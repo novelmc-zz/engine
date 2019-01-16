@@ -19,7 +19,7 @@ import java.util.List;
 @CommandParameters(description = "Wipe those pesky entities that aren't players.", usage = "/<command> ", aliases = "ew", source = SourceType.BOTH, rank = Rank.TRAINEE)
 public class Command_entitywipe extends CommandBase {
 
-    public static final List<EntityType> DONTCLEAR = Arrays.asList(EntityType.ITEM_FRAME, EntityType.ARMOR_STAND);
+    public static final List<EntityType> DONTCLEAR = Arrays.asList(EntityType.ITEM_FRAME, EntityType.MINECART, EntityType.ARMOR_STAND);
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args) {
@@ -27,7 +27,7 @@ public class Command_entitywipe extends CommandBase {
         Player player = (Player) sender;
         for (World eworld : Bukkit.getWorlds()) {
             for (Entity entity : eworld.getEntities()) {
-                if (!(entity instanceof Player) && !entity.getType().equals(DONTCLEAR)) {
+                if (!(entity instanceof Player) && !DONTCLEAR.contains(entity.getType())) {
                     entity.remove();
                 }
             }
