@@ -6,7 +6,6 @@ import net.novelmc.novelengine.command.util.SourceType;
 import net.novelmc.novelengine.rank.Rank;
 import net.novelmc.novelengine.util.NUtil;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -26,7 +25,7 @@ public class Command_deop extends CommandBase
         Player player = Bukkit.getPlayer(args[0]);
         if (player == null)
         {
-            sender.sendMessage(ChatColor.GRAY + "That player could not be found.");
+            sender.sendMessage(NUtil.colorize("&8<-> &3&lINFO &7That player could not be found."));
             return true;
         }
 

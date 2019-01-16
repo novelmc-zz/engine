@@ -4,7 +4,7 @@ import net.novelmc.novelengine.command.util.CommandBase;
 import net.novelmc.novelengine.command.util.CommandParameters;
 import net.novelmc.novelengine.command.util.SourceType;
 import net.novelmc.novelengine.rank.Rank;
-import org.bukkit.ChatColor;
+import net.novelmc.novelengine.util.NUtil;
 import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -19,7 +19,8 @@ public class Command_spectator extends CommandBase
     {
         Player player = (Player) sender;
         player.setGameMode(GameMode.SPECTATOR);
-        sender.sendMessage(ChatColor.GRAY + "Your gamemode has been set to spectator.");
+        sender.sendMessage(NUtil.colorize("&8<-> &3&lINFO &7Your gamemode has been set to spectator."));
+
         return true;
     }
 }

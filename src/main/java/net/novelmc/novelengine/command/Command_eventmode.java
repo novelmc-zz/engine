@@ -7,7 +7,6 @@ import net.novelmc.novelengine.command.util.SourceType;
 import net.novelmc.novelengine.listener.EventModeListener;
 import net.novelmc.novelengine.rank.Rank;
 import net.novelmc.novelengine.util.NUtil;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
@@ -24,7 +23,7 @@ public class Command_eventmode extends CommandBase
             {
                 if (NovelEngine.plugin.config.isEventModeEnabled())
                 {
-                    sender.sendMessage(ChatColor.GRAY + "Event mode has already been enabled.");
+                    sender.sendMessage(NUtil.colorize("&8<-> &3&lINFO &7Event mode has already been enabled."));
                     return true;
                 }
 
@@ -36,7 +35,7 @@ public class Command_eventmode extends CommandBase
             {
                 if (!NovelEngine.plugin.config.isEventModeEnabled())
                 {
-                    sender.sendMessage(ChatColor.GRAY + "Event mode has not been enabled.");
+                    sender.sendMessage(NUtil.colorize("&8<-> &3&lINFO &7Event mode has not been enabled."));
                     return true;
                 }
 
@@ -45,8 +44,7 @@ public class Command_eventmode extends CommandBase
                 return true;
             }
         }
-
-        sender.sendMessage(ChatColor.GRAY + "Event mode is currently " + (NovelEngine.plugin.config.isEventModeEnabled() ? "enabled." : "disabled."));
+        sender.sendMessage(NUtil.colorize("&8<-> &3&lINFO &7Event mode is currently " + (NovelEngine.plugin.config.isEventModeEnabled() ? "enabled." : "disabled.")));
         return true;
     }
 }

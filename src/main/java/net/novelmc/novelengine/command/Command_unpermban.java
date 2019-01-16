@@ -7,7 +7,7 @@ import net.novelmc.novelengine.command.util.CommandBase;
 import net.novelmc.novelengine.command.util.CommandParameters;
 import net.novelmc.novelengine.command.util.SourceType;
 import net.novelmc.novelengine.rank.Rank;
-import org.bukkit.ChatColor;
+import net.novelmc.novelengine.util.NUtil;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
@@ -36,12 +36,12 @@ public class Command_unpermban extends CommandBase
                 if (ban.getIp().equals(args[0]))
                 {
                     BanManager.removeBan(ban);
-                    sender.sendMessage(ChatColor.GREEN + "Removed permanent ban for IP " + args[0]);
+                    sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &aRemoved permanent ban for IP " + args[0]));
                     return true;
                 }
             }
 
-            sender.sendMessage(ChatColor.GRAY + "That IP-address has not been permanently banned.");
+            sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &7That IP-address has not been permanently banned."));
             return true;
         }
 
@@ -50,11 +50,11 @@ public class Command_unpermban extends CommandBase
             if (ban.getName().equals(args[0]))
             {
                 BanManager.removeBan(ban);
-                sender.sendMessage(ChatColor.GREEN + "Removed permanent ban for name " + args[0]);
+                sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &aRemoved permanent ban for name " + args[0]));
                 return true;
             }
         }
-        sender.sendMessage(ChatColor.GRAY + "That name has not been permanently banned!");
+        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &7That name does not appear to be be permanently banned!"));
         return true;
     }
 }

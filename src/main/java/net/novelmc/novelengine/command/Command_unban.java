@@ -7,6 +7,7 @@ import net.novelmc.novelengine.command.util.CommandBase;
 import net.novelmc.novelengine.command.util.CommandParameters;
 import net.novelmc.novelengine.command.util.SourceType;
 import net.novelmc.novelengine.rank.Rank;
+import net.novelmc.novelengine.util.NUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -53,7 +54,7 @@ public class Command_unban extends CommandBase
 
         Pattern patt = Pattern.compile("^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$");
         Matcher m = patt.matcher(args[0]);
-        sender.sendMessage(m.matches() ? ChatColor.GRAY + "IP is not banned." : ChatColor.GRAY + "Player is not banned.");
+        sender.sendMessage(m.matches() ? NUtil.colorize("&8<-> &4&lSTAFF &7IP is not banned.") : NUtil.colorize("&8<-> &4&lSTAFF &7Player is not banned."));
         return true;
     }
 }
