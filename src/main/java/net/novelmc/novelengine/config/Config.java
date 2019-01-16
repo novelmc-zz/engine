@@ -92,9 +92,19 @@ public class Config extends YamlConfiguration
         return super.getBoolean("allow.lava_place");
     }
     
+    public void setLavaEnabled(boolean lava)
+    {
+        super.set("allow.lava_place", lava);
+    }
+    
     public Boolean isWaterEnabled()
     {
         return super.getBoolean("allow.water_place");
+    }
+    
+    public void setWaterEnabled(boolean water)
+    {
+        super.set("allow.water_place", water);
     }
 
     public void load()
