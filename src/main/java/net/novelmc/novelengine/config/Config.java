@@ -86,6 +86,16 @@ public class Config extends YamlConfiguration
     {
         return super.getString("sql.database");
     }
+    
+    public Boolean isLavaEnabled()
+    {
+        return super.getBoolean("allow.lava_place");
+    }
+    
+    public Boolean isWaterEnabled()
+    {
+        return super.getBoolean("allow.water_place");
+    }
 
     public void load()
     {
