@@ -3,7 +3,6 @@ package net.novelmc.novelengine.blocking;
 import net.novelmc.novelengine.NovelEngine;
 import net.novelmc.novelengine.util.NUtil;
 import net.novelmc.novelengine.util.NovelBase;
-import static net.novelmc.novelengine.util.NovelBase.plugin;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -49,7 +48,7 @@ public class InteractBlocker extends NovelBase implements Listener
                     return;
                 }
                 e.setCancelled(true);
-                player.sendMessage(NUtil.colorize("&7Lava is currently disabled."));
+                player.sendMessage(NUtil.colorize("&8<-> &3&lINFO &7Lava is currently disabled."));
                 break;
             }
             case WATER_BUCKET:
@@ -59,7 +58,7 @@ public class InteractBlocker extends NovelBase implements Listener
                     return;
                 }
                 e.setCancelled(true);
-                player.sendMessage(NUtil.colorize("&7Water is currently disabled."));
+                player.sendMessage(NUtil.colorize("&8<-> &3&lINFO &7Water is currently disabled."));
                 break;
             }
         }

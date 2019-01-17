@@ -43,22 +43,15 @@ public class PlayerListener extends NovelBase implements Listener
         {
             if (!StaffList.getStaff(player).getIps().contains(player.getAddress().getHostString()) && !StaffList.getStaff(player).getHomeIp().equals(player.getAddress().getHostString()))
             {
-                for (Player all : Bukkit.getOnlinePlayers())
-                {
-                    if (StaffList.isStaff(all))
-                    {
-                        all.sendMessage(ChatColor.RED + "NOTICE: " + player.getName() + " has been flagged as a staff impostor!");
-                    }
-                }
+                NUtil.globalMessage(NUtil.colorize("&8<-> &4&lSTAFF &cNOTICE: " + player.getName() + " has been flagged as a staff impostor!"));
                 player.getInventory().clear();
                 player.setGameMode(GameMode.SURVIVAL);
-                player.sendMessage(ChatColor.RED + "You have been marked as an impostor, please verify yourself.");
+                player.sendMessage(NUtil.colorize("&8<-> &3&lINFO &cYou have been marked as an impostor, please verify yourself.")); //Yes, I do now
                 StaffList.getImpostors().add(player.getName());
 
                 return;
             }
 
-            Bukkit.broadcastMessage(ChatColor.AQUA + player.getName() + " is " + Rank.getDisplay(player).getLoginMessage());
             player.setPlayerListName(StringUtils.substring(Rank.getDisplay(player).getColor() + player.getName(), 0, 16));
         }
 
@@ -66,22 +59,15 @@ public class PlayerListener extends NovelBase implements Listener
         {
             if (!ArchitectList.getArchitect(player).getIps().contains(player.getAddress().getHostString()))
             {
-                for (Player all : Bukkit.getOnlinePlayers())
-                {
-                    if (StaffList.isStaff(all))
-                    {
-                        all.sendMessage(ChatColor.RED + "NOTICE: " + player.getName() + " has been flagged as an architect impostor!");
-                    }
-                }
+                NUtil.globalMessage(NUtil.colorize("&8<-> &4&lSTAFF &cNOTICE: " + player.getName() + " has been flagged as a staff impostor!"));
                 player.getInventory().clear();
                 player.setGameMode(GameMode.SURVIVAL);
-                player.sendMessage(ChatColor.RED + "You have been marked as an impostor, please verify yourself.");
+                player.sendMessage(NUtil.colorize("&8<-> &3&lINFO &7You have been marked as an impostor, please verify yourself."));
                 ArchitectList.getImpostors().add(player.getName());
 
                 return;
             }
 
-            Bukkit.broadcastMessage(ChatColor.AQUA + player.getName() + " is " + Rank.getDisplay(player).getLoginMessage());
             player.setPlayerListName(StringUtils.substring(Rank.getRank(player).getColor() + player.getName(), 0, 16));
         }
         for (Player p : Command_vanish.VANISHED) {
@@ -160,7 +146,7 @@ public class PlayerListener extends NovelBase implements Listener
         {
             if (event.getMessage().equalsIgnoreCase(blocked) || event.getMessage().split(" ")[0].equalsIgnoreCase(blocked))
             {
-                player.sendMessage(ChatColor.RED + "That command is blocked!");
+                player.sendMessage(NUtil.colorize("&8<-> &4&lINFO &7That command is blocked!"));
                 event.setCancelled(true);
                 continue;
             }
@@ -174,7 +160,7 @@ public class PlayerListener extends NovelBase implements Listener
             }
             cmap.getCommand(blocked).getAliases().stream().filter((blocked2) -> (event.getMessage().equalsIgnoreCase(blocked2) || event.getMessage().split(" ")[0].equalsIgnoreCase(blocked2))).map((_item) ->
             {
-                player.sendMessage(ChatColor.RED + "That command is blocked!");
+                player.sendMessage(NUtil.colorize("&8<-> &4&lINFO &7That command is blocked!"));
                 return _item;
             }).forEachOrdered((_item) ->
             {
@@ -186,7 +172,7 @@ public class PlayerListener extends NovelBase implements Listener
         {
             if ((event.getMessage().equalsIgnoreCase(blocked) || event.getMessage().split(" ")[0].equalsIgnoreCase(blocked)) && !StaffList.isStaff(player))
             {
-                player.sendMessage(ChatColor.RED + "That command is blocked!");
+                player.sendMessage(NUtil.colorize("&8<-> &4&lINFO &7That command is blocked!"));
                 event.setCancelled(true);
                 continue;
             }
@@ -203,7 +189,7 @@ public class PlayerListener extends NovelBase implements Listener
 
             cmap.getCommand(blocked).getAliases().stream().filter((blocked2) -> ((event.getMessage().equalsIgnoreCase(blocked2) || event.getMessage().split(" ")[0].equalsIgnoreCase(blocked2)) && !StaffList.isStaff(player))).map((_item) ->
             {
-                player.sendMessage(ChatColor.RED + "That command is blocked!");
+                player.sendMessage(NUtil.colorize("&8<-> &4&lINFO &7That command is blocked!"));
                 return _item;
             }).forEachOrdered((_item) ->
             {

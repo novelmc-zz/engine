@@ -6,6 +6,7 @@ import net.novelmc.novelengine.command.util.CommandBase;
 import net.novelmc.novelengine.command.util.CommandParameters;
 import net.novelmc.novelengine.command.util.SourceType;
 import net.novelmc.novelengine.rank.Rank;
+import net.novelmc.novelengine.util.NUtil;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -41,12 +42,13 @@ public class Command_permban extends CommandBase
             // check if the ip is banned
             if (BanManager.isIPPermBanned(args[0]))
             {
-                sender.sendMessage(ChatColor.GRAY + "That IP-address has already been permanently banned!");
+                sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &7That IP-address has already been permanently banned!"));
                 return true;
             }
 
             BanManager.addBan("", args[0], sender.getName(), reason, null, BanType.PERMANENT_IP);
-            sender.sendMessage(ChatColor.GRAY + "Added permanent ban for IP " + args[0]);
+            NUtil.playerAction(sender, "Permanently Banning IP " + m, true);
+            sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &7Added permanent ban for IP: " + args[0]));
             return true;
         }
 
@@ -58,7 +60,8 @@ public class Command_permban extends CommandBase
         }
 
         BanManager.addBan(args[0], null, sender.getName(), reason, null, BanType.PERMANENT_NAME);
-        sender.sendMessage(ChatColor.GRAY + "Added permanent ban for name " + args[0]);
+        NUtil.playerAction(sender, "Permanently Banning Username: " + args[0], true);
+        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &7Added permanent ban for name " + args[0]));
         return true;
     }
 }

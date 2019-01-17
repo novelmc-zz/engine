@@ -36,6 +36,7 @@ public class Command_unpermban extends CommandBase
                 if (ban.getIp().equals(args[0]))
                 {
                     BanManager.removeBan(ban);
+                    NUtil.playerAction(sender, "Removing permanent ban for IP: " + m, true);
                     sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &aRemoved permanent ban for IP " + args[0]));
                     return true;
                 }
@@ -50,6 +51,7 @@ public class Command_unpermban extends CommandBase
             if (ban.getName().equals(args[0]))
             {
                 BanManager.removeBan(ban);
+                NUtil.playerAction(sender, "Removing permanent ban on username: " + args[0], true);
                 sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &aRemoved permanent ban for name " + args[0]));
                 return true;
             }
