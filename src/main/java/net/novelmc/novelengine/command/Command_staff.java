@@ -12,7 +12,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@CommandParameters(description = "Manage an admin", usage = "/<command> <add <player> | remove <player> | setrank <player> <rank> | info <player>", source = SourceType.BOTH, rank = Rank.TRAINEE)
+@CommandParameters(description = "Manage a staff member", usage = "/<command> <add <player> | remove <player> | setrank <player> <rank> | info <player>", source = SourceType.BOTH, rank = Rank.TRAINEE)
 public class Command_staff extends CommandBase
 {
 
@@ -32,7 +32,7 @@ public class Command_staff extends CommandBase
                 {
                     if (!Rank.getRank(sender).isAtLeast(Rank.MANAGER))
                     {
-                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &7You must be a Manager to be able to execute this command."));
+                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &7You must be a &9&lSRADMIN&r&7 to be able to execute this command."));
                         return true;
                     }
 
@@ -71,7 +71,7 @@ public class Command_staff extends CommandBase
                 {
                     if (!Rank.getRank(sender).isAtLeast(Rank.MANAGER))
                     {
-                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &7You must be a Manager to execute this command!"));
+                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &7You must be a &9&lSRADMIN&r&7 to execute this command!"));
                         return true;
                     }
 
@@ -118,7 +118,7 @@ public class Command_staff extends CommandBase
                 {
                     if (!Rank.getRank(sender).isAtLeast(Rank.MANAGER))
                     {
-                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &7You must be a Manager to to execute this command."));
+                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &7You must be a &9&lSRADMIN&r&7 to to execute this command."));
                         return true;
                     }
 
@@ -144,7 +144,7 @@ public class Command_staff extends CommandBase
 
                     if (!rank.isAtLeast(Rank.TRAINEE))
                     {
-                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &7The rank provided must be Trainee or higher."));
+                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &7The rank provided must be &3&lTRAINEE&r&7 or higher."));
                         return true;
                     }
 
