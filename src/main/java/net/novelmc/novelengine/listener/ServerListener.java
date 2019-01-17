@@ -25,13 +25,13 @@ public class ServerListener extends NovelBase implements Listener
     {
         if (Bukkit.hasWhitelist())
         {
-            event.setMotd(ChatColor.RED + "Whitelist enabled!");
+            event.setMotd(NUtil.colorize("&cWhitelist enabled!"));
             return;
         }
 
         if (Bukkit.getOnlinePlayers().size() >= Bukkit.getMaxPlayers())
         {
-            event.setMotd(ChatColor.RED + "Server is full!");
+            event.setMotd(NUtil.colorize("&cServer is full!"));
             return;
         }
 
