@@ -3,6 +3,7 @@ package net.novelmc.novelengine.listener;
 import net.novelmc.novelengine.NovelEngine;
 import net.novelmc.novelengine.rank.staff.StaffList;
 import net.novelmc.novelengine.util.NovelBase;
+import net.novelmc.novelengine.util.NUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
@@ -33,7 +34,7 @@ public class EventModeListener extends NovelBase implements Listener
             player.setWhitelisted(true);
         }
 
-        Bukkit.broadcastMessage(ChatColor.RED + "The server has entered event mode, now all online players are now whitelisted!");
+        NUtil.globalMessage(NUtil.colorize("&cThe server has entered event mode, now all online players are now whitelisted!"));
     }
 
     public static void disableEventMode()
@@ -50,7 +51,7 @@ public class EventModeListener extends NovelBase implements Listener
             player.setWhitelisted(false);
         }
 
-        Bukkit.broadcastMessage(ChatColor.RED + "The server has left event mode, have a great rest of your day!");
+        NUtil.globalMessage(NUtil.colorize("&cThe server has left event mode, have a great rest of your day!"));
     }
 
     @EventHandler
@@ -59,7 +60,7 @@ public class EventModeListener extends NovelBase implements Listener
         Player player = e.getPlayer();
         if (plugin.config.isEventModeEnabled() && !player.isWhitelisted() && !StaffList.isStaff(player))
         {
-            e.disallow(PlayerLoginEvent.Result.KICK_OTHER, ChatColor.RED + "The server is currently in event mode!");
+            e.disallow(PlayerLoginEvent.Result.KICK_OTHER, NUtil.colorize("&cThe server is currently in event mode!"));
         }
     }
 }
