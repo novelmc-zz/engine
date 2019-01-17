@@ -94,11 +94,6 @@ public enum Rank implements Displayable
 
     public static Displayable getDisplay(Player player)
     {
-        if (StaffList.getStaff(player).isDirector())
-        {
-            return Title.DIRECTOR;
-        }
-
         if (NUtil.DEVELOPERS.contains(player.getName()))
         {
             return Title.DEVELOPER;

@@ -54,7 +54,6 @@ public class Staff extends NovelBase
         section.set("homeip", homeIp);
         section.set("rank", rank.name());
         section.set("active", active);
-        section.set("director", director);
     }
 
     public void load(ConfigurationSection section)
@@ -64,7 +63,6 @@ public class Staff extends NovelBase
         homeIp = section.getString("homeip");
         rank = Rank.findRank(section.getString("rank"));
         active = section.getBoolean("active", true);
-        director = section.getBoolean("director", false);
     }
 
     @Override
@@ -76,7 +74,6 @@ public class Staff extends NovelBase
                 .append(" - Home IP: ").append(homeIp).append(NEW_LINE)
                 .append(" - Rank: ").append(rank.name()).append("\n")
                 .append(" - Active: ").append(active).append("\n")
-                .append(" - Director: ").append(director);
         return sb.toString();
     }
 }
