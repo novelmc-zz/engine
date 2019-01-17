@@ -1,5 +1,6 @@
 package net.novelmc.novelengine.listener;
 
+import net.novelmc.novelengine.util.NUtil;
 import net.novelmc.novelengine.util.NovelBase;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
@@ -35,6 +36,6 @@ public class ServerListener extends NovelBase implements Listener
         }
 
         List<String> motd = plugin.config.getMOTD();
-        event.setMotd(StringUtils.join(motd, "\n"));
+        event.setMotd(NUtil.colorize(StringUtils.join(motd, "\n")));
     }
 }
