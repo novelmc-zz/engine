@@ -7,7 +7,7 @@ public enum Title implements Displayable
 {
 
     ARCHITECT("an", "Architect", "ARC", ChatColor.GREEN),
-    DEVELOPER("a", "Developer", "DEV", ChatColor.DARK_PURPLE);
+    DEVELOPER("a", "Developer", "DEVELOPER", ChatColor.DARK_PURPLE);
 
     private final String determiner;
     @Getter
