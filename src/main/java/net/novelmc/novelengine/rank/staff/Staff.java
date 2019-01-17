@@ -73,7 +73,7 @@ public class Staff extends NovelBase
                 .append(" - IPs: ").append(StringUtils.join(ips, ", ")).append("\n")
                 .append(" - Home IP: ").append(homeIp).append(NEW_LINE)
                 .append(" - Rank: ").append(rank.name()).append("\n")
-                .append(" - Active: ").append(active).append("\n")
+                .append(" - Active: ").append(active).append("\n");
         return sb.toString();
     }
 }
