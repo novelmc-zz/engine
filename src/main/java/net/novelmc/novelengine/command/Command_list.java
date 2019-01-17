@@ -53,7 +53,8 @@ public class Command_list extends CommandBase
             if (StaffList.isImpostor(player) || ArchitectList.isImpostor(player))
             {
                 impostors.add(ChatColor.GRAY + player.getName());
-            } else if (Rank.getRank(player).isAtLeast(Rank.SENIOR_ADMIN))
+            } 
+            else if (Rank.getRank(player).isAtLeast(Rank.SENIOR_ADMIN))
             {
                 managers.add(ChatColor.GRAY + player.getName());
             }
