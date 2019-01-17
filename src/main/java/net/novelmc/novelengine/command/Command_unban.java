@@ -8,8 +8,6 @@ import net.novelmc.novelengine.command.util.CommandParameters;
 import net.novelmc.novelengine.command.util.SourceType;
 import net.novelmc.novelengine.rank.Rank;
 import net.novelmc.novelengine.util.NUtil;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
@@ -35,7 +33,7 @@ public class Command_unban extends CommandBase
         {
             if (ban.getName().equals(target) || ban.getIp().equals(target))
             {
-                Bukkit.broadcastMessage(ChatColor.GREEN + sender.getName() + " - Unbanning " + ban.getName());
+                NUtil.playerAction(sender, "- Unbanning " + ban.getName(), false);
                 BanManager.removeBan(ban);
                 return true;
             }
@@ -46,7 +44,7 @@ public class Command_unban extends CommandBase
         {
             if (ban.getIp().equals(target))
             {
-                Bukkit.broadcastMessage(ChatColor.GREEN + sender.getName() + " - Unbanning IP: " + target);
+                NUtil.playerAction(sender, "- Unbanning " + target, false);
                 BanManager.removeBan(ban);
                 return true;
             }

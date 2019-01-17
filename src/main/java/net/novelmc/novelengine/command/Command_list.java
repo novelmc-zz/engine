@@ -53,8 +53,7 @@ public class Command_list extends CommandBase
             if (StaffList.isImpostor(player) || ArchitectList.isImpostor(player))
             {
                 impostors.add(ChatColor.GRAY + player.getName());
-            }
-            else if (Rank.getRank(player).isAtLeast(Rank.MANAGER))
+            } else if (Rank.getRank(player).isAtLeast(Rank.SENIOR_ADMIN))
             {
                 managers.add(ChatColor.GRAY + player.getName());
             }
@@ -101,7 +100,7 @@ public class Command_list extends CommandBase
                 .append((admins.isEmpty() ? "" : Rank.ADMIN.getTag() + ": " + StringUtils.join(admins, ", ") + NEW_LINE))
                 .append((architects.isEmpty() ? "" : Title.ARCHITECT.getTag() + ": " + StringUtils.join(architects, ", ") + NEW_LINE))
                 .append((developers.isEmpty() ? "" : Title.DEVELOPER.getTag() + ": " + StringUtils.join(developers, ", ") + NEW_LINE))
-                .append((managers.isEmpty() ? "" : Rank.MANAGER.getTag() + ": " + StringUtils.join(managers, ", ")));
+                .append((managers.isEmpty() ? "" : Rank.SENIOR_ADMIN.getTag() + ": " + StringUtils.join(managers, ", ")));
 
         sender.sendMessage(sb.toString());
         return true;

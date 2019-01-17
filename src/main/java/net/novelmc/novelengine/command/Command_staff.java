@@ -30,7 +30,7 @@ public class Command_staff extends CommandBase
             {
                 if (args[0].equalsIgnoreCase("add"))
                 {
-                    if (!Rank.getRank(sender).isAtLeast(Rank.MANAGER))
+                    if (!Rank.getRank(sender).isAtLeast(Rank.SENIOR_ADMIN))
                     {
                         sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &7You must be a &9&lSRADMIN&r&7 to be able to execute this command."));
                         return true;
@@ -69,7 +69,7 @@ public class Command_staff extends CommandBase
 
                 if (args[0].equalsIgnoreCase("remove"))
                 {
-                    if (!Rank.getRank(sender).isAtLeast(Rank.MANAGER))
+                    if (!Rank.getRank(sender).isAtLeast(Rank.SENIOR_ADMIN))
                     {
                         sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &7You must be a &9&lSRADMIN&r&7 to execute this command!"));
                         return true;
@@ -116,7 +116,7 @@ public class Command_staff extends CommandBase
             {
                 if (args[0].equalsIgnoreCase("setrank"))
                 {
-                    if (!Rank.getRank(sender).isAtLeast(Rank.MANAGER))
+                    if (!Rank.getRank(sender).isAtLeast(Rank.SENIOR_ADMIN))
                     {
                         sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &7You must be a &9&lSRADMIN&r&7 to to execute this command."));
                         return true;
