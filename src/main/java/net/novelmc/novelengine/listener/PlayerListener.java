@@ -22,6 +22,9 @@ import org.bukkit.event.player.*;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import net.novelmc.novelengine.util.NPlayer;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.event.server.ServerCommandEvent;
 
 public class PlayerListener extends NovelBase implements Listener
 {
@@ -149,6 +152,22 @@ public class PlayerListener extends NovelBase implements Listener
     public void onPlayerTeleport(PlayerTeleportEvent event)
     {
         //TODO: Freeze system and World system
+    }
+    
+    @EventHandler
+    public void onPlayerCommand(ServerCommandEvent event)
+    {
+        CommandSender sender = event.getSender();
+        if (sender instanceof ConsoleCommandSender)
+        {
+            return;
+        }
+        Player player = (Player) sender;
+        if (NPlayer.isBusy(player))
+        {
+            NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 » &7" + player.getName() + " is no longer marked as busy."), NUtil.MessageType.ALL);
+            NPlayer.busyPlayers.remove(player);
+        }
     }
 
     @EventHandler
