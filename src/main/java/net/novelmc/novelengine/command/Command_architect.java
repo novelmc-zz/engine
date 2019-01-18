@@ -12,7 +12,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@CommandParameters(description = "Manage an architect", usage = "/<command> <add <player> | remove <player> | info <player>", source = SourceType.BOTH, rank = Rank.TRAINEE)
+@CommandParameters(description = "Manage an architect", usage = "/<command> <add <player> | remove <player> | info <player>", aliases = "arc", source = SourceType.BOTH, rank = Rank.TRAINEE)
 public class Command_architect extends CommandBase
 {
 

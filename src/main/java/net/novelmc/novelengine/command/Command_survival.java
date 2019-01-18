@@ -10,7 +10,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@CommandParameters(description = "Set your gamemode to survival", aliases = "gms", source = SourceType.IN_GAME, rank = Rank.OP)
+@CommandParameters(description = "Set your gamemode to survival", aliases = "gms, gm0, gamemode0", source = SourceType.IN_GAME, rank = Rank.OP)
 public class Command_survival extends CommandBase
 {
 

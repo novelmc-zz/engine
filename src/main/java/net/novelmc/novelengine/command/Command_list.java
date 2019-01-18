@@ -18,7 +18,7 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-@CommandParameters(description = "A list of online players", source = SourceType.BOTH, rank = Rank.IMPOSTOR)
+@CommandParameters(description = "A list of online players", aliases = "fr, lsit", source = SourceType.BOTH, rank = Rank.IMPOSTOR)
 public class Command_list extends CommandBase
 {
 
@@ -53,7 +53,7 @@ public class Command_list extends CommandBase
             if (StaffList.isImpostor(player) || ArchitectList.isImpostor(player))
             {
                 impostors.add(ChatColor.GRAY + player.getName());
-            } 
+            }
             else if (Rank.getRank(player).isAtLeast(Rank.SENIOR_ADMIN))
             {
                 managers.add(ChatColor.GRAY + player.getName());

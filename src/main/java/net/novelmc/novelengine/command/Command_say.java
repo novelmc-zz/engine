@@ -10,7 +10,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-@CommandParameters(description = "Broadcast your message", usage = "/<command> <message>", source = SourceType.BOTH, rank = Rank.TRAINEE)
+@CommandParameters(description = "Broadcast your message", aliases = "shout", usage = "/<command> <message>", source = SourceType.BOTH, rank = Rank.TRAINEE)
 public class Command_say extends CommandBase
 {
 

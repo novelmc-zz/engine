@@ -10,7 +10,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@CommandParameters(description = "Set your gamemode to spectator", aliases = "gmsp", source = SourceType.IN_GAME, rank = Rank.OP)
+@CommandParameters(description = "Set your gamemode to spectator", aliases = "gmsp, gm3, gamemode3", source = SourceType.IN_GAME, rank = Rank.OP)
 public class Command_spectator extends CommandBase
 {
 
