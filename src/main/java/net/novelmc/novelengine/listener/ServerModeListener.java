@@ -212,7 +212,7 @@ public class ServerModeListener extends NovelBase implements Listener
         // Developer Mode
         if (plugin.config.isDevModeEnabled())
         {
-            if (!isDev(player) || !isDirector(player))
+            if (!isDev(player) && !isDirector(player))
             {
                 e.disallow(PlayerLoginEvent.Result.KICK_OTHER, NUtil.colorize("&cThe server is currently in developer mode!"));
             }
