@@ -45,6 +45,7 @@ public class NUtil
                     if(StaffList.isStaff(player))
                     {
                         player.sendMessage(message);
+                        Bukkit.getConsoleSender().sendMessage(message);
                     }
                 }
                 break;
