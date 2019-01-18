@@ -26,7 +26,7 @@ public class Command_mode extends CommandBase
             {
                 case "dev":
                 {
-                    if (!NUtil.DEVELOPERS.contains(player.getName()))
+                    if (!NUtil.DEVELOPERS.contains(sender.getName()))
                     {
                         sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &7You must be a &5&lDEV&r&7 to be able to execute this command."));
                         return true;
@@ -55,7 +55,7 @@ public class Command_mode extends CommandBase
                 }
                 case "devel":
                 {
-                    if (!NUtil.DEVELOPERS.contains(player.getName()))
+                    if (!NUtil.DEVELOPERS.contains(sender.getName()))
                     {
                         sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &7You must be a &5&lDEV&r&7 to be able to execute this command."));
                         return true;
