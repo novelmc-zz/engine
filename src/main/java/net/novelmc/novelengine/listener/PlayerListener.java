@@ -20,6 +20,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.*;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import net.novelmc.novelengine.util.NPlayer;
 
 public class PlayerListener extends NovelBase implements Listener
 {
@@ -128,7 +130,19 @@ public class PlayerListener extends NovelBase implements Listener
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event)
     {
-        //TODO: Freeze system and World system
+        //TODO: World system
+        Player player = event.getPlayer();
+        if (NPlayer.isFrozen(player))
+        {
+            player.teleport(player);
+            return;
+        }
+        if (NPlayer.isBusy(player))
+        {
+            NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 » &7" + player.getName() + " is no longer marked as busy."), NUtil.MessageType.ALL);
+            NPlayer.busyPlayers.remove(player);
+            return;
+        }
     }
 
     @EventHandler

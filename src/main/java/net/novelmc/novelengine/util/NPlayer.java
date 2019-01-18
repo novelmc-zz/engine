@@ -1,5 +1,6 @@
 package net.novelmc.novelengine.util;
 
+import java.util.ArrayList;
 import net.novelmc.novelengine.banning.BanManager;
 import net.novelmc.novelengine.rank.Rank;
 import net.novelmc.novelengine.rank.Title;
@@ -10,6 +11,9 @@ import org.bukkit.entity.Player;
 
 public abstract class NPlayer implements Player 
 {
+    public static ArrayList<Player> busyPlayers = new ArrayList<>();
+    public static ArrayList<Player> frozenPlayers = new ArrayList<>();
+    
     public boolean isBanned()
     {
         return BanManager.isBanned(this);
@@ -28,5 +32,17 @@ public abstract class NPlayer implements Player
     public Rank getRank()
     {
         return Rank.getRank(this);
+    }
+    
+    // TODO: Use NPlayer instead of Player
+    public static boolean isBusy(Player player)
+    {
+        return busyPlayers.contains(player);
+    }
+    
+    // TODO: Use NPlayer instead of Player
+    public static boolean isFrozen(Player player)
+    {
+        return frozenPlayers.contains(player);
     }
 }
