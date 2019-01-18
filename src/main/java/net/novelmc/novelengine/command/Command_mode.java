@@ -8,6 +8,7 @@ import net.novelmc.novelengine.rank.Rank;
 import net.novelmc.novelengine.util.NUtil;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.ChatColor;
 
 @CommandParameters(description = "Sets the mode that the server is in", usage = "/<command> [mode]", source = SourceType.BOTH, rank = Rank.ADMIN)
 public class Command_mode extends CommandBase
@@ -101,7 +102,8 @@ public class Command_mode extends CommandBase
         sender.sendMessage(NUtil.colorize("&7 - devel (development mode)"));
         sender.sendMessage(NUtil.colorize("&7 - off (normal)"));
         StringBuilder line = new StringBuilder()
-                .append(NUtil.colorize("&7The server is currently running in "));
+                .append(ChatColor.GRAY)
+                .append("The server is currently running in "));
         
         if (plugin.config.isDevModeEnabled())
         {
@@ -128,6 +130,7 @@ public class Command_mode extends CommandBase
         }
         
         line.append("normal mode.");
+        sender.sendMessage(line.toString());
         return true;
     }
 }
