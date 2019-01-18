@@ -8,7 +8,8 @@ import net.novelmc.novelengine.rank.architect.ArchitectList;
 import net.novelmc.novelengine.rank.staff.StaffList;
 import org.bukkit.entity.Player;
 
-public abstract class NPlayer implements Player {
+public abstract class NPlayer implements Player 
+{
     public boolean isBanned()
     {
         return BanManager.isBanned(this);
