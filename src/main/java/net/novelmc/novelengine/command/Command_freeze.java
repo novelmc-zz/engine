@@ -13,7 +13,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@CommandParameters(description = "Freeze an in-game player", usage = "/<command> <<player> | global>", source = SourceType.BOTH, rank = Rank.TRAINEE)
+@CommandParameters(description = "Freeze an in-game player", usage = "/<command> <<player> | global>", aliases = "fr", source = SourceType.BOTH, rank = Rank.TRAINEE)
 public class Command_freeze extends CommandBase
 {
     @Override
@@ -42,14 +42,14 @@ public class Command_freeze extends CommandBase
                 }
             }
         }
-        
+
         Player player = Bukkit.getPlayer(args[0]);
         if (player == null)
         {
             sender.sendMessage(NUtil.colorize("&8<-> &3&lINFO &7That player could not be found."));
             return true;
         }
-        
+
         if (NPlayer.isFrozen(player))
         {
             sender.sendMessage(NUtil.colorize("&8<-> &3&lINFO &7" + player.getName() + " is no longer frozen."));

@@ -10,7 +10,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@CommandParameters(description = "Set your gamemode to creative", aliases = "gmc", source = SourceType.IN_GAME, rank = Rank.OP)
+@CommandParameters(description = "Set your gamemode to creative", aliases = "gmc, gm1, gamemode1", source = SourceType.IN_GAME, rank = Rank.OP)
 public class Command_creative extends CommandBase
 {
 

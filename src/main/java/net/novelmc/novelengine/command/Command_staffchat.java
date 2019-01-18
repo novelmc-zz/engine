@@ -11,14 +11,14 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-@CommandParameters(description = "Talk with staff members privately.", usage = "/<command> <message>", aliases = "sc", source = SourceType.BOTH, rank = Rank.TRAINEE)
-public class Command_staffchat extends CommandBase 
+@CommandParameters(description = "Talk with staff members privately.", usage = "/<command> <message>", aliases = "sc, o", source = SourceType.BOTH, rank = Rank.TRAINEE)
+public class Command_staffchat extends CommandBase
 {
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args) 
+    public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {
-        if (args.length == 0) 
+        if (args.length == 0)
         {
             return false;
         }

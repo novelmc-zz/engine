@@ -11,7 +11,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@CommandParameters(description = "Configure your staff profile", usage = "/<command> [sethomeip | clearhomeip]", source = SourceType.IN_GAME, rank = Rank.TRAINEE)
+@CommandParameters(description = "Configure your staff profile", aliases = "mystaff", usage = "/<command> [sethomeip | clearhomeip]", source = SourceType.IN_GAME, rank = Rank.TRAINEE)
 public class Command_profile extends CommandBase
 {
     private static NovelEngine plugin;
