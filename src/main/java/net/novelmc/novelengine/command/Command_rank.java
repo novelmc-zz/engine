@@ -49,8 +49,13 @@ public class Command_rank extends CommandBase
     public String message(Player player)
     {
         Displayable display = Rank.getDisplay(player);
+        Rank rank = Rank.getRank(player);
         StringBuilder sb = new StringBuilder()
                 .append(ChatColor.GRAY + player.getName() + " is " + display.getLoginMessage());
+        if (rank != display)
+        {
+            sb.append(ChatColor.GRAY + " (" + rank.getColor() + rank.getName() + ChatColor.GRAY + ")");
+        }
         return sb.toString();
     }
 }
