@@ -51,7 +51,7 @@ public class ServerModeListener extends NovelBase implements Listener
             player.setWhitelisted(true);
         }
 
-        NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 \u00BB &cThe server has entered event mode, now all online players are now whitelisted!"));
+        NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 \u00BB &cThe server has entered event mode, all online players have been whitelisted."));
     }
 
     public static void disableEventMode()
@@ -68,7 +68,7 @@ public class ServerModeListener extends NovelBase implements Listener
             player.setWhitelisted(false);
         }
 
-        NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 \u00BB &cThe server has left event mode, have a great rest of your day!"));
+        NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 \u00BB &cThe server has left event mode."));
     }
 
     // Event Mode: End
@@ -91,11 +91,11 @@ public class ServerModeListener extends NovelBase implements Listener
         {
             if (!isDev(player) && !isDirector(player))
             {
-                player.kickPlayer(NUtil.colorize("&8<-> &a&lSERVER&r&8 \u00BB &cThe server has entered developer mode."));
+                player.kickPlayer(NUtil.colorize("&8<-> &a&lSERVER&r&8 \u00BB &cThe server has entered developer-only mode."));
             }
         }
 
-        NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 \u00BB &cThe server has entered developer mode, now only leadership and developers can join!"));
+        NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 \u00BB &cThe server has entered developer-mode."));
     }
 
     public static void disableDevMode()
@@ -107,7 +107,7 @@ public class ServerModeListener extends NovelBase implements Listener
 
         plugin.config.setDevModeEnabled(false);
 
-        NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 \u00BB &cThe server has left developer mode, have a great rest of your day!"));
+        NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 \u00BB &cThe server has left developer-only mode."));
     }
 
     // Developer Mode: End
@@ -126,7 +126,7 @@ public class ServerModeListener extends NovelBase implements Listener
         plugin.config.setDevModeEnabled(false);
         plugin.config.setStaffModeEnabled(false);
 
-        NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 \u00BB &cThe server has entered development mode, be aware of restarts and reloads!"));
+        NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 \u00BB &cThe server has entered development mode, be aware of restarts and reloads."));
     }
 
     public static void disableDevelMode()
@@ -138,7 +138,7 @@ public class ServerModeListener extends NovelBase implements Listener
 
         plugin.config.setDevelModeEnabled(false);
 
-        NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 \u00BB &cThe server has left development mode, have a great rest of your day!"));
+        NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 \u00BB &cThe server has left development mode."));
     }
 
     // Development Mode: End
@@ -161,11 +161,11 @@ public class ServerModeListener extends NovelBase implements Listener
         {
             if (!StaffList.isStaff(player))
             {
-                player.kickPlayer(NUtil.colorize("&8<-> &a&lSERVER&r&8 \u00BB &cThe server has entered staff mode."));
+                player.kickPlayer(NUtil.colorize("&8<-> &a&lSERVER&r&8 \u00BB &cThe server has entered staff-only mode."));
             }
         }
 
-        NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 \u00BB &cThe server has entered staff mode, now only staff can join!"));
+        NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 \u00BB &cThe server has entered staff-only mode."));
     }
 
     public static void disableStaffMode()
@@ -177,7 +177,7 @@ public class ServerModeListener extends NovelBase implements Listener
 
         plugin.config.setStaffModeEnabled(false);
 
-        NUtil.globalMessage(NUtil.colorize("&&8<-> &a&lSERVER&r&8 \u00BB cThe server has left staff mode, have a great rest of your day!"));
+        NUtil.globalMessage(NUtil.colorize("&&8<-> &a&lSERVER&r&8 \u00BB &cThe server has exited staff-only mode."));
     }
 
     // Staff Mode: End
@@ -191,7 +191,7 @@ public class ServerModeListener extends NovelBase implements Listener
         plugin.config.setDevelModeEnabled(false);
         plugin.config.setStaffModeEnabled(false);
 
-        NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 \u00BB &cThe server has returned to normal, have a great rest of your day!"));
+        NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 \u00BB &cThe server has re-opened to everyone."));
     }
 
     // Disable Every Mode: End
@@ -206,7 +206,7 @@ public class ServerModeListener extends NovelBase implements Listener
         // Event Mode
         if (plugin.config.isEventModeEnabled() && !player.isWhitelisted() && !StaffList.isStaff(player))
         {
-            e.disallow(PlayerLoginEvent.Result.KICK_OTHER, NUtil.colorize("&cThe server is currently in event mode!"));
+            e.disallow(PlayerLoginEvent.Result.KICK_OTHER, NUtil.colorize("&cThe server is currently in event mode."));
         }
 
         // Developer Mode
@@ -214,14 +214,14 @@ public class ServerModeListener extends NovelBase implements Listener
         {
             if (!isDev(player) && !isDirector(player))
             {
-                e.disallow(PlayerLoginEvent.Result.KICK_OTHER, NUtil.colorize("&cThe server is currently in developer mode!"));
+                e.disallow(PlayerLoginEvent.Result.KICK_OTHER, NUtil.colorize("&cThe server is currently in developer-only mode."));
             }
         }
 
         // Staff Mode
         if (plugin.config.isStaffModeEnabled() && !StaffList.isStaff(player))
         {
-            e.disallow(PlayerLoginEvent.Result.KICK_OTHER, NUtil.colorize("&cThe server is currently in staff mode!"));
+            e.disallow(PlayerLoginEvent.Result.KICK_OTHER, NUtil.colorize("&cThe server is currently in staff-only mode."));
         }
     }
 }
