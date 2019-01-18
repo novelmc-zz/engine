@@ -9,7 +9,7 @@ import net.novelmc.novelengine.util.NUtil;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
-@CommandParameters(description = "Sets the mode that the server is in", usage = "/<command> [mode]", source = SourceType.BOTH, rank = Rank.TRAINEE)
+@CommandParameters(description = "Sets the mode that the server is in", usage = "/<command> [mode]", source = SourceType.BOTH, rank = Rank.ADMIN)
 public class Command_mode extends CommandBase
 {
     @Override
@@ -26,6 +26,11 @@ public class Command_mode extends CommandBase
             {
                 case "dev":
                 {
+                    if (!NUtil.DEVELOPERS.contains(player.getName()))
+                    {
+                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &7You must be a &5&lDEV&r&7 to be able to execute this command."));
+                        return true;
+                    }
                     if (plugin.config.isDevModeEnabled())
                     {
                         NUtil.playerAction(sender, "Turning developer mode off", true);
@@ -50,6 +55,11 @@ public class Command_mode extends CommandBase
                 }
                 case "devel":
                 {
+                    if (!NUtil.DEVELOPERS.contains(player.getName()))
+                    {
+                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &7You must be a &5&lDEV&r&7 to be able to execute this command."));
+                        return true;
+                    }
                     if (plugin.config.isDevelModeEnabled())
                     {
                         NUtil.playerAction(sender, "Turning development mode off", true);
