@@ -111,20 +111,25 @@ public class PlayerListener extends NovelBase implements Listener
         {
             ArchitectList.getImpostors().remove(event.getPlayer().getName());
         }
-        if (Command_vanish.VANISHED.contains(event.getPlayer())) {
+        if (Command_vanish.VANISHED.contains(event.getPlayer())) 
+        {
             event.setQuitMessage(null);
             NUtil.globalMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 » " + event.getPlayer().getDisplayName() + " has silently logged out."), NUtil.MessageType.STAFF_ONLY);
         }
     }
 
     @EventHandler
-    public void onPlayerChat(AsyncPlayerChatEvent event) {
+    public void onPlayerChat(AsyncPlayerChatEvent event) 
+    {
 
-        if (StaffList.isStaff(event.getPlayer()) && event.getMessage().startsWith(">")) {
+        if (StaffList.isStaff(event.getPlayer()) && event.getMessage().startsWith(">")) 
+        {
             NUtil.globalMessage(NUtil.colorize("&b»&6»&a» &7" + Rank.getDisplay(event.getPlayer()).getTag() + " &7" + event.getPlayer().getName() + " &8» ") + ChatColor.WHITE + event.getMessage().substring(1), NUtil.MessageType.STAFF_ONLY);
             Bukkit.getConsoleSender().sendMessage(NUtil.colorize("&b»&6»&a» &7" + Rank.getDisplay(event.getPlayer()).getTag() + " &7" + event.getPlayer().getName() + " &8» ") + ChatColor.WHITE + event.getMessage().substring(1));
             event.setCancelled(true);
-        } else {
+        } 
+        else 
+        {
             event.setFormat(Rank.getDisplay(event.getPlayer()).getTag() + " " + ChatColor.GRAY + event.getPlayer().getDisplayName() + ChatColor.DARK_GRAY + ": " + ChatColor.WHITE + event.getMessage());
         }
 
@@ -175,9 +180,14 @@ public class PlayerListener extends NovelBase implements Listener
     {
         final Player player = event.getPlayer();
         
+        if (StaffList.isStaff(player))
+        {
+            return;
+        }
+        
         for (Player all : Bukkit.getOnlinePlayers())
         {
-            if (NPlayer.hasCommandSpyEnabled(all))
+            if (NPlayer.hasCommandSpyEnabled(all) && StaffList.isStaff(all))
             {
                 all.sendMessage(NUtil.colorize("&7" + player.getName() + ": " + event.getMessage()));
             }
