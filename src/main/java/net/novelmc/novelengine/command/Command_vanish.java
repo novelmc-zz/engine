@@ -48,7 +48,7 @@ public class Command_vanish extends CommandBase
             {
                 NUtil.globalMessage(ChatColor.YELLOW + player.getName() + " joined the game", NUtil.MessageType.ALL);
             }
-            NUtil.globalMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 » &7 Crack! " + player.getName() + " has reappeared!"), NUtil.MessageType.STAFF_ONLY);
+            NUtil.globalMessage(NUtil.colorize("&8<-> &4&lSTAFF \u00BB &7 Crack! " + player.getName() + " has reappeared!"), NUtil.MessageType.STAFF_ONLY);
             VANISHED.remove(player);
         }
         else
@@ -63,7 +63,7 @@ public class Command_vanish extends CommandBase
             {
                 NUtil.globalMessage(ChatColor.YELLOW + player.getName() + " left the game", NUtil.MessageType.ALL);
             }
-            NUtil.globalMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 » &7 Poof! " + player.getName() + " has vanished!"), NUtil.MessageType.STAFF_ONLY);
+            NUtil.globalMessage(NUtil.colorize("&8<-> &4&lSTAFF \u00BB &7 Poof! " + player.getName() + " has vanished!"), NUtil.MessageType.STAFF_ONLY);
             VANISHED.add(player);
         }
         return true;

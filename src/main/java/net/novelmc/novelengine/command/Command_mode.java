@@ -20,7 +20,7 @@ public class Command_mode extends CommandBase
         {
             return false;
         }
-        
+
         if (args.length == 1)
         {
             switch (args[0])
@@ -29,7 +29,7 @@ public class Command_mode extends CommandBase
                 {
                     if (!NUtil.DEVELOPERS.contains(sender.getName()))
                     {
-                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &7You must be a &5&lDEV&r&7 to be able to execute this command."));
+                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF \u00BB &7You must be a &5&lDEV&r&7 to be able to execute this command."));
                         return true;
                     }
                     if (plugin.config.isDevModeEnabled())
@@ -58,7 +58,7 @@ public class Command_mode extends CommandBase
                 {
                     if (!NUtil.DEVELOPERS.contains(sender.getName()))
                     {
-                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF &7You must be a &5&lDEV&r&7 to be able to execute this command."));
+                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF \u00BB &7You must be a &5&lDEV&r&7 to be able to execute this command."));
                         return true;
                     }
                     if (plugin.config.isDevelModeEnabled())
@@ -93,18 +93,18 @@ public class Command_mode extends CommandBase
                 {
                     return false;
                 }
-            }   
+            }
         }
-        sender.sendMessage(NUtil.colorize("&7Server Modes"));
-        sender.sendMessage(NUtil.colorize("&7 - dev (leadership and developers only)"));
-        sender.sendMessage(NUtil.colorize("&7 - staff (staff only)"));
-        sender.sendMessage(NUtil.colorize("&7 - event (event mode)"));
-        sender.sendMessage(NUtil.colorize("&7 - devel (development mode)"));
-        sender.sendMessage(NUtil.colorize("&7 - off (normal)"));
+        sender.sendMessage(NUtil.colorize("&8<-> &7Server Modes&8:"));
+        sender.sendMessage(NUtil.colorize("&8<-> &5&ldev&r&8: &7Plugin testing for leadership and devs."));
+        sender.sendMessage(NUtil.colorize("&8<-> &4&lstaff&r&8: &7Staff-only mode."));
+        sender.sendMessage(NUtil.colorize("&8<-> &a&levent&r&8: &7Event mode."));
+        sender.sendMessage(NUtil.colorize("&8<-> &6&ldevel&r&8: &7Public development testing mode."));
+        sender.sendMessage(NUtil.colorize("&8<-> &7&loff&r&8: &7Normal mode functionality."));
         StringBuilder line = new StringBuilder()
                 .append(ChatColor.GRAY)
                 .append("The server is currently running in ");
-        
+
         if (plugin.config.isDevModeEnabled())
         {
             line.append("developer mode.");

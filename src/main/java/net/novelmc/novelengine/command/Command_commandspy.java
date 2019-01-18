@@ -21,11 +21,11 @@ public class Command_commandspy extends CommandBase
         if (NPlayer.hasCommandSpyEnabled(player))
         {
             NPlayer.commandSpyPlayers.remove(player);
-            sender.sendMessage(NUtil.colorize("&8<-> &3&lINFO &7CommandSpy disabled."));
+            sender.sendMessage(NUtil.colorize("&8<-> &3&lINFO \u00BB &7CommandSpy disabled."));
             return true;
         }
         NPlayer.commandSpyPlayers.add(player);
-        sender.sendMessage(NUtil.colorize("&8<-> &3&lINFO &7CommandSpy enabled."));
+        sender.sendMessage(NUtil.colorize("&8<-> &3&lINFO \u00BB &7CommandSpy enabled."));
         return true;
     }
 }

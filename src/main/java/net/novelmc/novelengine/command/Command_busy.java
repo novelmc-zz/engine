@@ -21,15 +21,15 @@ public class Command_busy extends CommandBase
         {
             return false;
         }
-        
+
         Player player = (Player) sender;
         if (NPlayer.isBusy(player))
         {
-            NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 » &7" + sender.getName() + " is no longer marked as busy."));
+            NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER \u00BB &7" + sender.getName() + " is no longer marked as busy."), NUtil.MessageType.ALL);
             NPlayer.busyPlayers.remove(player);
             return true;
         }
-        NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 » &7" + sender.getName() + " is now marked as busy."));
+        NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER \u00BB &7" + sender.getName() + " is now marked as busy."), NUtil.MessageType.ALL);
         NPlayer.busyPlayers.add(player);
         return true;
     }

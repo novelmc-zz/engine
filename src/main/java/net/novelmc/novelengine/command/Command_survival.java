@@ -19,7 +19,7 @@ public class Command_survival extends CommandBase
     {
         Player player = (Player) sender;
         player.setGameMode(GameMode.SURVIVAL);
-        sender.sendMessage(NUtil.colorize("&8<-> &3&lINFO &7Your gamemode has been set to survival."));
+        sender.sendMessage(NUtil.colorize("&8<-> &3&lINFO \u00BB &7Your gamemode has been set to survival."));
 
         return true;
     }
