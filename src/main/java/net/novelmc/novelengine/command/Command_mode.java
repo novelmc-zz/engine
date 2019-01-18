@@ -108,28 +108,23 @@ public class Command_mode extends CommandBase
         if (plugin.config.isDevModeEnabled())
         {
             line.append("developer mode.");
-            return true;
         }
-        
-        if (plugin.config.isDevelModeEnabled())
+        else if (plugin.config.isDevelModeEnabled())
         {
             line.append("development mode.");
-            return true;
         }
-        
-        if (plugin.config.isEventModeEnabled())
+        else if (plugin.config.isEventModeEnabled())
         {
             line.append("event mode.");
-            return true;
         }
-        
-        if (plugin.config.isStaffModeEnabled())
+        else if (plugin.config.isStaffModeEnabled())
         {
             line.append("staff mode.");
-            return true;
         }
-        
-        line.append("normal mode.");
+        else
+        {
+            line.append("normal mode.");
+        }
         sender.sendMessage(line.toString());
         return true;
     }
