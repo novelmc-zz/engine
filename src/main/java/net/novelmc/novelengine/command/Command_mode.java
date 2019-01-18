@@ -103,7 +103,7 @@ public class Command_mode extends CommandBase
         sender.sendMessage(NUtil.colorize("&7 - off (normal)"));
         StringBuilder line = new StringBuilder()
                 .append(ChatColor.GRAY)
-                .append("The server is currently running in "));
+                .append("The server is currently running in ");
         
         if (plugin.config.isDevModeEnabled())
         {
