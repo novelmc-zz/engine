@@ -16,6 +16,15 @@ general:
 
   # Event mode
   eventmode: false
+  
+  # Dev mode
+  devmode: false
+  
+  # Development mode
+  develmode: false
+  
+  # Staff mode
+  staffmode: false
 
 # SQL information
 sql:

@@ -49,6 +49,36 @@ public class Config extends YamlConfiguration
     {
         super.set("general.eventmode", enable);
     }
+    
+    public boolean isDevModeEnabled()
+    {
+        return super.getBoolean("general.devmode");
+    }
+
+    public void setDevModeEnabled(boolean enable)
+    {
+        super.set("general.devmode", enable);
+    }
+    
+    public boolean isDevelModeEnabled()
+    {
+        return super.getBoolean("general.develmode");
+    }
+
+    public void setDevelModeEnabled(boolean enable)
+    {
+        super.set("general.develmode", enable);
+    }
+    
+    public boolean isStaffModeEnabled()
+    {
+        return super.getBoolean("general.staffmode");
+    }
+
+    public void setStaffModeEnabled(boolean enable)
+    {
+        super.set("general.staffmode", enable);
+    }
 
     public List<String> getDefaultCommands()
     {

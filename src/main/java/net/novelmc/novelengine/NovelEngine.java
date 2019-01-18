@@ -5,7 +5,7 @@ import net.novelmc.novelengine.command.util.CommandLoader;
 import net.novelmc.novelengine.config.ArchitectConfig;
 import net.novelmc.novelengine.config.Config;
 import net.novelmc.novelengine.config.StaffConfig;
-import net.novelmc.novelengine.listener.EventModeListener;
+import net.novelmc.novelengine.listener.ServerModeListener;
 import net.novelmc.novelengine.listener.PlayerListener;
 import net.novelmc.novelengine.listener.ServerListener;
 import net.novelmc.novelengine.rank.architect.ArchitectList;
@@ -26,7 +26,7 @@ public class NovelEngine extends JavaPlugin
     public BanManager banManager;
     public CommandLoader commandLoader;
     public Config config;
-    public EventModeListener eventModeListener;
+    public ServerModeListener eventModeListener;
     public PlayerListener playerListener;
     public PlayerDatabase playerDatabase;
     public ServerListener serverListener;
@@ -69,7 +69,7 @@ public class NovelEngine extends JavaPlugin
         playerListener = new PlayerListener();
         playerDatabase = new PlayerDatabase();
         serverListener = new ServerListener();
-        eventModeListener = new EventModeListener();
+        eventModeListener = new ServerModeListener();
 
         commandLoader.registerCommands();
 
