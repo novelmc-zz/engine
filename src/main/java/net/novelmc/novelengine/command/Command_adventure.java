@@ -19,7 +19,7 @@ public class Command_adventure extends CommandBase
     {
         Player player = (Player) sender;
         player.setGameMode(GameMode.ADVENTURE);
-        sender.sendMessage(NUtil.colorize("&8<-> &3&lINFO &7Your gamemode has been set to adventure."));
+        sender.sendMessage(NUtil.colorize("&8<-> &3&lINFO&r&8 » &7Your gamemode has been set to adventure."));
         return true;
     }
 }

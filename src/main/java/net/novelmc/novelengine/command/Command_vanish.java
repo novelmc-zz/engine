@@ -15,21 +15,21 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 
 @CommandParameters(description = "Vanish/unvanish from existence! Well, hopefully.", source = SourceType.IN_GAME, rank = Rank.TRAINEE)
-public class Command_vanish extends CommandBase 
+public class Command_vanish extends CommandBase
 {
 
     //Credit: Base Template provided by TFPatches
     public static ArrayList<Player> VANISHED = new ArrayList<>();
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args) 
+    public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {
 
         boolean silent = false;
 
-        if (args.length > 0) 
+        if (args.length > 0)
         {
-            if (args[0].equalsIgnoreCase("-s") || args[0].equalsIgnoreCase("-silent")) 
+            if (args[0].equalsIgnoreCase("-s") || args[0].equalsIgnoreCase("-silent"))
             {
                 silent = true;
             }
@@ -37,33 +37,33 @@ public class Command_vanish extends CommandBase
 
         Player player = (Player) sender;
 
-        if (VANISHED.contains(player)) 
+        if (VANISHED.contains(player))
         {
-            for (Player online : Bukkit.getOnlinePlayers()) 
+            for (Player online : Bukkit.getOnlinePlayers())
             {
                 online.showPlayer(plugin, player);
             }
 
-            if (!silent) 
+            if (!silent)
             {
                 NUtil.globalMessage(ChatColor.YELLOW + player.getName() + " joined the game", NUtil.MessageType.ALL);
             }
-            NUtil.globalMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8: &7 Crack! " + player.getName() + " has reappeared!"), NUtil.MessageType.STAFF_ONLY);
+            NUtil.globalMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 » &7 Crack! " + player.getName() + " has reappeared!"), NUtil.MessageType.STAFF_ONLY);
             VANISHED.remove(player);
-        } 
-        else 
+        }
+        else
         {
 
-            for (Player online : Bukkit.getOnlinePlayers()) 
+            for (Player online : Bukkit.getOnlinePlayers())
             {
                 if (!StaffList.isStaff(online))
                     online.hidePlayer(plugin, player);
             }
-            if (!silent) 
+            if (!silent)
             {
                 NUtil.globalMessage(ChatColor.YELLOW + player.getName() + " left the game", NUtil.MessageType.ALL);
             }
-            NUtil.globalMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8: &7 Poof! " + player.getName() + " has vanished!"), NUtil.MessageType.STAFF_ONLY);
+            NUtil.globalMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 » &7 Poof! " + player.getName() + " has vanished!"), NUtil.MessageType.STAFF_ONLY);
             VANISHED.add(player);
         }
         return true;
