@@ -174,6 +174,14 @@ public class PlayerListener extends NovelBase implements Listener
     public void onCommandPreprocess(PlayerCommandPreprocessEvent event)
     {
         final Player player = event.getPlayer();
+        
+        for (Player all : Bukkit.getOnlinePlayers())
+        {
+            if (NPlayer.hasCommandSpyEnabled(all))
+            {
+                all.sendMessage(NUtil.colorize("&7" + player.getName() + ": " + event.getMessage()));
+            }
+        }
 
         for (String blocked : plugin.config.getDefaultCommands())
         {

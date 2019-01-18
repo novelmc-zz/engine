@@ -6,7 +6,6 @@ import net.novelmc.novelengine.command.util.SourceType;
 import net.novelmc.novelengine.rank.Rank;
 import net.novelmc.novelengine.util.NPlayer;
 import net.novelmc.novelengine.util.NUtil;
-import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -19,9 +18,14 @@ public class Command_commandspy extends CommandBase
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {
         Player player = (Player) sender;
+        if (NPlayer.hasCommandSpyEnabled(player))
+        {
+            NPlayer.commandSpyPlayers.remove(player);
+            sender.sendMessage(NUtil.colorize("&8<-> &3&lINFO &7CommandSpy disabled."));
+            return true;
+        }
         NPlayer.commandSpyPlayers.add(player);
-        sender.sendMessage(NUtil.colorize("&8<-> &3&lINFO &7Your gamemode has been set to creative."));
+        sender.sendMessage(NUtil.colorize("&8<-> &3&lINFO &7CommandSpy enabled."));
         return true;
-        // INCOMPLETE
     }
 }

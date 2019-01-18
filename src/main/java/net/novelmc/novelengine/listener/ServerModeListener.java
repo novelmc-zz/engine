@@ -89,7 +89,7 @@ public class ServerModeListener extends NovelBase implements Listener
         
         for (Player player : Bukkit.getOnlinePlayers())
         {
-            if (!isDev(player) || !isDirector(player))
+            if (!isDev(player) && !isDirector(player))
             {
                 player.kickPlayer(NUtil.colorize("&cThe server has entered developer mode."));
             }

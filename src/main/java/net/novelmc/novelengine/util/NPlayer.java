@@ -46,4 +46,9 @@ public abstract class NPlayer implements Player
     {
         return frozenPlayers.contains(player);
     }
+    
+    public static boolean hasCommandSpyEnabled(Player player)
+    {
+        return commandSpyPlayers.contains(player);
+    }
 }
