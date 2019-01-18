@@ -37,7 +37,7 @@ public class Command_ban extends CommandBase
         {
             if (BanManager.isIPBanned(args[0]))
             {
-                sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF \u00BB &7That IP address is currently banned."));
+                sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BBB &7That IP address is currently banned."));
                 return true;
             }
 
@@ -47,7 +47,7 @@ public class Command_ban extends CommandBase
             }
             else
             {
-                sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF \u00BB &7A reason must be specified."));
+                sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7A reason must be specified."));
                 return true;
             }
 
@@ -70,7 +70,7 @@ public class Command_ban extends CommandBase
 
             if (player.isBanned())
             {
-                sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF \u00BB &7That player has already been banned."));
+                sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7That player has already been banned."));
                 return true;
             }
 
@@ -82,12 +82,12 @@ public class Command_ban extends CommandBase
             if (reason != null)
             {
                 NUtil.playerAction(sender, String.format(" - Banning %s" + NEW_LINE + "Reason: " + ChatColor.YELLOW + "%s", offlinePlayer.getName(), reason), true);
-                player.kickPlayer(NUtil.colorize("&8<-> &3&lINFO \u00BB &cYou have been banned!" + NEW_LINE + "Reason: " + ChatColor.YELLOW + reason));
+                player.kickPlayer(NUtil.colorize("&8<-> &3&lINFO&r&8 \u00BB &cYou have been banned!" + NEW_LINE + "Reason: " + ChatColor.YELLOW + reason));
             }
             else
             {
                 NUtil.playerAction(sender, " - Banning " + offlinePlayer.getName(), true);
-                player.kickPlayer(NUtil.colorize("&8<-> &3&lINFO \u00BB &cYou have been banned!"));
+                player.kickPlayer(NUtil.colorize("&8<-> &3&lINFO&r&8 \u00BB &cYou have been banned!"));
             }
 
             BanManager.addBan(player.getName(), player.getAddress().getHostString(), sender.getName(), reason, NUtil.parseDateOffset("1d"), BanType.NORMAL);
@@ -95,7 +95,7 @@ public class Command_ban extends CommandBase
         else
         {
             if(!plugin.playerDatabase.containsName(offlinePlayer.getName())) {
-                sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF \u00BB &7Offline player not found."));
+                sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7Offline player not found."));
                 return true;
             }
 
