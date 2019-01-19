@@ -1,4 +1,4 @@
-﻿package net.novelmc.novelengine.listener;
+package net.novelmc.novelengine.listener;
 
 import net.novelmc.novelengine.banning.Ban;
 import net.novelmc.novelengine.banning.BanManager;
@@ -124,6 +124,7 @@ public class PlayerListener extends NovelBase implements Listener
     public void onPlayerChat(AsyncPlayerChatEvent event) 
     {
 	Player player = event.getPlayer();
+	EmoteListener.handleEmotes(event);
 	if (NPlayer.isBusy(player))
         {
             NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 » &7" + player.getName() + " is no longer marked as busy."), NUtil.MessageType.ALL);
