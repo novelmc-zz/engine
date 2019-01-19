@@ -33,8 +33,7 @@ public class EmoteListener extends NovelBase implements Listener
         Bukkit.getPluginManager().registerEvents(this, plugin);
     }
 
-    @EventHandler
-    public void onPlayerChat(AsyncPlayerChatEvent event)
+    public static void handleEmotes(AsyncPlayerChatEvent event)
     {
         String message = event.getMessage();
         
