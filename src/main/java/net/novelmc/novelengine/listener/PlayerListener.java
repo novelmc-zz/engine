@@ -1,4 +1,4 @@
-﻿package net.novelmc.novelengine.listener;
+package net.novelmc.novelengine.listener;
 
 import net.novelmc.novelengine.banning.Ban;
 import net.novelmc.novelengine.banning.BanManager;
