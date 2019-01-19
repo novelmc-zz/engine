@@ -30,22 +30,13 @@ public enum Rank implements Displayable
     private final String tag;
     @Getter
     private final ChatColor color;
-<<<<<<< HEAD
-    
-    Rank(String determiner, String name, ChatColor color)
-=======
 
     Rank(String determiner, String name, String tag, ChatColor color)
->>>>>>> parent of 13e6512... :doubt:
     {
         this.determiner = determiner;
         this.name = name;
         this.color = color;
-<<<<<<< HEAD
-        this.tag = NUtil.colorize(NovelBase.plugin.config.getString("tags." + name()));
-=======
         this.tag = color + "" + ChatColor.BOLD + tag + ChatColor.RESET + color;
->>>>>>> parent of 13e6512... :doubt:
     }
 
     private static NovelEngine plugin;
