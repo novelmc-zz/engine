@@ -31,14 +31,12 @@ public enum Rank implements Displayable
     @Getter
     private final ChatColor color;
     
-    private NovelEngine pl;
-    
     Rank(String determiner, String name, ChatColor color)
     {
         this.determiner = determiner;
         this.name = name;
         this.color = color;
-        this.tag = NUtil.colorize(pl.config.getString("tags." + name()));
+        this.tag = NUtil.colorize(NovelBase.plugin.config.getString("tags." + name()));
     }
     
     private static NovelEngine plugin;
