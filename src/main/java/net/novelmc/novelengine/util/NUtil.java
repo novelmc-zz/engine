@@ -1,4 +1,4 @@
-package net.novelmc.novelengine.util;
+﻿package net.novelmc.novelengine.util;
 
 import net.novelmc.novelengine.rank.Displayable;
 import net.novelmc.novelengine.rank.Rank;
@@ -67,7 +67,7 @@ public class NUtil
         }
         else
         {
-            globalMessage(colorize(String.format("&8<-> &a&lSERVER&r&8 » &7%s &8(%s%s &7%s&8)&7", action, display.getColor(), sender.getName(), display.getTag())));
+            globalMessage(colorize(String.format("&8<-> &a&lSERVER&r&8 » &7%s &8(%s%s &7%s&8)&7", action, display.getColor(), display.getTag(), sender.getName())));
         }
     }
 
