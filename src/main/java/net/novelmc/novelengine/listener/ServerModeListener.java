@@ -126,7 +126,7 @@ public class ServerModeListener extends NovelBase implements Listener
         plugin.config.setDevModeEnabled(false);
         plugin.config.setStaffModeEnabled(false);
 
-        NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 \u00BB &cThe server has entered development mode, be aware of restarts, reloads, and bugs."));
+        NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 \u00BB &cThe server has entered development mode, be aware of restarts and reloads."));
     }
 
     public static void disableDevelMode()
