@@ -123,9 +123,9 @@ public class PlayerListener extends NovelBase implements Listener
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) 
     {
-	    Player player = event.getPlayer();
-	    EmoteListener.handleEmotes(event);
-	    if (NPlayer.isBusy(player))
+	Player player = event.getPlayer();
+	EmoteListener.handleEmotes(event);
+	if (NPlayer.isBusy(player))
         {
             NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 » &7" + player.getName() + " is no longer marked as busy."), NUtil.MessageType.ALL);
             NPlayer.busyPlayers.remove(player);

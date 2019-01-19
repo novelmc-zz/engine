@@ -1,5 +1,6 @@
 package net.novelmc.novelengine.command;
 
+import java.util.ArrayList;
 import net.novelmc.novelengine.command.util.CommandBase;
 import net.novelmc.novelengine.command.util.CommandParameters;
 import net.novelmc.novelengine.command.util.SourceType;
