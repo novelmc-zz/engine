@@ -12,16 +12,16 @@ import org.bukkit.entity.Player;
 public enum Rank implements Displayable
 {
 
-    IMPOSTOR("an", "Impostor", "IMP", ChatColor.WHITE),
-    NON_OP("a", "Non-Op", "", ChatColor.WHITE),
-    OP("a", "Member", "MBR", ChatColor.WHITE),
-    TRAINEE("a", "Trainee", "TRN", ChatColor.DARK_AQUA),
-    MOD("a", "Mod", "MOD", ChatColor.GOLD),
-    SENIOR_MOD("a", "Senior Mod", "SRM", ChatColor.GOLD),
-    ADMIN("an", "Admin", "ADM", ChatColor.BLUE),
-    SENIOR_ADMIN("a", "Senior Admin", "SRA", ChatColor.BLUE),
-    DIRECTOR("a", "Director", "DIR", ChatColor.RED),
-    CONSOLE("the", "Console", "CSL", ChatColor.DARK_RED);
+    IMPOSTOR("an", "Impostor", ChatColor.WHITE),
+    NON_OP("a", "Non-Op", ChatColor.WHITE),
+    OP("a", "Member", ChatColor.WHITE),
+    TRAINEE("a", "Trainee", ChatColor.DARK_AQUA),
+    MOD("a", "Mod", ChatColor.GOLD),
+    SENIOR_MOD("a", "Senior Mod", ChatColor.GOLD),
+    ADMIN("an", "Admin", ChatColor.BLUE),
+    SENIOR_ADMIN("a", "Senior Admin", ChatColor.BLUE),
+    DIRECTOR("a", "Director", ChatColor.RED),
+    CONSOLE("the", "Console", ChatColor.DARK_RED);
 
     private final String determiner;
     @Getter
@@ -30,15 +30,17 @@ public enum Rank implements Displayable
     private final String tag;
     @Getter
     private final ChatColor color;
-
-    Rank(String determiner, String name, String tag, ChatColor color)
+    
+    private NovelEngine pl;
+    
+    Rank(String determiner, String name, ChatColor color)
     {
         this.determiner = determiner;
         this.name = name;
         this.color = color;
-        this.tag = color + "" + ChatColor.BOLD + tag + ChatColor.RESET + color;
+        this.tag = NUtil.colorize(pl.config.getString("tags." + name()));
     }
-
+    
     private static NovelEngine plugin;
 
     public int getLevel()
