@@ -1,15 +1,13 @@
 package net.novelmc.novelengine.rank;
 
 import lombok.Getter;
-import net.novelmc.novelengine.NovelEngine;
-import net.novelmc.novelengine.util.NUtil;
 import org.bukkit.ChatColor;
 
 public enum Title implements Displayable
 {
 
-    ARCHITECT("an", "Architect", ChatColor.GREEN),
-    DEVELOPER("a", "Developer", ChatColor.DARK_PURPLE);
+    ARCHITECT("an", "Architect", "ARC", ChatColor.GREEN),
+    DEVELOPER("a", "Developer", "DEV", ChatColor.DARK_PURPLE);
 
     private final String determiner;
     @Getter
@@ -18,15 +16,13 @@ public enum Title implements Displayable
     private final String tag;
     @Getter
     private final ChatColor color;
-    
-    private NovelEngine pl;
 
-    Title(String determiner, String name, ChatColor color)
+    Title(String determiner, String name, String tag, ChatColor color)
     {
         this.determiner = determiner;
         this.name = name;
         this.color = color;
-        this.tag = NUtil.colorize(pl.config.getString("tags." + name()));
+        this.tag = color + "" + ChatColor.BOLD + tag + ChatColor.RESET + color;
     }
 
     public String getLoginMessage()

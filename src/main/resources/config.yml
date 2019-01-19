@@ -71,18 +71,3 @@ permissionblocker:
 
 allow:
   lava_place: false
-
-# Rank tags
-tags:
-  IMPOSTOR: '&e&lIMP'
-  NON_OP: ''
-  OP: '&lMBR'
-  ARCHITECT: '&a&lARC'
-  TRAINEE: '&3&lTRN'
-  MOD: '&6&lMOD'
-  SENIOR_MOD: '&6&lSRM'
-  ADMIN: '&9&lADM'
-  SENIOR_ADMIN: '&9&lSRA'
-  DEVELOPER: '&5&lDEV'
-  DIRECTOR: '&c&lDIR'
-  CONSOLE: '&4&lCSL'
