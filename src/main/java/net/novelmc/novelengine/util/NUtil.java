@@ -1,4 +1,4 @@
-﻿package net.novelmc.novelengine.util;
+package net.novelmc.novelengine.util;
 
 import net.novelmc.novelengine.rank.Displayable;
 import net.novelmc.novelengine.rank.Rank;
