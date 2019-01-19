@@ -22,12 +22,12 @@ public class ServerModeListener extends NovelBase implements Listener
     }
 
     // Booleans
-    public static boolean isDev(Player player)
+    private static boolean isDev(Player player)
     {
         return NUtil.DEVELOPERS.contains(player.getName());
     }
 
-    public static boolean isDirector(Player player)
+    private static boolean isDirector(Player player)
     {
         return Rank.getRank(player).isAtLeast(Rank.DIRECTOR);
     }

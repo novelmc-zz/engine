@@ -14,7 +14,6 @@ public abstract class NPlayer implements Player
 {
     public static ArrayList<Player> busyPlayers = new ArrayList<>();
     public static ArrayList<Player> frozenPlayers = new ArrayList<>();
-    public static ArrayList<Player> commandSpyPlayers = new ArrayList<>();
     
     public boolean isBanned()
     {
