@@ -6,6 +6,7 @@ import net.novelmc.novelengine.rank.Rank;
 import net.novelmc.novelengine.rank.Title;
 import net.novelmc.novelengine.rank.architect.Architect;
 import net.novelmc.novelengine.rank.architect.ArchitectList;
+import net.novelmc.novelengine.rank.staff.Staff;
 import net.novelmc.novelengine.rank.staff.StaffList;
 import org.bukkit.entity.Player;
 
@@ -49,6 +50,11 @@ public abstract class NPlayer implements Player
     
     public static boolean hasCommandSpyEnabled(Player player)
     {
-        return commandSpyPlayers.contains(player);
+        Staff s = StaffList.getStaff(player);
+        if (s == null)
+        {
+            return false;
+        }
+        return s.isCommandSpy();
     }
 }

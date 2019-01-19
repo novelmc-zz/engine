@@ -75,8 +75,10 @@ public class PlayerListener extends NovelBase implements Listener
 
             player.setPlayerListName(StringUtils.substring(Rank.getRank(player).getColor() + player.getName(), 0, 16));
         }
-        for (Player p : Command_vanish.VANISHED) {
-            if (!StaffList.isStaff(player)) {
+        for (Player p : Command_vanish.VANISHED)
+        {
+            if (!StaffList.isStaff(player))
+            {
                 player.hidePlayer(plugin, p);
             }
         }
@@ -154,7 +156,6 @@ public class PlayerListener extends NovelBase implements Listener
         {
             NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 » &7" + player.getName() + " is no longer marked as busy."), NUtil.MessageType.ALL);
             NPlayer.busyPlayers.remove(player);
-            return;
         }
     }
 

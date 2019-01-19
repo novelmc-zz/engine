@@ -40,7 +40,9 @@ public class Staff extends NovelBase
     @Getter
     @Setter
     private boolean director = false;
-
+    @Getter
+    @Setter
+    private boolean commandSpy = false;
 
     public Staff(String configKey)
     {
@@ -54,6 +56,7 @@ public class Staff extends NovelBase
         section.set("homeip", homeIp);
         section.set("rank", rank.name());
         section.set("active", active);
+        section.set("commandspy", commandSpy);
     }
 
     public void load(ConfigurationSection section)
@@ -63,6 +66,7 @@ public class Staff extends NovelBase
         homeIp = section.getString("homeip");
         rank = Rank.findRank(section.getString("rank"));
         active = section.getBoolean("active", true);
+        commandSpy = section.getBoolean("commandspy");
     }
 
     @Override
@@ -71,9 +75,10 @@ public class Staff extends NovelBase
         StringBuilder sb = new StringBuilder();
         sb.append(name).append(":\n")
                 .append(" - IPs: ").append(StringUtils.join(ips, ", ")).append("\n")
-                .append(" - Home IP: ").append(homeIp).append(NEW_LINE)
+                .append(" - Home IP: ").append(homeIp).append("\n")
                 .append(" - Rank: ").append(rank.name()).append("\n")
-                .append(" - Active: ").append(active).append("\n");
+                .append(" - Active: ").append(active).append("\n")
+                .append(" - CommandSpy: ").append(commandSpy).append("\n");
         return sb.toString();
     }
 }

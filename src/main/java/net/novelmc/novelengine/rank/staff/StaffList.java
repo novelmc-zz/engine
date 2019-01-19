@@ -179,4 +179,19 @@ public class StaffList extends NovelBase
         staff.add(s);
         s.save(plugin.staffConfig.getConfigurationSection(s.getConfigKey()));
     }
+
+    public static void updateCommandSpy(Player player, boolean commandSpy)
+    {
+        Staff s = getStaff(player);
+
+        if (s == null)
+        {
+            return;
+        }
+
+        staff.remove(s);
+        s.setCommandSpy(commandSpy);
+        staff.add(s);
+        s.save(plugin.staffConfig.getConfigurationSection(s.getConfigKey()));
+    }
 }
