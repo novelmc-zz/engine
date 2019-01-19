@@ -4,7 +4,7 @@ import lombok.Getter;
 import net.novelmc.novelengine.NovelEngine;
 import net.novelmc.novelengine.rank.architect.ArchitectList;
 import net.novelmc.novelengine.rank.staff.StaffList;
-import net.novelmc.novelengine.util.NUtil;
+import net.novelmc.novelengine.util.*;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
