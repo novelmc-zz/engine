@@ -1,4 +1,4 @@
-package net.novelmc.novelengine.listener;
+﻿package net.novelmc.novelengine.listener;
 
 import net.novelmc.novelengine.banning.Ban;
 import net.novelmc.novelengine.banning.BanManager;
@@ -121,16 +121,21 @@ public class PlayerListener extends NovelBase implements Listener
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) 
     {
-
+	Player player = event.getPlayer();
+	if (NPlayer.isBusy(player))
+        {
+            NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 » &7" + player.getName() + " is no longer marked as busy."), NUtil.MessageType.ALL);
+            NPlayer.busyPlayers.remove(player);
+        }
         if (StaffList.isStaff(event.getPlayer()) && event.getMessage().startsWith(">")) 
         {
-            NUtil.globalMessage(NUtil.colorize("&b»&6»&a» &7" + Rank.getDisplay(event.getPlayer()).getTag() + " &7" + event.getPlayer().getName() + " &8» ") + ChatColor.WHITE + event.getMessage().substring(1), NUtil.MessageType.STAFF_ONLY);
-            Bukkit.getConsoleSender().sendMessage(NUtil.colorize("&b»&6»&a» &7" + Rank.getDisplay(event.getPlayer()).getTag() + " &7" + event.getPlayer().getName() + " &8» ") + ChatColor.WHITE + event.getMessage().substring(1));
+            NUtil.globalMessage(NUtil.colorize("&b»&6»&a» &7" + Rank.getDisplay(player).getTag() + " &7" + player.getName() + " &8» ") + ChatColor.WHITE + event.getMessage().substring(1), NUtil.MessageType.STAFF_ONLY);
+            Bukkit.getConsoleSender().sendMessage(NUtil.colorize("&b»&6»&a» &7" + Rank.getDisplay(player).getTag() + " &7" + player.getName() + " &8» ") + ChatColor.WHITE + event.getMessage().substring(1));
             event.setCancelled(true);
         } 
         else 
         {
-            event.setFormat(Rank.getDisplay(event.getPlayer()).getTag() + " " + ChatColor.GRAY + event.getPlayer().getDisplayName() + ChatColor.DARK_GRAY + ": " + ChatColor.WHITE + event.getMessage());
+            event.setFormat(Rank.getDisplay(player).getTag() + " " + ChatColor.GRAY + player.getDisplayName() + ChatColor.DARK_GRAY + ": " + ChatColor.WHITE + event.getMessage());
         }
 
     }
