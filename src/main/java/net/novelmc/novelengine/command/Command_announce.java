@@ -31,7 +31,7 @@ public class Command_announce extends CommandBase
 
         Player player = (Player) sender;
 
-        player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new ComponentBuilder(NUtil.colorize(msg)).create());
+        player.spigot().sendMessage(ChatMessageType.SYSTEM, new ComponentBuilder(NUtil.colorize(msg)).create());
         return true;
     }
 }
