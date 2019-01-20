@@ -26,7 +26,7 @@ public class NovelEngine extends JavaPlugin
     public BanManager banManager;
     public CommandLoader commandLoader;
     public Config config;
-    public ServerModeListener eventModeListener;
+    public ServerModeListener serverModeListener;
     public PlayerListener playerListener;
     public PlayerDatabase playerDatabase;
     public ServerListener serverListener;
@@ -69,7 +69,7 @@ public class NovelEngine extends JavaPlugin
         playerListener = new PlayerListener();
         playerDatabase = new PlayerDatabase();
         serverListener = new ServerListener();
-        eventModeListener = new ServerModeListener();
+        serverModeListener = new ServerModeListener();
 
         commandLoader.registerCommands();
 
