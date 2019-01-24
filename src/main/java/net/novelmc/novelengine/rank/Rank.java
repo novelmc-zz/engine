@@ -4,7 +4,8 @@ import lombok.Getter;
 import net.novelmc.novelengine.NovelEngine;
 import net.novelmc.novelengine.rank.architect.ArchitectList;
 import net.novelmc.novelengine.rank.staff.StaffList;
-import net.novelmc.novelengine.util.*;
+import net.novelmc.novelengine.util.NLog;
+import net.novelmc.novelengine.util.NUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -64,6 +65,8 @@ public enum Rank implements Displayable
         }
         catch (Exception ex)
         {
+            NLog.severe("It appears one of your users in staff.yml has an invalid rank.");
+            NLog.severe(ex);
         }
         return null;
     }
