@@ -96,7 +96,6 @@ public class StaffList extends NovelBase
 
         staff.remove(s);
         s.setActive(false);
-        staff.add(s);
         s.save(plugin.staffConfig.getConfigurationSection(s.getConfigKey()));
     }
 

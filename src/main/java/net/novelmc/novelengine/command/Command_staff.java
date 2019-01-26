@@ -125,7 +125,7 @@ public class Command_staff extends CommandBase
                     Player player = Bukkit.getPlayer(args[1]);
                     if (player == null)
                     {
-                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7hat player could not be found."));
+                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7That player could not be found."));
                         return true;
                     }
 
