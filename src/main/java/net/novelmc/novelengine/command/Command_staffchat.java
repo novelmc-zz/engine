@@ -6,7 +6,6 @@ import net.novelmc.novelengine.command.util.SourceType;
 import net.novelmc.novelengine.rank.Rank;
 import net.novelmc.novelengine.util.NUtil;
 import org.apache.commons.lang.StringUtils;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -24,7 +23,6 @@ public class Command_staffchat extends CommandBase
         }
 
         NUtil.globalMessage(NUtil.colorize("&b»&6»&a» &7" + Rank.getDisplay(sender).getTag() + " &7" + sender.getName() + "&8: ") + ChatColor.WHITE + StringUtils.join(args, " ", 0, args.length), NUtil.MessageType.STAFF_ONLY);
-        Bukkit.getConsoleSender().sendMessage(NUtil.colorize("&b»&6»&a» &7" + Rank.getDisplay(sender).getTag() + " &7" + sender.getName() + "&8: ") + ChatColor.WHITE + StringUtils.join(args, " ", 0, args.length));
         return true;
     }
 }

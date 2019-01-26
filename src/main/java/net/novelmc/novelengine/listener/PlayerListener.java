@@ -7,6 +7,7 @@ import net.novelmc.novelengine.rank.Rank;
 import net.novelmc.novelengine.rank.architect.ArchitectList;
 import net.novelmc.novelengine.rank.staff.StaffList;
 import net.novelmc.novelengine.util.NLog;
+import net.novelmc.novelengine.util.NPlayer;
 import net.novelmc.novelengine.util.NUtil;
 import net.novelmc.novelengine.util.NovelBase;
 import org.apache.commons.lang.StringUtils;
@@ -14,17 +15,15 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.command.CommandMap;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.*;
+import org.bukkit.event.server.ServerCommandEvent;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import net.novelmc.novelengine.util.NPlayer;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.event.server.ServerCommandEvent;
 
 public class PlayerListener extends NovelBase implements Listener
 {
@@ -133,7 +132,6 @@ public class PlayerListener extends NovelBase implements Listener
         if (StaffList.isStaff(event.getPlayer()) && event.getMessage().startsWith(">")) 
         {
             NUtil.globalMessage(NUtil.colorize("&b»&6»&a» &7" + Rank.getDisplay(player).getTag() + " &7" + player.getName() + " &8» ") + ChatColor.WHITE + event.getMessage().substring(1), NUtil.MessageType.STAFF_ONLY);
-            Bukkit.getConsoleSender().sendMessage(NUtil.colorize("&b»&6»&a» &7" + Rank.getDisplay(player).getTag() + " &7" + player.getName() + " &8» ") + ChatColor.WHITE + event.getMessage().substring(1));
             event.setCancelled(true);
         } 
         else 

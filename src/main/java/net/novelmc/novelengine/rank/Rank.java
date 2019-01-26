@@ -67,6 +67,7 @@ public enum Rank implements Displayable
         {
             NLog.severe("It appears one of your users in staff.yml has an invalid rank.");
             NLog.severe(ex);
+
         }
         return null;
     }

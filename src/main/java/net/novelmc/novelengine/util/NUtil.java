@@ -63,7 +63,6 @@ public class NUtil
         if (staffOnly)
         {
             globalMessage(colorize(String.format("&8<-> &4&lSTAFF&r&8 » &7%s &8(%s%s &7%s&8)&7", action, display.getColor(), display.getTag(), sender.getName())), MessageType.STAFF_ONLY);
-            Bukkit.getConsoleSender().sendMessage(String.format("&8<-> &4&lSTAFF&r&8 » &7%s &8(%s%s &7%s&8)&7", action, display.getColor(), sender.getName(), display.getTag()));
         }
         else
         {
