@@ -5,18 +5,15 @@ import net.novelmc.novelengine.command.util.CommandLoader;
 import net.novelmc.novelengine.config.ArchitectConfig;
 import net.novelmc.novelengine.config.Config;
 import net.novelmc.novelengine.config.StaffConfig;
-import net.novelmc.novelengine.listener.ServerModeListener;
 import net.novelmc.novelengine.listener.PlayerListener;
 import net.novelmc.novelengine.listener.ServerListener;
+import net.novelmc.novelengine.listener.ServerModeListener;
 import net.novelmc.novelengine.rank.architect.ArchitectList;
 import net.novelmc.novelengine.rank.staff.StaffList;
 import net.novelmc.novelengine.util.NLog;
 import net.novelmc.novelengine.util.PlayerDatabase;
 import net.novelmc.novelengine.util.SQLManager;
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.Arrays;
 
 public class NovelEngine extends JavaPlugin
 {
@@ -81,11 +78,11 @@ public class NovelEngine extends JavaPlugin
     public void onDisable()
     {
         plugin = null;
-
+/*
         config.save();
         staffConfig.save();
         architectConfig.save();
-
+*/
         NLog.info("The plugin has been disabled!");
     }
 }
