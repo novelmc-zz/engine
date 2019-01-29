@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
 public class NUtil
 {
 
-    public static final List<String> DEVELOPERS = Arrays.asList("falceso", "Super_", "irix", "Mafrans");
+    public static final List<String> DEVELOPERS = Arrays.asList("falceso", "untuned", "irix", "Mafrans");
     public static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z", Locale.ENGLISH);
 
     public enum MessageType
