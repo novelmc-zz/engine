@@ -66,7 +66,7 @@ public class NUtil
         }
         else
         {
-            globalMessage(colorize(String.format("&8<-> &a&lSERVER&r&8 » &7%s &8(%s%s &7%s&8)&7", action, display.getColor(), display.getTag(), sender.getName())));
+            globalMessage(colorize(String.format("&8<-> &9&lSERVER&r&8 » &7%s &8(%s%s &7%s&8)&7", action, display.getColor(), display.getTag(), sender.getName())));
         }
     }
 

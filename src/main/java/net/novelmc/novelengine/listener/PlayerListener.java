@@ -126,7 +126,7 @@ public class PlayerListener extends NovelBase implements Listener
 	EmoteListener.handleEmotes(event);
 	if (NPlayer.isBusy(player))
         {
-            NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 » &7" + player.getName() + " is no longer marked as busy."), NUtil.MessageType.ALL);
+            NUtil.globalMessage(NUtil.colorize("&8<-> &9&lSERVER&r&8 » &7" + player.getName() + " is no longer marked as busy."), NUtil.MessageType.ALL);
             NPlayer.busyPlayers.remove(player);
         }
         if (StaffList.isStaff(event.getPlayer()) && event.getMessage().startsWith(">")) 
@@ -153,7 +153,7 @@ public class PlayerListener extends NovelBase implements Listener
         }
         if (NPlayer.isBusy(player))
         {
-            NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 » &7" + player.getName() + " is no longer marked as busy."), NUtil.MessageType.ALL);
+            NUtil.globalMessage(NUtil.colorize("&8<-> &9&lSERVER&r&8 » &7" + player.getName() + " is no longer marked as busy."), NUtil.MessageType.ALL);
             NPlayer.busyPlayers.remove(player);
         }
     }
@@ -175,7 +175,7 @@ public class PlayerListener extends NovelBase implements Listener
         Player player = (Player) sender;
         if (NPlayer.isBusy(player))
         {
-            NUtil.globalMessage(NUtil.colorize("&8<-> &a&lSERVER&r&8 » &7" + player.getName() + " is no longer marked as busy."), NUtil.MessageType.ALL);
+            NUtil.globalMessage(NUtil.colorize("&8<-> &9&lSERVER&r&8 » &7" + player.getName() + " is no longer marked as busy."), NUtil.MessageType.ALL);
             NPlayer.busyPlayers.remove(player);
         }
     }

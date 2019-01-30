@@ -32,7 +32,7 @@ public class Command_architect extends CommandBase
                 {
                     if (!Rank.getRank(sender).isAtLeast(Rank.ADMIN))
                     {
-                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7You must be a &9&lSRADMIN&r&7 to be able to execute this command."));
+                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7You must be a &9&lADMIN&r&7 to be able to execute this command."));
                         return true;
                     }
 
@@ -71,7 +71,7 @@ public class Command_architect extends CommandBase
                 {
                     if (!Rank.getRank(sender).isAtLeast(Rank.ADMIN))
                     {
-                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7You must be a &9&lSRADMIN&r&7 to execute this command."));
+                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7You must be a &9&lADMIN&r&7 to execute this command."));
                         return true;
                     }
 
