@@ -20,7 +20,6 @@ public enum Rank implements Displayable
     MOD("a", "Mod", "MOD", ChatColor.GOLD),
     SENIOR_MOD("a", "Senior Mod", "SRM", ChatColor.GOLD),
     ADMIN("an", "Admin", "ADM", ChatColor.BLUE),
-    SENIOR_ADMIN("a", "Senior Admin", "SRA", ChatColor.BLUE),
     DIRECTOR("a", "Director", "DIR", ChatColor.RED),
     CONSOLE("the", "Console", "CSL", ChatColor.DARK_RED);
 

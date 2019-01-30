@@ -14,7 +14,7 @@ import org.bukkit.command.CommandSender;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@CommandParameters(description = "Remove a permban", usage = "/<command> <username | ip>", source = SourceType.BOTH, rank = Rank.SENIOR_ADMIN)
+@CommandParameters(description = "Remove a permban", usage = "/<command> <username | ip>", source = SourceType.BOTH, rank = Rank.ADMIN)
 public class Command_unpermban extends CommandBase
 {
 
