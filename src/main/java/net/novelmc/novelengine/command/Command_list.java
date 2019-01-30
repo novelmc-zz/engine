@@ -39,7 +39,7 @@ public class Command_list extends CommandBase
         List<String> admins = new ArrayList<>();
         List<String> architects = new ArrayList<>();
         List<String> developers = new ArrayList<>();
-        List<String> managers = new ArrayList<>();
+        List<String> directors = new ArrayList<>();
 
         StringBuilder sb = new StringBuilder();
 
