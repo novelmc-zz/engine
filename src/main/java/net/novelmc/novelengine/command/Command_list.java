@@ -54,9 +54,13 @@ public class Command_list extends CommandBase
             {
                 impostors.add(ChatColor.GRAY + player.getName());
             }
+            else if (Rank.getRank(player).isAtLeast(Rank.DIRECTOR))
+            {
+                directors.add(ChatColor.GRAY + player.getName());
+            }
             else if (Rank.getRank(player).isAtLeast(Rank.ADMIN))
             {
-                managers.add(ChatColor.GRAY + player.getName());
+                admins.add(ChatColor.GRAY + player.getName());
             }
             else if (NUtil.DEVELOPERS.contains(player.getName()))
             {
