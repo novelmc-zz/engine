@@ -101,7 +101,7 @@ public class Command_list extends CommandBase
                 .append((architects.isEmpty() ? "" : Title.ARCHITECT.getTag() + ": " + StringUtils.join(architects, ", ") + NEW_LINE))
                 .append((developers.isEmpty() ? "" : Title.DEVELOPER.getTag() + ": " + StringUtils.join(developers, ", ") + NEW_LINE))
                 .append((admins.isEmpty() ? "" : Rank.ADMIN.getTag() + ": " + StringUtils.join(admins, ", ") + NEW_LINE))
-                .append((director.isEmpty() ? "" : Rank.DIRECTOR.getTag() + ": " + StringUtils.join(admins, ", ")));
+                .append((directors.isEmpty() ? "" : Rank.DIRECTOR.getTag() + ": " + StringUtils.join(directors, ", ")));
 
         sender.sendMessage(sb.toString());
         return true;
