@@ -36,9 +36,9 @@ public class Command_list extends CommandBase
         List<String> trainees = new ArrayList<>();
         List<String> mods = new ArrayList<>();
         List<String> senior_mods = new ArrayList<>();
-        List<String> admins = new ArrayList<>();
         List<String> architects = new ArrayList<>();
         List<String> developers = new ArrayList<>();
+        List<String> admins = new ArrayList<>();
         List<String> directors = new ArrayList<>();
 
         StringBuilder sb = new StringBuilder();
