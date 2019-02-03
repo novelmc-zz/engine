@@ -3,7 +3,6 @@ package net.novelmc.novelengine.util;
 import lombok.Getter;
 import net.novelmc.novelengine.NovelEngine;
 import org.apache.commons.io.FileUtils;
-import org.bukkit.Bukkit;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -13,7 +12,6 @@ import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.List;
 
 public class SQLManager
 {
@@ -22,7 +20,7 @@ public class SQLManager
     private static Connection connection;
     private NovelEngine plugin;
     private File file;
-    private final String defaultJson = "{\"bans\":{}, \"players\":{}}";
+    private final String defaultJson = "{\"bans\":{}, \"players\":{}, \"staff\":{}}";
 
     public SQLManager(NovelEngine plugin)
     {
@@ -83,6 +81,15 @@ public class SQLManager
                 + "name TEXT,"
                 + "ip VARCHAR(64))";
         c.prepareStatement(players).executeUpdate();
+
+        String staff = "CREATE TABLE IF NOT EXISTS staff ("
+                + "name VARCHAR(16),"
+                + "uuid VARCHAR(35),"
+                + "ip VARCHAR(64),"
+                + "rank TEXT,"
+                + "commandspy TEXT,"
+                + "active TEXT)";
+        c.prepareStatement(staff).executeUpdate();
     }
 
     private boolean generateJson(File file)

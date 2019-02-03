@@ -1,6 +1,7 @@
 package net.novelmc.novelengine.rank.staff;
 
 import lombok.Getter;
+import net.novelmc.novelengine.config.StaffConfig;
 import net.novelmc.novelengine.rank.Rank;
 import net.novelmc.novelengine.util.NLog;
 import net.novelmc.novelengine.util.NovelBase;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class StaffList extends NovelBase
 {
-
+    public static StaffConfig staffConfig;
     @Getter
     private static List<Staff> staff;
     @Getter
@@ -112,6 +113,7 @@ public class StaffList extends NovelBase
         s.setRank(rank);
         staff.add(s);
         s.save(plugin.staffConfig.getConfigurationSection(s.getConfigKey()));
+        staffConfig.save();
     }
 
     public static void updateActive(Player player, boolean active)

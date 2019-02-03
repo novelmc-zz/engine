@@ -6,7 +6,6 @@ import net.novelmc.novelengine.command.util.CommandBase;
 import net.novelmc.novelengine.command.util.CommandParameters;
 import net.novelmc.novelengine.command.util.SourceType;
 import net.novelmc.novelengine.rank.Rank;
-import net.novelmc.novelengine.util.NPlayer;
 import net.novelmc.novelengine.util.NUtil;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
@@ -14,6 +13,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -66,7 +66,7 @@ public class Command_ban extends CommandBase
 
         if (offlinePlayer.isOnline())
         {
-            NPlayer player = (NPlayer)offlinePlayer.getPlayer();
+            Player player = (Player) offlinePlayer.getPlayer();
 
             if (player.isBanned())
             {
