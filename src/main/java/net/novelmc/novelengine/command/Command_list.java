@@ -97,7 +97,7 @@ public class Command_list extends CommandBase
                 .append((ops.isEmpty() ? "" : Rank.OP.getTag() + ": " + StringUtils.join(ops, ", ") + NEW_LINE))
                 .append((trainees.isEmpty() ? "" : Rank.TRAINEE.getTag() + ": " + StringUtils.join(trainees, ", ") + NEW_LINE))
                 .append((mods.isEmpty() ? "" : Rank.MOD.getTag() + ": " + StringUtils.join(mods, ", ") + NEW_LINE))
-                .append((senior_mods.isEmpty() ? "" : Rank.SENIOR_MOD.getTag() + StringUtils.join(senior_mods, ", ") + NEW_LINE))
+                .append((senior_mods.isEmpty() ? "" : Rank.SENIOR_MOD.getTag() + ": " + StringUtils.join(senior_mods, ", ") + NEW_LINE))
                 .append((architects.isEmpty() ? "" : Title.ARCHITECT.getTag() + ": " + StringUtils.join(architects, ", ") + NEW_LINE))
                 .append((developers.isEmpty() ? "" : Title.DEVELOPER.getTag() + ": " + StringUtils.join(developers, ", ") + NEW_LINE))
                 .append((admins.isEmpty() ? "" : Rank.ADMIN.getTag() + ": " + StringUtils.join(admins, ", ") + NEW_LINE))
