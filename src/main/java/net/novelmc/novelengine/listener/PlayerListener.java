@@ -131,7 +131,7 @@ public class PlayerListener extends NovelBase implements Listener
         }
         if (StaffList.isStaff(event.getPlayer()) && event.getMessage().startsWith(">"))
         {
-            NUtil.globalMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 » &7" + Rank.getDisplay(player).getTag() + " &7" + player.getName() + " &8» ") + ChatColor.GOLD + event.getMessage().substring(1), NUtil.MessageType.STAFF_ONLY);
+            NUtil.globalMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 » &7" + Rank.getDisplay(player).getTag() + " &7" + player.getName() + " &8: ") + ChatColor.GOLD + event.getMessage().substring(1), NUtil.MessageType.STAFF_ONLY);
             event.setCancelled(true);
         }
         else
