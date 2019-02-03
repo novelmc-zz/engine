@@ -112,7 +112,7 @@ public class PlayerListener extends NovelBase implements Listener
         {
             ArchitectList.getImpostors().remove(event.getPlayer().getName());
         }
-        if (Command_vanish.VANISHED.contains(event.getPlayer())) 
+        if (Command_vanish.VANISHED.contains(event.getPlayer()))
         {
             event.setQuitMessage(null);
             NUtil.globalMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 » " + event.getPlayer().getDisplayName() + " has silently logged out."), NUtil.MessageType.STAFF_ONLY);
@@ -120,7 +120,7 @@ public class PlayerListener extends NovelBase implements Listener
     }
 
     @EventHandler
-    public void onPlayerChat(AsyncPlayerChatEvent event) 
+    public void onPlayerChat(AsyncPlayerChatEvent event)
     {
 	Player player = event.getPlayer();
 	EmoteListener.handleEmotes(event);
@@ -129,12 +129,12 @@ public class PlayerListener extends NovelBase implements Listener
             NUtil.globalMessage(NUtil.colorize("&8<-> &9&lSERVER&r&8 » &7" + player.getName() + " is no longer marked as busy."), NUtil.MessageType.ALL);
             NPlayer.busyPlayers.remove(player);
         }
-        if (StaffList.isStaff(event.getPlayer()) && event.getMessage().startsWith(">")) 
+        if (StaffList.isStaff(event.getPlayer()) && event.getMessage().startsWith(">"))
         {
-            NUtil.globalMessage(NUtil.colorize("&b»&6»&a» &7" + Rank.getDisplay(player).getTag() + " &7" + player.getName() + " &8» ") + ChatColor.WHITE + event.getMessage().substring(1), NUtil.MessageType.STAFF_ONLY);
+            NUtil.globalMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 » &7" + Rank.getDisplay(player).getTag() + " &7" + player.getName() + " &8» ") + ChatColor.WHITE + event.getMessage().substring(1), NUtil.MessageType.STAFF_ONLY);
             event.setCancelled(true);
-        } 
-        else 
+        }
+        else
         {
             event.setFormat(Rank.getDisplay(player).getTag() + " " + ChatColor.GRAY + player.getDisplayName() + ChatColor.DARK_GRAY + ": " + ChatColor.WHITE + event.getMessage());
         }
@@ -163,7 +163,7 @@ public class PlayerListener extends NovelBase implements Listener
     {
         //TODO: Freeze system and World system
     }
-    
+
     @EventHandler
     public void onPlayerCommand(ServerCommandEvent event)
     {
@@ -184,12 +184,12 @@ public class PlayerListener extends NovelBase implements Listener
     public void onCommandPreprocess(PlayerCommandPreprocessEvent event)
     {
         final Player player = event.getPlayer();
-        
+
         if (StaffList.isStaff(player))
         {
             return;
         }
-        
+
         for (Player all : Bukkit.getOnlinePlayers())
         {
             if (NPlayer.hasCommandSpyEnabled(all) && StaffList.isStaff(all))
