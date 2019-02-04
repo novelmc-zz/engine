@@ -1,5 +1,5 @@
 name: NovelEngine
-version: ${project.version}
+version: ${project.version}-${TRAVIS_COMMIT}
 authors: [_Fleek, Super_, Mafrans, serrif, falceso, taahanis]
 main: net.novelmc.novelengine.NovelEngine
 api-version: 1.13
