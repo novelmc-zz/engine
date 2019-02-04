@@ -23,12 +23,11 @@ public class Command_entitywipe extends CommandBase {
     public static int AllEntities() {
         int removed = 0;
         for (World eworld : Bukkit.getWorlds()) {
-            for (Entity entity : eworld.getEntities()) {
-                if (!(entity instanceof Player) && !DONTCLEAR.contains(entity.getType())) {
-                    entity.remove();
-                    removed++;
-                }
-            }
+            removed = eworld.getEntities().stream().filter((entity) -> (!(entity instanceof Player) && !DONTCLEAR.contains(entity.getType()))).map((entity) -> 
+            {
+                entity.remove();
+                return entity;
+            }).map((_item) -> 1).reduce(removed, Integer::sum);
         }
         return removed;
     }
@@ -36,12 +35,11 @@ public class Command_entitywipe extends CommandBase {
     public static int AllMobs() {
         int removed = 0;
         for (World eworld : Bukkit.getWorlds()) {
-            for (Entity entity : eworld.getLivingEntities()) {
-                if (entity instanceof Creature || entity instanceof Ghast || entity instanceof Slime || entity instanceof EnderDragon || entity instanceof Ambient) {
-                    entity.remove();
-                    removed++;
-                }
-            }
+            removed = eworld.getLivingEntities().stream().filter((entity) -> (entity instanceof Creature || entity instanceof Ghast || entity instanceof Slime || entity instanceof EnderDragon || entity instanceof Ambient)).map((entity) -> 
+            {
+                entity.remove();
+                return entity;
+            }).map((_item) -> 1).reduce(removed, Integer::sum);
         }
         return removed;
     }

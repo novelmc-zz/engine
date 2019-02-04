@@ -19,7 +19,7 @@ import java.util.zip.ZipInputStream;
 public class LegacyCommandLoader
 {
 
-    private static CommandMap cmap = NUtil.getCommandMap();
+    private static final CommandMap CMAP = NUtil.getCommandMap();
 
     public LegacyCommandLoader()
     {

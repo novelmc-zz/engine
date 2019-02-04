@@ -1,7 +1,6 @@
 package net.novelmc.novelengine.rank.architect;
 
 import lombok.Getter;
-import net.novelmc.novelengine.NovelEngine;
 import net.novelmc.novelengine.util.NLog;
 import net.novelmc.novelengine.util.NovelBase;
 import org.bukkit.entity.Player;
@@ -10,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ArchitectList extends NovelBase
+public final class ArchitectList extends NovelBase
 {
 
     @Getter
@@ -31,12 +30,15 @@ public class ArchitectList extends NovelBase
     {
         architects.clear();
 
-        for (String key : plugin.architectConfig.getKeys(false))
+        plugin.architectConfig.getKeys(false).stream().map((key) -> 
         {
             Architect a = new Architect(key);
             a.load(plugin.architectConfig.getConfigurationSection(key));
+            return a;
+        }).forEachOrdered((a) -> 
+        {
             architects.add(a);
-        }
+        });
 
         NLog.info("Successfully loaded " + architects.size() + " architects!");
     }

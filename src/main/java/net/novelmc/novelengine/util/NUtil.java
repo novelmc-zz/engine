@@ -7,7 +7,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
@@ -32,22 +31,25 @@ public class NUtil
         switch (messageType)
         {
             case ALL:
-                for(Player player : Bukkit.getOnlinePlayers())
+                Bukkit.getOnlinePlayers().stream().map((player) -> 
                 {
                     player.sendMessage(message);
+                    return player;
+                }).forEachOrdered((_item) -> 
+                {
                     Bukkit.getConsoleSender().sendMessage(NUtil.colorize(message));
-                }
+                });
                 break;
 
             case STAFF_ONLY:
-                for(Player player : Bukkit.getOnlinePlayers())
+                Bukkit.getOnlinePlayers().stream().filter((player) -> (StaffList.isStaff(player))).map((player) -> 
                 {
-                    if(StaffList.isStaff(player))
-                    {
-                        player.sendMessage(message);
-                        Bukkit.getConsoleSender().sendMessage(NUtil.colorize(message));
-                    }
-                }
+                    player.sendMessage(message);
+                    return player;
+                }).forEachOrdered((_item) -> 
+                {
+                    Bukkit.getConsoleSender().sendMessage(NUtil.colorize(message));
+                });
                 break;
         }
     }

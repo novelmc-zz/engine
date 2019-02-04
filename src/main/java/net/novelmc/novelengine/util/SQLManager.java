@@ -18,7 +18,7 @@ public class SQLManager
 
     @Getter
     private static Connection connection;
-    private NovelEngine plugin;
+    private final NovelEngine plugin;
     private File file;
     private final String defaultJson = "{\"bans\":{}, \"players\":{}, \"staff\":{}}";
 

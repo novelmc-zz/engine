@@ -3,8 +3,6 @@ package net.novelmc.novelengine.util;
 import java.util.ArrayList;
 import net.novelmc.novelengine.banning.BanManager;
 import net.novelmc.novelengine.rank.Rank;
-import net.novelmc.novelengine.rank.Title;
-import net.novelmc.novelengine.rank.architect.Architect;
 import net.novelmc.novelengine.rank.architect.ArchitectList;
 import net.novelmc.novelengine.rank.staff.Staff;
 import net.novelmc.novelengine.rank.staff.StaffList;
@@ -16,6 +14,7 @@ public abstract class NPlayer implements Player
     public static ArrayList<Player> frozenPlayers = new ArrayList<>();
     public static ArrayList<Player> commandSpyPlayers = new ArrayList<>();
     
+    @Override
     public boolean isBanned()
     {
         return BanManager.isBanned(this);

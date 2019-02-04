@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class StaffList extends NovelBase
+public final class StaffList extends NovelBase
 {
     public static StaffConfig staffConfig;
     @Getter
@@ -32,12 +32,15 @@ public class StaffList extends NovelBase
     {
         staff.clear();
 
-        for (String key : plugin.staffConfig.getKeys(false))
+        plugin.staffConfig.getKeys(false).stream().map((key) -> 
         {
             Staff s = new Staff(key);
             s.load(plugin.staffConfig.getConfigurationSection(key));
+            return s;
+        }).forEachOrdered((s) -> 
+        {
             staff.add(s);
-        }
+        });
 
         NLog.info("Successfully loaded " + staff.size() + " staff!");
     }

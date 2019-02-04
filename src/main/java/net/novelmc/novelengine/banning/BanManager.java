@@ -1,12 +1,9 @@
 package net.novelmc.novelengine.banning;
 
 import lombok.Getter;
-import net.novelmc.novelengine.NovelEngine;
 import net.novelmc.novelengine.util.NLog;
-import net.novelmc.novelengine.util.NUtil;
 import net.novelmc.novelengine.util.NovelBase;
 import net.novelmc.novelengine.util.SQLManager;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.json.JSONObject;
@@ -31,7 +28,7 @@ public class BanManager extends NovelBase
         loadBans();
     }
 
-    public void loadBans()
+    public final void loadBans()
     {
         bans.clear();
 
@@ -59,17 +56,15 @@ public class BanManager extends NovelBase
         else
             {
             JSONObject banJson = plugin.sqlManager.getDatabase().getJSONObject("bans");
-            for(String key : banJson.keySet())
+            banJson.keySet().stream().map((key) -> banJson.getJSONObject(key)).forEachOrdered((obj) -> 
             {
-                JSONObject obj = banJson.getJSONObject(key);
-
                 addBan(obj.getString("name"),
                         obj.getString("ip"),
                         obj.getString("by"),
                         obj.getString("reason"),
                         new Date(obj.getLong("expiry")),
                         BanType.valueOf(obj.getString("type")));
-            }
+            });
         }
 
         removeExpiredBans();
@@ -121,14 +116,7 @@ public class BanManager extends NovelBase
     public static boolean isBanned(Ban ban)
     {
         removeExpiredBans();
-        for (Ban b : bans)
-        {
-            if (b.getName().equals(ban.getName()) || b.getIp().equals(ban.getIp()))
-            {
-                return true;
-            }
-        }
-        return false;
+        return bans.stream().anyMatch((b) -> (b.getName().equals(ban.getName()) || b.getIp().equals(ban.getIp())));
     }
 
     public static boolean isBanned(Player player)
@@ -220,13 +208,10 @@ public class BanManager extends NovelBase
     {
         List<Ban> banType = new ArrayList<>();
 
-        for (Ban ban : bans)
+        bans.stream().filter((ban) -> (ban.getType().equals(type))).forEachOrdered((ban) -> 
         {
-            if (ban.getType().equals(type))
-            {
-                banType.add(ban);
-            }
-        }
+            banType.add(ban);
+        });
 
         return banType;
     }

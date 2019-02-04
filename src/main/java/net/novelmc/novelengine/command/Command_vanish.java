@@ -39,10 +39,10 @@ public class Command_vanish extends CommandBase
 
         if (VANISHED.contains(player))
         {
-            for (Player online : Bukkit.getOnlinePlayers())
+            Bukkit.getOnlinePlayers().forEach((online) -> 
             {
                 online.showPlayer(plugin, player);
-            }
+            });
 
             if (!silent)
             {
@@ -54,11 +54,10 @@ public class Command_vanish extends CommandBase
         else
         {
 
-            for (Player online : Bukkit.getOnlinePlayers())
+            Bukkit.getOnlinePlayers().stream().filter((online) -> (!StaffList.isStaff(online))).forEachOrdered((online) -> 
             {
-                if (!StaffList.isStaff(online))
-                    online.hidePlayer(plugin, player);
-            }
+                online.hidePlayer(plugin, player);
+            });
             if (!silent)
             {
                 NUtil.globalMessage(ChatColor.YELLOW + player.getName() + " left the game", NUtil.MessageType.ALL);

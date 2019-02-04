@@ -25,6 +25,7 @@ public enum Title implements Displayable
         this.tag = color + "" + ChatColor.BOLD + tag + ChatColor.RESET + color;
     }
 
+    @Override
     public String getLoginMessage()
     {
         return determiner + " " + color + name;

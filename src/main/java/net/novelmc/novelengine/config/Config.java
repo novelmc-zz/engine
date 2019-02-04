@@ -5,14 +5,16 @@ import net.novelmc.novelengine.util.NLog;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import org.bukkit.configuration.InvalidConfigurationException;
 
 public class Config extends YamlConfiguration
 {
 
     private static Config config;
-    private NovelEngine plugin;
-    private File file;
+    private final NovelEngine plugin;
+    private final File file;
 
     public Config(NovelEngine plugin)
     {
@@ -143,7 +145,7 @@ public class Config extends YamlConfiguration
         {
             super.load(file);
         }
-        catch (Exception ex)
+        catch (IOException | InvalidConfigurationException ex)
         {
             NLog.severe(ex);
         }
@@ -155,7 +157,7 @@ public class Config extends YamlConfiguration
         {
             super.save(file);
         }
-        catch (Exception ex)
+        catch (IOException ex)
         {
             NLog.severe(ex);
         }

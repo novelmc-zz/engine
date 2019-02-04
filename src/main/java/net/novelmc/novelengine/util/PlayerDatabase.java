@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class PlayerDatabase extends NovelBase {
-    private List<String[]> players;
+    private final List<String[]> players;
 
     public PlayerDatabase() {
         players = new ArrayList<>();
@@ -36,28 +36,21 @@ public class PlayerDatabase extends NovelBase {
         else
         {
             JSONObject playerJson = plugin.sqlManager.getDatabase().getJSONObject("players");
-            for(String key : playerJson.keySet())
+            playerJson.keySet().stream().map((key) -> playerJson.getJSONObject(key)).forEachOrdered((obj) -> 
             {
-                JSONObject obj = playerJson.getJSONObject(key);
                 add(obj.getString("name"), obj.getString("ip"));
-            }
+            });
         }
 
         NLog.info("Successfully loaded " + players.size() + " cached players!");
     }
 
     public boolean containsName(String name) {
-        for(String[] data : players) {
-            if(data[0].equalsIgnoreCase(name)) return true;
-        }
-        return false;
+        return players.stream().anyMatch((data) -> (data[0].equalsIgnoreCase(name)));
     }
 
     public boolean containsIp(String ip) {
-        for(String[] data : players) {
-            if(data[1].equalsIgnoreCase(ip)) return true;
-        }
-        return false;
+        return players.stream().anyMatch((data) -> (data[1].equalsIgnoreCase(ip)));
     }
 
     private String[] getDataByName(String name) {

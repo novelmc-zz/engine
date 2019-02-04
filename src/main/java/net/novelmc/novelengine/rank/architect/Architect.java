@@ -14,7 +14,7 @@ public class Architect extends NovelBase
 {
 
     @Getter
-    private String configKey;
+    private final String configKey;
     @Getter
     @Setter
     private String name;

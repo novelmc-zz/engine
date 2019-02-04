@@ -13,10 +13,8 @@ import net.novelmc.novelengine.rank.staff.StaffList;
 import net.novelmc.novelengine.util.NLog;
 import net.novelmc.novelengine.util.PlayerDatabase;
 import net.novelmc.novelengine.util.SQLManager;
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.Arrays;
 
 public class NovelEngine extends JavaPlugin
 {

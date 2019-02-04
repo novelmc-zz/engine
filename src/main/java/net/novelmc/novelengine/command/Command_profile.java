@@ -15,6 +15,7 @@ import org.bukkit.entity.Player;
 public class Command_profile extends CommandBase
 {
     private static NovelEngine plugin;
+    @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {
         Player player = (Player) sender;

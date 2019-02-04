@@ -51,6 +51,7 @@ public enum Rank implements Displayable
         return getLevel() >= rank.getLevel();
     }
 
+    @Override
     public String getLoginMessage()
     {
         return determiner + " " + color + name;

@@ -9,13 +9,13 @@ import org.reflections.Reflections;
 import java.util.Arrays;
 import java.util.Set;
 
-public class CommandLoader
+public  class CommandLoader
 {
 
-    private CommandMap commandMap = NUtil.getCommandMap();
-    private Reflections reflections = getReflections("net.novelmc.novelengine.command");
-    private String prefix;
-    private String suffix;
+    private final CommandMap commandMap = NUtil.getCommandMap();
+    private final Reflections reflections = getReflections("net.novelmc.novelengine.command");
+    private final String prefix;
+    private final String suffix;
 
     public CommandLoader(String prefix, String suffix)
     {
@@ -39,45 +39,42 @@ public class CommandLoader
     {
         Set<Class<? extends CommandBase>> annotated = reflections.getSubTypesOf(CommandBase.class);
 
-        for (Class<? extends CommandBase> clazz : annotated)
+        annotated.stream().filter((clazz) -> (clazz.getSimpleName().startsWith(prefix) && clazz.getSimpleName().endsWith(suffix))).forEachOrdered((clazz) -> 
         {
-            if (clazz.getSimpleName().startsWith(prefix) && clazz.getSimpleName().endsWith(suffix))
+            NCommand command;
+            String commandName = clazz.getSimpleName().substring(prefix.length(), clazz.getSimpleName().length() - suffix.length()).toLowerCase();
+            
+            try
             {
-                NCommand command;
-                String commandName = clazz.getSimpleName().substring(prefix.length(), clazz.getSimpleName().length() - suffix.length()).toLowerCase();
-
-                try
+                command = new BlankCommand(commandName,
+                        (String) CommandParameters.class.getMethod("description").getDefaultValue(),
+                        (String) CommandParameters.class.getMethod("usage").getDefaultValue(),
+                        Arrays.asList(((String) CommandParameters.class.getMethod("aliases").getDefaultValue()).split(", ")),
+                        (SourceType) CommandParameters.class.getMethod("source").getDefaultValue(),
+                        (Rank) CommandParameters.class.getMethod("rank").getDefaultValue(),
+                        (Class<CommandBase>) clazz);
+                
+                if (clazz.getAnnotationsByType(CommandParameters.class).length > 0)
                 {
+                    CommandParameters params = clazz.getAnnotation(CommandParameters.class);
+                    
                     command = new BlankCommand(commandName,
-                            (String) CommandParameters.class.getMethod("description").getDefaultValue(),
-                            (String) CommandParameters.class.getMethod("usage").getDefaultValue(),
-                            Arrays.asList(((String) CommandParameters.class.getMethod("aliases").getDefaultValue()).split(", ")),
-                            (SourceType) CommandParameters.class.getMethod("source").getDefaultValue(),
-                            (Rank) CommandParameters.class.getMethod("rank").getDefaultValue(),
+                            params.description(),
+                            params.usage(),
+                            Arrays.asList(params.aliases().split(", ")),
+                            params.source(),
+                            params.rank(),
                             (Class<CommandBase>) clazz);
-
-                    if (clazz.getAnnotationsByType(CommandParameters.class).length > 0)
-                    {
-                        CommandParameters params = clazz.getAnnotation(CommandParameters.class);
-
-                        command = new BlankCommand(commandName,
-                                params.description(),
-                                params.usage(),
-                                Arrays.asList(params.aliases().split(", ")),
-                                params.source(),
-                                params.rank(),
-                                (Class<CommandBase>) clazz);
-                    }
-
-                    command.register();
                 }
-                catch (NoSuchMethodException e)
-                {
-                    NLog.severe("Could not load command: " + commandName);
-                    e.printStackTrace();
-                }
+                
+                command.register();
             }
-        }
+            catch (NoSuchMethodException e)
+            {
+                NLog.severe("Could not load command: " + commandName);
+                e.printStackTrace();
+            }
+        });
     }
 
     private static Reflections cachedReflections = null;

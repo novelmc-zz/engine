@@ -46,9 +46,10 @@ public class Command_list extends CommandBase
         sb.append(ChatColor.GRAY).append("There are ")
                 .append(ChatColor.DARK_GRAY).append(Bukkit.getOnlinePlayers().size()).append("/").append(Bukkit.getMaxPlayers())
                 .append(ChatColor.GRAY).append(" players online")
-                .append(ChatColor.DARK_GRAY).append(":" + NEW_LINE);
+                .append(ChatColor.DARK_GRAY)
+                .append(":").append(NEW_LINE);
 
-        for (Player player : Bukkit.getOnlinePlayers())
+        Bukkit.getOnlinePlayers().forEach((player) -> 
         {
             if (StaffList.isImpostor(player) || ArchitectList.isImpostor(player))
             {
@@ -90,7 +91,7 @@ public class Command_list extends CommandBase
             {
                 non_ops.add(ChatColor.GRAY + player.getName());
             }
-        }
+        });
 
         sb.append((impostors.isEmpty() ? "" : Rank.IMPOSTOR.getTag() + ": " + StringUtils.join(impostors, ", ") + NEW_LINE))
                 .append((non_ops.isEmpty() ? "" : Rank.NON_OP.getTag() + ": " + StringUtils.join(non_ops, ", ") + NEW_LINE))
