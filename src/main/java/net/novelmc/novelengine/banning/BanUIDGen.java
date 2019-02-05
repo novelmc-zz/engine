@@ -1,6 +1,6 @@
 package net.novelmc.novelengine.banning;
 
-import java.util.Random;
+import java.util.UUID;
 
 public class BanUIDGen
 {
@@ -13,10 +13,10 @@ public class BanUIDGen
         switch (type) 
         {
             case NORMAL:
-                PREF = "N"; // Regular ban;
+                PREF = "NM"; // Regular ban;
                 break;
             case IP:
-                PREF = "I"; //Regular IP ban
+                PREF = "IP"; //Regular IP ban
                 break;
             case PERMANENT_NAME:
                 PREF = "PN"; //Permanent name ban
@@ -29,16 +29,9 @@ public class BanUIDGen
                 break;
         }
         
-        String UIDCHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        StringBuilder uid = new StringBuilder();
-        Random rnd = new Random();
-        while (uid.length() < 6) { // length of the random string.
-            int index = (int) (rnd.nextFloat() * UIDCHARS.length());
-            uid.append(UIDCHARS.charAt(index));
-        }
-        VALUE = uid.toString();
+        VALUE = UUID.randomUUID().toString().substring(0,7);
         
-        banID = PREF + VALUE;
+        banID = PREF + "-" + VALUE.toLowerCase();
         return banID;
     }
     
