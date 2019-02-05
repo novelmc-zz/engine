@@ -31,6 +31,9 @@ public class Ban extends NovelBase
     private String reason;
     @Getter
     @Setter
+    private String UID;
+    @Getter
+    @Setter
     private Date expiry;
     @Getter
     @Setter
@@ -43,14 +46,16 @@ public class Ban extends NovelBase
             return ChatColor.RED
                     + "Your IP address is currently permanently banned from this server." + NEW_LINE
                     + "Reason: " + ChatColor.YELLOW + (reason != null ? reason : "Reason not specified") + NEW_LINE
-                    + ChatColor.RED + "Banned by: " + ChatColor.YELLOW + by;
+                    + ChatColor.RED + "Banned by: " + ChatColor.YELLOW + by + NEW_LINE 
+                    + ChatColor.GRAY + "Ban ID: " + UID;
         }
         if (type == BanType.PERMANENT_NAME)
         {
             return ChatColor.RED
                     + "Your name is currently permanently banned from this server." + NEW_LINE
                     + "Reason: " + ChatColor.YELLOW + (reason != null ? reason : "Reason not specified") + NEW_LINE
-                    + ChatColor.RED + "Banned by: " + ChatColor.YELLOW + by;
+                    + ChatColor.RED + "Banned by: " + ChatColor.YELLOW + by + NEW_LINE 
+                    + ChatColor.GRAY + "Ban ID: " + UID;
         }
         if (type == BanType.IP)
         {
@@ -58,7 +63,8 @@ public class Ban extends NovelBase
                     + "Your IP address is currently banned from this server." + NEW_LINE
                     + "Reason: " + ChatColor.YELLOW + (reason != null ? reason : "Reason not specified") + NEW_LINE
                     + ChatColor.RED + "Your ban will expire on "
-                    + ChatColor.YELLOW + NUtil.DATE_FORMAT.format(expiry);
+                    + ChatColor.YELLOW + NUtil.DATE_FORMAT.format(expiry) + NEW_LINE 
+                    + ChatColor.GRAY + "Ban ID: " + UID;
         }
 
         // Normal ban
@@ -67,7 +73,13 @@ public class Ban extends NovelBase
                 + "Reason: " + ChatColor.YELLOW + (reason != null ? reason : "Reason not specified") + NEW_LINE
                 + ChatColor.RED + "Banned by: " + ChatColor.YELLOW + by + NEW_LINE
                 + ChatColor.RED + "Your ban will expire on "
-                + ChatColor.YELLOW + NUtil.DATE_FORMAT.format(expiry);
+                + ChatColor.YELLOW + NUtil.DATE_FORMAT.format(expiry) + NEW_LINE 
+                + ChatColor.GRAY + "Ban ID: " + UID;
+    }
+    
+    public String makeUID() 
+    {
+        return BanUIDGen.idGen(type);
     }
 
     public boolean isExpired()
@@ -86,13 +98,15 @@ public class Ban extends NovelBase
         {
             Connection c = SQLManager.getConnection();
             try {
+                makeUID();
                 PreparedStatement statement = c.prepareStatement("INSERT INTO bans (name, ip, `by`, reason, expiry, type) VALUES (?, ?, ?, ?, ?, ?)");
                 statement.setString(1, name);
                 statement.setString(2, ip);
                 statement.setString(3, by);
                 statement.setString(4, reason);
-                statement.setLong(5, expiry.getTime());
-                statement.setString(6, type.toString());
+                statement.setString(5, UID);
+                statement.setLong(6, expiry.getTime());
+                statement.setString(7, type.toString());
                 statement.executeUpdate();
             } catch (SQLException ex) {
                 NLog.severe(ex);
@@ -108,6 +122,7 @@ public class Ban extends NovelBase
             jsonObject.put("ip", ip);
             jsonObject.put("by", by);
             jsonObject.put("reason", reason);
+            jsonObject.put("uid", UID);
             jsonObject.put("expiry", expiry);
             jsonObject.put("type", type);
 

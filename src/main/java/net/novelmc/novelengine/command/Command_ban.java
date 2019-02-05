@@ -17,6 +17,7 @@ import org.bukkit.entity.Player;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import net.novelmc.novelengine.banning.BanUIDGen;
 
 @CommandParameters(description = "Bans a bad player or IP", usage = "/<command> <player | ip> [reason]", source = SourceType.BOTH, rank = Rank.TRAINEE)
 public class Command_ban extends CommandBase
@@ -57,7 +58,7 @@ public class Command_ban extends CommandBase
             else {
                 NUtil.playerAction(sender, "Banning IP: " + args[0], true);
             }
-            BanManager.addBan("", args[0], sender.getName(), reason, NUtil.parseDateOffset("1d"), BanType.IP);
+            BanManager.addBan("", args[0], sender.getName(), reason, BanUIDGen.idGen(BanType.IP), NUtil.parseDateOffset("1d"), BanType.IP);
             return true;
         }
 
@@ -90,7 +91,7 @@ public class Command_ban extends CommandBase
                 player.kickPlayer(NUtil.colorize("&8<-> &3&lINFO&r&8 \u00BB &cYou have been banned!"));
             }
 
-            BanManager.addBan(player.getName(), player.getAddress().getHostString(), sender.getName(), reason, NUtil.parseDateOffset("1d"), BanType.NORMAL);
+            BanManager.addBan(player.getName(), player.getAddress().getHostString(), sender.getName(), reason, BanUIDGen.idGen(BanType.NORMAL), NUtil.parseDateOffset("1d"), BanType.NORMAL);
         }
         else
         {
@@ -104,7 +105,7 @@ public class Command_ban extends CommandBase
                 reason = StringUtils.join(args, " ", 1, args.length);
             }
 
-            BanManager.addBan(offlinePlayer.getName(), plugin.playerDatabase.getIp(offlinePlayer.getName()), sender.getName(), reason, NUtil.parseDateOffset("1d"), BanType.NORMAL);
+            BanManager.addBan(offlinePlayer.getName(), plugin.playerDatabase.getIp(offlinePlayer.getName()), sender.getName(), reason, BanUIDGen.idGen(BanType.NORMAL), NUtil.parseDateOffset("1d"), BanType.NORMAL);
 
             if(reason != null)
             {

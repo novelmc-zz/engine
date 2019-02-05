@@ -44,6 +44,7 @@ public class BanManager extends NovelBase
                             result.getString("ip"),
                             result.getString("by"),
                             result.getString("reason"),
+                            result.getString("uid"),
                             new Date(result.getLong("expiry")),
                             BanType.valueOf(result.getString("type")));
                 }
@@ -62,6 +63,7 @@ public class BanManager extends NovelBase
                         obj.getString("ip"),
                         obj.getString("by"),
                         obj.getString("reason"),
+                        obj.getString("uid"),
                         new Date(obj.getLong("expiry")),
                         BanType.valueOf(obj.getString("type")));
             });
@@ -71,12 +73,13 @@ public class BanManager extends NovelBase
         NLog.info("Successfully loaded " + bans.size() + " bans!");
     }
 
-    public static void addBan(String name, String ip, String by, String reason, Date expiry, BanType type) {
+    public static void addBan(String name, String ip, String by, String reason, String uid, Date expiry, BanType type) {
         Ban ban = new Ban();
         ban.setName(name);
         ban.setIp(ip);
         ban.setBy(by);
         ban.setReason(reason);
+        ban.setUID(uid);
         ban.setExpiry(expiry);
         ban.setType(type);
 
