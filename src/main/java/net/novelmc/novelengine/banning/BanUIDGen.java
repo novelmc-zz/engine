@@ -4,13 +4,14 @@ import java.util.UUID;
 
 public class BanUIDGen
 {
+
     protected static String PREF;
     protected static String VALUE;
     protected static String banID;
-    
-    public static String idGen(BanType type) 
+
+    public static String idGen(BanType type)
     {
-        switch (type) 
+        switch (type)
         {
             case NORMAL:
                 PREF = "NM"; // Regular ban;
@@ -21,19 +22,18 @@ public class BanUIDGen
             case PERMANENT_NAME:
                 PREF = "PN"; //Permanent name ban
                 break;
-            case PERMANENT_IP: 
+            case PERMANENT_IP:
                 PREF = "PI"; //Permanent IP ban
                 break;
             default:
                 PREF = "UD"; //Undetermined (In case for some reason it fails to get a ban type)
                 break;
         }
-        
-        VALUE = UUID.randomUUID().toString().substring(0,7);
-        
+
+        VALUE = UUID.randomUUID().toString().substring(0, 7);
+
         banID = PREF + "-" + VALUE.toLowerCase();
         return banID;
     }
-    
-   
+
 }

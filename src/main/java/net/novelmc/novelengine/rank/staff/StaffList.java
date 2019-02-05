@@ -13,6 +13,7 @@ import java.util.List;
 
 public final class StaffList extends NovelBase
 {
+
     public static StaffConfig staffConfig;
     @Getter
     private static List<Staff> staff;
@@ -32,12 +33,12 @@ public final class StaffList extends NovelBase
     {
         staff.clear();
 
-        plugin.staffConfig.getKeys(false).stream().map((key) -> 
+        plugin.staffConfig.getKeys(false).stream().map((key) ->
         {
             Staff s = new Staff(key);
             s.load(plugin.staffConfig.getConfigurationSection(key));
             return s;
-        }).forEachOrdered((s) -> 
+        }).forEachOrdered((s) ->
         {
             staff.add(s);
         });

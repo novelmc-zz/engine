@@ -51,7 +51,7 @@ public class Config extends YamlConfiguration
     {
         super.set("general.eventmode", enable);
     }
-    
+
     public boolean isDevModeEnabled()
     {
         return super.getBoolean("general.devmode");
@@ -61,7 +61,7 @@ public class Config extends YamlConfiguration
     {
         super.set("general.devmode", enable);
     }
-    
+
     public boolean isDevelModeEnabled()
     {
         return super.getBoolean("general.develmode");
@@ -71,7 +71,7 @@ public class Config extends YamlConfiguration
     {
         super.set("general.develmode", enable);
     }
-    
+
     public boolean isStaffModeEnabled()
     {
         return super.getBoolean("general.staffmode");
@@ -97,7 +97,10 @@ public class Config extends YamlConfiguration
         return super.getBoolean("sql.enabled");
     }
 
-    public String getSQLUsername() { return super.getString("sql.username"); }
+    public String getSQLUsername()
+    {
+        return super.getString("sql.username");
+    }
 
     public String getSQLPassword()
     {
@@ -118,22 +121,22 @@ public class Config extends YamlConfiguration
     {
         return super.getString("sql.database");
     }
-    
+
     public Boolean isLavaEnabled()
     {
         return super.getBoolean("allow.lava_place");
     }
-    
+
     public void setLavaEnabled(boolean lava)
     {
         super.set("allow.lava_place", lava);
     }
-    
+
     public Boolean isWaterEnabled()
     {
         return super.getBoolean("allow.water_place");
     }
-    
+
     public void setWaterEnabled(boolean water)
     {
         super.set("allow.water_place", water);
@@ -144,8 +147,7 @@ public class Config extends YamlConfiguration
         try
         {
             super.load(file);
-        }
-        catch (IOException | InvalidConfigurationException ex)
+        } catch (IOException | InvalidConfigurationException ex)
         {
             NLog.severe(ex);
         }
@@ -156,8 +158,7 @@ public class Config extends YamlConfiguration
         try
         {
             super.save(file);
-        }
-        catch (IOException ex)
+        } catch (IOException ex)
         {
             NLog.severe(ex);
         }

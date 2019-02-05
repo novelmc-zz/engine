@@ -39,7 +39,7 @@ public class Command_vanish extends CommandBase
 
         if (VANISHED.contains(player))
         {
-            Bukkit.getOnlinePlayers().forEach((online) -> 
+            Bukkit.getOnlinePlayers().forEach((online) ->
             {
                 online.showPlayer(plugin, player);
             });
@@ -50,11 +50,10 @@ public class Command_vanish extends CommandBase
             }
             NUtil.globalMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7Crack! " + player.getName() + " has reappeared!"), NUtil.MessageType.STAFF_ONLY);
             VANISHED.remove(player);
-        }
-        else
+        } else
         {
 
-            Bukkit.getOnlinePlayers().stream().filter((online) -> (!StaffList.isStaff(online))).forEachOrdered((online) -> 
+            Bukkit.getOnlinePlayers().stream().filter((online) -> (!StaffList.isStaff(online))).forEachOrdered((online) ->
             {
                 online.hidePlayer(plugin, player);
             });

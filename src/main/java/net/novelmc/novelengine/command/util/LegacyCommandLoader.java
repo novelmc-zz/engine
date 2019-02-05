@@ -56,23 +56,20 @@ public class LegacyCommandLoader
                                         params.rank(),
                                         (Class<CommandBase>) commandClass);
                                 command.register();
-                            }
-                            else
+                            } else
                             {
                                 Constructor constructor = commandClass.getConstructor();
                                 NCommand command = (NCommand) constructor.newInstance();
                                 command.register();
                             }
-                        }
-                        catch (ClassNotFoundException | IllegalAccessException | IllegalArgumentException | InstantiationException | NoSuchMethodException | SecurityException | InvocationTargetException ex)
+                        } catch (ClassNotFoundException | IllegalAccessException | IllegalArgumentException | InstantiationException | NoSuchMethodException | SecurityException | InvocationTargetException ex)
                         {
                             NLog.severe(ex);
                         }
                     }
                 }
             }
-        }
-        catch (IOException ex)
+        } catch (IOException ex)
         {
             NLog.severe(ex);
         }

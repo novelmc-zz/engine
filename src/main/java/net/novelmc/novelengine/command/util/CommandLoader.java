@@ -9,7 +9,7 @@ import org.reflections.Reflections;
 import java.util.Arrays;
 import java.util.Set;
 
-public  class CommandLoader
+public class CommandLoader
 {
 
     private final CommandMap commandMap = NUtil.getCommandMap();
@@ -39,11 +39,11 @@ public  class CommandLoader
     {
         Set<Class<? extends CommandBase>> annotated = reflections.getSubTypesOf(CommandBase.class);
 
-        annotated.stream().filter((clazz) -> (clazz.getSimpleName().startsWith(prefix) && clazz.getSimpleName().endsWith(suffix))).forEachOrdered((clazz) -> 
+        annotated.stream().filter((clazz) -> (clazz.getSimpleName().startsWith(prefix) && clazz.getSimpleName().endsWith(suffix))).forEachOrdered((clazz) ->
         {
             NCommand command;
             String commandName = clazz.getSimpleName().substring(prefix.length(), clazz.getSimpleName().length() - suffix.length()).toLowerCase();
-            
+
             try
             {
                 command = new BlankCommand(commandName,
@@ -53,11 +53,11 @@ public  class CommandLoader
                         (SourceType) CommandParameters.class.getMethod("source").getDefaultValue(),
                         (Rank) CommandParameters.class.getMethod("rank").getDefaultValue(),
                         (Class<CommandBase>) clazz);
-                
+
                 if (clazz.getAnnotationsByType(CommandParameters.class).length > 0)
                 {
                     CommandParameters params = clazz.getAnnotation(CommandParameters.class);
-                    
+
                     command = new BlankCommand(commandName,
                             params.description(),
                             params.usage(),
@@ -66,10 +66,9 @@ public  class CommandLoader
                             params.rank(),
                             (Class<CommandBase>) clazz);
                 }
-                
+
                 command.register();
-            }
-            catch (NoSuchMethodException e)
+            } catch (NoSuchMethodException e)
             {
                 NLog.severe("Could not load command: " + commandName);
                 e.printStackTrace();
@@ -78,6 +77,7 @@ public  class CommandLoader
     }
 
     private static Reflections cachedReflections = null;
+
     private static Reflections getReflections(String pack)
     {
         if (cachedReflections == null)

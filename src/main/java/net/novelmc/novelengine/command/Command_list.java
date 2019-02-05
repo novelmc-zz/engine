@@ -49,45 +49,36 @@ public class Command_list extends CommandBase
                 .append(ChatColor.DARK_GRAY)
                 .append(":").append(NEW_LINE);
 
-        Bukkit.getOnlinePlayers().forEach((player) -> 
+        Bukkit.getOnlinePlayers().forEach((player) ->
         {
             if (StaffList.isImpostor(player) || ArchitectList.isImpostor(player))
             {
                 impostors.add(ChatColor.GRAY + player.getName());
-            }
-            else if (Rank.getRank(player).isAtLeast(Rank.DIRECTOR))
+            } else if (Rank.getRank(player).isAtLeast(Rank.DIRECTOR))
             {
                 directors.add(ChatColor.GRAY + player.getName());
-            }
-            else if (Rank.getRank(player).isAtLeast(Rank.ADMIN))
+            } else if (Rank.getRank(player).isAtLeast(Rank.ADMIN))
             {
                 admins.add(ChatColor.GRAY + player.getName());
-            }
-            else if (NUtil.DEVELOPERS.contains(player.getName()))
+            } else if (NUtil.DEVELOPERS.contains(player.getName()))
             {
                 developers.add(ChatColor.GRAY + player.getName());
-            }
-            else if (ArchitectList.isArchitect(player))
+            } else if (ArchitectList.isArchitect(player))
             {
                 architects.add(ChatColor.GRAY + player.getName());
-            }
-            else if (Rank.getRank(player).isAtLeast(Rank.SENIOR_MOD))
+            } else if (Rank.getRank(player).isAtLeast(Rank.SENIOR_MOD))
             {
                 senior_mods.add(ChatColor.GRAY + player.getName());
-            }
-            else if (Rank.getRank(player).isAtLeast(Rank.MOD))
+            } else if (Rank.getRank(player).isAtLeast(Rank.MOD))
             {
                 mods.add(ChatColor.GRAY + player.getName());
-            }
-            else if (Rank.getRank(player).isAtLeast(Rank.TRAINEE))
+            } else if (Rank.getRank(player).isAtLeast(Rank.TRAINEE))
             {
                 trainees.add(ChatColor.GRAY + player.getName());
-            }
-            else if (player.isOp())
+            } else if (player.isOp())
             {
                 ops.add(ChatColor.GRAY + player.getName());
-            }
-            else
+            } else
             {
                 non_ops.add(ChatColor.GRAY + player.getName());
             }

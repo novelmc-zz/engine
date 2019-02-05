@@ -122,9 +122,9 @@ public class PlayerListener extends NovelBase implements Listener
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event)
     {
-	Player player = event.getPlayer();
-	EmoteListener.handleEmotes(event);
-	if (NPlayer.isBusy(player))
+        Player player = event.getPlayer();
+        EmoteListener.handleEmotes(event);
+        if (NPlayer.isBusy(player))
         {
             NUtil.globalMessage(NUtil.colorize("&8<-> &9&lSERVER&r&8 » &7" + player.getName() + " is no longer marked as busy."), NUtil.MessageType.ALL);
             NPlayer.busyPlayers.remove(player);
@@ -133,8 +133,7 @@ public class PlayerListener extends NovelBase implements Listener
         {
             NUtil.globalMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 » &7" + Rank.getDisplay(player).getTag() + " &7" + player.getName() + "&8: ") + ChatColor.GOLD + event.getMessage().substring(1), NUtil.MessageType.STAFF_ONLY);
             event.setCancelled(true);
-        }
-        else
+        } else
         {
             event.setFormat(Rank.getDisplay(player).getTag() + " " + ChatColor.GRAY + player.getDisplayName() + ChatColor.DARK_GRAY + ": " + ChatColor.WHITE + event.getMessage());
         }
@@ -264,13 +263,11 @@ public class PlayerListener extends NovelBase implements Listener
                 f.setAccessible(true);
                 cmap = (CommandMap) f.get(Bukkit.getServer());
                 return getCommandMap();
-            }
-            catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e)
+            } catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e)
             {
                 NLog.severe(e);
             }
-        }
-        else if (cmap != null)
+        } else if (cmap != null)
         {
             return cmap;
         }

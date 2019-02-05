@@ -12,6 +12,7 @@ import org.bukkit.command.CommandSender;
 @CommandParameters(description = "Toggles a feature", usage = "/<command> [feature]", source = SourceType.BOTH, rank = Rank.TRAINEE)
 public class Command_toggle extends CommandBase
 {
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {

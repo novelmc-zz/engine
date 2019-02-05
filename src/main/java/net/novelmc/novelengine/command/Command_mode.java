@@ -13,6 +13,7 @@ import org.bukkit.ChatColor;
 @CommandParameters(description = "Sets the mode that the server is in", usage = "/<command> [mode]", source = SourceType.BOTH, rank = Rank.ADMIN)
 public class Command_mode extends CommandBase
 {
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {
@@ -108,20 +109,16 @@ public class Command_mode extends CommandBase
         if (plugin.config.isDevModeEnabled())
         {
             line.append("developer mode.");
-        }
-        else if (plugin.config.isDevelModeEnabled())
+        } else if (plugin.config.isDevelModeEnabled())
         {
             line.append("development mode.");
-        }
-        else if (plugin.config.isEventModeEnabled())
+        } else if (plugin.config.isEventModeEnabled())
         {
             line.append("event mode.");
-        }
-        else if (plugin.config.isStaffModeEnabled())
+        } else if (plugin.config.isStaffModeEnabled())
         {
             line.append("staff mode.");
-        }
-        else
+        } else
         {
             line.append("normal mode.");
         }

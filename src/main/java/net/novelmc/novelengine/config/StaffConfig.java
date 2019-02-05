@@ -31,8 +31,7 @@ public class StaffConfig extends YamlConfiguration
         try
         {
             super.load(file);
-        }
-        catch (IOException | InvalidConfigurationException ex)
+        } catch (IOException | InvalidConfigurationException ex)
         {
             NLog.severe(ex);
         }
@@ -43,8 +42,7 @@ public class StaffConfig extends YamlConfiguration
         try
         {
             super.save(file);
-        }
-        catch (IOException ex)
+        } catch (IOException ex)
         {
             NLog.severe(ex);
         }

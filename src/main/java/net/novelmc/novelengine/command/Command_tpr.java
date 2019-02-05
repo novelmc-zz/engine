@@ -12,13 +12,10 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-/**
- *
- * @author Nilbog
- */
 @CommandParameters(description = "Teleport to a random location.", usage = "/<command>", source = SourceType.IN_GAME, rank = Rank.OP)
 public class Command_tpr extends CommandBase
 {
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {
@@ -28,11 +25,11 @@ public class Command_tpr extends CommandBase
         int x = random.nextInt(32767 - -32767 + 1) + -32767;
         int z = random.nextInt(32767 - -32767 + 1) + -32767;
         int y = w.getHighestBlockYAt(x, z);
-        
-        Location l = new Location(w, x, y ,z);
+
+        Location l = new Location(w, x, y, z);
         p.teleport(l);
         p.sendMessage(ChatColor.GRAY + "You have been teleported to X:" + x + " Y:" + y + " Z:" + z);
-        
+
         return true;
     }
 }

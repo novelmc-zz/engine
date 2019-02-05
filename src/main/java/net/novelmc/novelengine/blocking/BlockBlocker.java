@@ -11,11 +11,12 @@ import org.bukkit.event.block.BlockPlaceEvent;
 
 public class BlockBlocker extends NovelBase implements Listener
 {
+
     public BlockBlocker()
     {
         Bukkit.getServer().getPluginManager().registerEvents(this, plugin);
     }
-    
+
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent e)
     {

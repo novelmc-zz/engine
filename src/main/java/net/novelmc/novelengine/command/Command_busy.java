@@ -13,6 +13,7 @@ import org.bukkit.entity.Player;
 @CommandParameters(description = "Mark yourself as being away or busy", usage = "/<command>", source = SourceType.IN_GAME, rank = Rank.OP)
 public class Command_busy extends CommandBase
 {
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {

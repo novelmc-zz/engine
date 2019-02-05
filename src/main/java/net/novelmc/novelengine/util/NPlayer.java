@@ -8,12 +8,13 @@ import net.novelmc.novelengine.rank.staff.Staff;
 import net.novelmc.novelengine.rank.staff.StaffList;
 import org.bukkit.entity.Player;
 
-public abstract class NPlayer implements Player 
+public abstract class NPlayer implements Player
 {
+
     public static ArrayList<Player> busyPlayers = new ArrayList<>();
     public static ArrayList<Player> frozenPlayers = new ArrayList<>();
     public static ArrayList<Player> commandSpyPlayers = new ArrayList<>();
-    
+
     @Override
     public boolean isBanned()
     {
@@ -34,19 +35,19 @@ public abstract class NPlayer implements Player
     {
         return Rank.getRank(this);
     }
-    
+
     // TODO: Use NPlayer instead of Player
     public static boolean isBusy(Player player)
     {
         return busyPlayers.contains(player);
     }
-    
+
     // TODO: Use NPlayer instead of Player
     public static boolean isFrozen(Player player)
     {
         return frozenPlayers.contains(player);
     }
-    
+
     public static boolean hasCommandSpyEnabled(Player player)
     {
         Staff s = StaffList.getStaff(player);

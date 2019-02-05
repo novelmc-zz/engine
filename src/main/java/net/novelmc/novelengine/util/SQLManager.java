@@ -29,7 +29,7 @@ public class SQLManager
 
     public boolean init()
     {
-        if(!plugin.config.isSQLEnabled())
+        if (!plugin.config.isSQLEnabled())
         {
             return generateJson(new File(plugin.getDataFolder(), "database.yml"));
         }
@@ -50,8 +50,7 @@ public class SQLManager
             connection = connect(host, port, username, password, database);
             generateTables();
             return true;
-        }
-        catch (ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException ex)
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException ex)
         {
             NLog.severe(ex);
             return false;
@@ -95,7 +94,7 @@ public class SQLManager
     private boolean generateJson(File file)
     {
         this.file = file;
-        if(!file.exists())
+        if (!file.exists())
         {
             try
             {
@@ -104,20 +103,20 @@ public class SQLManager
                     file.getParentFile().mkdirs();
                 }
                 file.createNewFile();
+            } catch (IOException ignored)
+            {
             }
-            catch (IOException ignored) {}
         }
 
         try
         {
             String string = new String(Files.readAllBytes(file.toPath()));
-            if(!(string.startsWith("{") && string.endsWith("}")))
+            if (!(string.startsWith("{") && string.endsWith("}")))
             {
                 FileUtils.writeStringToFile(file, defaultJson, StandardCharsets.UTF_8);
             }
             return true;
-        }
-        catch (IOException e)
+        } catch (IOException e)
         {
             return false;
         }
@@ -129,8 +128,7 @@ public class SQLManager
         {
             String string = new String(Files.readAllBytes(file.toPath()));
             return new JSONObject(string);
-        }
-        catch (IOException e)
+        } catch (IOException e)
         {
             e.printStackTrace();
         }
@@ -143,8 +141,7 @@ public class SQLManager
         {
             FileUtils.writeStringToFile(file, database.toString(), StandardCharsets.UTF_8);
             return true;
-        }
-        catch (IOException e)
+        } catch (IOException e)
         {
             e.printStackTrace();
             return false;

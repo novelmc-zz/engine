@@ -46,7 +46,7 @@ public class Ban extends NovelBase
             return ChatColor.RED
                     + "Your IP address is currently permanently banned from this server." + NEW_LINE
                     + "Reason: " + ChatColor.YELLOW + (reason != null ? reason : "Reason not specified") + NEW_LINE
-                    + ChatColor.RED + "Banned by: " + ChatColor.YELLOW + by + NEW_LINE 
+                    + ChatColor.RED + "Banned by: " + ChatColor.YELLOW + by + NEW_LINE
                     + ChatColor.GRAY + "Ban ID: " + UID;
         }
         if (type == BanType.PERMANENT_NAME)
@@ -54,7 +54,7 @@ public class Ban extends NovelBase
             return ChatColor.RED
                     + "Your name is currently permanently banned from this server." + NEW_LINE
                     + "Reason: " + ChatColor.YELLOW + (reason != null ? reason : "Reason not specified") + NEW_LINE
-                    + ChatColor.RED + "Banned by: " + ChatColor.YELLOW + by + NEW_LINE 
+                    + ChatColor.RED + "Banned by: " + ChatColor.YELLOW + by + NEW_LINE
                     + ChatColor.GRAY + "Ban ID: " + UID;
         }
         if (type == BanType.IP)
@@ -63,7 +63,7 @@ public class Ban extends NovelBase
                     + "Your IP address is currently banned from this server." + NEW_LINE
                     + "Reason: " + ChatColor.YELLOW + (reason != null ? reason : "Reason not specified") + NEW_LINE
                     + ChatColor.RED + "Your ban will expire on "
-                    + ChatColor.YELLOW + NUtil.DATE_FORMAT.format(expiry) + NEW_LINE 
+                    + ChatColor.YELLOW + NUtil.DATE_FORMAT.format(expiry) + NEW_LINE
                     + ChatColor.GRAY + "Ban ID: " + UID;
         }
 
@@ -73,11 +73,11 @@ public class Ban extends NovelBase
                 + "Reason: " + ChatColor.YELLOW + (reason != null ? reason : "Reason not specified") + NEW_LINE
                 + ChatColor.RED + "Banned by: " + ChatColor.YELLOW + by + NEW_LINE
                 + ChatColor.RED + "Your ban will expire on "
-                + ChatColor.YELLOW + NUtil.DATE_FORMAT.format(expiry) + NEW_LINE 
+                + ChatColor.YELLOW + NUtil.DATE_FORMAT.format(expiry) + NEW_LINE
                 + ChatColor.GRAY + "Ban ID: " + UID;
     }
-    
-    public String makeUID() 
+
+    public String makeUID()
     {
         return BanUIDGen.idGen(type);
     }
@@ -94,10 +94,11 @@ public class Ban extends NovelBase
 
     public void save()
     {
-        if(config.isSQLEnabled())
+        if (config.isSQLEnabled())
         {
             Connection c = SQLManager.getConnection();
-            try {
+            try
+            {
                 makeUID();
                 PreparedStatement statement = c.prepareStatement("INSERT INTO bans (name, ip, `by`, reason, expiry, type) VALUES (?, ?, ?, ?, ?, ?)");
                 statement.setString(1, name);
@@ -108,12 +109,12 @@ public class Ban extends NovelBase
                 statement.setLong(6, expiry.getTime());
                 statement.setString(7, type.toString());
                 statement.executeUpdate();
-            } catch (SQLException ex) {
+            } catch (SQLException ex)
+            {
                 NLog.severe(ex);
             }
-        }
-        else
-            {
+        } else
+        {
             JSONObject database = plugin.sqlManager.getDatabase();
             JSONObject bans = database.getJSONObject("bans");
 
@@ -134,20 +135,21 @@ public class Ban extends NovelBase
 
     public void delete()
     {
-        if(config.isSQLEnabled())
+        if (config.isSQLEnabled())
         {
             Connection c = SQLManager.getConnection();
-            try {
+            try
+            {
                 PreparedStatement statement = c.prepareStatement("DELETE FROM bans WHERE name = ? OR ip = ?");
                 statement.setString(1, name);
                 statement.setString(2, ip);
                 statement.executeUpdate();
-            } catch (SQLException ex) {
+            } catch (SQLException ex)
+            {
                 NLog.severe(ex);
             }
-        }
-        else
-            {
+        } else
+        {
             JSONObject database = plugin.sqlManager.getDatabase();
             JSONObject bans = database.getJSONObject("bans");
             bans.remove(name);

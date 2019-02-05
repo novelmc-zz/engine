@@ -62,8 +62,7 @@ public enum Rank implements Displayable
         try
         {
             return Rank.valueOf(string.toUpperCase());
-        }
-        catch (Exception ex)
+        } catch (Exception ex)
         {
             NLog.severe("It appears one of your users in staff.yml has an invalid rank.");
             NLog.severe(ex);

@@ -34,7 +34,8 @@ public class Command_rank extends CommandBase
         if (!(sender instanceof Player))
         {
             Player player = Bukkit.getPlayer(args[0]);
-            if (player == null) {
+            if (player == null)
+            {
                 sender.sendMessage(NUtil.colorize("&8<-> &3&lINFO&r&8 \u00BB &7That player could not be found."));
                 return true;
             }

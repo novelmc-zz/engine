@@ -36,10 +36,10 @@ public class EmoteListener extends NovelBase implements Listener
     public static void handleEmotes(AsyncPlayerChatEvent event)
     {
         String message = event.getMessage();
-        
+
         // Heart emoticon
-        message.replace("<3", "â¤");
-        
+        message.replace("<3", "â?¤");
+
         // Set the message
         event.setMessage(message);
     }

@@ -97,8 +97,7 @@ public abstract class NCommand implements CommandExecutor, TabCompleter
             {
                 knownCommands.remove(registeredalias);
             });
-        }
-        catch (SecurityException | IllegalArgumentException | NoSuchFieldException | IllegalAccessException ex)
+        } catch (SecurityException | IllegalArgumentException | NoSuchFieldException | IllegalAccessException ex)
         {
             NLog.severe(ex);
         }
@@ -114,13 +113,11 @@ public abstract class NCommand implements CommandExecutor, TabCompleter
                 f.setAccessible(true);
                 cmap = (CommandMap) f.get(Bukkit.getServer());
                 return getCommandMap();
-            }
-            catch (IllegalAccessException | IllegalArgumentException | NoSuchFieldException | SecurityException ex)
+            } catch (IllegalAccessException | IllegalArgumentException | NoSuchFieldException | SecurityException ex)
             {
                 NLog.severe(ex);
             }
-        }
-        else if (cmap != null)
+        } else if (cmap != null)
         {
             return cmap;
         }

@@ -29,8 +29,7 @@ public class ArchitectConfig extends YamlConfiguration
         try
         {
             super.load(file);
-        }
-        catch (Exception ex)
+        } catch (Exception ex)
         {
             NLog.severe(ex);
         }
@@ -41,8 +40,7 @@ public class ArchitectConfig extends YamlConfiguration
         try
         {
             super.save(file);
-        }
-        catch (Exception ex)
+        } catch (Exception ex)
         {
             NLog.severe(ex);
         }

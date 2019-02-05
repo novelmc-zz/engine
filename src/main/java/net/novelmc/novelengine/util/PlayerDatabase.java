@@ -7,24 +7,29 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
-public class PlayerDatabase extends NovelBase {
+public class PlayerDatabase extends NovelBase
+{
+
     private final List<String[]> players;
 
-    public PlayerDatabase() {
+    public PlayerDatabase()
+    {
         players = new ArrayList<>();
     }
 
-    public void load() {
+    public void load()
+    {
         players.clear();
 
-        if(config.isSQLEnabled())
+        if (config.isSQLEnabled())
         {
             Connection c = SQLManager.getConnection();
 
             try
             {
                 ResultSet result = c.prepareStatement("SELECT * FROM players").executeQuery();
-                while (result.next()) {
+                while (result.next())
+                {
                     add(result.getString("name"), result.getString("ip"));
                 }
             } catch (SQLException ex)
@@ -32,11 +37,10 @@ public class PlayerDatabase extends NovelBase {
                 NLog.severe(ex);
                 return;
             }
-        }
-        else
+        } else
         {
             JSONObject playerJson = plugin.sqlManager.getDatabase().getJSONObject("players");
-            playerJson.keySet().stream().map((key) -> playerJson.getJSONObject(key)).forEachOrdered((obj) -> 
+            playerJson.keySet().stream().map((key) -> playerJson.getJSONObject(key)).forEachOrdered((obj) ->
             {
                 add(obj.getString("name"), obj.getString("ip"));
             });
@@ -45,40 +49,65 @@ public class PlayerDatabase extends NovelBase {
         NLog.info("Successfully loaded " + players.size() + " cached players!");
     }
 
-    public boolean containsName(String name) {
+    public boolean containsName(String name)
+    {
         return players.stream().anyMatch((data) -> (data[0].equalsIgnoreCase(name)));
     }
 
-    public boolean containsIp(String ip) {
+    public boolean containsIp(String ip)
+    {
         return players.stream().anyMatch((data) -> (data[1].equalsIgnoreCase(ip)));
     }
 
-    private String[] getDataByName(String name) {
-        for(String[] data : players) {
-            if(data[0].equalsIgnoreCase(name)) return data;
+    private String[] getDataByName(String name)
+    {
+        for (String[] data : players)
+        {
+            if (data[0].equalsIgnoreCase(name))
+            {
+                return data;
+            }
         }
-        return new String[] {null, null};
+        return new String[]
+        {
+            null, null
+        };
     }
 
-    private String[] getDataByIp(String ip) {
-        for(String[] data : players) {
-            if(data[1].equalsIgnoreCase(ip)) return data;
+    private String[] getDataByIp(String ip)
+    {
+        for (String[] data : players)
+        {
+            if (data[1].equalsIgnoreCase(ip))
+            {
+                return data;
+            }
         }
-        return new String[] {null, null};
+        return new String[]
+        {
+            null, null
+        };
     }
 
-    public String getIp(String name) {
+    public String getIp(String name)
+    {
         return getDataByName(name)[1];
     }
 
-    public void add(String name, String ip) {
-        if(containsName(name)) {
+    public void add(String name, String ip)
+    {
+        if (containsName(name))
+        {
             players.remove(getDataByName(name));
         }
-        players.add(new String[] {name, ip});
+        players.add(new String[]
+        {
+            name, ip
+        });
     }
 
-    public String getName(String ip) {
+    public String getName(String ip)
+    {
         return getDataByName(ip)[0];
     }
 }

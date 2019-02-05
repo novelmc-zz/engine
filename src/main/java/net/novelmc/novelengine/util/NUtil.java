@@ -31,22 +31,22 @@ public class NUtil
         switch (messageType)
         {
             case ALL:
-                Bukkit.getOnlinePlayers().stream().map((player) -> 
+                Bukkit.getOnlinePlayers().stream().map((player) ->
                 {
                     player.sendMessage(message);
                     return player;
-                }).forEachOrdered((_item) -> 
+                }).forEachOrdered((_item) ->
                 {
                     Bukkit.getConsoleSender().sendMessage(NUtil.colorize(message));
                 });
                 break;
 
             case STAFF_ONLY:
-                Bukkit.getOnlinePlayers().stream().filter((player) -> (StaffList.isStaff(player))).map((player) -> 
+                Bukkit.getOnlinePlayers().stream().filter((player) -> (StaffList.isStaff(player))).map((player) ->
                 {
                     player.sendMessage(message);
                     return player;
-                }).forEachOrdered((_item) -> 
+                }).forEachOrdered((_item) ->
                 {
                     Bukkit.getConsoleSender().sendMessage(NUtil.colorize(message));
                 });
@@ -65,8 +65,7 @@ public class NUtil
         if (staffOnly)
         {
             globalMessage(colorize(String.format("&8<-> &4&lSTAFF&r&8 » &7%s &8(%s%s &7%s&8)&7", action, display.getColor(), display.getTag(), sender.getName())), MessageType.STAFF_ONLY);
-        }
-        else
+        } else
         {
             globalMessage(colorize(String.format("&8<-> &9&lSERVER&r&8 » &7%s &8(%s%s &7%s&8)&7", action, display.getColor(), display.getTag(), sender.getName())));
         }
@@ -82,12 +81,12 @@ public class NUtil
     {
         Pattern timePattern = Pattern.compile(
                 "(?:([0-9]+)\\s*y[a-z]*[,\\s]*)?"
-                        + "(?:([0-9]+)\\s*mo[a-z]*[,\\s]*)?"
-                        + "(?:([0-9]+)\\s*w[a-z]*[,\\s]*)?"
-                        + "(?:([0-9]+)\\s*d[a-z]*[,\\s]*)?"
-                        + "(?:([0-9]+)\\s*h[a-z]*[,\\s]*)?"
-                        + "(?:([0-9]+)\\s*m[a-z]*[,\\s]*)?"
-                        + "(?:([0-9]+)\\s*(?:s[a-z]*)?)?", Pattern.CASE_INSENSITIVE);
+                + "(?:([0-9]+)\\s*mo[a-z]*[,\\s]*)?"
+                + "(?:([0-9]+)\\s*w[a-z]*[,\\s]*)?"
+                + "(?:([0-9]+)\\s*d[a-z]*[,\\s]*)?"
+                + "(?:([0-9]+)\\s*h[a-z]*[,\\s]*)?"
+                + "(?:([0-9]+)\\s*m[a-z]*[,\\s]*)?"
+                + "(?:([0-9]+)\\s*(?:s[a-z]*)?)?", Pattern.CASE_INSENSITIVE);
         Matcher m = timePattern.matcher(time);
         int years = 0;
         int months = 0;
@@ -184,7 +183,6 @@ public class NUtil
     }
     // Credits: End
 
-
     private static CommandMap cachedCommandMap = null;
 
     public static CommandMap getCommandMap()
@@ -196,8 +194,7 @@ public class NUtil
                 final Field f = Bukkit.getServer().getClass().getDeclaredField("commandMap");
                 f.setAccessible(true);
                 cachedCommandMap = (CommandMap) f.get(Bukkit.getServer());
-            }
-            catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException ex)
+            } catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException ex)
             {
                 NLog.severe(ex);
             }

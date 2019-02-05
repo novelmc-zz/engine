@@ -19,8 +19,7 @@ public class BlankCommand extends NCommand
         try
         {
             this.commandObject = clazz.getConstructor().newInstance();
-        }
-        catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex)
+        } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex)
         {
             NLog.severe(ex);
         }

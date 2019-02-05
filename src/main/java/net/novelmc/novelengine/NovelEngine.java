@@ -15,7 +15,6 @@ import net.novelmc.novelengine.util.PlayerDatabase;
 import net.novelmc.novelengine.util.SQLManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-
 public class NovelEngine extends JavaPlugin
 {
 
@@ -70,7 +69,6 @@ public class NovelEngine extends JavaPlugin
         serverModeListener = new ServerModeListener();
 
         commandLoader.registerCommands();
-
 
         NLog.info("The plugin has been enabled!");
     }

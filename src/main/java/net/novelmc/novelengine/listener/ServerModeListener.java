@@ -33,7 +33,6 @@ public class ServerModeListener extends NovelBase implements Listener
     }
 
     // Event Mode: Start
-
     public static void enableEventMode()
     {
         if (plugin.config.isEventModeEnabled())
@@ -72,9 +71,7 @@ public class ServerModeListener extends NovelBase implements Listener
     }
 
     // Event Mode: End
-
     // Developer Mode: Start
-
     public static void enableDevMode()
     {
         if (plugin.config.isDevModeEnabled())
@@ -111,9 +108,7 @@ public class ServerModeListener extends NovelBase implements Listener
     }
 
     // Developer Mode: End
-
     // Development Mode: Start
-
     public static void enableDevelMode()
     {
         if (plugin.config.isDevelModeEnabled())
@@ -142,9 +137,7 @@ public class ServerModeListener extends NovelBase implements Listener
     }
 
     // Development Mode: End
-
     // Staff Mode: Start
-
     public static void enableStaffMode()
     {
         if (plugin.config.isStaffModeEnabled())
@@ -181,9 +174,7 @@ public class ServerModeListener extends NovelBase implements Listener
     }
 
     // Staff Mode: End
-
     // Disable Every Mode: Start
-
     public static void disableAllModes()
     {
         plugin.config.setEventModeEnabled(false);
@@ -195,9 +186,7 @@ public class ServerModeListener extends NovelBase implements Listener
     }
 
     // Disable Every Mode: End
-
     // Handling
-
     @EventHandler
     public void onPlayerLogin(PlayerLoginEvent e)
     {

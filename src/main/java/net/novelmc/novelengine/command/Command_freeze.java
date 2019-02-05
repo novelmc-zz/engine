@@ -15,6 +15,7 @@ import org.bukkit.entity.Player;
 @CommandParameters(description = "Freeze an in-game player", usage = "/<command> <<player> | global>", aliases = "fr", source = SourceType.BOTH, rank = Rank.TRAINEE)
 public class Command_freeze extends CommandBase
 {
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {

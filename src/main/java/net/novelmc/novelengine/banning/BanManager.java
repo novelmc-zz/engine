@@ -32,14 +32,15 @@ public class BanManager extends NovelBase
     {
         bans.clear();
 
-        if(config.isSQLEnabled())
+        if (config.isSQLEnabled())
         {
             Connection c = SQLManager.getConnection();
 
             try
             {
                 ResultSet result = c.prepareStatement("SELECT * FROM bans").executeQuery();
-                while (result.next()) {
+                while (result.next())
+                {
                     addBan(result.getString("name"),
                             result.getString("ip"),
                             result.getString("by"),
@@ -53,11 +54,10 @@ public class BanManager extends NovelBase
                 NLog.severe(ex);
                 return;
             }
-        }
-        else
-            {
+        } else
+        {
             JSONObject banJson = plugin.sqlManager.getDatabase().getJSONObject("bans");
-            banJson.keySet().stream().map((key) -> banJson.getJSONObject(key)).forEachOrdered((obj) -> 
+            banJson.keySet().stream().map((key) -> banJson.getJSONObject(key)).forEachOrdered((obj) ->
             {
                 addBan(obj.getString("name"),
                         obj.getString("ip"),
@@ -73,7 +73,8 @@ public class BanManager extends NovelBase
         NLog.info("Successfully loaded " + bans.size() + " bans!");
     }
 
-    public static void addBan(String name, String ip, String by, String reason, String uid, Date expiry, BanType type) {
+    public static void addBan(String name, String ip, String by, String reason, String uid, Date expiry, BanType type)
+    {
         Ban ban = new Ban();
         ban.setName(name);
         ban.setIp(ip);
@@ -211,7 +212,7 @@ public class BanManager extends NovelBase
     {
         List<Ban> banType = new ArrayList<>();
 
-        bans.stream().filter((ban) -> (ban.getType().equals(type))).forEachOrdered((ban) -> 
+        bans.stream().filter((ban) -> (ban.getType().equals(type))).forEachOrdered((ban) ->
         {
             banType.add(ban);
         });

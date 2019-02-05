@@ -30,12 +30,12 @@ public final class ArchitectList extends NovelBase
     {
         architects.clear();
 
-        plugin.architectConfig.getKeys(false).stream().map((key) -> 
+        plugin.architectConfig.getKeys(false).stream().map((key) ->
         {
             Architect a = new Architect(key);
             a.load(plugin.architectConfig.getConfigurationSection(key));
             return a;
-        }).forEachOrdered((a) -> 
+        }).forEachOrdered((a) ->
         {
             architects.add(a);
         });

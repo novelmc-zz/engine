@@ -11,11 +11,12 @@ import org.bukkit.event.player.PlayerInteractEvent;
 
 public class InteractBlocker extends NovelBase implements Listener
 {
+
     public InteractBlocker()
     {
         Bukkit.getServer().getPluginManager().registerEvents(this, plugin);
     }
-    
+
     @EventHandler
     public void onInteract(PlayerInteractEvent e)
     {
@@ -26,7 +27,7 @@ public class InteractBlocker extends NovelBase implements Listener
             {
                 break;
             }
-            
+
             case RIGHT_CLICK_AIR:
             case RIGHT_CLICK_BLOCK:
             {
@@ -35,7 +36,7 @@ public class InteractBlocker extends NovelBase implements Listener
             }
         }
     }
-    
+
     public void handleRMB(PlayerInteractEvent e)
     {
         Player player = e.getPlayer();
