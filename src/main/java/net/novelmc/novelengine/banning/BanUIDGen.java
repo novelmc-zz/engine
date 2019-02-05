@@ -29,7 +29,7 @@ public class BanUIDGen
                 break;
         }
         
-        String UIDCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        String UIDCHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         StringBuilder uid = new StringBuilder();
         Random rnd = new Random();
         while (uid.length() < 6) { // length of the random string.
