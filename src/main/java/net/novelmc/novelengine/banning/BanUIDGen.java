@@ -1,6 +1,7 @@
 package net.novelmc.novelengine.banning;
 
 import java.util.UUID;
+import java.util.logging.Logger;
 
 public class BanUIDGen
 {
@@ -35,5 +36,4 @@ public class BanUIDGen
         banID = PREF + "-" + VALUE.toLowerCase();
         return banID;
     }
-
 }
