@@ -30,7 +30,7 @@ public class Command_staff extends CommandBase
             {
                 if (args[0].equalsIgnoreCase("add"))
                 {
-                    if (!Rank.getRank(sender).isAtLeast(Rank.ADMIN))
+                    if ( ! Rank.getRank(sender).isAtLeast(Rank.ADMIN))
                     {
                         sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7You must be a &9&lSRADMIN&r&7 to be able to execute this command."));
                         return true;
@@ -69,7 +69,7 @@ public class Command_staff extends CommandBase
 
                 if (args[0].equalsIgnoreCase("remove"))
                 {
-                    if (!Rank.getRank(sender).isAtLeast(Rank.ADMIN))
+                    if ( ! Rank.getRank(sender).isAtLeast(Rank.ADMIN))
                     {
                         sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7You must be a &9&lSRADMIN&r&7 to execute this command!"));
                         return true;
@@ -82,7 +82,7 @@ public class Command_staff extends CommandBase
                         return true;
                     }
 
-                    if (!StaffList.isStaff(player))
+                    if ( ! StaffList.isStaff(player))
                     {
                         sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7That player is not a staff member."));
                         return true;
@@ -102,7 +102,7 @@ public class Command_staff extends CommandBase
                         return true;
                     }
 
-                    if (!StaffList.isStaff(player))
+                    if ( ! StaffList.isStaff(player))
                     {
                         sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7That player is not staff member."));
                         return true;
@@ -116,7 +116,7 @@ public class Command_staff extends CommandBase
             {
                 if (args[0].equalsIgnoreCase("setrank"))
                 {
-                    if (!Rank.getRank(sender).isAtLeast(Rank.ADMIN))
+                    if ( ! Rank.getRank(sender).isAtLeast(Rank.ADMIN))
                     {
                         sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7You must be a &9&lSRADMIN&r&7 to to execute this command."));
                         return true;
@@ -129,7 +129,7 @@ public class Command_staff extends CommandBase
                         return true;
                     }
 
-                    if (!StaffList.isStaff(player))
+                    if ( ! StaffList.isStaff(player))
                     {
                         sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7That player is not a staff member."));
                         return true;
@@ -142,7 +142,7 @@ public class Command_staff extends CommandBase
                         return true;
                     }
 
-                    if (!rank.isAtLeast(Rank.TRAINEE))
+                    if ( ! rank.isAtLeast(Rank.TRAINEE))
                     {
                         sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7The rank provided must be &3&lTRAINEE&r&7 or higher."));
                         return true;

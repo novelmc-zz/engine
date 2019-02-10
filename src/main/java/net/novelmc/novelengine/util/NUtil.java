@@ -17,11 +17,32 @@ import java.util.regex.Pattern;
 public class NUtil
 {
 
-    public static final List<String> DEVELOPERS = Arrays.asList("db8e5b84-c670-41f6-9a2b-1ad9a8c7e104"/*untuned*/, "cb3dab42-0f6f-48dc-8b44-534a482dae95"/*mafrans*/, "c8e5af82-6aba-4dd7-83e8-474381380cc9"/*Paldiu*/);
-    public static final List<String> ADMINS = Arrays.asList("0bc1c464-7c4c-4b20-9c17-a1079145de8d"/*rovertpug*/, "61474d4b-a596-4b67-a91f-eb00c07bbbb5"/*breedme*/, "b58caae2-254a-47db-a129-e8ebce4e6206"/*irix*/, "a8ab4eb2-2805-4631-8351-f3be58056e37"/*pih*/);
-    public static final List<String> DIRECTORS = Arrays.asList("7c2eee6f-33a2-44de-8dd1-1e3fe06d2150"/*falceso*/, "6ea8bbd1-2496-4389-a12f-a3e1fc74372c"/*synpatn*/, "a429d3d7-93fa-47f0-8692-f2567b1293b0"/*shrimpuu*/);
+    public static final List<String> DEVELOPERS = Arrays.asList("db8e5b84-c670-41f6-9a2b-1ad9a8c7e104"/*
+             * untuned
+             */, "cb3dab42-0f6f-48dc-8b44-534a482dae95"/*
+             * mafrans
+             */, "c8e5af82-6aba-4dd7-83e8-474381380cc9"/*
+     * Paldiu
+     */);
+    public static final List<String> ADMINS = Arrays.asList("0bc1c464-7c4c-4b20-9c17-a1079145de8d"/*
+             * rovertpug
+             */, "61474d4b-a596-4b67-a91f-eb00c07bbbb5"/*
+             * breedme
+             */, "b58caae2-254a-47db-a129-e8ebce4e6206"/*
+             * irix
+             */, "a8ab4eb2-2805-4631-8351-f3be58056e37"/*
+     * pih
+     */);
+    public static final List<String> DIRECTORS = Arrays.asList("7c2eee6f-33a2-44de-8dd1-1e3fe06d2150"/*
+             * falceso
+             */, "6ea8bbd1-2496-4389-a12f-a3e1fc74372c"/*
+             * synpatn
+             */, "a429d3d7-93fa-47f0-8692-f2567b1293b0"/*
+     * shrimpuu
+     */);
+    public static final List<String> ARCHITECTS = Arrays.asList("");
     /*
-    *   Placed certain developers in appropriate tiers for order priority. 
+     * Placed certain developers in appropriate tiers for order priority.
      */
 
     public static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z", Locale.ENGLISH);
@@ -108,9 +129,9 @@ public class NUtil
             {
                 continue;
             }
-            for (int i = 0; i < m.groupCount(); i++)
+            for (int i = 0; i < m.groupCount(); i ++)
             {
-                if (m.group(i) != null && !m.group(i).isEmpty())
+                if (m.group(i) != null &&  ! m.group(i).isEmpty())
                 {
                     found = true;
                     break;
@@ -118,38 +139,38 @@ public class NUtil
             }
             if (found)
             {
-                if (m.group(1) != null && !m.group(1).isEmpty())
+                if (m.group(1) != null &&  ! m.group(1).isEmpty())
                 {
                     years = Integer.parseInt(m.group(1));
                 }
-                if (m.group(2) != null && !m.group(2).isEmpty())
+                if (m.group(2) != null &&  ! m.group(2).isEmpty())
                 {
                     months = Integer.parseInt(m.group(2));
                 }
-                if (m.group(3) != null && !m.group(3).isEmpty())
+                if (m.group(3) != null &&  ! m.group(3).isEmpty())
                 {
                     weeks = Integer.parseInt(m.group(3));
                 }
-                if (m.group(4) != null && !m.group(4).isEmpty())
+                if (m.group(4) != null &&  ! m.group(4).isEmpty())
                 {
                     days = Integer.parseInt(m.group(4));
                 }
-                if (m.group(5) != null && !m.group(5).isEmpty())
+                if (m.group(5) != null &&  ! m.group(5).isEmpty())
                 {
                     hours = Integer.parseInt(m.group(5));
                 }
-                if (m.group(6) != null && !m.group(6).isEmpty())
+                if (m.group(6) != null &&  ! m.group(6).isEmpty())
                 {
                     minutes = Integer.parseInt(m.group(6));
                 }
-                if (m.group(7) != null && !m.group(7).isEmpty())
+                if (m.group(7) != null &&  ! m.group(7).isEmpty())
                 {
                     seconds = Integer.parseInt(m.group(7));
                 }
                 break;
             }
         }
-        if (!found)
+        if ( ! found)
         {
             return null;
         }

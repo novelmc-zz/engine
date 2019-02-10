@@ -10,7 +10,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-@CommandParameters(description="Purges all player data.", usage="/<command>", source=SourceType.BOTH, rank=Rank.ADMIN)
+@CommandParameters(description = "Purges all player data.", usage = "/<command>", source = SourceType.BOTH, rank = Rank.ADMIN)
 public class Command_pdpurge extends CommandBase
 {
 
@@ -19,11 +19,12 @@ public class Command_pdpurge extends CommandBase
     {
         PlayerDatabase pd = new PlayerDatabase();
         pd.purge();
-        
-        if ((sender instanceof Player)) {
+
+        if ((sender instanceof Player))
+        {
             sender.sendMessage(ChatColor.RED + "All playerdata purged.");
         }
         return true;
     }
-    
+
 }

@@ -27,13 +27,13 @@ public class Command_toggle extends CommandBase
             {
                 case "lavaplace":
                 {
-                    NovelEngine.plugin.config.setLavaEnabled(!NovelEngine.plugin.config.isLavaEnabled());
+                    NovelEngine.plugin.config.setLavaEnabled( ! NovelEngine.plugin.config.isLavaEnabled());
                     sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7Lava placement has been " + (NovelEngine.plugin.config.isLavaEnabled() ? "enabled." : "disabled.")));
                     return true;
                 }
                 case "waterplace":
                 {
-                    NovelEngine.plugin.config.setWaterEnabled(!NovelEngine.plugin.config.isWaterEnabled());
+                    NovelEngine.plugin.config.setWaterEnabled( ! NovelEngine.plugin.config.isWaterEnabled());
                     sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7Water placement has been " + (NovelEngine.plugin.config.isWaterEnabled() ? "enabled." : "disabled.")));
                     return true;
                 }

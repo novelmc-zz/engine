@@ -28,7 +28,7 @@ public class Command_freeze extends CommandBase
         {
             for (Player player : Bukkit.getOnlinePlayers())
             {
-                if (!StaffList.isStaff(player))
+                if ( ! StaffList.isStaff(player))
                 {
                     if (NPlayer.isFrozen(player))
                     {

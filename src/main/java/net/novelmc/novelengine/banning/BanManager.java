@@ -84,7 +84,7 @@ public class BanManager extends NovelBase
         ban.setExpiry(expiry);
         ban.setType(type);
 
-        if (!isBanned(ban))
+        if ( ! isBanned(ban))
         {
             bans.add(ban);
         }
@@ -103,12 +103,12 @@ public class BanManager extends NovelBase
 
     public static void removeExpiredBans()
     {
-        bans.stream().filter(Ban::isExpired).forEach(bans::remove);
+        bans.stream().filter(Ban :: isExpired).forEach(bans :: remove);
     }
 
     public static void removeBan(Ban ban)
     {
-        if (!isBanned(ban))
+        if ( ! isBanned(ban))
         {
             return;
         }

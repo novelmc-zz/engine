@@ -20,7 +20,7 @@ public class StaffConfig extends YamlConfiguration
         this.plugin = plugin;
         this.file = new File(plugin.getDataFolder(), "staff.yml");
 
-        if (!file.exists())
+        if ( ! file.exists())
         {
             saveDefault();
         }

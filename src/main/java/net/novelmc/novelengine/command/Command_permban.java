@@ -15,6 +15,8 @@ import org.bukkit.command.CommandSender;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import net.novelmc.novelengine.banning.BanUIDGen;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 
 @CommandParameters(description = "Permanently ban a username or IP", usage = "/<command> <username | ip> [reason]", source = SourceType.BOTH, rank = Rank.ADMIN)
 public class Command_permban extends CommandBase
@@ -50,6 +52,13 @@ public class Command_permban extends CommandBase
             BanManager.addBan("", args[0], sender.getName(), reason, BanUIDGen.idGen(BanType.PERMANENT_IP), null, BanType.PERMANENT_IP);
             NUtil.playerAction(sender, "Permanently Banning IP " + m, true);
             sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7Added permanent ban for IP: " + args[0]));
+            Bukkit.getOnlinePlayers().forEach((player) ->
+            {
+                if (player.getAddress().getAddress().getHostAddress().matches(m.toString()))
+                {
+                    player.kickPlayer(StringUtils.join(args, " ", 1, args.length));
+                }
+            });
             return true;
         }
 
@@ -60,9 +69,27 @@ public class Command_permban extends CommandBase
             return true;
         }
 
-        BanManager.addBan(args[0], null, sender.getName(), reason, BanUIDGen.idGen(BanType.PERMANENT_NAME), null, BanType.PERMANENT_NAME);
+        String ip = null;
+        String uuid = null;
+        for (Player player : Bukkit.getOnlinePlayers())
+        {
+            if (args[0].matches(player.getName()))
+            {
+                ip = player.getAddress().getAddress().getHostAddress();
+                uuid = player.getUniqueId().toString();
+            }
+        }
+
+        BanManager.addBan(uuid, ip, sender.getName(), reason, BanUIDGen.idGen(BanType.PERMANENT_NAME), null, BanType.PERMANENT_NAME);
         NUtil.playerAction(sender, "Permanently Banning Username: " + args[0], true);
         sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7Added permanent ban for name " + args[0]));
+        Bukkit.getOnlinePlayers().forEach((player) ->
+        {
+            if (player.getName().matches(args[0]))
+            {
+                player.kickPlayer(StringUtils.join(args, " ", 1, args.length));
+            }
+        });
         return true;
     }
 }

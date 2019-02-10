@@ -31,7 +31,7 @@ public class Command_rank extends CommandBase
             return true;
         }
 
-        if (!(sender instanceof Player))
+        if ( ! (sender instanceof Player))
         {
             Player player = Bukkit.getPlayer(args[0]);
             if (player == null)

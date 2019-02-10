@@ -94,7 +94,7 @@ public final class StaffList extends NovelBase
 
     public static void removeStaff(Staff s)
     {
-        if (!isStaff(s))
+        if ( ! isStaff(s))
         {
             return;
         }
@@ -117,7 +117,6 @@ public final class StaffList extends NovelBase
         s.setRank(rank);
         staff.add(s);
         s.save(plugin.staffConfig.getConfigurationSection(s.getConfigKey()));
-        staffConfig.save();
     }
 
     public static void updateActive(Player player, boolean active)

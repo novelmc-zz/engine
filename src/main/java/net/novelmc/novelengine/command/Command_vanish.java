@@ -44,7 +44,7 @@ public class Command_vanish extends CommandBase
                 online.showPlayer(plugin, player);
             });
 
-            if (!silent)
+            if ( ! silent)
             {
                 NUtil.globalMessage(ChatColor.YELLOW + player.getName() + " joined the game", NUtil.MessageType.ALL);
             }
@@ -53,11 +53,11 @@ public class Command_vanish extends CommandBase
         } else
         {
 
-            Bukkit.getOnlinePlayers().stream().filter((online) -> (!StaffList.isStaff(online))).forEachOrdered((online) ->
+            Bukkit.getOnlinePlayers().stream().filter((online) -> ( ! StaffList.isStaff(online))).forEachOrdered((online) ->
             {
                 online.hidePlayer(plugin, player);
             });
-            if (!silent)
+            if ( ! silent)
             {
                 NUtil.globalMessage(ChatColor.YELLOW + player.getName() + " left the game", NUtil.MessageType.ALL);
             }

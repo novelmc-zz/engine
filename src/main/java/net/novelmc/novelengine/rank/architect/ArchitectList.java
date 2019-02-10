@@ -91,7 +91,7 @@ public final class ArchitectList extends NovelBase
 
     public static void removeArchitect(Architect a)
     {
-        if (!isArchitect(a))
+        if ( ! isArchitect(a))
         {
             return;
         }

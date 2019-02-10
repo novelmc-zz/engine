@@ -16,16 +16,22 @@ public class PlayerDatabase extends NovelBase
     {
         players = new ArrayList<>();
     }
-    
-    public void purge() {
+
+    public void purge()
+    {
         players.clear();
-        
-        if (!players.isEmpty()) {
-            players.stream().forEach((empty) -> {
+
+        if ( ! players.isEmpty())
+        {
+            players.stream().forEach((empty) ->
+            {
                 players.remove(empty);
             });
-        } else { NLog.info("PlayerDatabase is already empty."); }
-        
+        } else
+        {
+            NLog.info("PlayerDatabase is already empty.");
+        }
+
         NLog.info("PlayerDatabase purged. Current count: " + players.size());
     }
 

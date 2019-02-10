@@ -112,7 +112,7 @@ public enum Rank implements Displayable
 
     public static Displayable getDisplay(CommandSender sender)
     {
-        if (!(sender instanceof Player))
+        if ( ! (sender instanceof Player))
         {
             return Rank.CONSOLE;
         }

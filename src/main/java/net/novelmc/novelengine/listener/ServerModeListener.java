@@ -55,7 +55,7 @@ public class ServerModeListener extends NovelBase implements Listener
 
     public static void disableEventMode()
     {
-        if (!plugin.config.isEventModeEnabled())
+        if ( ! plugin.config.isEventModeEnabled())
         {
             return;
         }
@@ -86,7 +86,7 @@ public class ServerModeListener extends NovelBase implements Listener
 
         for (Player player : Bukkit.getOnlinePlayers())
         {
-            if (!isDev(player) && !isDirector(player))
+            if ( ! isDev(player) &&  ! isDirector(player))
             {
                 player.kickPlayer(NUtil.colorize("&8<-> &9&lSERVER&r&8 \u00BB &cThe server has entered developer-only mode."));
             }
@@ -97,7 +97,7 @@ public class ServerModeListener extends NovelBase implements Listener
 
     public static void disableDevMode()
     {
-        if (!plugin.config.isDevModeEnabled())
+        if ( ! plugin.config.isDevModeEnabled())
         {
             return;
         }
@@ -126,7 +126,7 @@ public class ServerModeListener extends NovelBase implements Listener
 
     public static void disableDevelMode()
     {
-        if (!plugin.config.isDevelModeEnabled())
+        if ( ! plugin.config.isDevelModeEnabled())
         {
             return;
         }
@@ -152,7 +152,7 @@ public class ServerModeListener extends NovelBase implements Listener
 
         for (Player player : Bukkit.getOnlinePlayers())
         {
-            if (!StaffList.isStaff(player))
+            if ( ! StaffList.isStaff(player))
             {
                 player.kickPlayer(NUtil.colorize("&8<-> &9&lSERVER&r&8 \u00BB &cThe server has entered staff-only mode."));
             }
@@ -163,7 +163,7 @@ public class ServerModeListener extends NovelBase implements Listener
 
     public static void disableStaffMode()
     {
-        if (!plugin.config.isStaffModeEnabled())
+        if ( ! plugin.config.isStaffModeEnabled())
         {
             return;
         }
@@ -193,7 +193,7 @@ public class ServerModeListener extends NovelBase implements Listener
         Player player = e.getPlayer();
 
         // Event Mode
-        if (plugin.config.isEventModeEnabled() && !player.isWhitelisted() && !StaffList.isStaff(player))
+        if (plugin.config.isEventModeEnabled() &&  ! player.isWhitelisted() &&  ! StaffList.isStaff(player))
         {
             e.disallow(PlayerLoginEvent.Result.KICK_OTHER, NUtil.colorize("&cThe server is currently in event mode."));
         }
@@ -201,14 +201,14 @@ public class ServerModeListener extends NovelBase implements Listener
         // Developer Mode
         if (plugin.config.isDevModeEnabled())
         {
-            if (!isDev(player) && !isDirector(player))
+            if ( ! isDev(player) &&  ! isDirector(player))
             {
                 e.disallow(PlayerLoginEvent.Result.KICK_OTHER, NUtil.colorize("&cThe server is currently in developer-only mode."));
             }
         }
 
         // Staff Mode
-        if (plugin.config.isStaffModeEnabled() && !StaffList.isStaff(player))
+        if (plugin.config.isStaffModeEnabled() &&  ! StaffList.isStaff(player))
         {
             e.disallow(PlayerLoginEvent.Result.KICK_OTHER, NUtil.colorize("&cThe server is currently in staff-only mode."));
         }

@@ -26,11 +26,11 @@ public class Command_entitywipe extends CommandBase
         int removed = 0;
         for (World eworld : Bukkit.getWorlds())
         {
-            removed = eworld.getEntities().stream().filter((entity) -> (!(entity instanceof Player) && !DONTCLEAR.contains(entity.getType()))).map((entity) ->
+            removed = eworld.getEntities().stream().filter((entity) -> ( ! (entity instanceof Player) &&  ! DONTCLEAR.contains(entity.getType()))).map((entity) ->
             {
                 entity.remove();
                 return entity;
-            }).map((_item) -> 1).reduce(removed, Integer::sum);
+            }).map((_item) -> 1).reduce(removed, Integer :: sum);
         }
         return removed;
     }
@@ -44,7 +44,7 @@ public class Command_entitywipe extends CommandBase
             {
                 entity.remove();
                 return entity;
-            }).map((_item) -> 1).reduce(removed, Integer::sum);
+            }).map((_item) -> 1).reduce(removed, Integer :: sum);
         }
         return removed;
     }

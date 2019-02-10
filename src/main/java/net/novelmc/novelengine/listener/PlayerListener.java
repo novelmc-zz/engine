@@ -24,6 +24,7 @@ import org.bukkit.event.player.*;
 import org.bukkit.event.server.ServerCommandEvent;
 
 import java.lang.reflect.Field;
+import net.novelmc.novelengine.banning.BanType;
 
 public class PlayerListener extends NovelBase implements Listener
 {
@@ -45,7 +46,7 @@ public class PlayerListener extends NovelBase implements Listener
 
         if (StaffList.isStaff(player))
         {
-            if (!StaffList.getStaff(player).getIps().contains(player.getAddress().getHostString()) && !StaffList.getStaff(player).getHomeIp().equals(player.getAddress().getHostString()))
+            if ( ! StaffList.getStaff(player).getIps().contains(player.getAddress().getHostString()) &&  ! StaffList.getStaff(player).getHomeIp().equals(player.getAddress().getHostString()))
             {
                 NUtil.globalMessage(NUtil.colorize("&8<-> &4&lSTAFF &cALERT: " + player.getName() + " has been flagged as a staff impostor!"));
                 player.getInventory().clear();
@@ -59,9 +60,9 @@ public class PlayerListener extends NovelBase implements Listener
             player.setPlayerListName(StringUtils.substring(Rank.getDisplay(player).getColor() + player.getName(), 0, 16));
         }
 
-        if (ArchitectList.isArchitect(player) && !StaffList.isStaff(player))
+        if (ArchitectList.isArchitect(player) &&  ! StaffList.isStaff(player))
         {
-            if (!ArchitectList.getArchitect(player).getIps().contains(player.getAddress().getHostString()))
+            if ( ! ArchitectList.getArchitect(player).getIps().contains(player.getAddress().getHostString()))
             {
                 NUtil.globalMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 » &cNOTICE: " + player.getName() + " has been flagged as a staff impostor!"));
                 player.getInventory().clear();
@@ -74,22 +75,19 @@ public class PlayerListener extends NovelBase implements Listener
 
             player.setPlayerListName(StringUtils.substring(Rank.getRank(player).getColor() + player.getName(), 0, 16));
         }
-        for (Player p : Command_vanish.VANISHED)
+        Command_vanish.VANISHED.stream().filter((p) -> ( ! StaffList.isStaff(player))).forEachOrdered((p) ->
         {
-            if (!StaffList.isStaff(player))
-            {
-                player.hidePlayer(plugin, p);
-            }
-        }
+            player.hidePlayer(plugin, p);
+        });
     }
 
     @EventHandler
     public void onPlayerLogin(PlayerLoginEvent event)
     {
         final Player player = event.getPlayer();
-        Ban ban = BanManager.getBan(event.getPlayer().getName(), event.getAddress().getHostAddress());
+        Ban ban = BanManager.getBan(event.getPlayer().getUniqueId().toString(), event.getAddress().getHostAddress());
 
-        if (ban != null && !ban.isExpired())
+        if (ban != null &&  ! ban.isExpired())
         {
             if (StaffList.isStaff(player))
             {
@@ -225,7 +223,7 @@ public class PlayerListener extends NovelBase implements Listener
 
         for (String blocked : plugin.config.getStaffCommands())
         {
-            if ((event.getMessage().equalsIgnoreCase(blocked) || event.getMessage().split(" ")[0].equalsIgnoreCase(blocked)) && !StaffList.isStaff(player))
+            if ((event.getMessage().equalsIgnoreCase(blocked) || event.getMessage().split(" ")[0].equalsIgnoreCase(blocked)) &&  ! StaffList.isStaff(player))
             {
                 player.sendMessage(NUtil.colorize("&8<-> &3&lINFO&r&8 » &7That command is blocked!"));
                 event.setCancelled(true);
@@ -242,7 +240,7 @@ public class PlayerListener extends NovelBase implements Listener
                 continue;
             }
 
-            cmap.getCommand(blocked).getAliases().stream().filter((blocked2) -> ((event.getMessage().equalsIgnoreCase(blocked2) || event.getMessage().split(" ")[0].equalsIgnoreCase(blocked2)) && !StaffList.isStaff(player))).map((_item) ->
+            cmap.getCommand(blocked).getAliases().stream().filter((blocked2) -> ((event.getMessage().equalsIgnoreCase(blocked2) || event.getMessage().split(" ")[0].equalsIgnoreCase(blocked2)) &&  ! StaffList.isStaff(player))).map((_item) ->
             {
                 player.sendMessage(NUtil.colorize("&8<-> &3&lINFO&r&8 » &7That command is blocked!"));
                 return _item;

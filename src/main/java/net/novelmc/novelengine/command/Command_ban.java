@@ -90,10 +90,10 @@ public class Command_ban extends CommandBase
                 player.kickPlayer(NUtil.colorize("&8<-> &3&lINFO&r&8 \u00BB &cYou have been banned!"));
             }
 
-            BanManager.addBan(player.getName(), player.getAddress().getHostString(), sender.getName(), reason, BanUIDGen.idGen(BanType.NORMAL), NUtil.parseDateOffset("1d"), BanType.NORMAL);
+            BanManager.addBan(player.getUniqueId().toString(), player.getAddress().getHostString(), sender.getName(), reason, BanUIDGen.idGen(BanType.NORMAL), NUtil.parseDateOffset("1d"), BanType.NORMAL);
         } else
         {
-            if (!plugin.playerDatabase.containsName(offlinePlayer.getName()))
+            if ( ! plugin.playerDatabase.containsName(offlinePlayer.getName()))
             {
                 sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7Offline player not found."));
                 return true;
@@ -104,7 +104,7 @@ public class Command_ban extends CommandBase
                 reason = StringUtils.join(args, " ", 1, args.length);
             }
 
-            BanManager.addBan(offlinePlayer.getName(), plugin.playerDatabase.getIp(offlinePlayer.getName()), sender.getName(), reason, BanUIDGen.idGen(BanType.NORMAL), NUtil.parseDateOffset("1d"), BanType.NORMAL);
+            BanManager.addBan(offlinePlayer.getUniqueId().toString(), plugin.playerDatabase.getIp(offlinePlayer.getName()), sender.getName(), reason, BanUIDGen.idGen(BanType.NORMAL), NUtil.parseDateOffset("1d"), BanType.NORMAL);
 
             if (reason != null)
             {

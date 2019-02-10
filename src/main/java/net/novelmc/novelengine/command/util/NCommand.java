@@ -52,7 +52,7 @@ public abstract class NCommand implements CommandExecutor, TabCompleter
             cmd.setAliases(aliases);
         }
 
-        if (!getCommandMap().register("NovelEngine", cmd))
+        if ( ! getCommandMap().register("NovelEngine", cmd))
         {
             unregisterBukkitCommand(Bukkit.getPluginCommand(cmd.getName()));
             getCommandMap().register("NovelEngine", cmd);
@@ -150,19 +150,19 @@ public abstract class NCommand implements CommandExecutor, TabCompleter
                     return true;
                 }
 
-                if (!(sender instanceof Player) && source == SourceType.IN_GAME)
+                if ( ! (sender instanceof Player) && source == SourceType.IN_GAME)
                 {
                     sender.sendMessage("You must be in game to execute this command!");
                     return true;
                 }
 
-                if (!Rank.getRank(sender).isAtLeast(rank))
+                if ( ! Rank.getRank(sender).isAtLeast(rank))
                 {
                     sender.sendMessage(ChatColor.RED + "You must be at least " + rank.getName() + " to be able to execute this command!");
                     return true;
                 }
 
-                if (!cmd.onCommand(sender, this, string, args))
+                if ( ! cmd.onCommand(sender, this, string, args))
                 {
                     sender.sendMessage(usage.replaceAll("<command>", commandName));
                     return false;

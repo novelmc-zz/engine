@@ -52,7 +52,7 @@ public class NovelEngine extends JavaPlugin
 
         sqlManager = new SQLManager(plugin);
 
-        if (!sqlManager.init())
+        if ( ! sqlManager.init())
         {
             NLog.severe("Unable to connect to MySQL database! Shutting down...");
             this.getServer().getPluginManager().disablePlugin(this);
@@ -76,11 +76,11 @@ public class NovelEngine extends JavaPlugin
     @Override
     public void onDisable()
     {
-        plugin = null;
-
         config.save();
         staffConfig.save();
         architectConfig.save();
+
+        plugin = null;
 
         NLog.info("The plugin has been disabled!");
     }
