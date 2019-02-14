@@ -25,7 +25,7 @@ public class ServerListener extends NovelBase implements Listener
     {
         if (Bukkit.hasWhitelist())
         {
-            event.setMotd(NUtil.colorize("&cWhitelist is enabled."));
+            event.setMotd(NUtil.colorize("        &7&l» &c&m------&7&l » &9&lNOVEL&f&lMC &7&l« &c&m------&7&l«\n           &7&l(&r&4&l!&7&l)  &c&nWhitelist Enabled&r &7&l (&r&4&l!&7&l)"));
             return;
         }
 
