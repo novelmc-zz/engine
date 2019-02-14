@@ -9,20 +9,20 @@ general:
 
   # MOTD (shown on server list) - Color codes supported [&] and 2 lines motd [||] available
   motd:
-    - "&3Novel&9MC"
-    - "&a1.13.2"
+    - "        &7&l» &9&m--&3&m--&b&m--&7&l » &9&lNOVEL&f&lMC &7&l« &b&m--&3&m--&9&m--&7&l «"
+    - "   &7&l» &f&lNEWS: &9&lDISCORD &7&l« &6&ndiscord.gg/nuNTR3U"
   # Website - useful to link to the forum for ban appeals, admin applications etc
   website: http://novelmc.net/
 
   # Event mode
   eventmode: false
-  
+
   # Dev mode
   devmode: false
-  
+
   # Development mode
   develmode: false
-  
+
   # Staff mode
   staffmode: false
 
@@ -67,7 +67,7 @@ permissionblocker:
     - '//calc'
     - '/sudo'
     - '//fast'
-    - '/plugman'    
+    - '/plugman'
 
 allow:
   lava_place: false
