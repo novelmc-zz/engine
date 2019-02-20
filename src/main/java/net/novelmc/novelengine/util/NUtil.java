@@ -36,8 +36,8 @@ public class NUtil
     public static final List<String> DIRECTORS = Arrays.asList("7c2eee6f-33a2-44de-8dd1-1e3fe06d2150"/*
              * falceso
              */, "6ea8bbd1-2496-4389-a12f-a3e1fc74372c"/*
-             * synpatn
-             */, "a429d3d7-93fa-47f0-8692-f2567b1293b0"/*
+             * almanacks
+             */, "77ca708d-0717-449b-ae69-1c503296e133"/*
      * shrimpuu
      */);
     public static final List<String> ARCHITECTS = Arrays.asList("");
