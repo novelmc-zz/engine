@@ -19,8 +19,6 @@ public class NUtil
 
     public static final List<String> DEVELOPERS = Arrays.asList("db8e5b84-c670-41f6-9a2b-1ad9a8c7e104"/*
              * untuned
-             */, "cb3dab42-0f6f-48dc-8b44-534a482dae95"/*
-             * mafrans
              */, "c8e5af82-6aba-4dd7-83e8-474381380cc9"/*
      * Paldiu
      */);
