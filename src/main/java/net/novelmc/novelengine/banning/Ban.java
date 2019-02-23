@@ -45,35 +45,34 @@ public class Ban extends NovelBase
         {
             return ChatColor.RED
                     + "Your IP address is currently permanently banned from this server." + NEW_LINE
-                    + "Reason: " + ChatColor.YELLOW + (reason != null ? reason : "Reason not specified") + NEW_LINE
-                    + ChatColor.RED + "Banned by: " + ChatColor.YELLOW + by + NEW_LINE
+                    + ChatColor.GRAY + "Reason: " + ChatColor.WHITE + (reason != null ? reason : "Reason not specified") + NEW_LINE
+                    + ChatColor.GRAY + "More Information: " + ChatColor.GOLD + ChatColor.UNDERLINE + "https://novelmc.net/docs/support/"+ NEW_LINE
                     + ChatColor.GRAY + "Ban ID: " + UID;
         }
         if (type == BanType.PERMANENT_NAME)
         {
             return ChatColor.RED
                     + "Your name is currently permanently banned from this server." + NEW_LINE
-                    + "Reason: " + ChatColor.YELLOW + (reason != null ? reason : "Reason not specified") + NEW_LINE
-                    + ChatColor.RED + "Banned by: " + ChatColor.YELLOW + by + NEW_LINE
+                    + ChatColor.GRAY + "Reason: " + ChatColor.WHITE + (reason != null ? reason : "Reason not specified") + NEW_LINE
+                    + ChatColor.GRAY + "More Information: " ChatColor.GOLD + ChatColor.UNDERLINE + "https://novelmc.net/docs/support/"+ NEW_LINE
                     + ChatColor.GRAY + "Ban ID: " + UID;
         }
         if (type == BanType.IP)
         {
             return ChatColor.RED
                     + "Your IP address is currently banned from this server." + NEW_LINE
-                    + "Reason: " + ChatColor.YELLOW + (reason != null ? reason : "Reason not specified") + NEW_LINE
-                    + ChatColor.RED + "Your ban will expire on "
-                    + ChatColor.YELLOW + NUtil.DATE_FORMAT.format(expiry) + NEW_LINE
+                    + ChatColor.GRAY + "Reason: " + ChatColor.WHITE + (reason != null ? reason : "Reason not specified") + NEW_LINE
+                    + ChatColor.GRAY + "Your ban will expire on: " + ChatColor.GOLD + NUtil.DATE_FORMAT.format(expiry) + NEW_LINE
+                    + ChatColor.GRAY + "More Information: " ChatColor.GOLD + ChatColor.UNDERLINE + "https://novelmc.net/docs/support/"+ NEW_LINE
                     + ChatColor.GRAY + "Ban ID: " + UID;
         }
 
         // Normal ban
         return ChatColor.RED
-                + "You're currently banned from this server." + NEW_LINE
-                + "Reason: " + ChatColor.YELLOW + (reason != null ? reason : "Reason not specified") + NEW_LINE
-                + ChatColor.RED + "Banned by: " + ChatColor.YELLOW + by + NEW_LINE
-                + ChatColor.RED + "Your ban will expire on "
-                + ChatColor.YELLOW + NUtil.DATE_FORMAT.format(expiry) + NEW_LINE
+                + "You are currently banned from this server." + NEW_LINE
+                + ChatColor.GRAY + "Reason: " + ChatColor.WHITE + (reason != null ? reason : "Reason not specified") + NEW_LINE
+                + ChatColor.GRAY + "Your ban will expire on: " + ChatColor.GOLD + NUtil.DATE_FORMAT.format(expiry) + NEW_LINE
+                + ChatColor.GRAY + "More Information: " ChatColor.GOLD + ChatColor.UNDERLINE + "https://novelmc.net/docs/support/"+ NEW_LINE
                 + ChatColor.GRAY + "Ban ID: " + UID;
     }
 

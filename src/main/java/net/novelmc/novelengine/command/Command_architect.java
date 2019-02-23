@@ -32,20 +32,20 @@ public class Command_architect extends CommandBase
                 {
                     if ( ! Rank.getRank(sender).isAtLeast(Rank.ADMIN))
                     {
-                        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7You must be a &9&lADMIN&r&7 to be able to execute this command."));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF >&r &7You must be a &9&lADMIN&r&7 to be able to execute this command."));
                         return true;
                     }
 
                     Player player = Bukkit.getPlayer(args[1]);
                     if (player == null)
                     {
-                        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7That player could not be found."));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF >&r &7That player could not be found."));
                         return true;
                     }
 
                     if (ArchitectList.isArchitect(player))
                     {
-                        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7That player is already an architect."));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF >&r &7That player is already an architect."));
                         return true;
                     }
 
@@ -71,20 +71,20 @@ public class Command_architect extends CommandBase
                 {
                     if ( ! Rank.getRank(sender).isAtLeast(Rank.ADMIN))
                     {
-                        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7You must be a &9&lADMIN&r&7 to execute this command."));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF >&r &7You must be a &9&lADMIN&r&7 to execute this command."));
                         return true;
                     }
 
                     Player player = Bukkit.getPlayer(args[1]);
                     if (player == null)
                     {
-                        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7That player could not be found."));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF >&r &7That player could not be found."));
                         return true;
                     }
 
                     if ( ! ArchitectList.isArchitect(player))
                     {
-                        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7That player is not an architect."));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF >&r &7That player is not an architect."));
                         return true;
                     }
 
@@ -98,13 +98,13 @@ public class Command_architect extends CommandBase
                     Player player = Bukkit.getPlayer(args[1]);
                     if (player == null)
                     {
-                        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7That player could not be found."));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF >&r &7That player could not be found."));
                         return true;
                     }
 
                     if ( ! ArchitectList.isArchitect(player))
                     {
-                        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7That player is not an architect."));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF >&r &7That player is not an architect."));
                         return true;
                     }
 

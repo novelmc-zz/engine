@@ -28,18 +28,18 @@ public class Command_toggle extends CommandBase
                 case "lavaplace":
                 {
                     NovelEngine.plugin.config.setLavaEnabled( ! NovelEngine.plugin.config.isLavaEnabled());
-                    sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7Lava placement has been " + (NovelEngine.plugin.config.isLavaEnabled() ? "enabled." : "disabled.")));
+                    sender.sendMessage(NUtil.colorize("&4&lSTAFF >&r &7Lava placement has been " + (NovelEngine.plugin.config.isLavaEnabled() ? "enabled." : "disabled.")));
                     return true;
                 }
                 case "waterplace":
                 {
                     NovelEngine.plugin.config.setWaterEnabled( ! NovelEngine.plugin.config.isWaterEnabled());
-                    sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7Water placement has been " + (NovelEngine.plugin.config.isWaterEnabled() ? "enabled." : "disabled.")));
+                    sender.sendMessage(NUtil.colorize("&4&lSTAFF >&r &7Water placement has been " + (NovelEngine.plugin.config.isWaterEnabled() ? "enabled." : "disabled.")));
                     return true;
                 }
             }
         }
-        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7Toggleable Features"));
+        sender.sendMessage(NUtil.colorize("&4&lSTAFF >&r &7Toggleable Features"));
         sender.sendMessage(NUtil.colorize("&7 - lavaplace"));
         sender.sendMessage(NUtil.colorize("&7 - waterplace"));
         return true;

@@ -52,7 +52,7 @@ public class Command_unban extends CommandBase
 
         Pattern patt = Pattern.compile("^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$");
         Matcher m = patt.matcher(args[0]);
-        sender.sendMessage(m.matches() ? NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7IP is not banned.") : NUtil.colorize("&8<-> &4&lSTAFF &7Player is not banned."));
+        sender.sendMessage(m.matches() ? NUtil.colorize("&4&lSTAFF >&r &7IP is not banned.") : NUtil.colorize("&8<-> &4&lSTAFF &7Player is not banned."));
         return true;
     }
 }

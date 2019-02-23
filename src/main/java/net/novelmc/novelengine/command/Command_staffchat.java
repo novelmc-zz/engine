@@ -22,7 +22,7 @@ public class Command_staffchat extends CommandBase
             return false;
         }
 
-        NUtil.globalMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7" + Rank.getDisplay(sender).getTag() + " &7" + sender.getName() + "&8: ") + ChatColor.GOLD + StringUtils.join(args, " ", 0, args.length), NUtil.MessageType.STAFF_ONLY);
+        NUtil.globalMessage(NUtil.colorize("&4&lSTAFF >&r &7" + Rank.getDisplay(sender).getTag() + " &7" + sender.getName() + "&8: ") + ChatColor.GOLD + StringUtils.join(args, " ", 0, args.length), NUtil.MessageType.STAFF_ONLY);
         return true;
     }
 }

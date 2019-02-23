@@ -30,7 +30,7 @@ public class Command_mode extends CommandBase
                 {
                     if ( ! NUtil.DEVELOPERS.contains(sender.getName()))
                     {
-                        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7You must be a &5&lDEV&r&7 to be able to execute this command."));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF >&r &7You must be a &5&lDEV&r&7 to be able to execute this command."));
                         return true;
                     }
                     if (plugin.config.isDevModeEnabled())
@@ -59,7 +59,7 @@ public class Command_mode extends CommandBase
                 {
                     if ( ! NUtil.DEVELOPERS.contains(sender.getName()))
                     {
-                        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7You must be a &5&lDEV&r&7 to be able to execute this command."));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF >&r &7You must be a &5&lDEV&r&7 to be able to execute this command."));
                         return true;
                     }
                     if (plugin.config.isDevelModeEnabled())
@@ -96,7 +96,7 @@ public class Command_mode extends CommandBase
                 }
             }
         }
-        sender.sendMessage(NUtil.colorize("&8<-> &7Server Modes&8:"));
+        sender.sendMessage(NUtil.colorize("&7Server Modes&8:"));
         sender.sendMessage(NUtil.colorize("&8<-> &5&ldev&r&8: &7Plugin testing for leadership and devs."));
         sender.sendMessage(NUtil.colorize("&8<-> &4&lstaff&r&8: &7Staff-only mode."));
         sender.sendMessage(NUtil.colorize("&8<-> &9&levent&r&8: &7Event mode."));

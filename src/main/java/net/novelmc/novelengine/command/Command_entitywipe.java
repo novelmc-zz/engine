@@ -58,7 +58,7 @@ public class Command_entitywipe extends CommandBase
         if (args.length == 0)
         {
             NUtil.playerAction(player, "Removing all entities", false);
-            sender.sendMessage(NUtil.colorize("&3&lINFO&r&7&l \u00BB &7" + AllEntities() + " entities removed."));
+            sender.sendMessage(NUtil.colorize("&3&lINFO >&r &7" + AllEntities() + " entities removed."));
             return true;
         }
         if (args.length <= 1)
@@ -66,10 +66,10 @@ public class Command_entitywipe extends CommandBase
             if (args[0].equalsIgnoreCase("mob") || args[0].equalsIgnoreCase("monsters") || args[0].equalsIgnoreCase("mobs"))
             {
                 NUtil.playerAction(sender, "Purging all mobs", true);
-                sender.sendMessage(NUtil.colorize("&3&lINFO&r&7&l \u00BB &7" + AllMobs() + " mobs removed."));
+                sender.sendMessage(NUtil.colorize("&3&lINFO >&r &7" + AllMobs() + " mobs removed."));
                 return true;
             }
-            sender.sendMessage(NUtil.colorize("&3&lINFO&r&7&l \u00BB &7/ew [mobs,mob,monsters]"));
+            sender.sendMessage(NUtil.colorize("&3&lINFO >&r &7/ew [mobs,mob,monsters]"));
             return true;
         }
         return true;

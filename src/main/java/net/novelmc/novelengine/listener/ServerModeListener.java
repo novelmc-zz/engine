@@ -50,7 +50,7 @@ public class ServerModeListener extends NovelBase implements Listener
             player.setWhitelisted(true);
         }
 
-        NUtil.globalMessage(NUtil.colorize("&8<-> &9&lSERVER&r&8 \u00BB &cThe server has entered event mode, all online players have been whitelisted."));
+        NUtil.globalMessage(NUtil.colorize("&9&lSERVER >&r &cThe server has entered event mode, all online players have been whitelisted."));
     }
 
     public static void disableEventMode()
@@ -67,7 +67,7 @@ public class ServerModeListener extends NovelBase implements Listener
             player.setWhitelisted(false);
         }
 
-        NUtil.globalMessage(NUtil.colorize("&8<-> &9&lSERVER&r&8 \u00BB &cThe server has left event mode."));
+        NUtil.globalMessage(NUtil.colorize("&9&lSERVER >&r &cThe server has left event mode."));
     }
 
     // Event Mode: End
@@ -88,11 +88,11 @@ public class ServerModeListener extends NovelBase implements Listener
         {
             if ( ! isDev(player) &&  ! isDirector(player))
             {
-                player.kickPlayer(NUtil.colorize("&8<-> &9&lSERVER&r&8 \u00BB &cThe server has entered developer-only mode."));
+                player.kickPlayer(NUtil.colorize("&9&lSERVER >&r &cThe server has entered developer-only mode."));
             }
         }
 
-        NUtil.globalMessage(NUtil.colorize("&8<-> &9&lSERVER&r&8 \u00BB &cThe server has entered developer-mode."));
+        NUtil.globalMessage(NUtil.colorize("&9&lSERVER >&r &cThe server has entered developer-mode."));
     }
 
     public static void disableDevMode()
@@ -104,7 +104,7 @@ public class ServerModeListener extends NovelBase implements Listener
 
         plugin.config.setDevModeEnabled(false);
 
-        NUtil.globalMessage(NUtil.colorize("&8<-> &9&lSERVER&r&8 \u00BB &cThe server has left developer-only mode."));
+        NUtil.globalMessage(NUtil.colorize("&9&lSERVER >&r &cThe server has left developer-only mode."));
     }
 
     // Developer Mode: End
@@ -121,7 +121,7 @@ public class ServerModeListener extends NovelBase implements Listener
         plugin.config.setDevModeEnabled(false);
         plugin.config.setStaffModeEnabled(false);
 
-        NUtil.globalMessage(NUtil.colorize("&8<-> &9&lSERVER&r&8 \u00BB &cThe server has entered development mode, be aware of restarts, reloads, and bugs."));
+        NUtil.globalMessage(NUtil.colorize("&9&lSERVER >&r &cThe server has entered development mode, be aware of restarts, reloads, and bugs."));
     }
 
     public static void disableDevelMode()
@@ -133,7 +133,7 @@ public class ServerModeListener extends NovelBase implements Listener
 
         plugin.config.setDevelModeEnabled(false);
 
-        NUtil.globalMessage(NUtil.colorize("&8<-> &9&lSERVER&r&8 \u00BB &cThe server has left development mode."));
+        NUtil.globalMessage(NUtil.colorize("&9&lSERVER >&r &cThe server has left development mode."));
     }
 
     // Development Mode: End
@@ -154,11 +154,11 @@ public class ServerModeListener extends NovelBase implements Listener
         {
             if ( ! StaffList.isStaff(player))
             {
-                player.kickPlayer(NUtil.colorize("&8<-> &9&lSERVER&r&8 \u00BB &cThe server has entered staff-only mode."));
+                player.kickPlayer(NUtil.colorize("&9&lSERVER >&r &cThe server has entered staff-only mode."));
             }
         }
 
-        NUtil.globalMessage(NUtil.colorize("&8<-> &9&lSERVER&r&8 \u00BB &cThe server has entered staff-only mode."));
+        NUtil.globalMessage(NUtil.colorize("&9&lSERVER >&r &cThe server has entered staff-only mode."));
     }
 
     public static void disableStaffMode()
@@ -170,7 +170,7 @@ public class ServerModeListener extends NovelBase implements Listener
 
         plugin.config.setStaffModeEnabled(false);
 
-        NUtil.globalMessage(NUtil.colorize("&&8<-> &9&lSERVER&r&8 \u00BB &cThe server has exited staff-only mode."));
+        NUtil.globalMessage(NUtil.colorize("&&9&lSERVER >&r &cThe server has exited staff-only mode."));
     }
 
     // Staff Mode: End
@@ -182,7 +182,7 @@ public class ServerModeListener extends NovelBase implements Listener
         plugin.config.setDevelModeEnabled(false);
         plugin.config.setStaffModeEnabled(false);
 
-        NUtil.globalMessage(NUtil.colorize("&8<-> &9&lSERVER&r&8 \u00BB &cThe server has re-opened to everyone."));
+        NUtil.globalMessage(NUtil.colorize("&9&lSERVER >&r &cThe server has re-opened to everyone."));
     }
 
     // Disable Every Mode: End
