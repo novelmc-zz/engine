@@ -45,13 +45,13 @@ public class Command_permban extends CommandBase
             // check if the ip is banned
             if (BanManager.isIPPermBanned(args[0]))
             {
-                sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7That IP-address has already been permanently banned!"));
+                sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7That IP-address has already been permanently banned!"));
                 return true;
             }
 
             BanManager.addBan("", args[0], sender.getName(), reason, BanUIDGen.idGen(BanType.PERMANENT_IP), null, BanType.PERMANENT_IP);
             NUtil.playerAction(sender, "Permanently Banning IP " + m, true);
-            sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7Added permanent ban for IP: " + args[0]));
+            sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7Added permanent ban for IP: " + args[0]));
             Bukkit.getOnlinePlayers().forEach((player) ->
             {
                 if (player.getAddress().getAddress().getHostAddress().matches(m.toString()))
@@ -82,7 +82,7 @@ public class Command_permban extends CommandBase
 
         BanManager.addBan(uuid, ip, sender.getName(), reason, BanUIDGen.idGen(BanType.PERMANENT_NAME), null, BanType.PERMANENT_NAME);
         NUtil.playerAction(sender, "Permanently Banning Username: " + args[0], true);
-        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7Added permanent ban for name " + args[0]));
+        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7Added permanent ban for name " + args[0]));
         Bukkit.getOnlinePlayers().forEach((player) ->
         {
             if (player.getName().matches(args[0]))

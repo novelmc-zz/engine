@@ -19,8 +19,8 @@ public class NUtil
 
     public static final List<String> DEVELOPERS = Arrays.asList("db8e5b84-c670-41f6-9a2b-1ad9a8c7e104"/*
              * untuned
-             */, "c8e5af82-6aba-4dd7-83e8-474381380cc9"/*
-     * Paldiu
+             */, "7c2eee6f-33a2-44de-8dd1-1e3fe06d2150"/*
+     * falceso
      */);
     public static final List<String> ADMINS = Arrays.asList("0bc1c464-7c4c-4b20-9c17-a1079145de8d"/*
              * rovertpug
@@ -31,11 +31,11 @@ public class NUtil
              */, "a8ab4eb2-2805-4631-8351-f3be58056e37"/*
      * pih
      */);
-    public static final List<String> DIRECTORS = Arrays.asList("7c2eee6f-33a2-44de-8dd1-1e3fe06d2150"/*
-             * falceso
-             */, "6ea8bbd1-2496-4389-a12f-a3e1fc74372c"/*
-             * almanacks
+    public static final List<String> DIRECTORS = Arrays.asList("547e310e-64a4-4427-a88d-e04f67396403"/*
+             * _PHR
              */, "77ca708d-0717-449b-ae69-1c503296e133"/*
+             * almanacks
+             */, "a429d3d7-93fa-47f0-8692-f2567b1293b0"/*
      * shrimpuu
      */);
     public static final List<String> ARCHITECTS = Arrays.asList("");
@@ -89,10 +89,10 @@ public class NUtil
         Displayable display = Rank.getDisplay(sender);
         if (staffOnly)
         {
-            globalMessage(colorize(String.format("&8<-> &4&lSTAFF&r&8 » &7%s &8(%s%s &7%s&8)&7", action, display.getColor(), display.getTag(), sender.getName())), MessageType.STAFF_ONLY);
+            globalMessage(colorize(String.format("&4&lSTAFF&r&7&l \u00BB &7%s &8(%s%s &7%s&8)&7", action, display.getColor(), display.getTag(), sender.getName())), MessageType.STAFF_ONLY);
         } else
         {
-            globalMessage(colorize(String.format("&8<-> &9&lSERVER&r&8 » &7%s &8(%s%s &7%s&8)&7", action, display.getColor(), display.getTag(), sender.getName())));
+            globalMessage(colorize(String.format("&9&lSERVER&r&7&l \u00BB &7%s &8(%s%s &7%s&8)&7", action, display.getColor(), display.getTag(), sender.getName())));
         }
     }
 

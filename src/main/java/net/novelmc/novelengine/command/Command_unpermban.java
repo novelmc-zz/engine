@@ -37,12 +37,12 @@ public class Command_unpermban extends CommandBase
                 {
                     BanManager.removeBan(ban);
                     NUtil.playerAction(sender, "Removing permanent ban for IP: " + m, true);
-                    sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &aRemoved permanent ban for IP " + args[0]));
+                    sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &aRemoved permanent ban for IP " + args[0]));
                     return true;
                 }
             }
 
-            sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7That IP-address has not been permanently banned."));
+            sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7That IP-address has not been permanently banned."));
             return true;
         }
 
@@ -52,11 +52,11 @@ public class Command_unpermban extends CommandBase
             {
                 BanManager.removeBan(ban);
                 NUtil.playerAction(sender, "Removing permanent ban on username: " + args[0], true);
-                sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &aRemoved permanent ban for name " + args[0]));
+                sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &aRemoved permanent ban for name " + args[0]));
                 return true;
             }
         }
-        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7That name does not appear to be be permanently banned!"));
+        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7That name does not appear to be be permanently banned!"));
         return true;
     }
 }

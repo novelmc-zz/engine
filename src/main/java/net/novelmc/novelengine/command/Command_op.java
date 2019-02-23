@@ -25,7 +25,7 @@ public class Command_op extends CommandBase
         Player player = Bukkit.getPlayer(args[0]);
         if (player == null)
         {
-            sender.sendMessage(NUtil.colorize("&8<-> &3&lINFO&r&8 \u00BB &7That player could not be found."));
+            sender.sendMessage(NUtil.colorize("&3&lINFO&r&7&l \u00BB &7That player could not be found."));
             return true;
         }
 

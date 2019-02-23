@@ -30,7 +30,7 @@ public class Command_mode extends CommandBase
                 {
                     if ( ! NUtil.DEVELOPERS.contains(sender.getName()))
                     {
-                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7You must be a &5&lDEV&r&7 to be able to execute this command."));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7You must be a &5&lDEV&r&7 to be able to execute this command."));
                         return true;
                     }
                     if (plugin.config.isDevModeEnabled())
@@ -59,7 +59,7 @@ public class Command_mode extends CommandBase
                 {
                     if ( ! NUtil.DEVELOPERS.contains(sender.getName()))
                     {
-                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7You must be a &5&lDEV&r&7 to be able to execute this command."));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7You must be a &5&lDEV&r&7 to be able to execute this command."));
                         return true;
                     }
                     if (plugin.config.isDevelModeEnabled())

@@ -32,20 +32,20 @@ public class Command_staff extends CommandBase
                 {
                     if ( ! Rank.getRank(sender).isAtLeast(Rank.ADMIN))
                     {
-                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7You must be a &9&lSRADMIN&r&7 to be able to execute this command."));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7You must be a &9&lSRADMIN&r&7 to be able to execute this command."));
                         return true;
                     }
 
                     Player player = Bukkit.getPlayer(args[1]);
                     if (player == null)
                     {
-                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7That player could not be found."));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7That player could not be found."));
                         return true;
                     }
 
                     if (StaffList.isStaff(player))
                     {
-                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7That player is already staff."));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7That player is already staff."));
                         return true;
                     }
 
@@ -71,20 +71,20 @@ public class Command_staff extends CommandBase
                 {
                     if ( ! Rank.getRank(sender).isAtLeast(Rank.ADMIN))
                     {
-                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7You must be a &9&lSRADMIN&r&7 to execute this command!"));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7You must be a &9&lSRADMIN&r&7 to execute this command!"));
                         return true;
                     }
 
                     Player player = Bukkit.getPlayer(args[1]);
                     if (player == null)
                     {
-                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7That player could not be found."));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7That player could not be found."));
                         return true;
                     }
 
                     if ( ! StaffList.isStaff(player))
                     {
-                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7That player is not a staff member."));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7That player is not a staff member."));
                         return true;
                     }
 
@@ -98,13 +98,13 @@ public class Command_staff extends CommandBase
                     Player player = Bukkit.getPlayer(args[1]);
                     if (player == null)
                     {
-                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7That player could not be found."));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7That player could not be found."));
                         return true;
                     }
 
                     if ( ! StaffList.isStaff(player))
                     {
-                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7That player is not staff member."));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7That player is not staff member."));
                         return true;
                     }
 
@@ -118,33 +118,33 @@ public class Command_staff extends CommandBase
                 {
                     if ( ! Rank.getRank(sender).isAtLeast(Rank.ADMIN))
                     {
-                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7You must be a &9&lSRADMIN&r&7 to to execute this command."));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7You must be a &9&lSRADMIN&r&7 to to execute this command."));
                         return true;
                     }
 
                     Player player = Bukkit.getPlayer(args[1]);
                     if (player == null)
                     {
-                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7That player could not be found."));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7That player could not be found."));
                         return true;
                     }
 
                     if ( ! StaffList.isStaff(player))
                     {
-                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7That player is not a staff member."));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7That player is not a staff member."));
                         return true;
                     }
 
                     Rank rank = Rank.findRank(args[2]);
                     if (rank == null)
                     {
-                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7The provided rank is invalid."));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7The provided rank is invalid."));
                         return true;
                     }
 
                     if ( ! rank.isAtLeast(Rank.TRAINEE))
                     {
-                        sender.sendMessage(NUtil.colorize("&8<-> &4&lSTAFF&r&8 \u00BB &7The rank provided must be &3&lTRAINEE&r&7 or higher."));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF&r&7&l \u00BB &7The rank provided must be &3&lTRAINEE&r&7 or higher."));
                         return true;
                     }
 
