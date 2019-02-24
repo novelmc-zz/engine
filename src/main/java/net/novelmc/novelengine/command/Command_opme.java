@@ -16,7 +16,7 @@ public class Command_opme extends CommandBase
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args)
     {
         sender.setOp(true);
-        sender.sendMessage(NUtil.colorize("&3&lINFO >&r &7You have been opped."));
+        sender.sendMessage(NUtil.colorize("&5&lINFO >&r &7You have been opped."));
         return true;
     }
 }

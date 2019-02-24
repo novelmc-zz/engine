@@ -83,11 +83,11 @@ public class Command_ban extends CommandBase
             if (reason != null)
             {
                 NUtil.playerAction(sender, String.format(" - Banning %s" + NEW_LINE + "Reason: " + ChatColor.YELLOW + "%s", offlinePlayer.getName(), reason), true);
-                player.kickPlayer(NUtil.colorize("&3&lINFO >&r &cYou have been banned!" + NEW_LINE + "Reason: " + ChatColor.YELLOW + reason));
+                player.kickPlayer(NUtil.colorize("&5&lINFO >&r &cYou have been banned!" + NEW_LINE + "Reason: " + ChatColor.YELLOW + reason));
             } else
             {
                 NUtil.playerAction(sender, " - Banning " + offlinePlayer.getName(), true);
-                player.kickPlayer(NUtil.colorize("&3&lINFO >&r &cYou have been banned!"));
+                player.kickPlayer(NUtil.colorize("&5&lINFO >&r &cYou have been banned!"));
             }
 
             BanManager.addBan(player.getUniqueId().toString(), player.getAddress().getHostString(), sender.getName(), reason, BanUIDGen.idGen(BanType.NORMAL), NUtil.parseDateOffset("1d"), BanType.NORMAL);
