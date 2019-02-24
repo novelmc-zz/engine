@@ -54,7 +54,7 @@ public class Ban extends NovelBase
             return ChatColor.RED
                     + "Your name is currently permanently banned from this server." + NEW_LINE
                     + ChatColor.GRAY + "Reason: " + ChatColor.WHITE + (reason != null ? reason : "Reason not specified") + NEW_LINE
-                    + ChatColor.GRAY + "More Information: " ChatColor.GOLD + ChatColor.UNDERLINE + "https://novelmc.net/docs/support/" + NEW_LINE
+                    + ChatColor.GRAY + "More Information: " + ChatColor.GOLD + ChatColor.UNDERLINE + "https://novelmc.net/docs/support/" + NEW_LINE
                     + ChatColor.GRAY + "Ban ID: " + UID;
         }
         if (type == BanType.IP)
@@ -63,7 +63,7 @@ public class Ban extends NovelBase
                     + "Your IP address is currently banned from this server." + NEW_LINE
                     + ChatColor.GRAY + "Reason: " + ChatColor.WHITE + (reason != null ? reason : "Reason not specified") + NEW_LINE
                     + ChatColor.GRAY + "Your ban will expire on: " + ChatColor.GOLD + NUtil.DATE_FORMAT.format(expiry) + NEW_LINE
-                    + ChatColor.GRAY + "More Information: " ChatColor.GOLD + ChatColor.UNDERLINE + "https://novelmc.net/docs/support/" + NEW_LINE
+                    + ChatColor.GRAY + "More Information: " + ChatColor.GOLD + ChatColor.UNDERLINE + "https://novelmc.net/docs/support/" + NEW_LINE
                     + ChatColor.GRAY + "Ban ID: " + UID;
         }
 
@@ -72,7 +72,7 @@ public class Ban extends NovelBase
                 + "You are currently banned from this server." + NEW_LINE
                 + ChatColor.GRAY + "Reason: " + ChatColor.WHITE + (reason != null ? reason : "Reason not specified") + NEW_LINE
                 + ChatColor.GRAY + "Your ban will expire on: " + ChatColor.GOLD + NUtil.DATE_FORMAT.format(expiry) + NEW_LINE
-                + ChatColor.GRAY + "More Information: " ChatColor.GOLD + ChatColor.UNDERLINE + "https://novelmc.net/docs/support/" + NEW_LINE
+                + ChatColor.GRAY + "More Information: " + ChatColor.GOLD + ChatColor.UNDERLINE + "https://novelmc.net/docs/support/" + NEW_LINE
                 + ChatColor.GRAY + "Ban ID: " + UID;
     }
 
