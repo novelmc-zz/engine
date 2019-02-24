@@ -24,7 +24,7 @@ public class Command_rank extends CommandBase
             Player player = Bukkit.getPlayer(args[0]);
             if (player == null)
             {
-                sender.sendMessage(NUtil.colorize("&5&lINFO >&r &7That player could not be found."));
+                sender.sendMessage(NUtil.colorize("&2&lINFO >&r &7That player could not be found."));
                 return true;
             }
             sender.sendMessage(message(player));
@@ -36,10 +36,10 @@ public class Command_rank extends CommandBase
             Player player = Bukkit.getPlayer(args[0]);
             if (player == null)
             {
-                sender.sendMessage(NUtil.colorize("&5&lINFO >&r &7That player could not be found."));
+                sender.sendMessage(NUtil.colorize("&2&lINFO >&r &7That player could not be found."));
                 return true;
             }
-            sender.sendMessage(NUtil.colorize("&5&lINFO >&r &7Users from console may only view other players. [/rank <player>]"));
+            sender.sendMessage(NUtil.colorize("&2&lINFO >&r &7Users from console may only view other players. [/rank <player>]"));
             return true;
         }
 

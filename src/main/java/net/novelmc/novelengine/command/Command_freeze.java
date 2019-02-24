@@ -46,19 +46,19 @@ public class Command_freeze extends CommandBase
         Player player = Bukkit.getPlayer(args[0]);
         if (player == null)
         {
-            sender.sendMessage(NUtil.colorize("&5&lINFO >&r &7That player could not be found."));
+            sender.sendMessage(NUtil.colorize("&2&lINFO >&r &7That player could not be found."));
             return true;
         }
 
         if (NPlayer.isFrozen(player))
         {
-            sender.sendMessage(NUtil.colorize("&5&lINFO >&r &7" + player.getName() + " is no longer frozen."));
-            player.sendMessage(NUtil.colorize("&5&lINFO >&r &7You are no longer frozen."));
+            sender.sendMessage(NUtil.colorize("&2&lINFO >&r &7" + player.getName() + " is no longer frozen."));
+            player.sendMessage(NUtil.colorize("&2&lINFO >&r &7You are no longer frozen."));
             NPlayer.frozenPlayers.remove(player);
             return true;
         }
-        sender.sendMessage(NUtil.colorize("&5&lINFO >&r &7" + player.getName() + " is now frozen."));
-        player.sendMessage(NUtil.colorize("&5&lINFO >&r &7You are now frozen."));
+        sender.sendMessage(NUtil.colorize("&2&lINFO >&r &7" + player.getName() + " is now frozen."));
+        player.sendMessage(NUtil.colorize("&2&lINFO >&r &7You are now frozen."));
         NPlayer.frozenPlayers.add(player);
         return true;
     }

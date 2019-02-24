@@ -30,7 +30,7 @@ public class BlockBlocker extends NovelBase implements Listener
                     return;
                 }
                 e.setCancelled(true);
-                player.sendMessage(NUtil.colorize("&5&lINFO &7Lava is currently disabled."));
+                player.sendMessage(NUtil.colorize("&2&lINFO &7Lava is currently disabled."));
                 break;
             }
             case WATER:
@@ -40,7 +40,7 @@ public class BlockBlocker extends NovelBase implements Listener
                     return;
                 }
                 e.setCancelled(true);
-                player.sendMessage(NUtil.colorize("&5&lINFO &7Water is currently disabled."));
+                player.sendMessage(NUtil.colorize("&2&lINFO &7Water is currently disabled."));
                 break;
             }
         }
