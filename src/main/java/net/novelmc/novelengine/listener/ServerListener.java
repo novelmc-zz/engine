@@ -25,13 +25,13 @@ public class ServerListener extends NovelBase implements Listener
     {
         if (Bukkit.hasWhitelist())
         {
-            event.setMotd(NUtil.colorize("      &f&l»&9&l&m---------&r&f&l» &c&lNOVEL&f&lMC &f&l«&9&l&m---------&r&f&l«\n            &7&l(&r&4&l!&7&l)  &cWhitelist Enabled&r &7&l (&r&4&l!&7&l)"));
+            event.setMotd(NUtil.colorize("      &f&l»&4&l&m---------&r&f&l» &c&lNOVEL&f&lMC &f&l«&4&l&m---------&r&f&l«\n            &7&l(&r&4&l!&7&l)  &cWhitelist Enabled&r &7&l (&r&4&l!&7&l)"));
             return;
         }
 
         if (Bukkit.getOnlinePlayers().size() >= Bukkit.getMaxPlayers())
         {
-            event.setMotd(NUtil.colorize("      &f&l»&9&l&m---------&r&f&l» &c&lNOVEL&f&lMC &f&l«&9&l&m---------&r&f&l«\n              &7&l(&r&4&l!&7&l)  &cServer is Full&r &7&l (&r&4&l!&7&l)"));
+            event.setMotd(NUtil.colorize("      &f&l»&4&l&m---------&r&f&l» &c&lNOVEL&f&lMC &f&l«&4&l&m---------&r&f&l«\n              &7&l(&r&4&l!&7&l)  &cServer is Full&r &7&l (&r&4&l!&7&l)"));
             return;
         }
 
