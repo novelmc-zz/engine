@@ -9,8 +9,8 @@ general:
 
   # MOTD (shown on server list) - Color codes supported [&] and 2 lines motd [||] available
   motd:
-    - "        &f&l»&b&l&m---&9&l&m---&1&l&m---&r&f&l» &9&lNOVEL&f&lMC &f&l«&1&l&m---&9&l&m---&b&l&m---&r&f&l«"
-    - "                &f&l» &7Minecraft 1.8-1.13 &f&l«"
+    - "      &f&l»&b&l&m---&9&l&m---&1&l&m---&r&f&l» &9&lNOVEL&f&lMC &f&l«&1&l&m---&9&l&m---&b&l&m---&r&f&l«"
+    - "              &f&l» &7Minecraft 1.8-1.13 &f&l«"
   # Website - useful to link to the forum for ban appeals, admin applications etc
   website: http://novelmc.net/
 
