@@ -16,11 +16,12 @@ public class Command_status extends CommandBase {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String string, String[] args) {
         sender.sendMessage(NUtil.colorize("&7Server Information&8:"));
-        sender.sendMessage(NUtil.colorize("&8<-> &7Onlinemode&8:" + (Bukkit.getServer().getOnlineMode() ? "&a&ltrue" : "&c&lfalse") + "&7."));
-        sender.sendMessage(NUtil.colorize("&8<-> &7Plugin Version&8: &9&l" + plugin.getDescription().getVersion()));
+        sender.sendMessage(NUtil.colorize("&8<-> &7Onlinemode&8: " + (Bukkit.getServer().getOnlineMode() ? "&a&ltrue" : "&c&lfalse") + "&7."));
+        sender.sendMessage(NUtil.colorize("&8<-> &7Plugin Version&8: &5&l" + plugin.getDescription().getVersion()));
+        sender.sendMessage(NUtil.colorize("&7Worlds Information&8:"));
         int i = 0;
         for (World world : Bukkit.getServer().getWorlds()) {
-            sender.sendMessage(NUtil.colorize("&7" + String.format("World %d&8: &7%s with &9&l%d&r&7 players.", i++, world.getName(), world.getPlayers().size())));
+            sender.sendMessage(NUtil.colorize("&8<-> &7" + String.format("World %d&8: &7%s with &9&l%d&r&7 players.", i++, world.getName(), world.getPlayers().size())));
         }
         return true;
     }
