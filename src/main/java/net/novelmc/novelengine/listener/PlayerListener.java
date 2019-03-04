@@ -6,7 +6,6 @@ import net.novelmc.novelengine.command.Command_vanish;
 import net.novelmc.novelengine.rank.Rank;
 import net.novelmc.novelengine.rank.architect.ArchitectList;
 import net.novelmc.novelengine.rank.staff.StaffList;
-import net.novelmc.novelengine.util.NLog;
 import net.novelmc.novelengine.util.NPlayer;
 import net.novelmc.novelengine.util.NUtil;
 import net.novelmc.novelengine.util.NovelBase;
@@ -14,7 +13,6 @@ import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
-import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
@@ -23,8 +21,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.*;
 import org.bukkit.event.server.ServerCommandEvent;
 
-import java.lang.reflect.Field;
-import net.novelmc.novelengine.banning.BanType;
 
 public class PlayerListener extends NovelBase implements Listener
 {

@@ -17,7 +17,7 @@ public class PlayerDatabase extends NovelBase
         players = new ArrayList<>();
     }
 
-    public void purge()
+    public synchronized void purge()
     {
         players.clear();
 

@@ -1,6 +1,7 @@
 package net.novelmc.novelengine.rank.architect;
 
 import lombok.Getter;
+import static net.novelmc.novelengine.banning.BanManager.retUUID;
 import net.novelmc.novelengine.util.NLog;
 import net.novelmc.novelengine.util.NovelBase;
 import org.bukkit.entity.Player;
@@ -45,10 +46,10 @@ public final class ArchitectList extends NovelBase
 
     public static boolean isArchitect(Architect a)
     {
-        String name = a.getName();
+        String name = a.getUuid();
         for (Architect check : architects)
         {
-            return check.getName().equals(name);
+            return check.getUuid().equals(name);
         }
         return false;
     }
@@ -62,7 +63,7 @@ public final class ArchitectList extends NovelBase
     {
         for (Architect a : architects)
         {
-            if (a.getName().equals(player.getName()))
+            if (a.getUuid().equals(retUUID(player.getName())))
             {
                 return a;
             }
@@ -84,7 +85,7 @@ public final class ArchitectList extends NovelBase
     public static void addArchitect(Player player)
     {
         Architect a = new Architect(player.getName().toLowerCase());
-        a.setName(player.getName());
+        a.setUuid(retUUID(player.getName()));
         a.setIps(Collections.singletonList(player.getAddress().getHostString()));
         addArchitect(a);
     }

@@ -17,7 +17,7 @@ public class Architect extends NovelBase
     private final String configKey;
     @Getter
     @Setter
-    private String name;
+    private String uuid;
     @Getter
     @Setter
     private List<String> ips = new ArrayList<String>();
@@ -29,13 +29,13 @@ public class Architect extends NovelBase
 
     public void save(ConfigurationSection section)
     {
-        section.set("name", name);
+        section.set("uuid", uuid);
         section.set("ips", Lists.newArrayList(ips));
     }
 
     public void load(ConfigurationSection section)
     {
-        name = section.getString("name", configKey);
+        uuid = section.getString("uuid", configKey);
         ips.addAll(section.getStringList("ips"));
     }
 
@@ -43,7 +43,7 @@ public class Architect extends NovelBase
     public String toString()
     {
         StringBuilder sb = new StringBuilder();
-        sb.append(name).append(":").append(NEW_LINE)
+        sb.append(uuid).append(":").append(NEW_LINE)
                 .append(" - IPs: ").append(StringUtils.join(ips, ", ")).append(NEW_LINE);
         return sb.toString();
     }

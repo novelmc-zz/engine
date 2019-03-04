@@ -1,6 +1,7 @@
 package net.novelmc.novelengine.rank.staff;
 
 import lombok.Getter;
+import static net.novelmc.novelengine.banning.BanManager.retUUID;
 import net.novelmc.novelengine.config.StaffConfig;
 import net.novelmc.novelengine.rank.Rank;
 import net.novelmc.novelengine.util.NLog;
@@ -48,10 +49,10 @@ public final class StaffList extends NovelBase
 
     public static boolean isStaff(Staff s)
     {
-        String name = s.getName();
+        String name = s.getUuid();
         for (Staff check : staff)
         {
-            return check.getName().equals(name);
+            return check.getUuid().equals(retUUID(name));
         }
         return false;
     }
@@ -65,7 +66,7 @@ public final class StaffList extends NovelBase
     {
         for (Staff s : staff)
         {
-            if (s.getName().equals(player.getName()))
+            if (s.getUuid().equals(retUUID(player.getName())))
             {
                 return s;
             }
@@ -87,7 +88,7 @@ public final class StaffList extends NovelBase
     public static void addStaff(Player player)
     {
         Staff s = new Staff(player.getName().toLowerCase());
-        s.setName(player.getName());
+        s.setUuid(retUUID(player.getName()));
         s.setIps(Collections.singletonList(player.getAddress().getHostString()));
         addStaff(s);
     }
