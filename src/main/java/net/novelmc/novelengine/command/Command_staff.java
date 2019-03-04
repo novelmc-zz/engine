@@ -118,7 +118,7 @@ public class Command_staff extends CommandBase
                 {
                     if ( ! Rank.getRank(sender).isAtLeast(Rank.ADMIN))
                     {
-                        sender.sendMessage(NUtil.colorize("&4&lSTAFF >&r &7You must be a &9&lDIRECTOR&r&7 to to execute this command."));
+                        sender.sendMessage(NUtil.colorize("&4&lSTAFF >&r &7You must be an &9&lADMIN&r&7 to to execute this command."));
                         return true;
                     }
 
@@ -142,7 +142,12 @@ public class Command_staff extends CommandBase
                         return true;
                     }
                     
-                    if ((rank == Rank.DIRECTOR) && (!Rank.getRank(sender).isAtLeast(Rank.DIRECTOR))) {
+                    if ((rank == Rank.DIRECTOR || rank == Rank.DEVELOPER) && (!Rank.getRank(sender).isAtLeast(Rank.DIRECTOR))) {
+                        sender.sendMessage("&4&lSTAFF >&r &7You cannot promote yourself.");
+                        return true;
+                    }
+                    
+                    if ((rank == Rank.CONSOLE)) {
                         sender.sendMessage("&4&lSTAFF >&r &7The provided rank is invalid.");
                         return true;
                     }
