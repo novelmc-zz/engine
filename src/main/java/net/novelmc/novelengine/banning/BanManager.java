@@ -14,12 +14,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 
 public class BanManager extends NovelBase
 {
 
     @Getter
     private static List<Ban> bans;
+    private static String uuid = null;
 
     public BanManager()
     {
@@ -41,7 +44,7 @@ public class BanManager extends NovelBase
                 ResultSet result = c.prepareStatement("SELECT * FROM bans").executeQuery();
                 while (result.next())
                 {
-                    addBan(result.getString("name"),
+                    addBan(result.getString("uuid"),
                             result.getString("ip"),
                             result.getString("by"),
                             result.getString("reason"),
@@ -59,7 +62,7 @@ public class BanManager extends NovelBase
             JSONObject banJson = plugin.sqlManager.getDatabase().getJSONObject("bans");
             banJson.keySet().stream().map((key) -> banJson.getJSONObject(key)).forEachOrdered((obj) ->
             {
-                addBan(obj.getString("name"),
+                addBan(obj.getString("uuid"),
                         obj.getString("ip"),
                         obj.getString("by"),
                         obj.getString("reason"),
@@ -76,7 +79,7 @@ public class BanManager extends NovelBase
     public static void addBan(String name, String ip, String by, String reason, String uid, Date expiry, BanType type)
     {
         Ban ban = new Ban();
-        ban.setName(name);
+        ban.setUUID(retUUID(name));
         ban.setIp(ip);
         ban.setBy(by);
         ban.setReason(reason);
@@ -120,7 +123,7 @@ public class BanManager extends NovelBase
     public static boolean isBanned(Ban ban)
     {
         removeExpiredBans();
-        return bans.stream().anyMatch((b) -> (b.getName().equals(ban.getName()) || b.getIp().equals(ban.getIp())));
+        return bans.stream().anyMatch((b) -> (b.getUUID().equals(ban.getUUID()) || b.getIp().equals(ban.getIp())));
     }
 
     public static boolean isBanned(Player player)
@@ -142,16 +145,16 @@ public class BanManager extends NovelBase
 
     public static boolean isNamePermBanned(String name)
     {
-        return getBansByType(BanType.PERMANENT_NAME).stream().anyMatch((ban) -> (ban.getName().equals(name)));
+        return getBansByType(BanType.PERMANENT_NAME).stream().anyMatch((ban) -> (ban.getUUID().equals(name)));
     }
 
     public static Ban getBan(Player player)
     {
         for (Ban ban : bans)
         {
-            if (ban.getName() != null)
+            if (ban.getUUID() != null)
             {
-                if (ban.getName().equals(player.getName()))
+                if (ban.getUUID().equals(retUUID(player.getName())));
                 {
                     return ban;
                 }
@@ -172,9 +175,9 @@ public class BanManager extends NovelBase
     {
         for (Ban ban : bans)
         {
-            if (ban.getName() != null)
+            if (ban.getUUID() != null)
             {
-                if (ban.getName().equals(name))
+                if (ban.getUUID().equals(retUUID(name)))
                 {
                     return ban;
                 }
@@ -200,7 +203,7 @@ public class BanManager extends NovelBase
     {
         for (Ban ban : bans)
         {
-            if (ban.getName().equals(name))
+            if (ban.getUUID().equals(name))
             {
                 return ban;
             }
@@ -218,5 +221,21 @@ public class BanManager extends NovelBase
         });
 
         return banType;
+    }
+    
+    public static String retUUID(String name) {
+        Player player = Bukkit.getPlayer(name);
+        if (!player.isOnline()) {
+            OfflinePlayer[] players = Bukkit.getOfflinePlayers();
+            for (OfflinePlayer p : players) {
+                if (p.getName().equalsIgnoreCase(name)) {
+                    uuid = p.getUniqueId().toString();
+                }
+            }
+        } else {
+            uuid = player.getUniqueId().toString();
+        }
+        
+        return uuid;
     }
 }

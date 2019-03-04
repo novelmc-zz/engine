@@ -48,7 +48,7 @@ public class Command_unpermban extends CommandBase
 
         for (Ban ban : BanManager.getBansByType(BanType.PERMANENT_NAME))
         {
-            if (ban.getName().equals(args[0]))
+            if (ban.getUUID().equals(args[0]))
             {
                 BanManager.removeBan(ban);
                 NUtil.playerAction(sender, "Removing permanent ban on username: " + args[0], true);

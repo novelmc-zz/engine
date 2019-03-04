@@ -31,9 +31,9 @@ public class Command_unban extends CommandBase
         // normal bans
         for (Ban ban : BanManager.getBansByType(BanType.NORMAL))
         {
-            if (ban.getName().equals(target) || ban.getIp().equals(target))
+            if (ban.getUUID().equals(target) || ban.getIp().equals(target))
             {
-                NUtil.playerAction(sender, "- Unbanning " + ban.getName(), false);
+                NUtil.playerAction(sender, "- Unbanning " + ban.getUUID(), false);
                 BanManager.removeBan(ban);
                 return true;
             }

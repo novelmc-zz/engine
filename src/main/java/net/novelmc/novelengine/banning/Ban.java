@@ -19,7 +19,7 @@ public class Ban extends NovelBase
 
     @Getter
     @Setter
-    private String name;
+    private String UUID;
     @Getter
     @Setter
     private String ip;
@@ -52,7 +52,7 @@ public class Ban extends NovelBase
         if (type == BanType.PERMANENT_NAME)
         {
             return ChatColor.RED
-                    + "Your name is currently permanently banned from this server." + NEW_LINE
+                    + "Your uuid is currently permanently banned from this server." + NEW_LINE
                     + ChatColor.GRAY + "Reason: " + ChatColor.WHITE + (reason != null ? reason : "Reason not specified") + NEW_LINE
                     + ChatColor.GRAY + "More Information: " + ChatColor.GOLD + ChatColor.UNDERLINE + "https://novelmc.net/docs/support/" + NEW_LINE
                     + ChatColor.GRAY + "Ban ID: " + UID;
@@ -99,8 +99,8 @@ public class Ban extends NovelBase
             try
             {
                 makeUID();
-                PreparedStatement statement = c.prepareStatement("INSERT INTO bans (name, ip, `by`, reason, expiry, type) VALUES (?, ?, ?, ?, ?, ?)");
-                statement.setString(1, name);
+                PreparedStatement statement = c.prepareStatement("INSERT INTO bans (uuid, ip, `by`, reason, expiry, type) VALUES (?, ?, ?, ?, ?, ?)");
+                statement.setString(1, UUID);
                 statement.setString(2, ip);
                 statement.setString(3, by);
                 statement.setString(4, reason);
@@ -118,7 +118,7 @@ public class Ban extends NovelBase
             JSONObject bans = database.getJSONObject("bans");
 
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("name", name);
+            jsonObject.put("uuid", UUID);
             jsonObject.put("ip", ip);
             jsonObject.put("by", by);
             jsonObject.put("reason", reason);
@@ -126,7 +126,7 @@ public class Ban extends NovelBase
             jsonObject.put("expiry", expiry);
             jsonObject.put("type", type);
 
-            bans.put(name, jsonObject);
+            bans.put(UUID, jsonObject);
             database.put("bans", bans);
             plugin.sqlManager.saveDatabase(database);
         }
@@ -139,8 +139,8 @@ public class Ban extends NovelBase
             Connection c = SQLManager.getConnection();
             try
             {
-                PreparedStatement statement = c.prepareStatement("DELETE FROM bans WHERE name = ? OR ip = ?");
-                statement.setString(1, name);
+                PreparedStatement statement = c.prepareStatement("DELETE FROM bans WHERE uuid = ? OR ip = ?");
+                statement.setString(1, UUID);
                 statement.setString(2, ip);
                 statement.executeUpdate();
             } catch (SQLException ex)
@@ -151,7 +151,7 @@ public class Ban extends NovelBase
         {
             JSONObject database = plugin.sqlManager.getDatabase();
             JSONObject bans = database.getJSONObject("bans");
-            bans.remove(name);
+            bans.remove(UUID);
             database.put("bans", bans);
 
             plugin.sqlManager.saveDatabase(database);
