@@ -60,7 +60,7 @@ public class Command_list extends CommandBase
             } else if (Rank.getRank(player).isAtLeast(Rank.ADMIN))
             {
                 admins.add(ChatColor.GRAY + player.getName());
-            } else if (NUtil.DEVELOPERS.contains(player.getName()))
+            } else if (Rank.getRank(player).isAtLeast(Rank.DEVELOPER))
             {
                 developers.add(ChatColor.GRAY + player.getName());
             } else if (ArchitectList.isArchitect(player))
@@ -91,7 +91,7 @@ public class Command_list extends CommandBase
                 .append((mods.isEmpty() ? "" : Rank.MOD.getTag() + ": " + StringUtils.join(mods, ", ") + NEW_LINE))
                 .append((senior_mods.isEmpty() ? "" : Rank.SENIOR_MOD.getTag() + ": " + StringUtils.join(senior_mods, ", ") + NEW_LINE))
                 .append((architects.isEmpty() ? "" : Title.ARCHITECT.getTag() + ": " + StringUtils.join(architects, ", ") + NEW_LINE))
-                .append((developers.isEmpty() ? "" : Title.DEVELOPER.getTag() + ": " + StringUtils.join(developers, ", ") + NEW_LINE))
+                .append((developers.isEmpty() ? "" : Rank.DEVELOPER.getTag() + ": " + StringUtils.join(developers, ", ") + NEW_LINE))
                 .append((admins.isEmpty() ? "" : Rank.ADMIN.getTag() + ": " + StringUtils.join(admins, ", ") + NEW_LINE))
                 .append((directors.isEmpty() ? "" : Rank.DIRECTOR.getTag() + ": " + StringUtils.join(directors, ", ")));
 

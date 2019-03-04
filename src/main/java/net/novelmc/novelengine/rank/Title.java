@@ -6,8 +6,7 @@ import org.bukkit.ChatColor;
 public enum Title implements Displayable
 {
 
-    ARCHITECT("an", "Architect", "ARC", ChatColor.GREEN),
-    DEVELOPER("a", "Developer", "DEV", ChatColor.DARK_PURPLE);
+    ARCHITECT("an", "Architect", "ARC", ChatColor.GREEN);
 
     private final String determiner;
     @Getter

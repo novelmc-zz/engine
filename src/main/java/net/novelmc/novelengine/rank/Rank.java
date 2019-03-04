@@ -5,7 +5,6 @@ import net.novelmc.novelengine.NovelEngine;
 import net.novelmc.novelengine.rank.architect.ArchitectList;
 import net.novelmc.novelengine.rank.staff.StaffList;
 import net.novelmc.novelengine.util.NLog;
-import net.novelmc.novelengine.util.NUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -21,6 +20,7 @@ public enum Rank implements Displayable
     SENIOR_MOD("a", "Senior Mod", "SRM", ChatColor.GOLD),
     ADMIN("an", "Admin", "ADM", ChatColor.BLUE),
     DIRECTOR("a", "Director", "DIR", ChatColor.RED),
+    DEVELOPER("a", "Developer", "DEV", ChatColor.DARK_PURPLE),
     CONSOLE("the", "Console", "CSL", ChatColor.DARK_RED);
 
     private final String determiner;
@@ -97,11 +97,6 @@ public enum Rank implements Displayable
 
     public static Displayable getDisplay(Player player)
     {
-        if (NUtil.DEVELOPERS.contains(player.getName()))
-        {
-            return Title.DEVELOPER;
-        }
-
         if (ArchitectList.isArchitect(player))
         {
             return Title.ARCHITECT;
