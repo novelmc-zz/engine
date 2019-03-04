@@ -116,7 +116,7 @@ public class Command_staff extends CommandBase
             {
                 if (args[0].equalsIgnoreCase("setrank"))
                 {
-                    if ( ! Rank.getRank(sender).isAtLeast(Rank.DIRECTOR))
+                    if ( ! Rank.getRank(sender).isAtLeast(Rank.ADMIN))
                     {
                         sender.sendMessage(NUtil.colorize("&4&lSTAFF >&r &7You must be a &9&lDIRECTOR&r&7 to to execute this command."));
                         return true;
@@ -139,6 +139,11 @@ public class Command_staff extends CommandBase
                     if (rank == null)
                     {
                         sender.sendMessage(NUtil.colorize("&4&lSTAFF >&r &7The provided rank is invalid."));
+                        return true;
+                    }
+                    
+                    if ((rank == Rank.DIRECTOR) && (!Rank.getRank(sender).isAtLeast(Rank.DIRECTOR))) {
+                        sender.sendMessage("&4&lSTAFF >&r &7The provided rank is invalid.");
                         return true;
                     }
 
