@@ -28,9 +28,6 @@ import net.novelmc.novelengine.banning.BanType;
 
 public class PlayerListener extends NovelBase implements Listener
 {
-
-    private CommandMap cmap = getCommandMap();
-
     public PlayerListener()
     {
         Bukkit.getServer().getPluginManager().registerEvents(this, plugin);
@@ -175,100 +172,5 @@ public class PlayerListener extends NovelBase implements Listener
             NUtil.globalMessage(NUtil.colorize("&9&lSERVER >&r &7" + player.getName() + " is no longer marked as busy."), NUtil.MessageType.ALL);
             NPlayer.busyPlayers.remove(player);
         }
-    }
-
-    @EventHandler
-    public void onCommandPreprocess(PlayerCommandPreprocessEvent event)
-    {
-        final Player player = event.getPlayer();
-
-        if (StaffList.isStaff(player))
-        {
-            return;
-        }
-
-        for (Player all : Bukkit.getOnlinePlayers())
-        {
-            if (NPlayer.hasCommandSpyEnabled(all) && StaffList.isStaff(all))
-            {
-                all.sendMessage(NUtil.colorize("&7" + player.getName() + ": " + event.getMessage()));
-            }
-        }
-
-        for (String blocked : plugin.config.getDefaultCommands())
-        {
-            if (event.getMessage().equalsIgnoreCase(blocked) || event.getMessage().split(" ")[0].equalsIgnoreCase(blocked))
-            {
-                player.sendMessage(NUtil.colorize("&2&lINFO >&r &7That command is blocked!"));
-                event.setCancelled(true);
-                continue;
-            }
-            if (cmap.getCommand(blocked) == null)
-            {
-                continue;
-            }
-            if (cmap.getCommand(blocked).getAliases() == null)
-            {
-                continue;
-            }
-            cmap.getCommand(blocked).getAliases().stream().filter((blocked2) -> (event.getMessage().equalsIgnoreCase(blocked2) || event.getMessage().split(" ")[0].equalsIgnoreCase(blocked2))).map((_item) ->
-            {
-                player.sendMessage(NUtil.colorize("&2&lINFO >&r &7That command is blocked!"));
-                return _item;
-            }).forEachOrdered((_item) ->
-            {
-                event.setCancelled(true);
-            });
-        }
-
-        for (String blocked : plugin.config.getStaffCommands())
-        {
-            if ((event.getMessage().equalsIgnoreCase(blocked) || event.getMessage().split(" ")[0].equalsIgnoreCase(blocked)) &&  ! StaffList.isStaff(player))
-            {
-                player.sendMessage(NUtil.colorize("&2&lINFO >&r &7That command is blocked!"));
-                event.setCancelled(true);
-                continue;
-            }
-
-            if (cmap.getCommand(blocked) == null)
-            {
-                continue;
-            }
-
-            if (cmap.getCommand(blocked).getAliases() == null)
-            {
-                continue;
-            }
-
-            cmap.getCommand(blocked).getAliases().stream().filter((blocked2) -> ((event.getMessage().equalsIgnoreCase(blocked2) || event.getMessage().split(" ")[0].equalsIgnoreCase(blocked2)) &&  ! StaffList.isStaff(player))).map((_item) ->
-            {
-                player.sendMessage(NUtil.colorize("&2&lINFO >&r &7That command is blocked!"));
-                return _item;
-            }).forEachOrdered((_item) ->
-            {
-                event.setCancelled(true);
-            });
-        }
-    }
-
-    private CommandMap getCommandMap()
-    {
-        if (cmap == null)
-        {
-            try
-            {
-                final Field f = Bukkit.getServer().getClass().getDeclaredField("commandMap");
-                f.setAccessible(true);
-                cmap = (CommandMap) f.get(Bukkit.getServer());
-                return getCommandMap();
-            } catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e)
-            {
-                NLog.severe(e);
-            }
-        } else if (cmap != null)
-        {
-            return cmap;
-        }
-        return getCommandMap();
     }
 }

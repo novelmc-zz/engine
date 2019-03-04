@@ -4,6 +4,7 @@ import net.novelmc.novelengine.NovelEngine;
 import net.novelmc.novelengine.util.NUtil;
 import net.novelmc.novelengine.util.NovelBase;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -49,6 +50,7 @@ public class InteractBlocker extends NovelBase implements Listener
                     return;
                 }
                 e.setCancelled(true);
+                player.getInventory().getItemInMainHand().setType(Material.BLUE_WOOL);
                 player.sendMessage(NUtil.colorize("&2&lINFO &7Lava is currently disabled."));
                 break;
             }
@@ -59,6 +61,7 @@ public class InteractBlocker extends NovelBase implements Listener
                     return;
                 }
                 e.setCancelled(true);
+                player.getInventory().getItemInMainHand().setType(Material.RED_WOOL);
                 player.sendMessage(NUtil.colorize("&2&lINFO &7Water is currently disabled."));
                 break;
             }

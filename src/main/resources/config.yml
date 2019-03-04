@@ -71,3 +71,4 @@ permissionblocker:
 
 allow:
   lava_place: false
+  water_place: false

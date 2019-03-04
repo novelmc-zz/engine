@@ -1,7 +1,6 @@
 package net.novelmc.novelengine.banning;
 
 import java.util.UUID;
-import java.util.logging.Logger;
 
 public class BanUIDGen
 {

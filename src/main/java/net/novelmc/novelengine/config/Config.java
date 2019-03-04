@@ -84,12 +84,12 @@ public class Config extends YamlConfiguration
 
     public List<String> getDefaultCommands()
     {
-        return super.getStringList("commands.default");
+        return super.getStringList("permissionblocker.default");
     }
 
     public List<String> getStaffCommands()
     {
-        return super.getStringList("commands.staff");
+        return super.getStringList("permissionblocker.staff");
     }
 
     public boolean isSQLEnabled()
