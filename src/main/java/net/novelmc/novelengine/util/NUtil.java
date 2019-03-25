@@ -19,6 +19,8 @@ public class NUtil
 
     public static final List<String> DEVELOPERS = Arrays.asList("db8e5b84-c670-41f6-9a2b-1ad9a8c7e104"/*
              * untuned
+             */, "78408086-1991-4c33-a571-d8fa325465b2"/*
+             * Jewish_Luigi
              */, "7c2eee6f-33a2-44de-8dd1-1e3fe06d2150"/*
      * falceso
      */);
@@ -26,8 +28,8 @@ public class NUtil
              * rovertpug
              */, "61474d4b-a596-4b67-a91f-eb00c07bbbb5"/*
              * breedme
-             */, "b58caae2-254a-47db-a129-e8ebce4e6206"/*
-             * irix
+             */, "93d6bdbc-0ede-4d4b-af43-e31d5333a7b6"/*
+             * Anishh
              */, "a8ab4eb2-2805-4631-8351-f3be58056e37"/*
      * pih
      */);
