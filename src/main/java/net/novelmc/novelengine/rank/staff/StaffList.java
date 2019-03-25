@@ -102,9 +102,9 @@ public final class StaffList extends NovelBase
 
         staff.remove(s);
         s.setActive(false);
+        s.save(plugin.staffConfig);
         plugin.staffConfig.save();
         plugin.staffConfig.load();
-        s.save(plugin.staffConfig);
         //s.save(plugin.staffConfig.getConfigurationSection(s.getConfigKey()));
     }
 
@@ -123,6 +123,7 @@ public final class StaffList extends NovelBase
         s.save(plugin.staffConfig.getConfigurationSection(s.getConfigKey()));
     }
 
+    // This is never used?
     public static void updateActive(Player player, boolean active)
     {
         Staff s = getStaff(player);
@@ -132,10 +133,7 @@ public final class StaffList extends NovelBase
             return;
         }
 
-        staff.remove(s);
         s.setActive(active);
-        staff.add(s);
-        s.save(plugin.staffConfig.getConfigurationSection(s.getConfigKey()));
     }
 
     public static void updateIp(Player player)

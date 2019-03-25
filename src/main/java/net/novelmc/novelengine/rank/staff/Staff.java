@@ -84,4 +84,14 @@ public class Staff extends NovelBase
                 .append(" - CommandSpy: ").append(commandSpy).append("\n");
         return sb.toString();
     }
+
+    public void setActive(boolean newActive)
+    {
+        this.active = newActive;
+    }
+
+    public boolean isActive()
+    {
+        return this.active;
+    }
 }
