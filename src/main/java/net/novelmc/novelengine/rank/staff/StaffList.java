@@ -102,7 +102,10 @@ public final class StaffList extends NovelBase
 
         staff.remove(s);
         s.setActive(false);
-        s.save(plugin.staffConfig.getConfigurationSection(s.getConfigKey()));
+        plugin.staffConfig.save();
+        plugin.staffConfig.load();
+        s.save(plugin.staffConfig);
+        //s.save(plugin.staffConfig.getConfigurationSection(s.getConfigKey()));
     }
 
     public static void updateRank(Player player, Rank rank)

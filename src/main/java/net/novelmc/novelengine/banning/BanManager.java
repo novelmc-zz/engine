@@ -1,5 +1,6 @@
 package net.novelmc.novelengine.banning;
 
+import java.util.Objects;
 import lombok.Getter;
 import net.novelmc.novelengine.util.NLog;
 import net.novelmc.novelengine.util.NovelBase;
@@ -215,23 +216,16 @@ public class BanManager extends NovelBase
     {
         List<Ban> banType = new ArrayList<>();
 
-        bans.stream().filter((ban) -> (ban.getType().equals(type))).forEachOrdered((ban) ->
-        {
-            banType.add(ban);
-        });
+        bans.stream().filter((ban) -> (ban.getType().equals(type))).forEachOrdered(banType::add);
 
         return banType;
     }
     
     public static String retUUID(String name) {
         Player player = Bukkit.getPlayer(name);
-        if (!player.isOnline()) {
-            OfflinePlayer[] players = Bukkit.getOfflinePlayers();
-            for (OfflinePlayer p : players) {
-                if (p.getName().equalsIgnoreCase(name)) {
-                    uuid = p.getUniqueId().toString();
-                }
-            }
+        if (player == null) {
+            OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(name);
+            uuid = offlinePlayer.getUniqueId().toString();
         } else {
             uuid = player.getUniqueId().toString();
         }

@@ -193,7 +193,7 @@ public class ServerModeListener extends NovelBase implements Listener
         Player player = e.getPlayer();
 
         // Event Mode
-        if (plugin.config.isEventModeEnabled() &&  ! player.isWhitelisted() &&  ! StaffList.isStaff(player))
+        if (plugin.config.isEventModeEnabled() &&  ! player.isWhitelisted() && ! StaffList.isStaff(player))
         {
             e.disallow(PlayerLoginEvent.Result.KICK_OTHER, NUtil.colorize("&cThe server is currently in event mode."));
         }

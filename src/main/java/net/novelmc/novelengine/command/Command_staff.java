@@ -108,7 +108,8 @@ public class Command_staff extends CommandBase
                         return true;
                     }
 
-                    sender.sendMessage(ChatColor.GRAY + StaffList.getStaff(player).toString());
+                    // I have no idea why this works
+                    sender.sendMessage(ChatColor.GRAY + "" + StaffList.getStaff(player));
                     return true;
                 }
             }
