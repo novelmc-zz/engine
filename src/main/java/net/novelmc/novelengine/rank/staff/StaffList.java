@@ -59,7 +59,7 @@ public final class StaffList extends NovelBase
 
     public static boolean isStaff(Player player)
     {
-        return getStaff(player) != null;
+        return getStaff(player) != null && getStaff(player).isActive();
     }
 
     public static Staff getStaff(Player player)
