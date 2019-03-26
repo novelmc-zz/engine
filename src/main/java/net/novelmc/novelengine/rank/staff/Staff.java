@@ -21,6 +21,9 @@ public class Staff extends NovelBase
     private String uuid;
     @Getter
     @Setter
+    private String username;
+    @Getter
+    @Setter
     private List<String> ips = new ArrayList<>();
     @Getter
     @Setter
@@ -55,6 +58,7 @@ public class Staff extends NovelBase
     public void save(ConfigurationSection section)
     {
         section.set("uuid", uuid);
+        section.set("username", username);
         section.set("ips", Lists.newArrayList(ips));
         section.set("homeip", homeIp);
         section.set("rank", rank.name());
@@ -65,6 +69,7 @@ public class Staff extends NovelBase
     public void load(ConfigurationSection section)
     {
         uuid = section.getString("uuid", configKey);
+        username = section.getString("username");
         ips.addAll(section.getStringList("ips"));
         homeIp = section.getString("homeip");
         rank = Rank.findRank(section.getString("rank"));
@@ -76,7 +81,8 @@ public class Staff extends NovelBase
     public String toString()
     {
         StringBuilder sb = new StringBuilder();
-        sb.append(uuid).append(":\n")
+        sb.append(username).append(":\n")
+                .append(" - UUID: ").append(uuid).append("\n")
                 .append(" - IPs: ").append(StringUtils.join(ips, ", ")).append("\n")
                 .append(" - Home IP: ").append(homeIp).append("\n")
                 .append(" - Rank: ").append(rank.name()).append("\n")
@@ -93,5 +99,10 @@ public class Staff extends NovelBase
     public boolean isActive()
     {
         return this.active;
+    }
+
+    public void setRank(Rank rank)
+    {
+        this.rank = rank;
     }
 }

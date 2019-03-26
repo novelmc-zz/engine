@@ -51,7 +51,7 @@ public class Command_staff extends CommandBase
 
                     if (StaffList.isImpostor(player))
                     {
-                        NUtil.playerAction(sender, "Re-adding " + player.getName() + " to the staff list", true);
+                        NUtil.playerAction(sender, "Re-adding " + player.getName() + " to the staff list", false);
 
                         if (StaffList.isImpostor(player))
                         {
@@ -59,11 +59,15 @@ public class Command_staff extends CommandBase
                         }
 
                         StaffList.updateIp(player);
+                        StaffList.setUsername(player);
+                        StaffList.updateActive(player, true);
                         return true;
                     }
 
-                    NUtil.playerAction(sender, "Adding " + player.getName() + " to the staff list", true);
+                    NUtil.playerAction(sender, "Adding " + player.getName() + " to the staff list", false);
                     StaffList.addStaff(player);
+                    StaffList.setUsername(player);
+                    StaffList.updateActive(player, true);
                     return true;
                 }
 
@@ -90,6 +94,7 @@ public class Command_staff extends CommandBase
 
                     NUtil.playerAction(sender, "Removing " + player.getName() + " from the staff list", true);
                     StaffList.removeStaff(StaffList.getStaff(player));
+                    StaffList.updateActive(player, false);
                     return true;
                 }
 
@@ -143,12 +148,12 @@ public class Command_staff extends CommandBase
                         return true;
                     }
                     
-                    if ((rank == Rank.DIRECTOR || rank == Rank.DEVELOPER) && (!Rank.getRank(sender).isAtLeast(Rank.DIRECTOR))) {
+                    if (rank == Rank.DIRECTOR || rank == Rank.DEVELOPER && !Rank.getRank(sender).isAtLeast(Rank.DIRECTOR)) {
                         sender.sendMessage("&4&lSTAFF >&r &7You cannot promote yourself.");
                         return true;
                     }
                     
-                    if ((rank == Rank.CONSOLE)) {
+                    if (rank == Rank.CONSOLE) {
                         sender.sendMessage("&4&lSTAFF >&r &7The provided rank is invalid.");
                         return true;
                     }

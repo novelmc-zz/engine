@@ -82,7 +82,13 @@ public final class StaffList extends NovelBase
         }
 
         staff.add(s);
+        s.setActive(true);
         s.save(plugin.staffConfig.createSection(s.getConfigKey()));
+    }
+
+    public static void setUsername(Player player)
+    {
+        getStaff(player).setUsername(player.getName());
     }
 
     public static void addStaff(Player player)
@@ -91,6 +97,7 @@ public final class StaffList extends NovelBase
         s.setUuid(retUUID(player.getName()));
         s.setIps(Collections.singletonList(player.getAddress().getHostString()));
         addStaff(s);
+        s.setActive(true);
     }
 
     public static void removeStaff(Staff s)
@@ -102,10 +109,7 @@ public final class StaffList extends NovelBase
 
         staff.remove(s);
         s.setActive(false);
-        s.save(plugin.staffConfig);
-        plugin.staffConfig.save();
-        plugin.staffConfig.load();
-        //s.save(plugin.staffConfig.getConfigurationSection(s.getConfigKey()));
+        s.save(plugin.staffConfig.getConfigurationSection(s.getConfigKey()));
     }
 
     public static void updateRank(Player player, Rank rank)
@@ -117,9 +121,7 @@ public final class StaffList extends NovelBase
             return;
         }
 
-        staff.remove(s);
         s.setRank(rank);
-        staff.add(s);
         s.save(plugin.staffConfig.getConfigurationSection(s.getConfigKey()));
     }
 
@@ -134,6 +136,7 @@ public final class StaffList extends NovelBase
         }
 
         s.setActive(active);
+        s.save(plugin.staffConfig.getConfigurationSection(s.getConfigKey()));
     }
 
     public static void updateIp(Player player)
