@@ -1,6 +1,9 @@
 package net.novelmc.novelengine;
 
 import net.novelmc.novelengine.banning.BanManager;
+import net.novelmc.novelengine.blocking.BlockBlocker;
+import net.novelmc.novelengine.blocking.CommandBlocker;
+import net.novelmc.novelengine.blocking.InteractBlocker;
 import net.novelmc.novelengine.command.util.CommandLoader;
 import net.novelmc.novelengine.config.ArchitectConfig;
 import net.novelmc.novelengine.config.Config;
@@ -58,6 +61,11 @@ public class NovelEngine extends JavaPlugin
             this.getServer().getPluginManager().disablePlugin(this);
             return;
         }
+
+        // Listeners
+        getServer().getPluginManager().registerEvents(new BlockBlocker(), this);
+        getServer().getPluginManager().registerEvents(new CommandBlocker(), this);
+        getServer().getPluginManager().registerEvents(new InteractBlocker(), this);
 
         staffList = new StaffList();
         architectList = new ArchitectList();
