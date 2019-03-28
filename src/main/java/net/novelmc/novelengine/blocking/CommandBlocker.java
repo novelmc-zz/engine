@@ -61,6 +61,12 @@ public class CommandBlocker implements Listener
             });
         }
 
+        if (event.getMessage().contains(":"))
+        {
+            player.sendMessage(NUtil.colorize("&2&lINFO >&r &7Plugin-specific commands are blocked."));
+            event.setCancelled(true);
+        }
+
         for (String blocked : plugin.config.getStaffCommands())
         {
             if ((event.getMessage().equalsIgnoreCase(blocked) || event.getMessage().split(" ")[0].equalsIgnoreCase(blocked)) &&  ! chk)
