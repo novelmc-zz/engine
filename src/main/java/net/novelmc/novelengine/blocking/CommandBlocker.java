@@ -8,6 +8,7 @@ import net.novelmc.novelengine.util.NPlayer;
 import net.novelmc.novelengine.util.NUtil;
 import static net.novelmc.novelengine.util.NovelBase.plugin;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandMap;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -30,9 +31,13 @@ public class CommandBlocker implements Listener
             chk = true;
         }
 
-        Bukkit.getOnlinePlayers().stream().filter((all) -> (NPlayer.hasCommandSpyEnabled(all) && StaffList.isStaff(all))).forEachOrdered((all) ->
+        Bukkit.getOnlinePlayers().stream().filter((all) -> (NPlayer.hasCommandSpyEnabled(all) && StaffList.isStaff(all))).forEach((Player pl) ->
         {
-            all.sendMessage(NUtil.colorize("&7" + player.getName() + ": " + event.getMessage()));
+            String command = event.getMessage();
+            if (pl != player)
+            {
+                pl.sendMessage(ChatColor.GRAY + player.getName() + ": " + command);
+            }
         });
 
         for (String blocked : plugin.config.getDefaultCommands())
@@ -59,12 +64,6 @@ public class CommandBlocker implements Listener
             {
                 event.setCancelled(true);
             });
-        }
-
-        if (event.getMessage().contains(":"))
-        {
-            player.sendMessage(NUtil.colorize("&2&lINFO >&r &7Plugin-specific commands are blocked."));
-            event.setCancelled(true);
         }
 
         for (String blocked : plugin.config.getStaffCommands())
