@@ -14,7 +14,6 @@ import java.util.List;
 
 public class ServerListener extends NovelBase implements Listener
 {
-
     public ServerListener()
     {
         Bukkit.getPluginManager().registerEvents(this, plugin);

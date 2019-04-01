@@ -15,7 +15,6 @@ import org.bukkit.event.player.PlayerLoginEvent;
 
 public class ServerModeListener extends NovelBase implements Listener
 {
-
     public ServerModeListener()
     {
         Bukkit.getServer().getPluginManager().registerEvents(this, plugin);

@@ -21,7 +21,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.*;
 import org.bukkit.event.server.ServerCommandEvent;
 
-
 public class PlayerListener extends NovelBase implements Listener
 {
     public PlayerListener()
@@ -114,7 +113,6 @@ public class PlayerListener extends NovelBase implements Listener
     public void onPlayerChat(AsyncPlayerChatEvent event)
     {
         Player player = event.getPlayer();
-        EmoteListener.handleEmotes(event);
         if (NPlayer.isBusy(player))
         {
             NUtil.globalMessage(NUtil.colorize("&9&lSERVER >&r &7" + player.getName() + " is no longer marked as busy."), NUtil.MessageType.ALL);
