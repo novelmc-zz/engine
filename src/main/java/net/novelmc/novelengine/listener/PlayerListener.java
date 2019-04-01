@@ -21,7 +21,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.*;
 import org.bukkit.event.server.ServerCommandEvent;
 
-
 public class PlayerListener extends NovelBase implements Listener
 {
     public PlayerListener()

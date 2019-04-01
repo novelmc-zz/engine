@@ -2,6 +2,7 @@ package net.novelmc.novelengine.listener;
 
 import java.util.ArrayList;
 import java.util.List;
+import net.novelmc.novelengine.rank.staff.StaffList;
 import org.bukkit.Bukkit;
 import net.novelmc.novelengine.util.NUtil;
 import net.novelmc.novelengine.util.NovelBase;
@@ -16,7 +17,6 @@ public class MuteListener extends NovelBase implements Listener
     {
         Bukkit.getServer().getPluginManager().registerEvents(this, plugin);
     }
-    
     private static List<Player> muted = new ArrayList<Player>();
     
     public static boolean isMuted(Player player)
@@ -48,10 +48,14 @@ public class MuteListener extends NovelBase implements Listener
     public void onPlayerChat(AsyncPlayerChatEvent e)
     {
         Player player = e.getPlayer();
+        if (StaffList.isStaff(player))
+        {
+            return;
+        }
         if (isMuted(player))
         {
-            e.setCancelled(true);
             player.sendMessage(NUtil.colorize("&2&lINFO >&r &7You are currently muted and cannot chat."));
+            e.setCancelled(true);
         }
     }
 }

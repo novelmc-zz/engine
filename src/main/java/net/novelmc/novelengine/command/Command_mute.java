@@ -5,6 +5,7 @@ import net.novelmc.novelengine.command.util.CommandParameters;
 import net.novelmc.novelengine.command.util.SourceType;
 import net.novelmc.novelengine.listener.MuteListener;
 import net.novelmc.novelengine.rank.Rank;
+import net.novelmc.novelengine.rank.staff.StaffList;
 import net.novelmc.novelengine.util.NUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -25,7 +26,7 @@ public class Command_mute extends CommandBase
         {
             int amount = MuteListener.getMutedAmount();
             MuteListener.purgeMuted();
-            NUtil.playerAction(sender, " - Unmuting all players", true);
+            NUtil.playerAction(sender, "Unmuting all players", true);
             sender.sendMessage(NUtil.colorize("&2&lINFO >&r &7Unmuted " + amount + " player(s)."));
             return true;
         }
@@ -33,6 +34,11 @@ public class Command_mute extends CommandBase
         if (player == null)
         {
             sender.sendMessage(NUtil.colorize("&2&lINFO >&r &7That player could not be found."));
+            return true;
+        }
+        if (StaffList.isStaff(player))
+        {
+            sender.sendMessage(NUtil.colorize("&2&lINFO >&r &7That player is an admin and cannot be muted."));
             return true;
         }
         MuteListener.setMuted(player, !MuteListener.isMuted(player));

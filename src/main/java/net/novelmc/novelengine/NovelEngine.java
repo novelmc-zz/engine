@@ -1,5 +1,6 @@
 package net.novelmc.novelengine;
 
+import java.util.function.IntToDoubleFunction;
 import net.novelmc.novelengine.banning.BanManager;
 import net.novelmc.novelengine.blocking.BlockBlocker;
 import net.novelmc.novelengine.blocking.CommandBlocker;
@@ -8,6 +9,7 @@ import net.novelmc.novelengine.command.util.CommandLoader;
 import net.novelmc.novelengine.config.ArchitectConfig;
 import net.novelmc.novelengine.config.Config;
 import net.novelmc.novelengine.config.StaffConfig;
+import net.novelmc.novelengine.listener.MuteListener;
 import net.novelmc.novelengine.listener.ServerModeListener;
 import net.novelmc.novelengine.listener.PlayerListener;
 import net.novelmc.novelengine.listener.ServerListener;
@@ -24,8 +26,12 @@ public class NovelEngine extends JavaPlugin
     public static NovelEngine plugin;
     public ArchitectConfig architectConfig;
     public BanManager banManager;
+    public BlockBlocker blockBlocker;
+    public CommandBlocker commandBlocker;
     public CommandLoader commandLoader;
     public Config config;
+    public InteractBlocker interactBlocker;
+    public MuteListener muteListener;
     public ServerModeListener serverModeListener;
     public PlayerListener playerListener;
     public PlayerDatabase playerDatabase;
@@ -62,15 +68,14 @@ public class NovelEngine extends JavaPlugin
             return;
         }
 
-        // Listeners
-        getServer().getPluginManager().registerEvents(new BlockBlocker(), this);
-        getServer().getPluginManager().registerEvents(new CommandBlocker(), this);
-        getServer().getPluginManager().registerEvents(new InteractBlocker(), this);
-
         staffList = new StaffList();
         architectList = new ArchitectList();
         banManager = new BanManager();
+        blockBlocker = new BlockBlocker();
+        commandBlocker = new CommandBlocker();
         commandLoader = new CommandLoader("Command_");
+        interactBlocker = new InteractBlocker();
+        muteListener = new MuteListener();
         playerListener = new PlayerListener();
         playerDatabase = new PlayerDatabase();
         serverListener = new ServerListener();
